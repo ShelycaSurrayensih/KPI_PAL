@@ -9,8 +9,22 @@
                 <div class="col-12">
                     <div class="d-flex align-items-lg-center flex-lg-row flex-column">
                         <div class="flex-grow-1">
-                            <h4 class="fs-16 mb-1">Good Morning, Anna!</h4>
-                            <p class="text-muted mb-0">Here's what's happening with your store today.</p>
+                            <?php //ubah timezone menjadi jakarta
+                             date_default_timezone_set("Asia/Jakarta");
+                              $jam=date('H:i'); 
+                              if ($jam> '05:30' && $jam < '10:00' ) { 
+                                $salam='Morning, ' ; 
+                            } elseif ($jam>= '10:00' && $jam < '15:00' ) { 
+                                $salam='Afternoon, ' ; 
+                            } elseif ($jam < '18:00' ) { 
+                                $salam='Evening, ' ; 
+                            } else {
+                                $salam='Night, ' ; 
+                            } ?>
+                            <h4 class="fs-16 mb-1">
+                                <?php
+                                echo 'Good ' . $salam; ?> {{ Auth::user()->name }}!
+                                <p class="text-muted mb-0">Here's what's happening with your store today.</p>
                         </div>
                         <div class="mt-3 mt-lg-0">
                             <form action="javascript:void(0);">
@@ -318,8 +332,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar-sm bg-light rounded p-1 me-2">
-                                                        <img src="{{ asset('assets') }}/images/products/img-1.png" alt=""
-                                                            class="img-fluid d-block" />
+                                                        <img src="{{ asset('assets') }}/images/products/img-1.png"
+                                                            alt="" class="img-fluid d-block" />
                                                     </div>
                                                     <div>
                                                         <h5 class="fs-14 my-1"><a
@@ -350,8 +364,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar-sm bg-light rounded p-1 me-2">
-                                                        <img src="{{ asset('assets') }}/images/products/img-2.png" alt=""
-                                                            class="img-fluid d-block" />
+                                                        <img src="{{ asset('assets') }}/images/products/img-2.png"
+                                                            alt="" class="img-fluid d-block" />
                                                     </div>
                                                     <div>
                                                         <h5 class="fs-14 my-1"><a
@@ -383,8 +397,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar-sm bg-light rounded p-1 me-2">
-                                                        <img src="{{ asset('assets') }}/images/products/img-3.png" alt=""
-                                                            class="img-fluid d-block" />
+                                                        <img src="{{ asset('assets') }}/images/products/img-3.png"
+                                                            alt="" class="img-fluid d-block" />
                                                     </div>
                                                     <div>
                                                         <h5 class="fs-14 my-1"><a
@@ -415,8 +429,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar-sm bg-light rounded p-1 me-2">
-                                                        <img src="{{ asset('assets') }}/images/products/img-4.png" alt=""
-                                                            class="img-fluid d-block" />
+                                                        <img src="{{ asset('assets') }}/images/products/img-4.png"
+                                                            alt="" class="img-fluid d-block" />
                                                     </div>
                                                     <div>
                                                         <h5 class="fs-14 my-1"><a
@@ -448,8 +462,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="avatar-sm bg-light rounded p-1 me-2">
-                                                        <img src="{{ asset('assets') }}/images/products/img-5.png" alt=""
-                                                            class="img-fluid d-block" />
+                                                        <img src="{{ asset('assets') }}/images/products/img-5.png"
+                                                            alt="" class="img-fluid d-block" />
                                                     </div>
                                                     <div>
                                                         <h5 class="fs-14 my-1"><a
@@ -537,8 +551,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-shrink-0 me-2">
-                                                        <img src="{{ asset('assets') }}/images/companies/img-1.png" alt=""
-                                                            class="avatar-sm p-2" />
+                                                        <img src="{{ asset('assets') }}/images/companies/img-1.png"
+                                                            alt="" class="avatar-sm p-2" />
                                                     </div>
                                                     <div>
                                                         <h5 class="fs-14 my-1 fw-medium">
@@ -569,8 +583,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-shrink-0 me-2">
-                                                        <img src="{{ asset('assets') }}/images/companies/img-2.png" alt=""
-                                                            class="avatar-sm p-2" />
+                                                        <img src="{{ asset('assets') }}/images/companies/img-2.png"
+                                                            alt="" class="avatar-sm p-2" />
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <h5 class="fs-14 my-1 fw-medium"><a
@@ -600,8 +614,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-shrink-0 me-2">
-                                                        <img src="{{ asset('assets') }}/images/companies/img-3.png" alt=""
-                                                            class="avatar-sm p-2" />
+                                                        <img src="{{ asset('assets') }}/images/companies/img-3.png"
+                                                            alt="" class="avatar-sm p-2" />
                                                     </div>
                                                     <div class="flex-gow-1">
                                                         <h5 class="fs-14 my-1 fw-medium"><a
@@ -631,8 +645,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-shrink-0 me-2">
-                                                        <img src="{{ asset('assets') }}/images/companies/img-8.png" alt=""
-                                                            class="avatar-sm p-2" />
+                                                        <img src="{{ asset('assets') }}/images/companies/img-8.png"
+                                                            alt="" class="avatar-sm p-2" />
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <h5 class="fs-14 my-1 fw-medium"><a
@@ -662,8 +676,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-shrink-0 me-2">
-                                                        <img src="{{ asset('assets') }}/images/companies/img-5.png" alt=""
-                                                            class="avatar-sm p-2" />
+                                                        <img src="{{ asset('assets') }}/images/companies/img-5.png"
+                                                            alt="" class="avatar-sm p-2" />
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <h5 class="fs-14 my-1 fw-medium">
@@ -787,8 +801,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-shrink-0 me-2">
-                                                        <img src="{{ asset('assets') }}/images/users/avatar-1.jpg" alt=""
-                                                            class="avatar-xs rounded-circle shadow" />
+                                                        <img src="{{ asset('assets') }}/images/users/avatar-1.jpg"
+                                                            alt="" class="avatar-xs rounded-circle shadow" />
                                                     </div>
                                                     <div class="flex-grow-1">Alex Smith</div>
                                                 </div>
@@ -814,8 +828,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-shrink-0 me-2">
-                                                        <img src="{{ asset('assets') }}/images/users/avatar-2.jpg" alt=""
-                                                            class="avatar-xs rounded-circle shadow" />
+                                                        <img src="{{ asset('assets') }}/images/users/avatar-2.jpg"
+                                                            alt="" class="avatar-xs rounded-circle shadow" />
                                                     </div>
                                                     <div class="flex-grow-1">Jansh Brown</div>
                                                 </div>
@@ -841,8 +855,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-shrink-0 me-2">
-                                                        <img src="{{ asset('assets') }}/images/users/avatar-3.jpg" alt=""
-                                                            class="avatar-xs rounded-circle shadow" />
+                                                        <img src="{{ asset('assets') }}/images/users/avatar-3.jpg"
+                                                            alt="" class="avatar-xs rounded-circle shadow" />
                                                     </div>
                                                     <div class="flex-grow-1">Ayaan Bowen</div>
                                                 </div>
@@ -868,8 +882,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-shrink-0 me-2">
-                                                        <img src="{{ asset('assets') }}/images/users/avatar-4.jpg" alt=""
-                                                            class="avatar-xs rounded-circle shadow" />
+                                                        <img src="{{ asset('assets') }}/images/users/avatar-4.jpg"
+                                                            alt="" class="avatar-xs rounded-circle shadow" />
                                                     </div>
                                                     <div class="flex-grow-1">Prezy Mark</div>
                                                 </div>
@@ -895,8 +909,8 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-shrink-0 me-2">
-                                                        <img src="{{ asset('assets') }}/images/users/avatar-6.jpg" alt=""
-                                                            class="avatar-xs rounded-circle shadow" />
+                                                        <img src="{{ asset('assets') }}/images/users/avatar-6.jpg"
+                                                            alt="" class="avatar-xs rounded-circle shadow" />
                                                     </div>
                                                     <div class="flex-grow-1">Vihan Hudda</div>
                                                 </div>
@@ -1120,7 +1134,8 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 avatar-sm">
                                                     <div class="avatar-title bg-light rounded shadow">
-                                                        <img src="{{ asset('assets') }}/images/companies/img-1.png" alt="" height="30">
+                                                        <img src="{{ asset('assets') }}/images/companies/img-1.png"
+                                                            alt="" height="30">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
@@ -1178,7 +1193,8 @@
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 avatar-sm">
                                                     <div class="avatar-title bg-light rounded shadow">
-                                                        <img src="{{ asset('assets') }}/images/companies/img-8.png" alt="" height="30">
+                                                        <img src="{{ asset('assets') }}/images/companies/img-8.png"
+                                                            alt="" height="30">
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
