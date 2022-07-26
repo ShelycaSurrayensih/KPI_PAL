@@ -1,98 +1,132 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="auth-page-wrapper pt-5">
-    <!-- auth page bg -->
-    <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
-        <div class="bg-overlay"></div>
-
-        <div class="shape">
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-                viewBox="0 0 1440 120">
-                <path d="M 0,36 C 144,53.6 432,123.2 720,124 C 1008,124.8 1296,56.8 1440,40L1440 140L0 140z"></path>
-            </svg>
-        </div>
-    </div>
-
-    <!-- auth page content -->
-    <div class="auth-page-content">
+<!-- auth-page wrapper -->
+<div class="auth-page-wrapper auth-bg-cover py-5 d-flex justify-content-center align-items-center min-vh-100">
+    <div class="bg-overlay"></div>
+    <!-- auth-page content -->
+    <div class="auth-page-content overflow-hidden pt-lg-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="text-center mt-sm-5 mb-4 text-white-50">
-                        <div>
-                            <a href="index-2.html" class="d-inline-block auth-logo">
-                                <img src="assets/images/logo3.png" alt="" height="20%" width="20%">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end row -->
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-                <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6 col-xl-5">
-                        <div class="card mt-4">
+                    <div class="card overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="p-lg-5 p-4 auth-one-bg h-100">
+                                    <div class="bg-overlay"></div>
+                                    <div class="position-relative h-100 d-flex flex-column">
+                                        <div class="mb-4">
+                                            <a href="index-2.html" class="d-block">
+                                                <img src="assets/images/logo3.png" alt="" height="30%" width="40%">
+                                            </a>
+                                        </div>
+                                        <div class="mt-auto"><br>
 
-                            <div class="card-body p-4">
-                                <div class="text-center mt-2">
-                                    <h5 class="text-primary">Login Page</h5>
+                                            <div id="qoutescarouselIndicators" class="carousel slide"
+                                                data-bs-ride="carousel">
+                                                <div class="carousel-indicators">
+                                                    <button type="button" data-bs-target="#qoutescarouselIndicators"
+                                                        data-bs-slide-to="0" class="active" aria-current="true"
+                                                        aria-label="Slide 1"></button>
+                                                    <button type="button" data-bs-target="#qoutescarouselIndicators"
+                                                        data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                                    <button type="button" data-bs-target="#qoutescarouselIndicators"
+                                                        data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                                </div>
+                                                <div class="carousel-inner text-center text-white pb-5">
+                                                    <div class="carousel-item active">
+                                                        <p class="fs-15 fst-italic">" Great! Clean code, clean design,
+                                                            easy for customization. Thanks very much! "</p>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <p class="fs-15 fst-italic">" The theme is really great with an
+                                                            amazing customer support."</p>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <p class="fs-15 fst-italic">" Great! Clean code, clean design,
+                                                            easy for customization. Thanks very much! "</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end carousel -->
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="p-2 mt-4">
-                                    <form action="https://themesbrand.com/velzon/html/material/index.html">
-                                        <div class="mb-3">
-                                            <label for="email" class="form-label">Email</label>
-                                            <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                                name="email" value="{{ old('email') }}" required autocomplete="email"
-                                                autofocus placeholder="Email Address">
-                                            @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="float-end">
-                                                <a href="{{ route('password.request') }}" class="text-muted">Forgot
-                                                    password?</a>
-                                            </div>
-                                            <label class="form-label" for="password-input">Password</label>
-                                            <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input type="password" id="password"
-                                                    class="form-control @error('password') is-invalid @enderror"
-                                                    name="password" required autocomplete="current-password"
-                                                    placeholder="Password">
-                                                <button
-                                                    class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted shadow-none"
-                                                    type="button" id="password-addon"><i
-                                                        class="ri-eye-fill align-middle"></i></button>
-                                                @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                            </div>
-                                        </div>
+                            </div>
+                            <!-- end col -->
 
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember"
-                                                id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="remember">Remember me</label>
+                            <div class="col-lg-6">
+                                <div class="p-lg-5 p-4">
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf
+                                        <div class="text-center mt-2">
+                                            <h5 class="text-primary">Login Page</h5><br>
                                         </div>
 
                                         <div class="mt-4">
-                                            <button class="btn btn-success w-100" type="submit">Sign In</button>
+                                            <form action="https://themesbrand.com/velzon/html/material/index.html">
+
+                                                <div class="mb-3">
+                                                    <label for="email" class="form-label">Email</label>
+                                                    <input type="text"
+                                                        class="form-control @error('email') is-invalid @enderror"
+                                                        name="email" value="{{ old('email') }}" required
+                                                        autocomplete="email" autofocus placeholder="Email Address">
+                                                    @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <div class="float-end">
+                                                        <a href="auth-pass-reset-cover.html" class="text-muted">Forgot
+                                                            password?</a>
+                                                    </div>
+                                                    <label class="form-label" for="password-input">Password</label>
+                                                    <div class="position-relative auth-pass-inputgroup mb-3">
+                                                        <input type="password" id="password"
+                                                            class="form-control @error('password') is-invalid @enderror"
+                                                            name="password" required autocomplete="current-password"
+                                                            placeholder="Password">
+                                                        <button
+                                                            class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted shadow-none"
+                                                            type="button" id="password-addon"><i
+                                                                class="ri-eye-fill align-middle"></i></button>
+                                                        @error('password')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="remember"
+                                                        id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="remember">Remember me</label>
+                                                </div>
+
+                                                <div class="mt-4">
+                                                    <button class="btn btn-success w-100" type="submit">Login</button>
+                                                </div>
+
+                                            </form>
                                         </div>
-                                    </form>
+
                                 </div>
                             </div>
-                            <!-- end card body -->
+                            <!-- end col -->
                         </div>
-                        <!-- end card -->
+                        <!-- end row -->
                     </div>
+                    <!-- end card -->
                 </div>
-                <!-- end row -->
+                <!-- end col -->
+
+            </div>
+            <!-- end row -->
         </div>
         <!-- end container -->
     </div>
