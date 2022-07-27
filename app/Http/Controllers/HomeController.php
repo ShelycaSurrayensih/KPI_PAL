@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\KpiKorporasi;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('KPI.index');
+        $users = auth()->user();
+        $korporasi = KpiKorporasi::all();
+        return view('KPI.index', compact ('users', 'korporasi'));
     }
 }

@@ -27,7 +27,7 @@
                                 <p class="text-muted mb-0">Here's what's happening with your store today.</p>
                         </div>
                         <div class="mt-3 mt-lg-0">
-                            <form action="javascript:void(0);">
+                            <form action="{{ route('KPI.create') }}">
                                 <div class="row g-3 mb-0 align-items-center">
                                     <div class="col-sm-auto">
                                         <div class="input-group">
@@ -42,8 +42,8 @@
                                     </div>
                                     <!--end col-->
                                     <div class="col-auto">
-                                        <button type="button" class="btn btn-soft-success shadow-none"><i
-                                                class="ri-add-circle-line align-middle me-1"></i> Add Product</button>
+                                        <button type="onClick" class="btn btn-soft-success shadow-none"><i
+                                                class="ri-add-circle-line align-middle me-1"></i> Input Data</button>
                                     </div>
                                     <!--end col-->
                                     <div class="col-auto">
@@ -766,6 +766,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($korporasi as $korporasis)
                                         <tr>
                                             <td>
                                                 <a href="apps-ecommerce-order-details.html"
@@ -777,12 +778,12 @@
                                                         <img src="{{ asset('assets') }}/images/users/avatar-1.jpg"
                                                             alt="" class="avatar-xs rounded-circle shadow" />
                                                     </div>
-                                                    <div class="flex-grow-1">Alex Smith</div>
+                                                    <div class="flex-grow-1">{{ "$users->name" }}</div>
                                                 </div>
                                             </td>
-                                            <td>Clothes</td>
+                                            <td>{{"$korporasis->bobot"}}</td>
                                             <td>
-                                                <span class="text-success">$109.00</span>
+                                                <span class="text-success">{{"$korporasis->tipe"}}</span>
                                             </td>
                                             <td>Zoetic Fashion</td>
                                             <td>
@@ -793,6 +794,7 @@
                                                         class="text-muted fs-11 ms-1">(61 votes)</span></h5>
                                             </td>
                                         </tr><!-- end tr -->
+                                        @endforeach
                                     </tbody><!-- end tbody -->
                                 </table><!-- end table -->
                             </div>

@@ -18,6 +18,7 @@ class CreateKpiKorporasisTable extends Migration
             $table->string('nama');
             $table->string('bobot');
             $table->string('tipe');
+            $table->timestamps();
         });
     }
 

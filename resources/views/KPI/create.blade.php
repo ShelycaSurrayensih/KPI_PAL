@@ -36,26 +36,20 @@
                             </ul>
                         </div>
                         @endif
-                        <form method="post" action="" id="myForm">
+                        <form method="post" action="{{ route('KPI.store') }}" id="myForm">
                             @csrf
                             <div class="form-group">
-                                <label for="id">id</label>
-                                <input type="text" name="id" class="form-control" id="id" aria-describedby="id">
+                                <label for="nama">Nama</label>
+                                <input type="nama" name="nama" class="form-control" id="nama" aria-describedby="nama">
                             </div>
                             <div class="form-group">
-                                <label for="Nama">Nama</label>
-                                <input type="Nama" name="Nama" class="form-control" id="Nama" aria-describedby="Nama">
+                                <label for="bobot">Bobot</label>
+                                <input type="bobot" name="bobot" class="form-control" id="bobot" aria-describedby="bobot">
                             </div>
                             <div class="form-group">
-                                <label for="Kelas">Bobot</label>
-                                <select name="Kelas" id="Kelas" class="form-control">
-                                    <option value=""></option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="Jurusan">Tipe</label>
-                                <input type="Jurusan" name="Jurusan" class="form-control" id="Jurusan"
-                                    aria-describedby="Jurusan">
+                                <label for="tipe">Tipe</label>
+                                <input type="tipe" name="tipe" class="form-control" id="tipe"
+                                    aria-describedby="tipe">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>

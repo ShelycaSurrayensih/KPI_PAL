@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\KpiKorporasi;
 
 class KpiController extends Controller
 {
@@ -13,7 +14,9 @@ class KpiController extends Controller
      */
     public function index()
     {
-        return view('KPI.create');
+        $users = auth()->user();
+        $korporasi = KpiKorporasi::all();
+        return view('KPI.create', compact ('users', 'korporasi'));
     }
 
     /**
@@ -23,7 +26,9 @@ class KpiController extends Controller
      */
     public function create()
     {
-        //
+        $users = auth()->user();
+        $korporasi = KpiKorporasi::all();
+        return \view('KPI.create', compact ('users', 'korporasi'));
     }
 
     /**
@@ -34,7 +39,18 @@ class KpiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'bobot' => 'required',
+            'tipe' => 'required',
+        ]);
+
+        $korporasi = new KpiKorporasi;
+        $korporasi->nama = $request->get('nama');
+        $korporasi->bobot = $request->get('bobot');
+        $korporasi->tipe = $request->get('tipe');
+        $korporasi->save();
+        return redirect()->route('KPI.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**

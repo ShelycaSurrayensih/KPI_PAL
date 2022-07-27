@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class KpiKorporasi extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nama',
+        'bobot',
+        'tipe',
+    ];
 }
