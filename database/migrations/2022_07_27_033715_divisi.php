@@ -17,8 +17,6 @@ class Divisi extends Migration
             $table->id('id_divisi');
             $table->String('div_name');
             $table->String('username');
-            $table->string('password');
-            $table->string('status');
             $table->unsignedBigInteger('id_direktorat');
             $table->foreign('id_direktorat')->references('id_direktorat')->on('direktorat');
         });
@@ -31,6 +29,6 @@ class Divisi extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('direktorat');
+        Schema::dropIfExists('divisi');
     }
 }

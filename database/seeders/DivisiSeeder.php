@@ -20,8 +20,7 @@ class DivisiSeeder extends Seeder
                 'div_name' => 'Divisi Rekayasa Umum',
                 'username'=>'rekum',
                 'id_direktorat' => '20000',
-                'status' => 'admin',
-                'password' => Hash::make('rekum2000'),
+                
         ]);
         
         DB::table('divisi')->insert([
@@ -29,8 +28,6 @@ class DivisiSeeder extends Seeder
             'div_name' => 'Divisi Teknologi Informasi',
             'username'=>'divti',
             'id_direktorat' => '10000',
-            'status' => 'pic',
-            'password' => Hash::make('divti1000'),
     ]);
     }
 }

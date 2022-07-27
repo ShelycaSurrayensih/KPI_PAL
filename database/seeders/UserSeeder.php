@@ -19,9 +19,23 @@ class UserSeeder extends Seeder
             [
                 'id' => 1,
                 'name' => 'admin',
+                'id_divisi' => '0',
+                'username' => 'administrator',
                 'email' => 'admin@gmail.com',
-                'email_verified_at' => NULL,
                 'password' => Hash::make('admin123'),
+                'status' => 'administrator',
+                
+                
+            ],
+            [
+                'id' => 2,
+                'name' => 'user',
+                'id_divisi' => '21000',
+                'username' => 'user pic',
+                'email' => 'user@gmail.com',
+                'password' => Hash::make('user123'),
+                'status' => 'pic',
+                
                 
             ],
         ];

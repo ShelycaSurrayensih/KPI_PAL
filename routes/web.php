@@ -19,12 +19,13 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    Route::resource('KPI',KPIController::class);
     
 });
 Auth::routes();
 
 
-Route::resource('KPI',KPIController::class);
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

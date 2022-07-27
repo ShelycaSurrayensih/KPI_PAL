@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\KpiKorporasi;
-
+use Auth;
+use App\Models\User;
 class HomeController extends Controller
 {
     /**
@@ -24,8 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = auth()->user();
-        $korporasi = KpiKorporasi::all();
-        return view('KPI.index', compact ('users', 'korporasi'));
+        
+        if (Auth::User()->status == 'administrator') {
+            return view('KPI.index');
+        } else {
+            return view('user.index');
+        }
     }
 }

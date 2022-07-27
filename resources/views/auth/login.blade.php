@@ -67,12 +67,12 @@
                                             <form action="https://themesbrand.com/velzon/html/material/index.html">
 
                                                 <div class="mb-3">
-                                                    <label for="email" class="form-label">Email</label>
+                                                    <label for="username" class="form-label">Username</label>
                                                     <input type="text"
-                                                        class="form-control @error('email') is-invalid @enderror"
-                                                        name="email" value="{{ old('email') }}" required
-                                                        autocomplete="email" autofocus placeholder="Email Address">
-                                                    @error('email')
+                                                        class="form-control @error('username') is-invalid @enderror"
+                                                        name="username" value="{{ old('username') }}" required
+                                                        autocomplete="username" autofocus placeholder="Username">
+                                                    @error('username')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
