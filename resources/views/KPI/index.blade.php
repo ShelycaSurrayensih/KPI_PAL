@@ -42,7 +42,7 @@
                                     </div>
                                     <!--end col-->
                                     <div class="col-auto">
-                                        <button type="onClick" class="btn btn-soft-success shadow-none"><i
+                                        <button type="onClick" class="btn btn-soft-success shadow-none" data-toggle="modal"><i
                                                 class="ri-add-circle-line align-middle me-1"></i> Input Data</button>
                                     </div>
                                     <!--end col-->

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKpiKorporasisTable extends Migration
+class Direktorat extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateKpiKorporasisTable extends Migration
      */
     public function up()
     {
-        Schema::create('kpi_korporasis', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('bobot');
-            $table->string('tipe');
-            $table->timestamps();
+        Schema::create('Direktorat', function (Blueprint $table) {
+            $table->id('id_direktorat');
+            $table->String('nama');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateKpiKorporasisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kpi_korporasis');
+        Schema::dropIfExists('Direktorat');
     }
 }
