@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Divisi extends Model
 {
     use HasFactory;
+    public $table = 'divisi';
     protected $fillable = [
         'id_divisi',
         'div_name',
         'username',
-        'password',
         'id_direktorat',
     ];
 

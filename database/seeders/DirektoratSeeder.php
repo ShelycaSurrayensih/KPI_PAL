@@ -31,6 +31,14 @@ class DirektoratSeeder extends Seeder
             'id_direktorat' => ('40000'),
             'nama' => ('Direktorat Kauangan, Manajemen Risiko dan SDM'),
         ]);
+        DB::table('direktorat')->insert([
+            'id_direktorat' => ('50000'),
+            'nama' => ('Direktorat Kauangan, Manajemen Risiko dan SDM'),
+        ]);
+        DB::table('direktorat')->insert([
+            'id_direktorat' => ('60000'),
+            'nama' => ('Direktorat Kauangan, Manajemen Risiko dan SDM'),
+        ]);
 
     }
 }
