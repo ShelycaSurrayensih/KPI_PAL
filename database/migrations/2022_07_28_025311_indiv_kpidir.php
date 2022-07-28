@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class KpiDirektorat extends Migration
+class IndivKpidir extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class KpiDirektorat extends Migration
      */
     public function up()
     {
-        Schema::create('kpi_direktorat', function (Blueprint $table) {
+        Schema::create('indiv_kpidir', function (Blueprint $table) {
             $table->id('id_kpidir');
             $table->unsignedBigInteger('id_direktorat');
             $table->foreign('id_direktorat')->references('id_direktorat')->on('direktorat');
