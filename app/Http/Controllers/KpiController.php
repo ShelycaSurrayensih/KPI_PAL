@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\KpiKorporasi;
+use App\Models\IndivKpiDir;
 
 class KpiController extends Controller
 {
@@ -15,8 +15,8 @@ class KpiController extends Controller
     public function index()
     {
         $users = auth()->user();
-        $korporasi = KpiKorporasi::all();
-        return view('KPI.create', compact ('users', 'korporasi'));
+        $kpidir = IndivKpiDir::all();
+        return view('KPI_Indiv.create', compact ('users', 'kpidir'));
     }
 
     /**
@@ -27,8 +27,8 @@ class KpiController extends Controller
     public function create()
     {
         $users = auth()->user();
-        $korporasi = KpiKorporasi::all();
-        return \view('KPI.create', compact ('users', 'korporasi'));
+        $kpidir = IndivKpiDir::all();
+        return \view('KPI_indiv.create', compact ('users', 'kpidir'));
     }
 
     /**
@@ -40,17 +40,29 @@ class KpiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'id_direktorat' => 'required',
+            'id_divisi' => 'required',
+            'desc_kipdir' => 'required',
+            'satuan' => 'required',
+            'target' => 'required',
             'bobot' => 'required',
-            'tipe' => 'required',
+            'ket' => 'required',
+            'asal_kpi' => 'required',
+            'alasan' => 'required',
         ]);
 
-        $korporasi = new KpiKorporasi;
-        $korporasi->nama = $request->get('nama');
-        $korporasi->bobot = $request->get('bobot');
-        $korporasi->tipe = $request->get('tipe');
-        $korporasi->save();
-        return redirect()->route('KPI.index')->with('success', 'Data berhasil ditambahkan');
+        $kpidir = new IndivKpiDir;
+        $kpidir->id_direktorat = $request->get('id_direktorat');
+        $kpidir->id_divisi = $request->get('id_divisi');
+        $kpidir->desc_kipdir = $request->get('desc_kipdir');
+        $kpidir->satuan = $request->get('satuan');
+        $kpidir->target = $request->get('target');
+        $kpidir->bobot = $request->get('bobot');
+        $kpidir->ket = $request->get('ket');
+        $kpidir->asal_kpi = $request->get('asal_kpi');
+        $kpidir->alasan = $request->get('alasan');
+        $kpidir->save();
+        return redirect()->route('KPI_indiv.create')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**

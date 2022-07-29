@@ -15,7 +15,6 @@ class IndivKpiDirSeeder extends Seeder
     {
         $indiv_kpidir=[
             [
-                'id_kpidir' => 1,
                 'id_direktorat' => 40000,
                 'id_divisi' => 45000,
                 'desc_kpidir' => 'Dashboard RTM',
@@ -27,7 +26,6 @@ class IndivKpiDirSeeder extends Seeder
                 'alasan' => 'Mendukung kolaborasi indhan terhadap aplikasi RTM',
             ],
             [
-                'id_kpidir' => 2,
                 'id_direktorat' => 40000,
                 'id_divisi' => 43000,
                 'desc_kpidir' => 'Standar tarif jual JO',
@@ -39,7 +37,6 @@ class IndivKpiDirSeeder extends Seeder
                 'alasan' => 'Mendukung operasional dan efisiensi JO',
             ],
             [
-                'id_kpidir' => 3,
                 'id_direktorat' => 30000,
                 'id_divisi' => 34000,
                 'desc_kpidir' => 'TKDN fasilitas kapal selam',
