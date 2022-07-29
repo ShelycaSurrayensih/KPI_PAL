@@ -19,4 +19,5 @@ class Divisi extends Model
     public function direktorat(){
         return $this->belongsTo('App\Models\Direktorat');
     }
+    
 }
