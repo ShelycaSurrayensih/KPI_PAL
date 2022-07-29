@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class IndivKpiDir extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     public $table = 'indiv_kpidir';
     protected $fillable = [
         'id_kpidir',
         'id_direktorat',
         'id_divisi',
-        'desc_kpidir',
+        'desc_kpi',
         'satuan',
         'target',
         'bobot',
@@ -21,4 +22,7 @@ class IndivKpiDir extends Model
         'asal_kpi',
         'alasan',
     ];
+    public function divisi(){
+        return $this->belongsTo('App\Models\Divisi');
+    }
 }

@@ -1,74 +1,76 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Bootstrap Modal Example in Laravel - Websolutionstuff</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" 
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-    crossorigin="anonymous">
-</head>
-<body>
-	<br>
-	<h3>Bootstrap Modal Example in Laravel - Websolutionstuff</h3>
-	<form method="post" action="#">
-	<br><br>
-	  <table class="table-bordered table-striped" width="50%">
-		<thead>
-		  <tr>
-			<th class="text-center">No.</th>
-			<th class="text-center">Name</th>
-			<th class="text-center"> Example</th>
-		  </tr>
-		</thead>
-		<tbody>
-		 <tr>
-			<td class="text-center">1</td>
-			<td class="text-center">Admin</td>
-			<td class="text-center"><button type="button" class="btn btn-primary m-2" data- 
-            toggle="modal" data-target="#demoModal">Click Here</button> </td>
-		 </tr>
-		 <tr>
-			<td class="text-center">2</td>
-			<td class="text-center">Test</td>
-			<td class="text-center"><button type="button" class="btn btn-primary m-2" data- 
-            toggle="modal" data-target="#demoModal">Click Here</button> </td>
-		 </tr>
-		</tbody>
+<div class="row justify-content-center">
+    <div class="col-xxl-12">
+        <div class="card">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
 
-		<!-- Modal Example Start-->
-			<div class="modal fade" id="demoModal" tabindex="-1" role="dialog" aria- 
-            labelledby="demoModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="demoModalLabel">Modal Example - 
-                             Websolutionstuff</h5>
-								<button type="button" class="close" data-dismiss="modal" aria- 
-                                label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-						</div>
-						<div class="modal-body">
-								Welcome, Websolutionstuff !!
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data- 
-                            dismiss="modal">Close</button>
-								<button type="button" class="btn btn-primary">Save 
-                                changes</button>
-						</div>
-					</div>
-				</div>
-			</div>
-	 <!-- Modal Example End-->
-			</table>
-			<br>
-		</form>
+            <div class="card-body">
+                <p class="text-muted">Silahkan masukkan data</p>
+                <div class="live-preview">
+                    <form method="POST" action="{{ route('KPI.store') }}" id="myForm" enctype="multipart/form-data">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="id_direktorat" class="form-label">Direktorat</label>
+                            <select name="id_direktorat" class="form-control" id="id_direktorat">
+                                @foreach ($direktorat as $dir)
+                                <option value="{{$dir->id_direktorat}}">{{ "$dir->nama" }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_divisi" class="form-label">Divisi</label>
+                            <select name="id_divisi" class="form-control" id="id_divisi">
+                                @foreach ($divisi as $divisi)
+                                <option value="{{$divisi->id_divisi}}">{{ "$divisi->username" }}</option>
+                                @endforeach
 
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	</body>
-</html>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="desc_kpi" class="form-label">KPI</label>
+                            <input name="desc_kpi" type="text" class="form-control" id="desc_kpi">
+                        </div>
+                        <div class="mb-3">
+                            <label for="satuan" class="form-label">Satuan</label>
+                            <input name="satuan" type="text" class="form-control" id="satuan">
+                        </div>
+                        <div class="mb-3">
+                            <label for="target" class="form-label">Target</label>
+                            <input name="target" type="text" class="form-control" id="target">
+                        </div>
+                        <div class="mb-3">
+                            <label for="bobot" class="form-label">Bobot</label>
+                            <input name="bobot" type="text" class="form-control" id="bobot">
+                        </div>
+                        <div class="mb-3">
+                            <label for="ket" class="form-label">Keterangan</label>
+                            <input name="ket" type="text" class="form-control" id="ket">
+                        </div>
+                        <div class="mb-3">
+                            <label for="asal_kpi" class="form-label">Asal KPI</label>
+                            <input name="asal_kpi" type="text" class="form-control" id="asal_kpi">
+                        </div>
+                        <div class="mb-3">
+                            <label for="alasan" class="form-label">Alasan</label>
+                            <input name="alasan" type="text" class="form-control" id="alasan">
+                        </div>
+
+                </div>
+                <!-- end row -->
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -19,5 +19,8 @@ class Divisi extends Model
     public function direktorat(){
         return $this->belongsTo('App\Models\Direktorat');
     }
+    public function kpidir(){
+        return $this->hasMany('App\Models\IndivKpiDir');
+    }
     
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\KPIController;
 use App\Http\Controllers\IndhanTimController;
 use App\Http\Controllers\IndhanController;
 use App\Http\Controllers\IndhanRealisasiController;
+use App\Http\Controllers\IndivPlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('KPI',KPIController::class);
+    Route::resource('KPI_IndivPlan',IndivPlanController::class);
     Route::resource('KPI_Indhan',IndhanController::class);
     Route::resource('KPI_IndhanTim',IndhanTimController::class);
     Route::resource('KPI_IndhanRealisasi',IndhanRealisasiController::class);

@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\IndivKpiDir;
+use App\Models\IndivPlan;
 use App\Models\Divisi;
-use App\Models\Direktorat;
 
-class KpiController extends Controller
+class IndivPlanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +18,9 @@ class KpiController extends Controller
     {
         $users = auth()->user();
         $kpidir = IndivKpiDir::all();
-        $direktorat = Direktorat::all();
+        $indivPlan = IndivPlan::all();
         $divisi = Divisi::all();
-        return view('KPI_Indiv.create', compact ('users', 'kpidir', 'direktorat', 'divisi'));
+        return view('KPI_Indiv.Indiv_Plan.create', compact ('users', 'kpidir', 'indivPlan', 'divisi'));
     }
 
     /**
@@ -32,9 +32,9 @@ class KpiController extends Controller
     {
         $users = auth()->user();
         $kpidir = IndivKpiDir::all();
-        $direktorat = Direktorat::all();
+        $indivPlan = IndivPlan::all();
         $divisi = Divisi::all();
-        return \view('KPI_indiv.create', compact ('users', 'kpidir', 'direktorat', 'divisi'));
+        return view('KPI_Indiv.Indiv_Plan.create', compact ('users', 'kpidir', 'indivPlan', 'divisi'));
     }
 
     /**
@@ -45,30 +45,13 @@ class KpiController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'id_direktorat' => 'required',
-            'id_divisi' => 'required',
-            'desc_kpi' => 'required',
-            'satuan' => 'required',
-            'target' => 'required',
-            'bobot' => 'required',
-            'ket' => 'required',
-            'asal_kpi' => 'required',
-            'alasan' => 'required',
-        ]);
-
-        $kpidir = new IndivKpiDir;
-        $kpidir->id_direktorat = $request->get('id_direktorat');
-        $kpidir->id_divisi = $request->get('id_divisi');
-        $kpidir->desc_kpidir = $request->get('desc_kpi');
-        $kpidir->satuan = $request->get('satuan');
-        $kpidir->target = $request->get('target');
-        $kpidir->bobot = $request->get('bobot');
-        $kpidir->ket = $request->get('ket');
-        $kpidir->asal_kpi = $request->get('asal_kpi');
-        $kpidir->alasan = $request->get('alasan');
-        $kpidir->save();
-        return redirect()->route('KPI.create')->with('success', 'Data berhasil ditambahkan');
+        $indivPlan = new IndivPlan;
+        $indivPlan->id_kpidir = $request->id_kpidir;
+        $indivPlan->tw= $request->tw;
+        $indivPlan->prognosa = $request->prognosa;
+        $indivPlan->id_divisi= $request->id_divisi;
+        $indivPlan->save();
+        return redirect()->route('KPI_IndivPlan.create')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**

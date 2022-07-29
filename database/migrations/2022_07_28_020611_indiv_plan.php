@@ -15,6 +15,8 @@ class IndivPlan extends Migration
     {
         Schema::create('indiv_plan', function (Blueprint $table) {
             $table->id('id_plan');
+            $table->unsignedBigInteger('id_kpidir');
+            $table->foreign('id_kpidir')->references('id_kpidir')->on('indiv_kpidir');
             $table->String('tw');
             $table->String('prognosa');
             $table->unsignedBigInteger('id_divisi');
