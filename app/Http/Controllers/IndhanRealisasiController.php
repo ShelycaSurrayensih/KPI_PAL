@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\IndivKpiDir;
+use App\Models\Indhan;
+use App\Models\IndhanRealisasi;
 
-class KpiController extends Controller
+class IndhanRealisasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,9 @@ class KpiController extends Controller
     public function index()
     {
         $users = auth()->user();
-        $kpidir = IndivKpiDir::all();
-        return view('KPI_Indiv.create', compact ('users', 'kpidir'));
+        $indhan = Indhan::all();
+        $indhanRealisasi = IndhanRealisasi::all();
+        return view('KPI_Indhan.Indhan_Realisasi.create', compact ('users', 'indhan', 'indhanRealisasi'));
     }
 
     /**
@@ -27,10 +29,10 @@ class KpiController extends Controller
     public function create()
     {
         $users = auth()->user();
-        $kpidir = IndivKpiDir::all();
-        return \view('KPI_indiv.create', compact ('users', 'kpidir'));
+        $indhan = Indhan::all();
+        $indhanRealisasi = IndhanRealisasi::all();
+        return view('KPI_Indhan.Indhan_Realisasi.create', compact ('users', 'indhan', 'indhanRealisasi'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -39,30 +41,15 @@ class KpiController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'id_direktorat' => 'required',
-            'id_divisi' => 'required',
-            'desc_kipdir' => 'required',
-            'satuan' => 'required',
-            'target' => 'required',
-            'bobot' => 'required',
-            'ket' => 'required',
-            'asal_kpi' => 'required',
-            'alasan' => 'required',
-        ]);
-
-        $kpidir = new IndivKpiDir;
-        $kpidir->id_direktorat = $request->get('id_direktorat');
-        $kpidir->id_divisi = $request->get('id_divisi');
-        $kpidir->desc_kipdir = $request->get('desc_kipdir');
-        $kpidir->satuan = $request->get('satuan');
-        $kpidir->target = $request->get('target');
-        $kpidir->bobot = $request->get('bobot');
-        $kpidir->ket = $request->get('ket');
-        $kpidir->asal_kpi = $request->get('asal_kpi');
-        $kpidir->alasan = $request->get('alasan');
-        $kpidir->save();
-        return redirect()->route('KPI_indiv.create')->with('success', 'Data berhasil ditambahkan');
+        $indhanRealisasi = new IndhanRealisasi;
+        $indhanRealisasi->id_indhan = $request->id_indhan;
+        $indhanRealisasi->realisasi = $request->realisasi;
+        $indhanRealisasi->bulan = $request->bulan;
+        $indhanRealisasi->tahun = $request->tahun;
+        $indhanRealisasi->kendala = $request->kendala;
+        $indhanRealisasi->tgl_input = $request->tgl_input;
+        $indhanRealisasi->save();
+        return redirect()->route('KPI_IndhanRealisasi.create')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**

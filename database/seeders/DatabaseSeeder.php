@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             DirektoratSeeder::class,
             DivisiSeeder::class,
             UserSeeder::class,
+            IndivKpiDirSeeder::class,
+            IndivPlanSeeder::class,
         ]);
     }
 }
