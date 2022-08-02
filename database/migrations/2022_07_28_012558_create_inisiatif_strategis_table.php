@@ -16,6 +16,7 @@ class CreateInisiatifStrategisTable extends Migration
         Schema::create('inisiatif_strategis', function (Blueprint $table) {
             $table->id('id_inisiatif');
             $table->string('inisiatif_desc');
+            $table->year('tahun_inisiatif');
         });
     }
 

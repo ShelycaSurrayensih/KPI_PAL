@@ -24,9 +24,9 @@ class CreateKpiPmsTable extends Migration
             $table->string('polaritas');
             $table->string('bobot');
             $table->string('target');
-            $table->unsignedBigInteger('div_lead');
-            $table->foreign('div_lead')->references('id_divisi')->on('divisi');
-            $table->text('staging');
+            $table->integer('div_lead');
+            //$table->foreign('div_lead')->references('id_divisi')->on('divisi');
+            // $table->string('staging')->default(1);
             $table->year('tahun_kpipms');
         });
     }

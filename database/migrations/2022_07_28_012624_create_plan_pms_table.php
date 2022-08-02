@@ -15,9 +15,9 @@ class CreatePlanPmsTable extends Migration
     {
         Schema::create('plan_pms', function (Blueprint $table) {
             $table->id('id_plan');
-            $table->unsingnedBigInteger('id_kpipms');
-            $table->foreign('id_kpimpms')->references('id_kpimpms')->on('kpi_pms');
-            $table->int('tw');
+            $table->unsignedBigInteger('id_kpipms');
+            $table->foreign('id_kpipms')->references('id_kpipms')->on('kpi_pms');
+            $table->integer('tw');
             $table->string('progress_plan');
             $table->text('desc_progress');
         });

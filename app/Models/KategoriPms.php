@@ -10,7 +10,8 @@ class KategoriPms extends Model
     use HasFactory;
 
     protected $fillable = [
-        'kat_desc'
+        'kat_desc',
+        'ket'
     ];
 
     public function kpi_pms(){

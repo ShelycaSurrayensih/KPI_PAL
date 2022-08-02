@@ -16,6 +16,7 @@ class CreateKategoriPmsTable extends Migration
         Schema::create('kategori_pms', function (Blueprint $table) {
             $table->id('id_kat');
             $table->string('kat_desc');
+            $table->char('ket');
         });
     }
 
