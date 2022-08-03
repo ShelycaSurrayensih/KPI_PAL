@@ -20,7 +20,7 @@ class KpiController extends Controller
         $kpidir = IndivKpiDir::all();
         $direktorat = Direktorat::all();
         $divisi = Divisi::all();
-        return view('KPI_Indiv.create', compact ('users', 'kpidir', 'direktorat', 'divisi'));
+        return view('KPI_Indiv.index', compact ('users', 'kpidir', 'direktorat', 'divisi'));
     }
 
     /**
@@ -34,7 +34,7 @@ class KpiController extends Controller
         $kpidir = IndivKpiDir::all();
         $direktorat = Direktorat::all();
         $divisi = Divisi::all();
-        return \view('KPI_indiv.create', compact ('users', 'kpidir', 'direktorat', 'divisi'));
+        return \view('KPI_indiv.index', compact ('users', 'kpidir', 'direktorat', 'divisi'));
     }
 
     /**

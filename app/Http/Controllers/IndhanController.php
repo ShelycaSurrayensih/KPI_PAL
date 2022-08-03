@@ -21,7 +21,7 @@ class IndhanController extends Controller
         $indhan = Indhan::all();
         $indhanTim = IndhanTim::all();
         $divisi = Divisi::all();
-        return view('KPI_Indhan.Indhan.create', compact ('users', 'indhan', 'indhanTim', 'divisi'));
+        return view('KPI_Indhan.Indhan.index', compact ('users', 'indhan', 'indhanTim', 'divisi'));
     }
 
     /**
@@ -35,7 +35,7 @@ class IndhanController extends Controller
         $indhan = Indhan::all();
         $indhanTim = IndhanTim::all();
         $divisi = Divisi::all();
-        return \view('KPI_Indhan.Indhan.create', compact ('users', 'indhan', 'indhanTim', 'divisi'));
+        return \view('KPI_Indhan.Indhan.index', compact ('users', 'indhan', 'indhanTim', 'divisi'));
     }
 
     /**
