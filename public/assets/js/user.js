@@ -170,7 +170,7 @@ refreshCallbacks(),
                       (document.getElementById("edit-btn").style.display =
                           "block"))
                     : e.relatedTarget.classList.contains("add-btn")
-                    ? ((document.getElementById("exampleModalLabel").innerHTML =
+                    ? (document.getElementById("exampleModalLabel").innerHTML =
                           "Add KPI"
                       (document
                           .getElementById("showModal")
@@ -180,7 +180,7 @@ refreshCallbacks(),
                           "none"),
                       (document.getElementById("add-btn").style.display =
                           "block"))
-                     ((document.getElementById("exampleModalLabel").innerHTML =
+                    :((document.getElementById("exampleModalLabel").innerHTML =
                           "List KPI"),
                       (document
                           .getElementById("showModal")
@@ -541,7 +541,7 @@ document.getElementById("IndhanTimKPI") &&
                       "noresult"
                   )[0].style.display = "block");
     }));
-const xhttp = new XMLHttpRequest();
+// const xhttp = new XMLHttpRequest();
 (xhttp.onload = function () {
     var e = JSON.parse(this.responseText);
     Array.from(e).forEach((e) => {
@@ -627,7 +627,7 @@ refreshCallbacks(),
                           "none"),
                       (document.getElementById("add-btn").style.display =
                           "block"))
-                     ((document.getElementById("exampleModalLabel").innerHTML =
+                    : ((document.getElementById("exampleModalLabel").innerHTML =
                           "List KPI"),
                       (document
                           .getElementById("showModal")
@@ -643,7 +643,7 @@ refreshCallbacks(),
     document.querySelector("#IndhanTimKPI").addEventListener("click", function () {
         refreshCallbacks(), ischeckboxcheck();
     });
-var table = document.getElementById("customerTable"),
+var table = document.getElementById("timTable"),
     tr = table.getElementsByTagName("tr"),
     trlist = table.querySelectorAll(".list tr"),
     count = 11;
@@ -677,7 +677,7 @@ addBtn &&
     }),
     editBtn &&
         editBtn.addEventListener("click", function (e) {
-            document.getElementById("exampleModalLabel").innerHTML =
+            document.getElementById("exampleModalLabelEdit").innerHTML =
                 "Edit KPI";
             var t = IndhanTimKPI.get({ id: idField.value });
             Array.from(t).forEach(function (e) {

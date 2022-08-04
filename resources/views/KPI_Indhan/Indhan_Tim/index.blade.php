@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="table-responsive table-card mt-3 mb-1">
-                        <table class="table align-middle table-nowrap" id="customerTable">
+                        <table class="table align-middle table-nowrap" id="timTable">
 
                             <thead class="table-light">
                                 <tr>
@@ -68,18 +68,58 @@
                                         <div class="d-flex gap-2">
                                             <div class="edit">
                                                 <button class="btn btn-sm btn-success edit-item-btn"
-                                                    data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#showModal{{ $tim->id_tim }}">Edit</button>
                                             </div>
                                             <div class="remove">
-                                                <button class="btn btn-sm btn-danger remove-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#deleteRecordModal">Remove</button>
+
+                                                <form action="{{ route('KPI_IndhanTim.destroy', $tim->id_tim) }}"
+                                                    method="POST">
+
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger remove-item-btn"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#deleteRecordModal">Delete</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
 
-                                @endforeach
+                                <!-- edit Modal -->
+                                <div class="modal fade" id="showModal{{ $tim->id_tim }}" tabindex=" -1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-light p-3">
+                                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close" id="close-modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="post"
+                                                    action="{{ route('indhanTim.update', $tim->id_tim) }}"
+                                                    enctype="multipart/form-data" id="myForm">
+                                                    @csrf
+                                                    <div class="mb-3">
+                                                        <label for="nama_tim">Nama Tim</label>
+                                                        <input type="text" name="nama_tim" class="form-control"
+                                                            id="nama_tim" value="{{$tim->nama_tim}}">
+
+                                                    </div>
+                                                    <div class=" modal-footer">
+                                                        <div class="hstack gap-2 justify-content-end">
+                                                            <button type="button" class="btn btn-light"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-success"
+                                                                id="edit-btn">Update</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div> @endforeach
                             </tbody>
                         </table>
                         <div class="noresult" style="display: none">
@@ -113,7 +153,8 @@
     <!-- end col -->
 </div>
 
-<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- add Modal -->
+<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabelEdit" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
@@ -134,12 +175,13 @@
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-success" id="add-btn">Add Dokumen</button>
-                            <button type="button" class="btn btn-success" id="edit-btn">Update</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+
 
     @endsection
