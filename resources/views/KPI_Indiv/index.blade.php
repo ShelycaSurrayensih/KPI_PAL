@@ -2,10 +2,15 @@
 
 @section('content')
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-xl-12">
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title mb-0"></h4>
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">Individual KPI</h4>
+                <div class="flex-shrink-0">
+                    <button type="button" class="btn btn-soft-info btn-sm shadow-none">
+                        <i class="ri-file-list-3-line align-middle"></i> Generate Report
+                    </button>
+                </div>
             </div><!-- end card header -->
 
             <div class="card-body">
@@ -31,92 +36,82 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card">
-                                <div class="card-header align-items-center d-flex">
-                                    <h4 class="card-title mb-0 flex-grow-1">Individual KPI</h4>
-                                    <div class="flex-shrink-0">
-                                        <button type="button" class="btn btn-soft-info btn-sm shadow-none">
-                                            <i class="ri-file-list-3-line align-middle"></i> Generate Report
-                                        </button>
-                                    </div>
-                                </div><!-- end card header -->
 
-                                <div class="card-body">
-                                    <div class="table-responsive table-card">
-                                        <table
-                                            class="table table-borderless table-centered align-middle table-nowrap mb-0">
-                                            <thead class="text-muted table-light ">
-                                                <tr>
-                                                    <th scope="col">Divisi ID</th>
-                                                    <th scope="col">KPI</th>
-                                                    <th scope="col">Bobot</th>
-                                                    <th scope="col">Target</th>
-                                                    <th scope="col">Keterangan</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col">Persentase</th>
-                                                    <th scope="col">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($kpidir as $kpidir)
-                                                @if($users->divisi_id == $kpidir->divisi)
-                                                <tr>
-                                                    <td>
-                                                        <a href="apps-ecommerce-order-details.html"
-                                                            class="fw-medium link-primary">{{$kpidir->desc_kpi}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0 me-2">
-                                                                <img src="{{ asset('assets') }}/images/users/avatar-1.jpg"
-                                                                    alt="" class="avatar-xs rounded-circle shadow" />
-                                                            </div>
-                                                            <div class="flex-grow-1">Alex Smith</div>
-                                                        </div>
-                                                    </td>
-                                                    <td>Clothes</td>
-                                                    <td>
-                                                        <span class="text-success">$109.00</span>
-                                                    </td>
-                                                    <td>Zoetic Fashion</td>
-                                                    <td>
-                                                        <span class="badge badge-soft-success">Paid</span>
-                                                    </td>
-                                                    <td>
-                                                        <h5 class="fs-14 fw-medium mb-0">5.0<span
-                                                                class="text-muted fs-11 ms-1">(61
-                                                                votes)</span></h5>
-                                                    </td>
-                                                </tr><!-- end tr -->
-                                                @endif
-                                                @endforeach
-                                            </tbody><!-- end tbody -->
 
-                                        </table><!-- end table -->
-                                    </div>
-                                </div>
-                            </div> <!-- .card-->
-                        </div> <!-- .col-->
-                    </div> <!-- end row-->
-                    <div class="d-flex justify-content-end">
-                        <div class="pagination-wrap hstack gap-2">
-                            <a class="page-item pagination-prev disabled" href="#">
-                                Previous
-                            </a>
-                            <ul class="pagination listjs-pagination mb-0"></ul>
-                            <a class="page-item pagination-next" href="#">
-                                Next
-                            </a>
+                    <div class="card-body">
+                        <div class="table-responsive table-card">
+                            <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
+                                <thead class="text-muted table-light ">
+                                    <tr>
+                                        <th scope="col">ID Direktorat</th>
+                                        <th scope="col">ID Divisi</th>
+                                        <th scope="col">Deskripsi KPI</th>
+                                        <th scope="col">Satuan</th>
+                                        <th scope="col">Target</th>
+                                        <th scope="col">Bobot</th>
+                                        <th scope="col">Keterangan</th>
+                                        <th scope="col">Asal KPI</th>
+                                        <th scope="col">Alasan</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($kpidir as $kpidir)
+                                    @if($users->divisi_id == $kpidir->divisi)
+                                    <tr>
+                                        <td>
+                                            <a href="apps-ecommerce-order-details.html"
+                                                class="fw-medium link-primary">{{$kpidir->desc_kpi}}</a>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-shrink-0 me-2">
+                                                    <img src="{{ asset('assets') }}/images/users/avatar-1.jpg" alt=""
+                                                        class="avatar-xs rounded-circle shadow" />
+                                                </div>
+                                                <div class="flex-grow-1">Alex Smith</div>
+                                            </div>
+                                        </td>
+                                        <td>Clothes</td>
+                                        <td>
+                                            <span class="text-success">$109.00</span>
+                                        </td>
+                                        <td>Zoetic Fashion</td>
+                                        <td>
+                                            <span class="badge badge-soft-success">Paid</span>
+                                        </td>
+                                        <td>
+                                            <h5 class="fs-14 fw-medium mb-0">5.0<span class="text-muted fs-11 ms-1">(61
+                                                    votes)</span></h5>
+                                        </td>
+                                    </tr><!-- end tr -->
+                                    @endif
+                                    @endforeach
+                                </tbody><!-- end tbody -->
+
+                            </table><!-- end table -->
                         </div>
                     </div>
-                </div>
-            </div><!-- end card -->
+                </div> <!-- .card-->
+            </div> <!-- .col-->
+        </div> <!-- end row-->
+        <div class="d-flex justify-content-end">
+            <div class="pagination-wrap hstack gap-2">
+                <a class="page-item pagination-prev disabled" href="#">
+                    Previous
+                </a>
+                <ul class="pagination listjs-pagination mb-0"></ul>
+                <a class="page-item pagination-next" href="#">
+                    Next
+                </a>
+            </div>
         </div>
-        <!-- end col -->
     </div>
-    <!-- end col -->
+</div><!-- end card -->
+</div>
+<!-- end col -->
+</div>
+<!-- end col -->
 </div>
 
 <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
