@@ -17,4 +17,7 @@ class IndivPlan extends Model
         'prognosa',
         'id_divisi',
     ];
+    public function indivKpiDir(){
+        return $this->belongsTo('App\Models\indivKpiDir');
+    }
 }

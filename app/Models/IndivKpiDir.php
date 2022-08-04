@@ -25,4 +25,8 @@ class IndivKpiDir extends Model
     public function divisi(){
         return $this->belongsTo('App\Models\Divisi');
     }
+
+    public function indivPlan(){
+        return $this->hasMany('App\Models\indivPlan');
+    }
 }
