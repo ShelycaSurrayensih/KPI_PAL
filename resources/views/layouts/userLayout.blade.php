@@ -740,11 +740,11 @@
                         <div class="collapse menu-dropdown" id="sidebarLayouts">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ route('KPI_IndhanTim.index') }}" class="nav-link" target="_blank"
+                                    <a href="{{ route('KPI_IndhanTim.index') }}" class="nav-link"
                                         data-key="t-horizontal">Tim</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('KPI_Indhan.index') }}" class="nav-link" target="_blank"
+                                    <a href="{{ route('KPI_Indhan.index') }}" class="nav-link" 
                                         data-key="t-detached">Tim Integrasi Indhan</a>
                                 </li>
                             </ul>

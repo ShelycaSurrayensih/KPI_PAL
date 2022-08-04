@@ -60,29 +60,44 @@
                                     @if($users->divisi_id == $kpidir->divisi)
                                     <tr>
                                         <td>
-                                            <a href="apps-ecommerce-order-details.html"
-                                                class="fw-medium link-primary">{{$kpidir->desc_kpi}}</a>
-                                        </td>
-                                        <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-shrink-0 me-2">
-                                                    <img src="{{ asset('assets') }}/images/users/avatar-1.jpg" alt=""
-                                                        class="avatar-xs rounded-circle shadow" />
-                                                </div>
-                                                <div class="flex-grow-1">Alex Smith</div>
+                                                <div class="flex-grow-1">{{ $kpidir->id_direktorat }}</div>
                                             </div>
                                         </td>
-                                        <td>Clothes</td>
                                         <td>
-                                            <span class="text-success">$109.00</span>
-                                        </td>
-                                        <td>Zoetic Fashion</td>
-                                        <td>
-                                            <span class="badge badge-soft-success">Paid</span>
+                                        <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpidir->id_divisi }}</div>
+                                            </div>
                                         </td>
                                         <td>
-                                            <h5 class="fs-14 fw-medium mb-0">5.0<span class="text-muted fs-11 ms-1">(61
-                                                    votes)</span></h5>
+                                        <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpidir->desc_kpidir }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                        <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpidir->satuan }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                        <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpidir->target }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                        <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpidir->ket }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                        <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpidir->asal_kpi }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                        <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpidir->alasan }}</div>
+                                            </div>
                                         </td>
                                     </tr><!-- end tr -->
                                     @endif
@@ -114,7 +129,7 @@
 <!-- end col -->
 </div>
 
-<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="n" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
@@ -124,9 +139,6 @@
             </div>
 
             <div class="modal-body">
-
-
-
                 <form method="POST" action="{{ route('KPI.store') }}" id="myForm" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
@@ -139,12 +151,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="id_divisi" class="form-label">Divisi</label>
-                        <select name="id_divisi" class="form-control" id="id_divisi">
-                            @foreach ($divisi as $divisi)
-                            <option value="{{$divisi->id_divisi}}">{{ "$divisi->username" }}</option>
-                            @endforeach
-
-                        </select>
+                        <input name="id_divisi" value = "{{$users->id_divisi}}" class="form-control" id="id_divisi" placeholder readonly="">
                     </div>
                     <div class="mb-3">
                         <label for="desc_kpi" class="form-label">KPI</label>
