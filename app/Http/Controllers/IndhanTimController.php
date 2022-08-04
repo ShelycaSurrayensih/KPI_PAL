@@ -68,9 +68,9 @@ class IndhanTimController extends Controller
      */
     public function edit($id_tim)
     {
-            $users = auth()->user();
-            $indhanTim = IndhanTim::where('id_tim', $id_tim)->first();
-            return view('KPI_Indhan.Indhan_Tim.index', compact ('users', 'indhanTim'));
+        $users = auth()->user();
+        $indhanTim = IndhanTim::all();
+        return view('KPI_Indhan.Indhan_Tim.index', compact ('users', 'indhanTim'));
     }
 
     /**
@@ -82,11 +82,10 @@ class IndhanTimController extends Controller
      */
     public function update(Request $request, $id_tim)
     {
-        $indhanTim=IndhanTim::find($id_tim);
-        $nama_tim = $request->get('nama_tim');
-        
+        $indhanTim=IndhanTim::where('id_tim', $id_tim)->first();
+        $indhanTim->nama_tim = $request->get('nama_tim');
         $indhanTim->save();
-        return redirect()->route('KPI_IndhanTim.edit')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('KPI_IndhanTim.edit', $id_tim)->with('success', 'Data berhasil ditambahkan');
         
     }
 
@@ -96,8 +95,11 @@ class IndhanTimController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_tim)
     {
-        //
+        $indhanTim = IndhanTim::where('id_tim', $id_tim);
+        $indhanTim->delete();
+        return redirect()->route('KPI_IndhanTim.index')
+            ->with('Sukses, data berhasil dihapus');
     }
 }
