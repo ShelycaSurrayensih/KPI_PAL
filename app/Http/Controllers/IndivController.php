@@ -7,7 +7,7 @@ use App\Models\IndivKpiDir;
 use App\Models\Divisi;
 use App\Models\Direktorat;
 
-class KpiController extends Controller
+class IndivController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -48,7 +48,7 @@ class KpiController extends Controller
         $request->validate([
             'id_direktorat' => 'required',
             'id_divisi' => 'required',
-            'desc_kpi' => 'required',
+            'desc_kpidir' => 'required',
             'satuan' => 'required',
             'target' => 'required',
             'bobot' => 'required',
@@ -60,7 +60,7 @@ class KpiController extends Controller
         $kpidir = new IndivKpiDir;
         $kpidir->id_direktorat = $request->get('id_direktorat');
         $kpidir->id_divisi = $request->get('id_divisi');
-        $kpidir->desc_kpidir = $request->get('desc_kpi');
+        $kpidir->desc_kpidir = $request->get('desc_kpidir');
         $kpidir->satuan = $request->get('satuan');
         $kpidir->target = $request->get('target');
         $kpidir->bobot = $request->get('bobot');
@@ -68,7 +68,7 @@ class KpiController extends Controller
         $kpidir->asal_kpi = $request->get('asal_kpi');
         $kpidir->alasan = $request->get('alasan');
         $kpidir->save();
-        return redirect()->route('KPI.create')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('KPI_Indiv.create')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -88,9 +88,13 @@ class KpiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_kpidir)
     {
-        //
+        $users = auth()->user();
+        $kpidir = IndivKpiDir::all();
+        $direktorat = Direktorat::all();
+        $divisi = Divisi::all();
+        return view('KPI_Indiv.index', compact ('users', 'kpidir', 'direktorat', 'divisi'));
     }
 
     /**
@@ -100,9 +104,32 @@ class KpiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_kpidir)
     {
-        //
+        $request->validate([
+            'id_direktorat' => 'required',
+            'id_divisi' => 'required',
+            'desc_kpidir' => 'required',
+            'satuan' => 'required',
+            'target' => 'required',
+            'bobot' => 'required',
+            'ket' => 'required',
+            'asal_kpi' => 'required',
+            'alasan' => 'required',
+        ]);
+
+        $kpidir=IndivKpiDir::where('id_kpidir', $id_kpidir)->first();
+        $kpidir->id_direktorat = $request->get('id_direktorat');
+        $kpidir->id_divisi = $request->get('id_divisi');
+        $kpidir->desc_kpidir = $request->get('desc_kpidir');
+        $kpidir->satuan = $request->get('satuan');
+        $kpidir->target = $request->get('target');
+        $kpidir->bobot = $request->get('bobot');
+        $kpidir->ket = $request->get('ket');
+        $kpidir->asal_kpi = $request->get('asal_kpi');
+        $kpidir->alasan = $request->get('alasan');
+        $kpidir->save();
+        return redirect()->route('KPI_Indiv.edit', $id_kpidir)->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -111,8 +138,11 @@ class KpiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_kpidir)
     {
-        //
+        $kpidir = IndivKpiDir::where('id_kpidir', $id_kpidir);
+        $kpidir->delete();
+        return redirect()->route('KPI_Indiv.index')
+            ->with('Sukses, data berhasil dihapus');
     }
 }

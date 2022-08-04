@@ -10,11 +10,12 @@ class IndivKpiDir extends Model
     use HasFactory;
     public $timestamps = false;
     public $table = 'indiv_kpidir';
+    protected $primaryKey = 'id_kpidir';
     protected $fillable = [
         'id_kpidir',
         'id_direktorat',
         'id_divisi',
-        'desc_kpi',
+        'desc_kpidir',
         'satuan',
         'target',
         'bobot',

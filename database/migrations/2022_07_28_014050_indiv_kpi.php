@@ -18,8 +18,8 @@ class IndivKpi extends Migration
             $table->String('desc_kpi');
             $table->String('bobot');
             $table->String('target_divisi');
-            $table->unsignedBigInteger('id_divisi');
-            $table->foreign('id_divisi')->references('id_divisi')->on('divisi');
+            $table->unsignedBigInteger('id_divisi')->nullable();
+            $table->foreign('id_divisi')->references('id_divisi')->on('divisi')->onDelete('set null')->onUpdate('cascade');
             $table->String('total');
         });
     }
@@ -31,6 +31,6 @@ class IndivKpi extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('indiv_kpi');
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KPIController;
+use App\Http\Controllers\IndivController;
 use App\Http\Controllers\IndhanTimController;
 use App\Http\Controllers\IndhanController;
 use App\Http\Controllers\IndhanRealisasiController;
@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('KPI',KPIController::class);
+    Route::resource('KPI_Indiv',IndivController::class);
     Route::resource('KPI_IndivPlan',IndivPlanController::class);
     Route::resource('KPI_Indhan',IndhanController::class);
     Route::resource('KPI_IndhanTim',IndhanTimController::class);
@@ -36,10 +36,18 @@ Auth::routes();
 
 Route::get('/create/inisiatifStrategis', [App\Http\Controllers\RKAP::class, 'createInisiatifStrategis'])->name('inisiatifStrategis');
 Route::post('/create/inisiatifStrategis/store', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisStore'])->name('inisiatifStrategis.store');
+
 Route::post('/KPI_IndhanTim/update/{id}',[IndhanTimController::class, 'update'])->name('indhanTim.update');
 Route::post('/KPI_IndhanTim/edit/{id}',[IndhanTimController::class, 'edit'])->name('indhanTim.edit');
 Route::delete('/KPI_IndhanTim/destroy/{id}',[IndhanTimController::class, 'destroy'])->name('indhanTim.destroy');
 
+Route::post('/KPI_Indiv/update/{id}',[IndivController::class, 'update'])->name('kpidir.update');
+Route::post('/KPI_Indiv/edit/{id}',[IndivController::class, 'edit'])->name('kpidir.edit');
+Route::delete('/KPI_Indiv/destroy/{id}',[IndivController::class, 'destroy'])->name('kpidir.destroy');
+
+Route::post('/KPI_Indhan/update/{id}',[IndhanController::class, 'update'])->name('indhan.update');
+Route::post('/KPI_Indhan/edit/{id}',[IndhanController::class, 'edit'])->name('indhan.edit');
+Route::delete('/KPI_Indhan/destroy/{id}',[IndhanController::class, 'destroy'])->name('indhan.destroy');
 
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
  Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

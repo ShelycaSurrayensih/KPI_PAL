@@ -15,12 +15,12 @@ class IndivPlan extends Migration
     {
         Schema::create('indiv_plan', function (Blueprint $table) {
             $table->id('id_plan');
-            $table->unsignedBigInteger('id_kpidir');
-            $table->foreign('id_kpidir')->references('id_kpidir')->on('indiv_kpidir');
+            $table->unsignedBigInteger('id_kpidir')->nullable();
+            $table->foreign('id_kpidir')->references('id_kpidir')->on('indiv_kpidir')->onDelete('set null')->onUpdate('cascade');
             $table->String('tw');
             $table->String('prognosa');
-            $table->unsignedBigInteger('id_divisi');
-            $table->foreign('id_divisi')->references('id_divisi')->on('divisi');
+            $table->unsignedBigInteger('id_divisi')->nullable();
+            $table->foreign('id_divisi')->references('id_divisi')->on('divisi')->onDelete('set null')->onUpdate('cascade');
         });
     }
 
@@ -31,6 +31,6 @@ class IndivPlan extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('indiv_plan');
     }
 }

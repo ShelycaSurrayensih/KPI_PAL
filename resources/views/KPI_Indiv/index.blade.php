@@ -14,7 +14,7 @@
             </div><!-- end card header -->
 
             <div class="card-body">
-                <div id="DokumenList">
+                <div id="IndivKPI">
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
                             <div>
@@ -54,6 +54,7 @@
                                         <th scope="col">Alasan</th>
                                         <th scope="col">Action</th>
                                     </tr>
+
                                 </thead>
                                 <tbody>
                                     @foreach($kpidir as $kpidir)
@@ -65,41 +66,151 @@
                                             </div>
                                         </td>
                                         <td>
-                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpidir->id_divisi }}</div>
                                             </div>
                                         </td>
                                         <td>
-                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpidir->desc_kpidir }}</div>
                                             </div>
                                         </td>
                                         <td>
-                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpidir->satuan }}</div>
                                             </div>
                                         </td>
                                         <td>
-                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpidir->target }}</div>
                                             </div>
                                         </td>
                                         <td>
-                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpidir->bobot }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpidir->ket }}</div>
                                             </div>
                                         </td>
                                         <td>
-                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpidir->asal_kpi }}</div>
                                             </div>
                                         </td>
                                         <td>
-                                        <div class="d-flex align-items-center">
+                                            <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpidir->alasan }}</div>
                                             </div>
                                         </td>
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                <div class="edit">
+                                                    <button class="btn btn-sm btn-success edit-item-btn"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#showModal{{ $kpidir->id_kpidir }}">Edit</button>
+                                                </div>
+                                                <div class="remove">
+
+                                                    <form action="{{ route('KPI_Indiv.destroy', $kpidir->id_kpidir) }}"
+                                                        method="POST">
+
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="btn btn-sm btn-danger remove-item-btn"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#deleteRecordModal">Delete</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr><!-- end tr -->
+
+                                    <!-- edit Modal -->
+                                    <div class="modal fade" id="showModal{{ $kpidir->id_kpidir }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-light p-3">
+                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close" id="close-modal"></button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <form method="post"
+                                                        action="{{ route('kpidir.update', $kpidir->id_kpidir) }}"
+                                                        enctype="multipart/form-data" id="myForm">
+                                                        @csrf
+                                                        <div class="mb-3">
+                                                            <label for="id_direktorat"
+                                                                class="form-label">Direktorat</label>
+                                                            <select name="id_direktorat" class="form-control"
+                                                                id="id_direktorat">
+                                                                @foreach ($direktorat as $dir)
+                                                                <option value="{{$dir->id_direktorat}}">
+                                                                    {{ "$dir->nama" }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="id_divisi" class="form-label">Divisi</label>
+                                                            <input name="id_divisi" value="{{$users->id_divisi}}"
+                                                                class="form-control" id="id_divisi" placeholder
+                                                                readonly="">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="desc_kpidir" class="form-label">KPI</label>
+                                                            <input name="desc_kpidir" type="text" class="form-control"
+                                                                id="desc_kpidir" value="{{$kpidir->desc_kpidir}}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="satuan" class="form-label">Satuan</label>
+                                                            <input name="satuan" type="text" class="form-control"
+                                                                id="satuan" value="{{$kpidir->satuan}}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="target" class="form-label">Target</label>
+                                                            <input name="target" type="text" class="form-control"
+                                                                id="target" value="{{$kpidir->target}}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="bobot" class="form-label">Bobot</label>
+                                                            <input name="bobot" type="text" class="form-control"
+                                                                id="bobot" value="{{$kpidir->bobot}}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="ket" class="form-label">Keterangan</label>
+                                                            <input name="ket" type="text" class="form-control" id="ket"
+                                                                value="{{$kpidir->ket}}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="asal_kpi" class="form-label">Asal KPI</label>
+                                                            <input name="asal_kpi" type="text" class="form-control"
+                                                                id="asal_kpi" value="{{$kpidir->asal_kpi}}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="alasan" class="form-label">Alasan</label>
+                                                            <input name="alasan" type="text" class="form-control"
+                                                                id="alasan" value="{{$kpidir->alasan}}">
+                                                        </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <button type="button" class="btn btn-light"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success"
+                                                            id="edit-btn">Update</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                     @endif
                                     @endforeach
                                 </tbody><!-- end tbody -->
@@ -129,7 +240,8 @@
 <!-- end col -->
 </div>
 
-<div class="modal fade" id="n" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- add Modal -->
+<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
@@ -139,7 +251,7 @@
             </div>
 
             <div class="modal-body">
-                <form method="POST" action="{{ route('KPI.store') }}" id="myForm" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('KPI_Indiv.store') }}" id="myForm" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="id_direktorat" class="form-label">Direktorat</label>
@@ -151,11 +263,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="id_divisi" class="form-label">Divisi</label>
-                        <input name="id_divisi" value = "{{$users->id_divisi}}" class="form-control" id="id_divisi" placeholder readonly="">
+                        <input name="id_divisi" value="{{$users->id_divisi}}" class="form-control" id="id_divisi"
+                            placeholder readonly="">
                     </div>
                     <div class="mb-3">
-                        <label for="desc_kpi" class="form-label">KPI</label>
-                        <input name="desc_kpi" type="text" class="form-control" id="desc_kpi">
+                        <label for="desc_kpidir" class="form-label">KPI</label>
+                        <input name="desc_kpidir" type="text" class="form-control" id="desc_kpidir">
                     </div>
                     <div class="mb-3">
                         <label for="satuan" class="form-label">Satuan</label>
@@ -186,13 +299,13 @@
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add Dokumen</button>
-                    <button type="button" class="btn btn-success" id="edit-btn">Update</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add KPI</button>
                 </div>
             </div>
             </form>
         </div>
     </div>
 </div>
+
 
 @endsection

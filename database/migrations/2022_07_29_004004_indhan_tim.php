@@ -26,6 +26,6 @@ class IndhanTim extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('indhan_tim');
     }
 }

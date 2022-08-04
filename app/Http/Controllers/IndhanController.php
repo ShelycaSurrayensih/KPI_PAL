@@ -21,7 +21,7 @@ class IndhanController extends Controller
         $indhan = Indhan::all();
         $indhanTim = IndhanTim::all();
         $divisi = Divisi::all();
-        return view('KPI_Indhan.Indhan.index', compact ('users', 'indhan', 'indhanTim', 'divisi'));
+        return view('KPI_Indhan.index', compact ('users', 'indhan', 'indhanTim', 'divisi'));
     }
 
     /**
@@ -76,7 +76,11 @@ class IndhanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users = auth()->user();
+        $indhan = Indhan::all();
+        $indhanTim = IndhanTim::all();
+        $divisi = Divisi::all();
+        return view('KPI_Indhan.index', compact ('users', 'indhan', 'indhanTim', 'divisi'));
     }
 
     /**
@@ -86,9 +90,17 @@ class IndhanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_indhan)
     {
-        //
+        $indhan=Indhan::where('id_indhan', $id_indhan)->first();
+        $indhan->id_tim = $request->get('id_tim');
+        $indhan->id_divisi = $request->get('id_divisi');
+        $indhan->program_strategis = $request->get('program_strategis');
+        $indhan->entitas = $request->get('entitas');
+        $indhan->program_utama = $request->get('program_utama');
+        $indhan->target = $request->get('target');
+        $indhan->save();
+        return redirect()->route('KPI_Indhan.edit')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -97,8 +109,11 @@ class IndhanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_indhan)
     {
-        //
+        $indhan = Indhan::where('id_indhan', $id_indhan);
+        $indhan->delete();
+        return redirect()->route('KPI_Indhan.index')
+            ->with('Sukses, data berhasil dihapus');
     }
 }

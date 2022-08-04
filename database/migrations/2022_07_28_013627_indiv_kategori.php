@@ -26,6 +26,6 @@ class IndivKategori extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('indiv_kategori');
     }
 }

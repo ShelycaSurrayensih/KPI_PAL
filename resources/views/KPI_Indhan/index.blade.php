@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Indhan Tim</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Indhan</h4>
                 <div class="flex-shrink-0">
                     <button type="button" class="btn btn-soft-info btn-sm shadow-none">
                         <i class="ri-file-list-3-line align-middle"></i> Generate Report
@@ -47,33 +47,74 @@
                                                 value="option">
                                         </div>
                                     </th>
-                                    <th class="sort" data-sort="nama_tim">Nama Tim</th>
+                                    <th class="sort" data-sort="id_tim">ID Tim</th>
+                                    <th class="sort" data-sort="id_divisi">ID Divisi</th>
+                                    <th class="sort" data-sort="program_strategis">Program Strategis</th>
+                                    <th class="sort" data-sort="entitas">Entitas</th>
+                                    <th class="sort" data-sort="program_utama">Program Utama</th>
+                                    <th class="sort" data-sort="target">Target</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                @foreach($indhanTim as $tim)
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="chk_child"
-                                                value="option1">
-                                        </div>
-                                    </th>
-                                    <td class="id" style="display:none;"><a href="javascript:void(0);"
-                                            class="fw-medium link-primary">#VZ2101</a></td>
-                                    <td class="nama_tim">{{$tim->nama_tim}}</td>
+                                @foreach($indhan as $indhan)
 
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
                                                 <button class="btn btn-sm btn-success edit-item-btn"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showModal{{ $tim->id_tim }}">Edit</button>
+                                                    data-bs-target="#showModal{{ $indhan->id_indhan }}">Edit</button>
                                             </div>
                                             <div class="remove">
 
-                                                <form action="{{ route('KPI_IndhanTim.destroy', $tim->id_tim) }}"
+                                                <form action="{{ route('KPI_Indhan.destroy', $indhan->id_indhan) }}"
                                                     method="POST">
 
                                                     @csrf
@@ -88,7 +129,7 @@
                                 </tr>
 
                                 <!-- edit Modal -->
-                                <div class="modal fade" id="showModal{{ $tim->id_tim }}" tabindex=" -1"
+                                <div class="modal fade" id="showModal{{ $indhan->id_indhan }}" tabindex=" -1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -99,13 +140,13 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form method="post"
-                                                    action="{{ route('indhanTim.update', $tim->id_tim) }}"
+                                                    action="{{ route('indhan.update', $indhan->id_indhan) }}"
                                                     enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="nama_tim">Nama Tim</label>
                                                         <input type="text" name="nama_tim" class="form-control"
-                                                            id="nama_tim" value="{{$tim->nama_tim}}">
+                                                            id="nama_tim" value="{{$indhan->nama_tim}}">
 
                                                     </div>
                                                     <div class=" modal-footer">

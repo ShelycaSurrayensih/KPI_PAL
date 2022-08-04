@@ -20,7 +20,7 @@ class IndivPlanController extends Controller
         $kpidir = IndivKpiDir::all();
         $indivPlan = IndivPlan::all();
         $divisi = Divisi::all();
-        return view('KPI_Indiv.Indiv_Plan.create', compact ('users', 'kpidir', 'indivPlan', 'divisi'));
+        return view('KPI_Indiv.Indiv_Plan.index', compact ('users', 'kpidir', 'indivPlan', 'divisi'));
     }
 
     /**

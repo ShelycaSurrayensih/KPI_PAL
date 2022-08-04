@@ -15,10 +15,10 @@ class Indhan extends Migration
     {
         Schema::create('indhan', function (Blueprint $table) {
             $table->id('id_indhan');
-            $table->unsignedBigInteger('id_tim');
-            $table->foreign('id_tim')->references('id_tim')->on('indhan_tim');
-            $table->unsignedBigInteger('id_divisi');
-            $table->foreign('id_divisi')->references('id_divisi')->on('divisi');
+            $table->unsignedBigInteger('id_tim')->nullable();
+            $table->foreign('id_tim')->references('id_tim')->on('indhan_tim')->onDelete('set null')->onUpdate('cascade');
+            $table->unsignedBigInteger('id_divisi')->nullable();
+            $table->foreign('id_divisi')->references('id_divisi')->on('divisi')->onDelete('set null')->onUpdate('cascade');
             $table->String('program_strategis');
             $table->String('entitas');
             $table->String('program_utama');
@@ -33,6 +33,6 @@ class Indhan extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('indhan');
     }
 }

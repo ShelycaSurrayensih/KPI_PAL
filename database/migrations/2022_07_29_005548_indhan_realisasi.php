@@ -15,8 +15,8 @@ class IndhanRealisasi extends Migration
     {
         Schema::create('indhan_realisasi', function (Blueprint $table) {
             $table->id('id_realisasi');
-            $table->unsignedBigInteger('id_indhan');
-            $table->foreign('id_indhan')->references('id_indhan')->on('indhan');
+            $table->unsignedBigInteger('id_indhan')->nullable();
+            $table->foreign('id_indhan')->references('id_indhan')->on('indhan')->onDelete('set null')->onUpdate('cascade');
             $table->String('realisasi');
             $table->String('bulan');
             $table->year('tahun');
@@ -32,6 +32,6 @@ class IndhanRealisasi extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('indhan_realisasi');
     }
 }

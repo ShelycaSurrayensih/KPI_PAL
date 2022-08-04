@@ -15,10 +15,10 @@ class IndivKpidir extends Migration
     {
         Schema::create('indiv_kpidir', function (Blueprint $table) {
             $table->id('id_kpidir');
-            $table->unsignedBigInteger('id_direktorat');
-            $table->foreign('id_direktorat')->references('id_direktorat')->on('direktorat');
-            $table->unsignedBigInteger('id_divisi');
-            $table->foreign('id_divisi')->references('id_divisi')->on('divisi');
+            $table->unsignedBigInteger('id_direktorat')->nullable();
+            $table->foreign('id_direktorat')->references('id_direktorat')->on('direktorat')->onDelete('set null')->onUpdate('cascade');
+            $table->unsignedBigInteger('id_divisi')->nullable();
+            $table->foreign('id_divisi')->references('id_divisi')->on('divisi')->onDelete('set null')->onUpdate('cascade');
             $table->String('desc_kpidir');
             $table->String('satuan');
             $table->String('target');
@@ -36,6 +36,6 @@ class IndivKpidir extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('indiv_kpidir');
     }
 }
