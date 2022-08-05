@@ -761,6 +761,10 @@
                                     <a href="{{ route('KPI_Indhan.index') }}" class="nav-link" data-key="t-detached">Tim
                                         Integrasi Indhan</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('KPI_IndhanRealisasi.index') }}" class="nav-link"
+                                        data-key="t-detached">Realisasi Indhan</a>
+                                </li>
                             </ul>
                         </div>
                     </li> <!-- end Dashboard Menu -->

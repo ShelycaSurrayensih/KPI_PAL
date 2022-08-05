@@ -9,6 +9,7 @@ class IndivPlan extends Model
 {
     use HasFactory;
     public $table = 'indiv_plan';
+    protected $primaryKey = 'id_plan';
     public $timestamps = false;
     protected $fillable = [
         'id_plan',

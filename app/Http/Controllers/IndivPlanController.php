@@ -34,7 +34,7 @@ class IndivPlanController extends Controller
         $kpidir = IndivKpiDir::all();
         $indivPlan = IndivPlan::all();
         $divisi = Divisi::all();
-        return view('KPI_Indiv.Indiv_Plan.create', compact ('users', 'kpidir', 'indivPlan', 'divisi'));
+        return view('KPI_Indiv.Indiv_Plan.index', compact ('users', 'kpidir', 'indivPlan', 'divisi'));
     }
 
     /**
@@ -51,7 +51,7 @@ class IndivPlanController extends Controller
         $indivPlan->prognosa = $request->prognosa;
         $indivPlan->id_divisi= $request->id_divisi;
         $indivPlan->save();
-        return redirect()->route('KPI_IndivPlan.create')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('KPI_Indiv.IndivPlan.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -71,9 +71,13 @@ class IndivPlanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_plan)
     {
-        //
+        $users = auth()->user();
+        $kpidir = IndivKpiDir::all();
+        $indivPlan = IndivPlan::all();
+        $divisi = Divisi::all();
+        return view('KPI_Indiv.Indiv_Plan.index', compact ('users', 'kpidir', 'indivPlan', 'divisi'));
     }
 
     /**
@@ -83,9 +87,15 @@ class IndivPlanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_plan)
     {
-        //
+        $indivPlan=IndivPlan::where('id_plan', $id_plan)->first();
+        $indivPlan->id_kpidir = $request->get('id_kpidir');
+        $indivPlan->tw= $request->get('tw');
+        $indivPlan->prognosa = $request->get('prognosa');
+        $indivPlan->id_divisi= $request->get('id_divisi');
+        $indivPlan->save();
+        return redirect()->route('KPI_IndivPlan.edit', $id_plan)->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -94,8 +104,11 @@ class IndivPlanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_plan)
     {
-        //
+        $indivPlan = IndivPlan::where('id_plan', $id_plan);
+        $indivPlan->delete();
+        return redirect()->route('KPI_Indiv.IndivPlan.index')
+            ->with('Sukses, data berhasil dihapus');
     }
 }

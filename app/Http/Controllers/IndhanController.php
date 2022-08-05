@@ -35,7 +35,7 @@ class IndhanController extends Controller
         $indhan = Indhan::all();
         $indhanTim = IndhanTim::all();
         $divisi = Divisi::all();
-        return \view('KPI_Indhan.Indhan.index', compact ('users', 'indhan', 'indhanTim', 'divisi'));
+        return \view('KPI_Indhan.index', compact ('users', 'indhan', 'indhanTim', 'divisi'));
     }
 
     /**
@@ -74,7 +74,7 @@ class IndhanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_indhan)
     {
         $users = auth()->user();
         $indhan = Indhan::all();
@@ -100,7 +100,7 @@ class IndhanController extends Controller
         $indhan->program_utama = $request->get('program_utama');
         $indhan->target = $request->get('target');
         $indhan->save();
-        return redirect()->route('KPI_Indhan.edit')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('KPI_Indhan.edit', $id_indhan)->with('success', 'Data berhasil ditambahkan');
     }
 
     /**

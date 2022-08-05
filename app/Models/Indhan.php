@@ -9,6 +9,7 @@ class Indhan extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $primaryKey = 'id_indhan';
     public $table = 'indhan';
     protected $fillable = [
         'id_indhan',

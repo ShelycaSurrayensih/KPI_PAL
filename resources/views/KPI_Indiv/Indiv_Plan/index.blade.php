@@ -14,7 +14,7 @@
             </div><!-- end card header -->
 
             <div class="card-body">
-                <div id="IndhanTim">
+                <div id="IndivPlan">
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
                             <div>
@@ -47,74 +47,62 @@
                                                 value="option">
                                         </div>
                                     </th>
-                                    <th class="sort" data-sort="id_tim">ID Tim</th>
+                                    <th class="sort" data-sort="id_kpidir">ID KPI</th>
+                                    <th class="sort" data-sort="tw">TW</th>
+                                    <th class="sort" data-sort="prognosa">Prognosa</th>
                                     <th class="sort" data-sort="id_divisi">ID Divisi</th>
-                                    <th class="sort" data-sort="program_strategis">Program Strategis</th>
-                                    <th class="sort" data-sort="entitas">Entitas</th>
-                                    <th class="sort" data-sort="program_utama">Program Utama</th>
-                                    <th class="sort" data-sort="target">Target</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                @foreach($indivPlan as $indivPlan)
-
+                                @foreach($indivPlan as $plan)
+                                @if($users->divisi_id == $plan->divisi)
                                 <tr>
+                                    <th scope="row">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="chk_child"
+                                                value="option1">
+                                        </div>
+                                    </th>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1"></div>
+                                            @foreach($kpidir as $dir)
+                                            @if($plan->id_kpidir == $dir->id_kpidir)
+                                            <div class="flex-grow-1">{{ $dir->desc_kpidir }}</div>
+                                            @endif
+                                            @endforeach
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1"></div>
+                                            <div class="flex-grow-1">{{ $plan->tw }}</div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1"></div>
+                                            <div class="flex-grow-1">{{ $plan->prognosa }}</div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1"></div>
+                                            @foreach($divisi as $div)
+                                            @if($plan->id_divisi == $div->id_divisi)
+                                            <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                            @endif
+                                            @endforeach
                                         </div>
                                     </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1"></div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1"></div>
-                                        </div>
-                                    </td>
+
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
                                                 <button class="btn btn-sm btn-success edit-item-btn"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showModal{{ $indiv->id_indiv }}">Edit</button>
+                                                    data-bs-target="#showModal{{ $plan->id_plan }}">Edit</button>
                                             </div>
                                             <div class="remove">
 
-                                                <form action="{{ route('KPI_Indiv.destroy', $indhan->id_indhan) }}"
+                                                <form action="{{ route('KPI_IndivPlan.destroy', $plan->id_plan) }}"
                                                     method="POST">
 
                                                     @csrf
@@ -129,7 +117,7 @@
                                 </tr>
 
                                 <!-- edit Modal -->
-                                <div class="modal fade" id="showModal{{ $indhan->id_indhan }}" tabindex=" -1"
+                                <div class="modal fade" id="showModal{{ $plan->id_plan }}" tabindex=" -1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -139,15 +127,39 @@
                                                     aria-label="Close" id="close-modal"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="post"
-                                                    action="{{ route('indhan.update', $indhan->id_indhan) }}"
+                                                <form method="post" action="{{ route('plan.update', $plan->id_plan) }}"
                                                     enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
-                                                        <label for="nama_tim">Nama Tim</label>
-                                                        <input type="text" name="nama_tim" class="form-control"
-                                                            id="nama_tim" value="{{$indhan->nama_tim}}">
+                                                        <label for="id_kpidir">ID KPI</label>
+                                                        <select name="id_kpidir" class="form-control" id="id_kpidir">
+                                                            @foreach ($kpidir as $dir)
+                                                            <option value="{{$dir->id_kpidir}}">
+                                                                {{ "$dir->desc_kpidir" }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="tw">TW</label>
+                                                        <input type="text" name="tw" class="form-control" id="tw"
+                                                            value="{{$plan->tw}}">
 
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="prognosa">Prognosa</label>
+                                                        <input type="text" name="prognosa" class="form-control"
+                                                            id="prognosa" value="{{$plan->prognosa}}">
+
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label for="id_divisi">ID Divisi</label>
+                                                        @foreach($divisi as $div)
+                                                        @if($plan->id_divisi == $div->id_divisi)
+                                                        <input name="id_divisi" value="{{ $div->id_divisi }}"
+                                                            class="form-control" id="id_divisi" readonly="">
+
+                                                        @endif @endforeach
                                                     </div>
                                                     <div class=" modal-footer">
                                                         <div class="hstack gap-2 justify-content-end">
@@ -160,7 +172,9 @@
                                                 </form>
                                             </div>
                                         </div>
-                                    </div> @endforeach
+                                    </div>
+                                    @endif
+                                    @endforeach
                             </tbody>
                         </table>
                         <div class="noresult" style="display: none">
@@ -204,18 +218,41 @@
                     id="close-modal"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('KPI_IndhanTim.store') }}" enctype="multipart/form-data"
+                <form method="post" action="{{ route('KPI_IndivPlan.store') }}" enctype="multipart/form-data"
                     id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="nama_tim">Nama Tim</label>
-                        <input type="text" name="nama_tim" class="form-control" id="nama_tim">
+                        <label for="id_kpidir">ID KPI</label>
+                        <select name="id_kpidir" class="form-control" id="id_kpidir">
+                            @foreach ($kpidir as $dir)
+                            <option value="{{$dir->id_kpidir}}">{{ "$dir->desc_kpidir" }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tw">TW</label>
+                        <input type="text" name="tw" class="form-control" id="tw">
 
                     </div>
+                    <div class="mb-3">
+                        <label for="prognosa">Prognosa</label>
+                        <input type="text" name="prognosa" class="form-control" id="prognosa">
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_divisi">ID Divisi</label>
+                        @foreach($divisi as $div)
+                        @if($plan->id_divisi == $div->id_divisi)
+                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi"
+                            readonly="">
+
+                        @endif @endforeach
+                    </div>
+
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success" id="add-btn">Add Tim</button>
+                            <button type="submit" class="btn btn-success" id="add-btn">Add data</button>
                         </div>
                     </div>
                 </form>

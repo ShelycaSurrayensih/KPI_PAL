@@ -10,6 +10,7 @@ class IndhanRealisasi extends Model
     use HasFactory;
     public $timestamps = false;
     public $table = 'indhan_realisasi';
+    protected $primaryKey = 'id_realisasi';
     protected $fillable = [
         'id_realisasi',
         'id_indhan',

@@ -18,7 +18,7 @@ class IndhanRealisasiController extends Controller
         $users = auth()->user();
         $indhan = Indhan::all();
         $indhanRealisasi = IndhanRealisasi::all();
-        return view('KPI_Indhan.Indhan_Realisasi.create', compact ('users', 'indhan', 'indhanRealisasi'));
+        return view('KPI_Indhan.Indhan_Realisasi.index', compact ('users', 'indhan', 'indhanRealisasi'));
     }
 
     /**
@@ -31,7 +31,7 @@ class IndhanRealisasiController extends Controller
         $users = auth()->user();
         $indhan = Indhan::all();
         $indhanRealisasi = IndhanRealisasi::all();
-        return view('KPI_Indhan.Indhan_Realisasi.create', compact ('users', 'indhan', 'indhanRealisasi'));
+        return view('KPI_Indhan.Indhan_Realisasi.index', compact ('users', 'indhan', 'indhanRealisasi'));
     }
     /**
      * Store a newly created resource in storage.
@@ -69,9 +69,14 @@ class IndhanRealisasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_realisasi)
     {
-        //
+        {
+            $users = auth()->user();
+            $indhan = Indhan::all();
+            $indhanRealisasi = IndhanRealisasi::all();
+            return view('KPI_Indhan.Indhan_Realisasi.index', compact ('users', 'indhan', 'indhanRealisasi'));
+        }
     }
 
     /**
@@ -81,9 +86,17 @@ class IndhanRealisasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_realisasi)
     {
-        //
+        $indhanRealisasi = IndhanRealisasi::where('id_realisasi', $id_realisasi)->first();
+        $indhanRealisasi->id_indhan = $request->get('id_indhan');
+        $indhanRealisasi->realisasi = $request->get('realisasi');
+        $indhanRealisasi->bulan = $request->get('bulan');
+        $indhanRealisasi->tahun = $request->get('tahun');
+        $indhanRealisasi->kendala = $request->get('kendala');
+        $indhanRealisasi->tgl_input = $request->get('tgl_input');
+        $indhanRealisasi->save();
+        return redirect()->route('KPI_IndhanRealisasi.edit', $id_realisasi)->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -92,8 +105,11 @@ class IndhanRealisasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_realisasi)
     {
-        //
+        $indhanRealisasi = IndivPlan::where('id_realisasi', $id_realisasi);
+        $indivPlanindhanRealisasi->delete();
+        return redirect()->route('KPI_Indhan.IndhanRealisasi.index')
+            ->with('Sukses, data berhasil dihapus');
     }
 }

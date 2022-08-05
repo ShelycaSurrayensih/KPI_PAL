@@ -45,9 +45,19 @@ Route::post('/KPI_Indiv/update/{id}',[IndivController::class, 'update'])->name('
 Route::post('/KPI_Indiv/edit/{id}',[IndivController::class, 'edit'])->name('kpidir.edit');
 Route::delete('/KPI_Indiv/destroy/{id}',[IndivController::class, 'destroy'])->name('kpidir.destroy');
 
+Route::post('/KPI_IndivPlan/update/{id}',[IndivPlanController::class, 'update'])->name('plan.update');
+Route::post('/KPI_IndivPlan/edit/{id}',[IndivPlanController::class, 'edit'])->name('plan.edit');
+Route::delete('/KPI_IndivPlan/destroy/{id}',[IndivPlanController::class, 'destroy'])->name('plan.destroy');
+
 Route::post('/KPI_Indhan/update/{id}',[IndhanController::class, 'update'])->name('indhan.update');
 Route::post('/KPI_Indhan/edit/{id}',[IndhanController::class, 'edit'])->name('indhan.edit');
 Route::delete('/KPI_Indhan/destroy/{id}',[IndhanController::class, 'destroy'])->name('indhan.destroy');
+
+Route::post('/KPI_IndhanRealisasi/update/{id}',[IndhanRealisasiController::class, 'update'])->name('indhanReal.update');
+Route::post('/KPI_IndhanRealisasi/edit/{id}',[IndhanRealisasiController::class, 'edit'])->name('indhanReal.edit');
+Route::delete('/KPI_IndhanRealisasi/destroy/{id}',[IndhanControllerIndhanRealisasiController::class, 'destroy'])->name('indhanReal.destroy');
+
+
 
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
  Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
