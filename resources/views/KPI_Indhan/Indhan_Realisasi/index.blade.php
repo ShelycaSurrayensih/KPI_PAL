@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Indhan Realisasi</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Indhan</h4>
                 <div class="flex-shrink-0">
                     <button type="button" class="btn btn-soft-info btn-sm shadow-none">
                         <i class="ri-file-list-3-line align-middle"></i> Generate Report
@@ -14,7 +14,7 @@
             </div><!-- end card header -->
 
             <div class="card-body">
-                <div id="IndhanTim">
+                <div id="IndivPlan">
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
                             <div>
@@ -47,18 +47,17 @@
                                                 value="option">
                                         </div>
                                     </th>
-                                    <th class="sort" data-sort="id_indhan">ID Indhan</th>
+                                    <th class="sort" data-sort="id_indhan">ID KPI</th>
                                     <th class="sort" data-sort="bulan">Bulan</th>
                                     <th class="sort" data-sort="tahun">Tahun</th>
                                     <th class="sort" data-sort="realisasi">Realisasi</th>
                                     <th class="sort" data-sort="kendala">Kendala</th>
-                                    <th class="sort" data-sort="tgl_input">Tanggal Input</th>
+                                    <th class="sort" data-sort="timestamp">Tanggal Input</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
                                 @foreach($indhanRealisasi as $indhanReal)
-
 
                                 <tr>
                                     <th scope="row">
@@ -69,14 +68,13 @@
                                     </th>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            @foreach($indhan as $indhan)
-                                            @if($indhan->id_indhan == $indhan->id_indhan)
-                                            <div class="flex-grow-1">{{ $indhan->program_strategis }}</div>
+                                            @foreach($indhan as $indhans)
+                                            @if($indhanReal->id_indhan == $indhans->id_indhan)
+                                            <div class="flex-grow-1">{{ $indhans->program_strategis }}</div>
                                             @endif
                                             @endforeach
                                         </div>
                                     </td>
-
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $indhanReal->bulan }}</div>
@@ -99,10 +97,9 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $indhanReal->tgl_input }}</div>
+                                            <div class="flex-grow-1">{{ $indhanReal->created_at }}</div>
                                         </div>
                                     </td>
-
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
@@ -142,47 +139,39 @@
                                                     action="{{ route('indhanReal.update', $indhanReal->id_realisasi) }}"
                                                     enctype="multipart/form-data" id="myForm">
                                                     @csrf
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            @foreach($indhan as $indhan)
-                                                            @if($indhanReal->id_indhan == $indhan->id_indhan)
-                                                            <div class="flex-grow-1">{{ $indhan->program_strategis }}
-                                                            </div>
-                                                            @endif
+                                                    <div class="mb-3">
+                                                        <label for="id_indhan">ID KPI</label>
+                                                        <select name="id_indhan" class="form-control" id="id_indhan">
+                                                            @foreach ($indhan as $indhans)
+                                                            <option value="{{$indhans->id_indhan}}">
+                                                                {{ "$indhans->program_strategis" }}</option>
                                                             @endforeach
-                                                        </div>
-                                                    </td>
-
+                                                        </select>
+                                                    </div>
                                                     <div class="mb-3">
                                                         <label for="bulan">Bulan</label>
                                                         <input type="text" name="bulan" class="form-control" id="bulan"
-                                                            value="{{ $indhanReal->bulan }}">
+                                                            value="{{$indhanReal->bulan}}">
 
                                                     </div>
-                                                    <div class=" mb-3">
+                                                    <div class="mb-3">
                                                         <label for="tahun">Tahun</label>
                                                         <input type="text" name="tahun" class="form-control" id="tahun"
-                                                            value="{{ $indhanReal->tahun }}">
-
+                                                            value="{{$indhanReal->tahun}}">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="realisasi">Realisasi</label>
                                                         <input type="text" name="realisasi" class="form-control"
-                                                            id="realisasi" value="{{ $indhanReal->realisasi }}">
+                                                            id="realisasi" value=" {{$indhanReal->realisasi}}">
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="kendala">Kendala</label>
                                                         <input type="text" name="kendala" class="form-control"
-                                                            id="kendala" value="{{ $indhanReal->kendala }}">
+                                                            id="kendala" value=" {{$indhanReal->kendala}}">
 
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <label for="tgl_input">Tanggal Input</label>
-                                                        <input type="text" name="tgl_input" class="form-control"
-                                                            id="tgl_input" value="{{ $indhanReal->tgl_input }}">
 
-                                                    </div>
                                                     <div class=" modal-footer">
                                                         <div class="hstack gap-2 justify-content-end">
                                                             <button type="button" class="btn btn-light"
@@ -191,6 +180,7 @@
                                                                 id="edit-btn">Update</button>
                                                         </div>
                                                     </div>
+
                                                 </form>
                                             </div>
                                         </div>
@@ -244,14 +234,13 @@
                     id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="id_indhan">ID Indhan</label>
+                        <label for="id_indhan">ID KPI</label>
                         <select name="id_indhan" class="form-control" id="id_indhan">
-                            @foreach ($indhan as $indhan)
-                            <option value="{{$indhan->id_indhan}}">{{ "$indhan->program_strategis" }}</option>
+                            @foreach ($indhan as $indhans)
+                            <option value="{{$indhans->id_indhan}}">{{ "$indhans->program_strategis" }}</option>
                             @endforeach
                         </select>
                     </div>
-
                     <div class="mb-3">
                         <label for="bulan">Bulan</label>
                         <input type="text" name="bulan" class="form-control" id="bulan">
@@ -272,15 +261,12 @@
                         <input type="text" name="kendala" class="form-control" id="kendala">
 
                     </div>
-                    <div class="mb-3">
-                        <label for="tgl_input">Tanggal Input</label>
-                        <input type="date" name="tgl_input" class="form-control" id="tgl_input">
 
-                    </div>
+
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success" id="add-btn">Add Data</button>
+                            <button type="submit" class="btn btn-success" id="add-btn">Add data</button>
                         </div>
                     </div>
                 </form>

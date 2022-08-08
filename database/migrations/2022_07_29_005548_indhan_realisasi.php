@@ -21,7 +21,7 @@ class IndhanRealisasi extends Migration
             $table->String('bulan');
             $table->year('tahun');
             $table->String('kendala');
-            $table->date('tgl_input');
+            $table->created_at();
         });
     }
 

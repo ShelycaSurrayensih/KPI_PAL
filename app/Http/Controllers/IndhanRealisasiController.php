@@ -18,6 +18,8 @@ class IndhanRealisasiController extends Controller
         $users = auth()->user();
         $indhan = Indhan::all();
         $indhanRealisasi = IndhanRealisasi::all();
+        
+        //dd($company->indhan);
         return view('KPI_Indhan.Indhan_Realisasi.index', compact ('users', 'indhan', 'indhanRealisasi'));
     }
 
@@ -47,7 +49,7 @@ class IndhanRealisasiController extends Controller
         $indhanRealisasi->bulan = $request->bulan;
         $indhanRealisasi->tahun = $request->tahun;
         $indhanRealisasi->kendala = $request->kendala;
-        $indhanRealisasi->tgl_input = $request->tgl_input;
+        $indhanRealisasi->timestamp;
         $indhanRealisasi->save();
         return redirect()->route('KPI_IndhanRealisasi.create')->with('success', 'Data berhasil ditambahkan');
     }
@@ -94,7 +96,7 @@ class IndhanRealisasiController extends Controller
         $indhanRealisasi->bulan = $request->get('bulan');
         $indhanRealisasi->tahun = $request->get('tahun');
         $indhanRealisasi->kendala = $request->get('kendala');
-        $indhanRealisasi->tgl_input = $request->get('tgl_input');
+        $indhanRealisasi->timestamp;
         $indhanRealisasi->save();
         return redirect()->route('KPI_IndhanRealisasi.edit', $id_realisasi)->with('success', 'Data berhasil ditambahkan');
     }
@@ -107,9 +109,9 @@ class IndhanRealisasiController extends Controller
      */
     public function destroy($id_realisasi)
     {
-        $indhanRealisasi = IndivPlan::where('id_realisasi', $id_realisasi);
-        $indivPlanindhanRealisasi->delete();
-        return redirect()->route('KPI_Indhan.IndhanRealisasi.index')
+        $indhanRealisasi = IndhanRealisasi::where('id_realisasi', $id_realisasi);
+        $indhanRealisasi->delete();
+        return redirect()->route('KPI_IndhanRealisasi.index')
             ->with('Sukses, data berhasil dihapus');
     }
 }
