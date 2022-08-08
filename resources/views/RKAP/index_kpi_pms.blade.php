@@ -1,0 +1,242 @@
+@extends('layouts.userLayout')
+
+@section('content')
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">Individual KPI</h4>
+                <div class="flex-shrink-0">
+                    <button type="button" class="btn btn-soft-info btn-sm shadow-none">
+                        <i class="ri-file-list-3-line align-middle"></i> Generate Report
+                    </button>
+                </div>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+                <div id="IndivKPI">
+                    <div class="row g-4 mb-3">
+                        <div class="col-sm-auto">
+                            <div>
+                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
+                                    id="create-btn" data-bs-target="#showModal"><i
+                                        class="ri-add-line align-bottom me-1"></i>
+                                    Add</button>
+                                <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i
+                                        class="ri-delete-bin-2-line"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <div class="d-flex justify-content-sm-end">
+                                <div class="search-box ms-2">
+                                    <input type="text" class="form-control search" placeholder="Search...">
+                                    <i class="ri-search-line search-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="card-body">
+                        <div class="table-responsive table-card">
+                            <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
+                                <thead class="text-muted table-light ">
+                                    <tr>
+                                        <th scope="col">ID KPI PMS</th>
+                                        <th scope="col">Inisiatif Strategis</th>
+                                        <th scope="col">Kategori</th>
+                                        <th scope="col">Sub Kategori</th>
+                                        <th scope="col">Deskripsi</th>
+                                        <th scope="col">Polaritas</th>
+                                        <th scope="col">Bobot</th>
+                                        <th scope="col">Target</th>
+                                        <th scope="col">Lead Divisi</th>
+                                        <th scope="col">Tahun KPI PMS</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    @foreach($kpi as $kpi)
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->id_kpipms }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->id_inisiatif }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->id_kat }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->sub_kat }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->kpi_desc }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->polaritas }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->bobot }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->target }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->div_lead }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->tahun_kpipms }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                <div class="edit">
+                                                    <button class="btn btn-sm btn-success edit-item-btn"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#showModal{{ $kpi->id_kpipms }}">Edit</button>
+                                                </div>
+                                                <div class="remove">
+
+                                                    <form action=""
+                                                        method="POST">
+
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="btn btn-sm btn-danger remove-item-btn"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#deleteRecordModal">Delete</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr><!-- end tr -->
+
+                                    <!-- edit Modal -->
+                                    <div class="modal fade" id="showModal{{ $kpi->id_kpipms }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-light p-3">
+                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close" id="close-modal"></button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <form method="post"
+                                                        action=""
+                                                        enctype="multipart/form-data" id="myForm">
+                                                        @csrf
+                                                        <div class="mb-3">
+                                                            <label for="desc_kpidir" class="form-label">Deskripsi kategori</label>
+                                                            <input name="desc_kpidir" type="text" class="form-control"
+                                                                id="desc_kpidir" value="">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="satuan" class="form-label">Keterangan</label>
+                                                            <input name="satuan" type="text" class="form-control"
+                                                                id="satuan" value="">
+                                                        </div>
+                                                        
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <button type="button" class="btn btn-light"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success"
+                                                            id="edit-btn">Update</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </tbody><!-- end tbody -->
+
+                            </table><!-- end table -->
+                        </div>
+                    </div>
+                </div> <!-- .card-->
+            </div> <!-- .col-->
+        </div> <!-- end row-->
+        <div class="d-flex justify-content-end">
+            <div class="pagination-wrap hstack gap-2">
+                <a class="page-item pagination-prev disabled" href="#">
+                    Previous
+                </a>
+                <ul class="pagination listjs-pagination mb-0"></ul>
+                <a class="page-item pagination-next" href="#">
+                    Next
+                </a>
+            </div>
+        </div>
+    </div>
+</div><!-- end card -->
+</div>
+<!-- end col -->
+</div>
+<!-- end col -->
+</div>
+
+<!-- add Modal -->
+<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light p-3">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    id="close-modal"></button>
+            </div>
+
+            <div class="modal-body">
+            <form method="post" action=""
+            enctype="multipart/form-data" id="myForm">
+            @csrf
+                <div class="mb-3">
+                    <label for="desc_kpidir" class="form-label">Deskripsi Kategori</label>
+                    <input name="desc_kpidir" type="text" class="form-control"
+                    id="desc_kpidir" value="">
+                </div>
+                <div class="mb-3">
+                    <label for="satuan" class="form-label">Keterangan</label>
+                    <input name="satuan" type="text" class="form-control"
+                    id="satuan" value="">
+                </div>                                            
+            </div>
+            <div class="modal-footer">
+                <div class="hstack gap-2 justify-content-end">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add Kategori</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@endsection

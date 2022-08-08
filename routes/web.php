@@ -36,6 +36,11 @@ Auth::routes();
 
 Route::get('/create/inisiatifStrategis', [App\Http\Controllers\RKAP::class, 'createInisiatifStrategis'])->name('inisiatifStrategis');
 Route::post('/create/inisiatifStrategis/store', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisStore'])->name('inisiatifStrategis.store');
+Route::get('/InisiatifStrategis', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisIndex'])->name('inisiatifStrategis.index');
+Route::get('/KategoriPMS', [App\Http\Controllers\RKAP::class, 'KategoriPmsIndex'])->name('KategoriPms.index');
+Route::get('/KPI_PMS', [App\Http\Controllers\RKAP::class, 'kpi_pmsIndex'])->name('kpi_pms.index');
+Route::get('/Plan_PMS', [App\Http\Controllers\RKAP::class, 'plan_pmsIndex'])->name('planpms.index');
+Route::get('/Realisasi_PMS', [App\Http\Controllers\RKAP::class, 'real_pmsIndex'])->name('realpms.index');
 
 Route::post('/KPI_IndhanTim/update/{id}',[IndhanTimController::class, 'update'])->name('indhanTim.update');
 Route::post('/KPI_IndhanTim/edit/{id}',[IndhanTimController::class, 'edit'])->name('indhanTim.edit');

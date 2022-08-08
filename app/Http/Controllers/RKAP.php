@@ -26,6 +26,14 @@ class RKAP extends Controller
         return view('RKAP.create_inisiatif');
     }
 
+    public function inisiatifStrategisIndex(Request $request)
+    {
+        $users = auth()->user();
+        $inisiatif = inisiatifStrategis::all();
+
+        return view('RKAP.index_inisiatif', compact('inisiatif', 'users'));
+    }
+
     public function KategoriPmsStore(Request $request)
     {
         $kategori = KategoriPms::all();
@@ -33,6 +41,14 @@ class RKAP extends Controller
 
 
         return view('RKAP.create_kategori', compact ('users', 'korporasi'));
+    }
+
+    public function KategoriPmsIndex()
+    {
+        $users = auth()->user();
+        $kategori = KategoriPms::all();
+
+        return view('RKAP.index_kategori', compact ('users', 'kategori'));
     }
     
     public function kpi_pmsStore(Request $request)
@@ -49,6 +65,15 @@ class RKAP extends Controller
 
         return view('RKAP.create_inisiatif', compact ('users', 'korporasi'));
     }
+    public function kpi_pmsIndex()
+    {
+        $users = auth()->user();
+        $kpi = KpiPms::all();
+        $kategori = KategoriPms::all();
+        $inisiatif = inisiatifStrategis::all();
+
+        return view('RKAP.index_kpi_pms', compact ('users', 'kpi', 'kategori', 'inisiatif'));
+    }
 
     public function plan_pmsStore(Request $request)
     {
@@ -61,6 +86,14 @@ class RKAP extends Controller
         return view('RKAP.create_inisiatif', compact ('users', 'korporasi'));
     }
 
+    public function plan_pmsIndex()
+    {
+        $users = auth()->user();
+        $plan = planPms::all();
+        $kpi = KpiPms::all();
+
+        return view('RKAP.index_plan', compact ('users', 'kpi', 'plan'));
+    }
     public function real_pmsStore(Request $request)
     {
         $real = realisasiPms::all();
@@ -72,5 +105,14 @@ class RKAP extends Controller
 
 
         return view('RKAP.create_inisiatif', compact ('users', 'korporasi'));
+    }
+
+    public function real_pmsIndex()
+    {
+        $users = auth()->user();
+        $real = realisasiPms::all();
+        $plan = planPms::all();
+
+        return view('RKAP.index_plan', compact ('users', 'real', 'plan'));
     }
 }
