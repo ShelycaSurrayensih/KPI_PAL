@@ -21,7 +21,7 @@ class IndhanRealisasi extends Migration
             $table->String('bulan');
             $table->year('tahun');
             $table->String('kendala');
-            $table->created_at();
+            $table->timestamps();
         });
     }
 
