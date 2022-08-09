@@ -47,6 +47,7 @@
                                         <th scope="col">Plan PMS</th>
                                         <th scope="col">Progress</th>
                                         <th scope="col">Deskripsi</th>
+                                        <th scope="col">Kendala</th>
                                         <th scope="col">File Evidence</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -62,27 +63,31 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $plan->id_plan }}</div>
+                                                @foreach($plan as $plans)
+                                                @if($real->id_plan == $plans->id_plan)
+                                                <div class="flex-grow-1">{{ $plans->progress_plan }}</div>
+                                                @endif
+                                                @endforeach
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $plan->progress_real }}</div>
+                                                <div class="flex-grow-1">{{ $real->progres_real }}</div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $plan->desc_real }}</div>
+                                                <div class="flex-grow-1">{{ $real->desc_real }}</div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $plan->kendala }}</div>
+                                                <div class="flex-grow-1">{{ $real->kendala }}</div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $plan->file_evidence }}</div>
+                                                <div class="flex-grow-1">{{ $real->file_evidence }}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -94,8 +99,7 @@
                                                 </div>
                                                 <div class="remove">
 
-                                                    <form action=""
-                                                        method="POST">
+                                                    <form action="" method="POST">
 
                                                         @csrf
                                                         @method('DELETE')
@@ -121,21 +125,22 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post"
-                                                        action=""
-                                                        enctype="multipart/form-data" id="myForm">
+                                                    <form method="post" action="" enctype="multipart/form-data"
+                                                        id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Deskripsi Inisiatif</label>
+                                                            <label for="desc_kpidir" class="form-label">Deskripsi
+                                                                Inisiatif</label>
                                                             <input name="desc_kpidir" type="text" class="form-control"
                                                                 id="desc_kpidir" value="">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Tahun Inisiatif</label>
+                                                            <label for="satuan" class="form-label">Tahun
+                                                                Inisiatif</label>
                                                             <input name="satuan" type="text" class="form-control"
                                                                 id="satuan" value="">
                                                         </div>
-                                                        
+
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="hstack gap-2 justify-content-end">
@@ -188,37 +193,32 @@
             </div>
 
             <div class="modal-body">
-            <form method="post" action=""
-            enctype="multipart/form-data" id="myForm">
-            @csrf
-                <div class="mb-3">
-                    <label for="desc_kpidir" class="form-label">Plan</label>
-                    <select name="id_plan" class="form-control" id="id_plan">
-                    @foreach($plan as $pl)
-                        <option value="{{$pl->id_plan }}">{{ "$pl->progress_plan" }}
-                    @endforeach
-                </select>
-                </div>
-                <div class="mb-3">
-                    <label for="progres_real" class="form-label">Progress</label>
-                    <input name="progres_real" type="text" class="form-control"
-                    id="progres_real" value="">
-                </div>
-                <div class="mb-3">
-                    <label for="desc_real" class="form-label">Deskripsi</label>
-                    <input name="desc_real" type="text" class="form-control"
-                    id="desc_real" value="">
-                </div>   
-                <div class="mb-3">
-                    <label for="kendala" class="form-label">Kendala</label>
-                    <input name="kendala" type="text" class="form-control"
-                    id="kendala" value="">
-                </div>      
-                <div class="mb-3">
-                    <label for="file_evidence" class="form-label">Kendala</label>
-                    <input name="file_evidence" type="text" class="form-control"
-                    id="file_evidence" value="">
-                </div>                                          
+                <form method="post" action="{{ route('realpms.store') }}" enctype="multipart/form-data" id="myForm">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="id_plan" class="form-label">Plan</label>
+                        <select name="id_plan" class="form-control" id="id_plan">
+                            @foreach($plan as $pl)
+                            <option value="{{$pl->id_plan }}">{{ "$pl->progress_plan" }}
+                                @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="progres_real" class="form-label">Progress</label>
+                        <input name="progres_real" type="text" class="form-control" id="progres_real" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc_real" class="form-label">Deskripsi</label>
+                        <input name="desc_real" type="text" class="form-control" id="desc_real" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="kendala" class="form-label">Kendala</label>
+                        <input name="kendala" type="text" class="form-control" id="kendala" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="file_evidence" class="form-label">File</label>
+                        <input name="file_evidence" type="text" class="form-control" id="file_evidence" value="">
+                    </div>
             </div>
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">

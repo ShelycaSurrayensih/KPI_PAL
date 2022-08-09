@@ -62,7 +62,11 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $plan->id_kpipms }}</div>
+                                                @foreach($kpi as $kpis)
+                                                @if($plan->id_kpipms == $kpis->id_kpipms)
+                                                <div class="flex-grow-1">{{ $kpis->kpi_desc }}</div>
+                                                @endif
+                                                @endforeach
                                             </div>
                                         </td>
                                         <td>
@@ -80,7 +84,7 @@
                                                 <div class="flex-grow-1">{{ $plan->desc_progress }}</div>
                                             </div>
                                         </td>
-                                        
+
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="edit">
@@ -90,8 +94,7 @@
                                                 </div>
                                                 <div class="remove">
 
-                                                    <form action=""
-                                                        method="POST">
+                                                    <form action="" method="POST">
 
                                                         @csrf
                                                         @method('DELETE')
@@ -117,9 +120,8 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post"
-                                                        action=""
-                                                        enctype="multipart/form-data" id="myForm">
+                                                    <form method="post" action="" enctype="multipart/form-data"
+                                                        id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
                                                             <label for="id_kpipms" class="form-label">KPI PMS</label>
@@ -128,16 +130,18 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="tw" class="form-label">TW</label>
-                                                            <input name="tw" type="text" class="form-control"
-                                                                id="tw" value="">
+                                                            <input name="tw" type="text" class="form-control" id="tw"
+                                                                value="">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="progress_plan" class="form-label">Progress</label>
+                                                            <label for="progress_plan"
+                                                                class="form-label">Progress</label>
                                                             <input name="progress_plan" type="text" class="form-control"
                                                                 id="progress_plan" value="">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="desc_progress" class="form-label">Deskripsi Progress</label>
+                                                            <label for="desc_progress" class="form-label">Deskripsi
+                                                                Progress</label>
                                                             <input name="desc_progress" type="text" class="form-control"
                                                                 id="desc_progress" value="">
                                                         </div>
@@ -193,32 +197,28 @@
             </div>
 
             <div class="modal-body">
-            <form method="post" action=""
-            enctype="multipart/form-data" id="myForm">
-            @csrf
-            <div class="mb-3">
-                <label for="id_inisiatif" class="form-label">Inisiatif</label>
-                <select name="id_inisiatif" class="form-control" id="id_inisiatif">
-                @foreach($inisiatif as $inis)
-                    <option value="{{$inis->id_inisiatif }}">{{ "$inis->inisiatif_desc" }}
-                @endforeach
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="tw" class="form-label">TW</label>
-                <input name="tw" type="text" class="form-control"
-                id="tw" value="">
-            </div>
-            <div class="mb-3">
-                <label for="progress_plan" class="form-label">Progress</label>
-                <input name="progress_plan" type="text" class="form-control"
-                id="progress_plan" value="">
-            </div>
-            <div class="mb-3">
-                <label for="desc_progress" class="form-label">Deskripsi Progress</label>
-                <input name="desc_progress" type="text" class="form-control"
-                id="desc_progress" value="">
-            </div>                                  
+                <form method="post" action="{{ route('planpms.store') }}" enctype="multipart/form-data" id="myForm">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="id_kpipms" class="form-label">KPI PMS</label>
+                        <select name="id_kpipms" class="form-control" id="id_kpipms">
+                            @foreach($kpi as $kpis)
+                            <option value="{{$kpis->id_kpipms }}">{{ "$kpis->kpi_desc" }}
+                                @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tw" class="form-label">TW</label>
+                        <input name="tw" type="text" class="form-control" id="tw" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="progress_plan" class="form-label">Progress</label>
+                        <input name="progress_plan" type="text" class="form-control" id="progress_plan" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc_progress" class="form-label">Deskripsi Progress</label>
+                        <input name="desc_progress" type="text" class="form-control" id="desc_progress" value="">
+                    </div>
             </div>
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">

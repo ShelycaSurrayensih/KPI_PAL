@@ -38,6 +38,8 @@ Auth::routes();
 Route::post('/inisiatifStrategis/store', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisStore'])->name('inisiatifStrategis.store');
 Route::post('/KategoriPMS/store', [App\Http\Controllers\RKAP::class, 'KategoriPmsStore'])->name('KategoriPms.store');
 Route::post('/KPI_PMS/store', [App\Http\Controllers\RKAP::class, 'kpi_pmsStore'])->name('kpi_pms.store');
+Route::post('/Plan_PMS/store', [App\Http\Controllers\RKAP::class, 'plan_pmsStore'])->name('planpms.store');
+Route::post('/Realisasi_PMS/store', [App\Http\Controllers\RKAP::class, 'real_pmsStore'])->name('realpms.store');
 
 //RKAP Index
 Route::get('/InisiatifStrategis', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisIndex'])->name('inisiatifStrategis.index');

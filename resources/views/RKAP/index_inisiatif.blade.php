@@ -77,8 +77,7 @@
                                                 </div>
                                                 <div class="remove">
 
-                                                    <form action=""
-                                                        method="POST">
+                                                    <form action="" method="POST">
 
                                                         @csrf
                                                         @method('DELETE')
@@ -104,21 +103,22 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post"
-                                                        action=""
-                                                        enctype="multipart/form-data" id="myForm">
+                                                    <form method="post" action="" enctype="multipart/form-data"
+                                                        id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Deskripsi Inisiatif</label>
+                                                            <label for="desc_kpidir" class="form-label">Deskripsi
+                                                                Inisiatif</label>
                                                             <input name="desc_kpidir" type="text" class="form-control"
                                                                 id="desc_kpidir" value="">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Tahun Inisiatif</label>
+                                                            <label for="satuan" class="form-label">Tahun
+                                                                Inisiatif</label>
                                                             <input name="satuan" type="text" class="form-control"
                                                                 id="satuan" value="">
                                                         </div>
-                                                        
+
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="hstack gap-2 justify-content-end">
@@ -171,19 +171,16 @@
             </div>
 
             <div class="modal-body">
-            <form method="post" action="{{  route('inisiatifStrategis.store')  }}"
-            enctype="multipart/form-data" id="myForm">
-            @csrf
-                <div class="mb-3">
-                    <label for="inisiatif_desc" class="form-label">Deskripsi Inisiatif</label>
-                    <input name="inisiatif_desc" type="text" class="form-control"
-                    id="inisiatif_desc" >
-                </div>
-                <div class="mb-3">
-                    <label for="tahun_inisiatif" class="form-label">Tahun Inisiatif</label>
-                    <input name="tahun_inisiatif" type="text" class="form-control"
-                    id="tahun_inisiatif" >
-                </div>                                            
+                <form method="post" action="{{  route('planpms.store')  }}" enctype="multipart/form-data" id="myForm">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="inisiatif_desc" class="form-label">Deskripsi Inisiatif</label>
+                        <input name="inisiatif_desc" type="text" class="form-control" id="inisiatif_desc">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tahun_inisiatif" class="form-label">Tahun Inisiatif</label>
+                        <input name="tahun_inisiatif" type="text" class="form-control" id="tahun_inisiatif">
+                    </div>
             </div>
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">

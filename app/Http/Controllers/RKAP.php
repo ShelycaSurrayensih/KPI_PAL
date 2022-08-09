@@ -78,10 +78,10 @@ class RKAP extends Controller
     public function plan_pmsStore(Request $request)
     {
         $plan = new planPms;
-        $plan->id_kpipms = $request->id_kpipms;
-        $plan->tw = $request->tw;
-        $plan->progress_plan = $request->progress_plan;
-        $plan->desc_progress = $request->desc_progress;
+        $plan->id_kpipms = $request->get('id_kpipms');
+        $plan->tw = $request->get('tw');
+        $plan->progress_plan = $request->get('progress_plan');
+        $plan->desc_progress = $request->get('desc_progress');
         $plan->save();
         return redirect()->route('planpms.index');
     }
