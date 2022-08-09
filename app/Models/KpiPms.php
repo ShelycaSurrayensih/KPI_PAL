@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class KpiPms extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = [
         'id_kat',
         'id_inisiatif',
@@ -27,5 +27,8 @@ class KpiPms extends Model
     }
     public function kategori_pms(){
         return $this->belongsTo('App\Models\KategoriPms');
+    }
+    public function divisi(){
+        return $this->belongsTo('App\Models\Divisi');
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class planPms extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = [
         'id_kpipms',
         'tw',

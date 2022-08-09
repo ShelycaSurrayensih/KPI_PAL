@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
         
         if (Auth::User()->status == 'administrator') {
-            return view('KPI.index');
+            return view('user.index');
         } else {
             return view('user.index');
         }

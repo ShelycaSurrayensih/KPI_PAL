@@ -767,8 +767,35 @@
                                 </li>
                             </ul>
                         </div>
-                    </li> <!-- end Dashboard Menu -->
-
+                    </li> 
+                    <!-- end Dashboard Menu -->
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarIcons" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="sidebarIcons">
+                            <i class="mdi mdi-android-studio"></i> <span data-key="t-icons">RKAP</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarIcons">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ route('inisiatifStrategis.index') }}" class="nav-link" data-key="t-remix">inisiatifStrategis</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('KategoriPms.index') }}" class="nav-link" data-key="t-boxicons">Kategori</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('kpi_pms.index') }}" class="nav-link"
+                                        data-key="t-material-design">KPI PMS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('planpms.index') }}" class="nav-link" data-key="t-line-awesome">
+                                        Plan PMS</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('realpms.index') }}" class="nav-link" data-key="t-feather">Realisasi PMS</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Pages</span></li>
 
                     <li class="nav-item">
@@ -1176,33 +1203,7 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link menu-link" href="#sidebarIcons" data-bs-toggle="collapse" role="button"
-                            aria-expanded="false" aria-controls="sidebarIcons">
-                            <i class="mdi mdi-android-studio"></i> <span data-key="t-icons">Icons</span>
-                        </a>
-                        <div class="collapse menu-dropdown" id="sidebarIcons">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a href="icons-remix.html" class="nav-link" data-key="t-remix">Remix</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="icons-boxicons.html" class="nav-link" data-key="t-boxicons">Boxicons</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="icons-materialdesign.html" class="nav-link"
-                                        data-key="t-material-design">Material Design</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="icons-lineawesome.html" class="nav-link" data-key="t-line-awesome">Line
-                                        Awesome</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="icons-feather.html" class="nav-link" data-key="t-feather">Feather</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                    
 
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarMaps" data-bs-toggle="collapse" role="button"

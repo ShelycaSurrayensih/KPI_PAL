@@ -171,24 +171,24 @@
             </div>
 
             <div class="modal-body">
-            <form method="post" action=""
+            <form method="post" action="{{  route('inisiatifStrategis.store')  }}"
             enctype="multipart/form-data" id="myForm">
             @csrf
                 <div class="mb-3">
-                    <label for="desc_kpidir" class="form-label">Deskripsi Inisiatif</label>
-                    <input name="desc_kpidir" type="text" class="form-control"
-                    id="desc_kpidir" value="">
+                    <label for="inisiatif_desc" class="form-label">Deskripsi Inisiatif</label>
+                    <input name="inisiatif_desc" type="text" class="form-control"
+                    id="inisiatif_desc" >
                 </div>
                 <div class="mb-3">
-                    <label for="satuan" class="form-label">Tahun Inisiatif</label>
-                    <input name="satuan" type="text" class="form-control"
-                    id="satuan" value="">
+                    <label for="tahun_inisiatif" class="form-label">Tahun Inisiatif</label>
+                    <input name="tahun_inisiatif" type="text" class="form-control"
+                    id="tahun_inisiatif" >
                 </div>                                            
             </div>
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add KPI</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add</button>
                 </div>
             </div>
             </form>

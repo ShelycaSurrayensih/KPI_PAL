@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class KategoriPms extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = [
         'kat_desc',
         'ket'

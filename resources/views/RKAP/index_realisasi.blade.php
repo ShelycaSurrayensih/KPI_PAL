@@ -192,15 +192,33 @@
             enctype="multipart/form-data" id="myForm">
             @csrf
                 <div class="mb-3">
-                    <label for="desc_kpidir" class="form-label">Deskripsi Inisiatif</label>
-                    <input name="desc_kpidir" type="text" class="form-control"
-                    id="desc_kpidir" value="">
+                    <label for="desc_kpidir" class="form-label">Plan</label>
+                    <select name="id_plan" class="form-control" id="id_plan">
+                    @foreach($plan as $pl)
+                        <option value="{{$pl->id_plan }}">{{ "$pl->progress_plan" }}
+                    @endforeach
+                </select>
                 </div>
                 <div class="mb-3">
-                    <label for="satuan" class="form-label">Tahun Inisiatif</label>
-                    <input name="satuan" type="text" class="form-control"
-                    id="satuan" value="">
-                </div>                                            
+                    <label for="progres_real" class="form-label">Progress</label>
+                    <input name="progres_real" type="text" class="form-control"
+                    id="progres_real" value="">
+                </div>
+                <div class="mb-3">
+                    <label for="desc_real" class="form-label">Deskripsi</label>
+                    <input name="desc_real" type="text" class="form-control"
+                    id="desc_real" value="">
+                </div>   
+                <div class="mb-3">
+                    <label for="kendala" class="form-label">Kendala</label>
+                    <input name="kendala" type="text" class="form-control"
+                    id="kendala" value="">
+                </div>      
+                <div class="mb-3">
+                    <label for="file_evidence" class="form-label">Kendala</label>
+                    <input name="file_evidence" type="text" class="form-control"
+                    id="file_evidence" value="">
+                </div>                                          
             </div>
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">

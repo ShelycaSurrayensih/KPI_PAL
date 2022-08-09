@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class realisasiPms extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = [
         'id_plan',
         'progres_real',

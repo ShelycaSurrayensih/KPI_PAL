@@ -124,8 +124,7 @@
                                                     <div class="hstack gap-2 justify-content-end">
                                                         <button type="button" class="btn btn-light"
                                                             data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success"
-                                                            id="edit-btn">Update</button>
+                                                            <button type="submit" class="btn btn-success" id="add-btn">Add KPI</button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -171,24 +170,24 @@
             </div>
 
             <div class="modal-body">
-            <form method="post" action=""
+            <form method="post" action="{{  route('KategoriPms.store')  }}"
             enctype="multipart/form-data" id="myForm">
             @csrf
                 <div class="mb-3">
-                    <label for="desc_kpidir" class="form-label">Deskripsi Kategori</label>
-                    <input name="desc_kpidir" type="text" class="form-control"
-                    id="desc_kpidir" value="">
+                    <label for="kat_desc" class="form-label">Deskripsi Kategori</label>
+                    <input name="kat_desc" type="text" class="form-control"
+                    id="kat_desc" >
                 </div>
                 <div class="mb-3">
-                    <label for="satuan" class="form-label">Keterangan</label>
-                    <input name="satuan" type="text" class="form-control"
-                    id="satuan" value="">
+                    <label for="ket" class="form-label">Keterangan</label>
+                    <input name="ket" type="text" class="form-control"
+                    id="ket" >
                 </div>                                            
             </div>
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add Kategori</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add KPI</button>
                 </div>
             </div>
             </form>

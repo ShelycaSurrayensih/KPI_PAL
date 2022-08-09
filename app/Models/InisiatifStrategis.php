@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class InisiatifStrategis extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = [
         'inisiatif_desc',
         'tahun_inisiatif'

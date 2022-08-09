@@ -9,23 +9,19 @@ use App\Models\KategoriPms;
 use App\Models\KpiPms;
 use App\Models\planPms;
 use App\Models\realisasiPms;
+use App\Models\Divisi;
 
 class RKAP extends Controller
 {
-    public function createInisiatifStrategis()
-    {
-        return \view('RKAP.create_inisiatif');
-    }
-
+    //Inisiatif Strategis
     public function inisiatifStrategisStore(Request $request)
     {
         $init = new inisiatifStrategis;
         $init->inisiatif_desc = $request->inisiatif_desc;
         $init->tahun_inisiatif = $request->tahun_inisiatif;
-
-        return view('RKAP.create_inisiatif');
+        $init->save();
+        return redirect()->route('inisiatifStrategis.index');
     }
-
     public function inisiatifStrategisIndex(Request $request)
     {
         $users = auth()->user();
@@ -34,13 +30,14 @@ class RKAP extends Controller
         return view('RKAP.index_inisiatif', compact('inisiatif', 'users'));
     }
 
+    //Kategori PMS
     public function KategoriPmsStore(Request $request)
     {
-        $kategori = KategoriPms::all();
+        $kategori = new KategoriPms;
         $kategori->kat_desc = $request->kat_desc;
-
-
-        return view('RKAP.create_kategori', compact ('users', 'korporasi'));
+        $kategori->ket = $request->ket;
+        $kategori->save();
+        return redirect()->route('KategoriPms.index');
     }
 
     public function KategoriPmsIndex()
@@ -51,19 +48,21 @@ class RKAP extends Controller
         return view('RKAP.index_kategori', compact ('users', 'kategori'));
     }
     
+    //KPI PMS
     public function kpi_pmsStore(Request $request)
     {
-        $kpi = KpiPms::all();
+        $kpi = new KpiPms;
+        $kpi->id_kat = $request->id_kat;
+        $kpi->id_inisiatif = $request->id_inisiatif;
         $kpi->sub_kat = $request->sub_kat;
         $kpi->kpi_desc = $request->kpi_desc;
         $kpi->polaritas = $request->polaritas;
         $kpi->bobot = $request->bobot;
         $kpi->target = $request->target;
-        $kpi->staging = $request->staging;
+        $kpi->div_lead = $request->div_lead;
         $kpi->tahun_kpipms = $request->tahun_kpippms;
-
-
-        return view('RKAP.create_inisiatif', compact ('users', 'korporasi'));
+        $kpi->save();
+        return redirect()->route('kpi_pms.index');
     }
     public function kpi_pmsIndex()
     {
@@ -71,48 +70,48 @@ class RKAP extends Controller
         $kpi = KpiPms::all();
         $kategori = KategoriPms::all();
         $inisiatif = inisiatifStrategis::all();
-
-        return view('RKAP.index_kpi_pms', compact ('users', 'kpi', 'kategori', 'inisiatif'));
+        $divisi = Divisi::all();
+        return view('RKAP.index_kpi_pms', compact ('users', 'kpi', 'kategori', 'inisiatif', 'divisi'));
     }
 
+    //Plan PMS
     public function plan_pmsStore(Request $request)
     {
-        $plan = planPms::all();
+        $plan = new planPms;
+        $plan->id_kpipms = $request->id_kpipms;
         $plan->tw = $request->tw;
         $plan->progress_plan = $request->progress_plan;
         $plan->desc_progress = $request->desc_progress;
-
-
-        return view('RKAP.create_inisiatif', compact ('users', 'korporasi'));
+        $plan->save();
+        return redirect()->route('planpms.index');
     }
-
     public function plan_pmsIndex()
     {
         $users = auth()->user();
         $plan = planPms::all();
         $kpi = KpiPms::all();
-
-        return view('RKAP.index_plan', compact ('users', 'kpi', 'plan'));
+        $inisiatif = inisiatifStrategis::all();
+        return view('RKAP.index_plan', compact ('users', 'kpi', 'plan','inisiatif'));
     }
+
+    //Realisasi PMS
     public function real_pmsStore(Request $request)
     {
-        $real = realisasiPms::all();
+        $real = new realisasiPms;
+        $real->id_plan = $request->id_plan;
         $real->progres_real = $request->progres_real;
         $real->desc_real = $request->desc_real;
         $real->kendala = $request->kendala;
         $real->file_evidence = $request->file_evidence;
-        
-
-
-        return view('RKAP.create_inisiatif', compact ('users', 'korporasi'));
+        $real->save();
+        return redirect()->route('realpms.index');
     }
-
     public function real_pmsIndex()
     {
         $users = auth()->user();
         $real = realisasiPms::all();
         $plan = planPms::all();
 
-        return view('RKAP.index_plan', compact ('users', 'real', 'plan'));
+        return view('RKAP.index_realisasi', compact ('users', 'real', 'plan'));
     }
 }

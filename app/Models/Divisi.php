@@ -22,5 +22,7 @@ class Divisi extends Model
     public function kpidir(){
         return $this->hasMany('App\Models\IndivKpiDir');
     }
-    
+    public function KpiPms(){
+        return $this->hasMany('App\Models\KpiPms');
+    }
 }

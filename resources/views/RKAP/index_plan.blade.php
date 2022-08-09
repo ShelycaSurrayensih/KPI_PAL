@@ -122,16 +122,25 @@
                                                         enctype="multipart/form-data" id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Deskripsi Inisiatif</label>
+                                                            <label for="id_kpipms" class="form-label">KPI PMS</label>
                                                             <input name="desc_kpidir" type="text" class="form-control"
                                                                 id="desc_kpidir" value="">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Tahun Inisiatif</label>
-                                                            <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="">
+                                                            <label for="tw" class="form-label">TW</label>
+                                                            <input name="tw" type="text" class="form-control"
+                                                                id="tw" value="">
                                                         </div>
-                                                        
+                                                        <div class="mb-3">
+                                                            <label for="progress_plan" class="form-label">Progress</label>
+                                                            <input name="progress_plan" type="text" class="form-control"
+                                                                id="progress_plan" value="">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="desc_progress" class="form-label">Deskripsi Progress</label>
+                                                            <input name="desc_progress" type="text" class="form-control"
+                                                                id="desc_progress" value="">
+                                                        </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="hstack gap-2 justify-content-end">
@@ -187,21 +196,34 @@
             <form method="post" action=""
             enctype="multipart/form-data" id="myForm">
             @csrf
-                <div class="mb-3">
-                    <label for="desc_kpidir" class="form-label">Deskripsi Inisiatif</label>
-                    <input name="desc_kpidir" type="text" class="form-control"
-                    id="desc_kpidir" value="">
-                </div>
-                <div class="mb-3">
-                    <label for="satuan" class="form-label">Tahun Inisiatif</label>
-                    <input name="satuan" type="text" class="form-control"
-                    id="satuan" value="">
-                </div>                                            
+            <div class="mb-3">
+                <label for="id_inisiatif" class="form-label">Inisiatif</label>
+                <select name="id_inisiatif" class="form-control" id="id_inisiatif">
+                @foreach($inisiatif as $inis)
+                    <option value="{{$inis->id_inisiatif }}">{{ "$inis->inisiatif_desc" }}
+                @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="tw" class="form-label">TW</label>
+                <input name="tw" type="text" class="form-control"
+                id="tw" value="">
+            </div>
+            <div class="mb-3">
+                <label for="progress_plan" class="form-label">Progress</label>
+                <input name="progress_plan" type="text" class="form-control"
+                id="progress_plan" value="">
+            </div>
+            <div class="mb-3">
+                <label for="desc_progress" class="form-label">Deskripsi Progress</label>
+                <input name="desc_progress" type="text" class="form-control"
+                id="desc_progress" value="">
+            </div>                                  
             </div>
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add KPI</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add</button>
                 </div>
             </div>
             </form>

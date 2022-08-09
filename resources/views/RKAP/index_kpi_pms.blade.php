@@ -213,20 +213,70 @@
             </div>
 
             <div class="modal-body">
-            <form method="post" action=""
+            <form method="post" action="{{  route('kpi_pms.store')}}"
             enctype="multipart/form-data" id="myForm">
             @csrf
+                <div class="mb-3">
+                    <label for="id_kat" class="form-label">Kategori</label>
+                    <select name="id_kat" class="form-control" id="id_kat">
+                    @foreach($kategori as $kat)
+                        <option value="{{$kat->id_kat}}">{{ "$kat->kat_desc" }}
+                    @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="id_kat" class="form-label">Kategori</label>
+                    <select name="id_inisiatif" class="form-control" id="id_inisiatif">
+                    @foreach($inisiatif as $inis)
+                        <option value="{{$inis->id_inisiatif }}">{{ "$inis->inisiatif_desc" }}
+                    @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="sub_kat" class="form-label">Sub Kategori</label>
+                    <input name="sub_kat" type="text" class="form-control"
+                    id="sub_kat" value="">
+                </div>
+                <div class="mb-3">
+                    <label for="kpi_desc" class="form-label">Deskripsi KPI</label>
+                    <input name="kpi_desc" type="text" class="form-control"
+                    id="kpi_desc" value="">
+                </div>
+                <div class="mb-3">
+                    <label for="polaritas" class="form-label">Polaritas</label>
+                    <input name="polaritas" type="text" class="form-control"
+                    id="polaritas" value="">
+                </div>
+                <div class="mb-3">
+                    <label for="bobot" class="form-label">Bobot</label>
+                    <input name="bobot" type="text" class="form-control"
+                    id="bobot" value="">
+                </div>
                 <div class="mb-3">
                     <label for="desc_kpidir" class="form-label">Deskripsi Kategori</label>
                     <input name="desc_kpidir" type="text" class="form-control"
                     id="desc_kpidir" value="">
                 </div>
                 <div class="mb-3">
-                    <label for="satuan" class="form-label">Keterangan</label>
-                    <input name="satuan" type="text" class="form-control"
-                    id="satuan" value="">
-                </div>                                            
+                    <label for="target" class="form-label">Target</label>
+                    <input name="target" type="text" class="form-control"
+                    id="target" value="">
+                </div>
+                <div class="mb-3">
+                    <label for="div_lead" class="form-label">Lead Divisi</label>
+                    <select name="div_lead" class="form-control" id="div_lead">
+                    @foreach($divisi as $div)
+                        <option value="{{$div->id_divisi}}">{{ "$div->div_name" }}
+                    @endforeach
+                    </select>
+                </div>     
+                <div class="mb-3">
+                    <label for="tahun_kpippms" class="form-label">Tahun KPIPMS</label>
+                    <input name="tahun_kpippms" type="text" class="form-control"
+                    id="tahun_kpippms" value="">
+                </div>                                             
             </div>
+            
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
