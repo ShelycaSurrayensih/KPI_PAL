@@ -43,13 +43,13 @@
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                 <thead class="text-muted table-light ">
                                     <tr>
-                                        <th scope="col">ID Realisasi</th>
-                                        <th scope="col">Plan PMS</th>
-                                        <th scope="col">Progress</th>
-                                        <th scope="col">Deskripsi</th>
-                                        <th scope="col">Kendala</th>
-                                        <th scope="col">File Evidence</th>
-                                        <th scope="col">Action</th>
+                                        <th class="sort" data-sort="id_real">ID Realisasi</th>
+                                        <th class="sort" data-sort="id_plan">Plan PMS</th>
+                                        <th class="sort" data-sort="progres_real">Progress</th>
+                                        <th class="sort" data-sort="desc_real">Deskripsi</th>
+                                        <th class="sort" data-sort="kendala">Kendala</th>
+                                        <th class="sort" data-sort="file">File Evidence</th>
+                                        <th class="sort" data-sort="action">Action</th>
                                     </tr>
 
                                 </thead>
@@ -99,15 +99,11 @@
                                                 </div>
                                                 <div class="remove">
 
-                                                    <form action="" method="POST">
 
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit"
-                                                            class="btn btn-sm btn-danger remove-item-btn"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#deleteRecordModal">Delete</button>
-                                                    </form>
+                                                    <button type="submit" class="btn btn-sm btn-danger remove-item-btn"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#deleteRecordModal">Delete</button>
+
                                                 </div>
                                             </div>
                                         </td>
@@ -154,6 +150,45 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <!-- Delete Modal -->
+                                    <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close" id="btn-close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mt-2 text-center">
+                                                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json"
+                                                            trigger="loop" colors="primary:#f7b84b,secondary:#f06548"
+                                                            style="width:100px;height:100px"></lord-icon>
+                                                        <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
+                                                            <h4>Are you Sure ?</h4>
+                                                            <p class="text-muted mx-4 mb-0">Are you Sure You want to
+                                                                Remove this Record ?</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <form action="{{ route('realpms.destroy', $real->id_real) }}"
+                                                        method="POST">
+
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
+                                                            <button type="button" class="btn w-sm btn-light"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn w-sm btn-danger "
+                                                                id="delete-record">Yes, Delete It!</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end modal -->
                                     @endforeach
                                 </tbody><!-- end tbody -->
 

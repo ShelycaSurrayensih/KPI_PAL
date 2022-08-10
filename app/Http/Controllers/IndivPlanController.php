@@ -51,7 +51,7 @@ class IndivPlanController extends Controller
         $indivPlan->prognosa = $request->prognosa;
         $indivPlan->id_divisi= $request->id_divisi;
         $indivPlan->save();
-        return redirect()->route('KPI_Indiv.IndivPlan.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('KPI_IndivPlan.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Http\Controllers\IndhanTimController;
 use App\Http\Controllers\IndhanController;
 use App\Http\Controllers\IndhanRealisasiController;
 use App\Http\Controllers\IndivPlanController;
+use App\Http\Controllers\RKAP;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,8 @@ Route::get('/InisiatifStrategis', [App\Http\Controllers\RKAP::class, 'inisiatifS
 Route::get('/KategoriPMS', [App\Http\Controllers\RKAP::class, 'KategoriPmsIndex'])->name('KategoriPms.index');
 Route::get('/KPI_PMS', [App\Http\Controllers\RKAP::class, 'kpi_pmsIndex'])->name('kpi_pms.index');
 Route::get('/Plan_PMS', [App\Http\Controllers\RKAP::class, 'plan_pmsIndex'])->name('planpms.index');
+Route::delete('/Realisasi_PMS/destroy/{id}',[RKAP::class, 'real_pmsDestroy'])->name('realpms.destroy');
+
 Route::get('/Realisasi_PMS', [App\Http\Controllers\RKAP::class, 'real_pmsIndex'])->name('realpms.index');
 
 Route::post('/KPI_IndhanTim/update/{id}',[IndhanTimController::class, 'update'])->name('indhanTim.update');
@@ -66,7 +69,7 @@ Route::delete('/KPI_Indhan/destroy/{id}',[IndhanController::class, 'destroy'])->
 
 Route::post('/KPI_IndhanRealisasi/update/{id}',[IndhanRealisasiController::class, 'update'])->name('indhanReal.update');
 Route::post('/KPI_IndhanRealisasi/edit/{id}',[IndhanRealisasiController::class, 'edit'])->name('indhanReal.edit');
-Route::delete('/KPI_IndhanRealisasi/destroy/{id}',[IndhanControllerIndhanRealisasiController::class, 'destroy'])->name('indhanReal.destroy');
+Route::delete('/KPI_IndhanRealisasi/destroy/{id}',[IndhanRealisasiController::class, 'destroy'])->name('indhanReal.destroy');
 
 
 

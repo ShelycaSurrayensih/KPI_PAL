@@ -85,6 +85,13 @@ class RKAP extends Controller
         $plan->save();
         return redirect()->route('planpms.index');
     }
+    public function plan_pmsDestroy($id_plan)
+    {
+        $plan = planPms::where('id_plan', $id_plan);
+        $plan->delete();
+        return redirect()->route('planpms.index')
+            ->with('Sukses, data berhasil dihapus');
+    }
     public function plan_pmsIndex()
     {
         $users = auth()->user();
@@ -113,5 +120,12 @@ class RKAP extends Controller
         $plan = planPms::all();
 
         return view('RKAP.index_realisasi', compact ('users', 'real', 'plan'));
+    }
+    public function real_pmsDestroy($id_real)
+    {
+        $real = realisasiPms::where('id_real', $id_real);
+        $real->delete();
+        return redirect()->route('realpms.index')
+            ->with('Sukses, data berhasil dihapus');
     }
 }
