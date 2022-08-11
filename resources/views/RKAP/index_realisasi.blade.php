@@ -54,6 +54,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($real as $real)
+                                    @if($real->id_plan == $plan->id_plan)
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -179,6 +180,7 @@
                                         </div>
                                     </div>
                                     <!--end modal -->
+                                    @endif
                                     @endforeach
                                 </tbody><!-- end tbody -->
 

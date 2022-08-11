@@ -53,6 +53,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($plan as $plan)
+                                    @if($plan->id_kpipms == $kpi->id_kpipms)
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -153,6 +154,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                     @endforeach
                                 </tbody><!-- end tbody -->
 

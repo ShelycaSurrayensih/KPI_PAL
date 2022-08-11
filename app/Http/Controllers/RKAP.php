@@ -85,11 +85,11 @@ class RKAP extends Controller
         $plan->save();
         return redirect()->back();
     }
-    public function plan_pmsIndex($id)
+    public function plan_pmsIndex($id_kpipms)
     {
         $users = auth()->user();
         $plan = planPms::all();
-        $kpi = KpiPms::where('id_kpipms', $id)->first();
+        $kpi = KpiPms::where('id_kpipms', $id_kpipms)->first();
         $inisiatif = inisiatifStrategis::all();
         return view('RKAP.index_plan', compact ('users', 'kpi', 'plan','inisiatif'));
     }
