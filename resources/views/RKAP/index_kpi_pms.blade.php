@@ -117,11 +117,14 @@
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#showModal{{ $kpi->id_kpipms }}">Edit</button>
                                                 </div>
+                                                <div class="edit">
+                                                    <a  href="{{ route('planpms.index', $kpi->id_kpipms) }}">
+                                                        <button class="btn btn-sm btn-success edit-item-btn">Plan</button>
+                                                    </a>
+                                                </div>
                                                 <div class="remove">
-
                                                     <form action=""
                                                         method="POST">
-
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"
@@ -130,6 +133,7 @@
                                                             data-bs-target="#deleteRecordModal">Delete</button>
                                                     </form>
                                                 </div>
+                                                
                                             </div>
                                         </td>
                                     </tr><!-- end tr -->

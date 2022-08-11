@@ -786,13 +786,6 @@
                                     <a href="{{ route('kpi_pms.index') }}" class="nav-link"
                                         data-key="t-material-design">KPI PMS</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('planpms.index') }}" class="nav-link" data-key="t-line-awesome">
-                                        Plan PMS</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('realpms.index') }}" class="nav-link" data-key="t-feather">Realisasi PMS</a>
-                                </li>
                             </ul>
                         </div>
                     </li>

@@ -20,7 +20,7 @@ class CreateRealisasiPmsTable extends Migration
             $table->string('progres_real');
             $table->text('desc_real');
             $table->text('kendala');
-            $table->text('file_evidence');
+            $table->text('file_evidence')->nullable();
         });
     }
 

@@ -5,7 +5,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Individual KPI</h4>
+                <h4 class="card-title mb-0 flex-grow-1"> {{$kpi->kpi_desc}}</h4>
                 <div class="flex-shrink-0">
                     <button type="button" class="btn btn-soft-info btn-sm shadow-none">
                         <i class="ri-file-list-3-line align-middle"></i> Generate Report
@@ -44,7 +44,6 @@
                                 <thead class="text-muted table-light ">
                                     <tr>
                                         <th scope="col">ID Plan</th>
-                                        <th scope="col">KPI PMS</th>
                                         <th scope="col">TW</th>
                                         <th scope="col">Progress</th>
                                         <th scope="col">Deskripsi</th>
@@ -58,15 +57,6 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $plan->id_plan }}</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                @foreach($kpi as $kpis)
-                                                @if($plan->id_kpipms == $kpis->id_kpipms)
-                                                <div class="flex-grow-1">{{ $kpis->kpi_desc }}</div>
-                                                @endif
-                                                @endforeach
                                             </div>
                                         </td>
                                         <td>
@@ -91,6 +81,11 @@
                                                     <button class="btn btn-sm btn-success edit-item-btn"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#showModal{{ $plan->id_plan }}">Edit</button>
+                                                </div>
+                                                <div class="edit">
+                                                    <a href="{{ route('realpms.index', $plan->id_plan) }}">
+                                                        <button class="btn btn-sm btn-success edit-item-btn">Realisasi</button>
+                                                    </a>
                                                 </div>
                                                 <div class="remove">
 
@@ -201,11 +196,8 @@
                     @csrf
                     <div class="mb-3">
                         <label for="id_kpipms" class="form-label">KPI PMS</label>
-                        <select name="id_kpipms" class="form-control" id="id_kpipms">
-                            @foreach($kpi as $kpis)
-                            <option value="{{$kpis->id_kpipms }}">{{ "$kpis->kpi_desc" }}
-                                @endforeach
-                        </select>
+                        <input name="id_kpipms" type="text" class="form-control" id="id_kpipms" value="{{$kpi->id_kpipms}}" readonly hidden>
+                        <input name="" type="text" class="form-control" id="" value="{{$kpi->kpi_desc}}" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="tw" class="form-label">TW</label>

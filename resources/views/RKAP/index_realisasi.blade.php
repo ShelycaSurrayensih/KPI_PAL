@@ -5,7 +5,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Individual KPI</h4>
+                <h4 class="card-title mb-0 flex-grow-1">{{$plan->progress_plan}}</h4>
                 <div class="flex-shrink-0">
                     <button type="button" class="btn btn-soft-info btn-sm shadow-none">
                         <i class="ri-file-list-3-line align-middle"></i> Generate Report
@@ -44,7 +44,6 @@
                                 <thead class="text-muted table-light ">
                                     <tr>
                                         <th class="sort" data-sort="id_real">ID Realisasi</th>
-                                        <th class="sort" data-sort="id_plan">Plan PMS</th>
                                         <th class="sort" data-sort="progres_real">Progress</th>
                                         <th class="sort" data-sort="desc_real">Deskripsi</th>
                                         <th class="sort" data-sort="kendala">Kendala</th>
@@ -59,15 +58,6 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $real->id_real }}</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                @foreach($plan as $plans)
-                                                @if($real->id_plan == $plans->id_plan)
-                                                <div class="flex-grow-1">{{ $plans->progress_plan }}</div>
-                                                @endif
-                                                @endforeach
                                             </div>
                                         </td>
                                         <td>
@@ -232,11 +222,8 @@
                     @csrf
                     <div class="mb-3">
                         <label for="id_plan" class="form-label">Plan</label>
-                        <select name="id_plan" class="form-control" id="id_plan">
-                            @foreach($plan as $pl)
-                            <option value="{{$pl->id_plan }}">{{ "$pl->progress_plan" }}
-                                @endforeach
-                        </select>
+                            <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
+                            <input name="" type="text" class="form-control" id="" value="{{$plan->progress_plan}}" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="progres_real" class="form-label">Progress</label>

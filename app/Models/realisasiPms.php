@@ -14,7 +14,6 @@ class realisasiPms extends Model
         'progres_real',
         'desc_real',
         'kendala',
-        'file',
     ];
 
     public function plan_pms(){

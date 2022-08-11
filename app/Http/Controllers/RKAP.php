@@ -83,7 +83,15 @@ class RKAP extends Controller
         $plan->progress_plan = $request->get('progress_plan');
         $plan->desc_progress = $request->get('desc_progress');
         $plan->save();
-        return redirect()->route('planpms.index');
+        return redirect()->back();
+    }
+    public function plan_pmsIndex($id)
+    {
+        $users = auth()->user();
+        $plan = planPms::all();
+        $kpi = KpiPms::where('id_kpipms', $id)->first();
+        $inisiatif = inisiatifStrategis::all();
+        return view('RKAP.index_plan', compact ('users', 'kpi', 'plan','inisiatif'));
     }
     public function plan_pmsDestroy($id_plan)
     {
@@ -91,14 +99,6 @@ class RKAP extends Controller
         $plan->delete();
         return redirect()->route('planpms.index')
             ->with('Sukses, data berhasil dihapus');
-    }
-    public function plan_pmsIndex()
-    {
-        $users = auth()->user();
-        $plan = planPms::all();
-        $kpi = KpiPms::all();
-        $inisiatif = inisiatifStrategis::all();
-        return view('RKAP.index_plan', compact ('users', 'kpi', 'plan','inisiatif'));
     }
 
     //Realisasi PMS
@@ -111,13 +111,13 @@ class RKAP extends Controller
         $real->kendala = $request->kendala;
         $real->file_evidence = $request->file_evidence;
         $real->save();
-        return redirect()->route('realpms.index');
+        return redirect()->back();
     }
-    public function real_pmsIndex()
+    public function real_pmsIndex($id)
     {
         $users = auth()->user();
         $real = realisasiPms::all();
-        $plan = planPms::all();
+        $plan = planPms::where('id_plan', $id)->first();
 
         return view('RKAP.index_realisasi', compact ('users', 'real', 'plan'));
     }
