@@ -72,13 +72,11 @@
                                             <div class="d-flex gap-2">
                                                 <div class="edit">
                                                     <button class="btn btn-sm btn-success edit-item-btn"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#showModal{{ $kateg->id_kat }}">Edit</button>
+                                                        data-bs-toggle="modal" data-bs-target="#showModal{{ $kateg->id_kategori }}">Edit</button>
                                                 </div>
                                                 <div class="remove">
 
-                                                    <form action=""
-                                                        method="POST">
+                                                    <form action="" method="POST">
 
                                                         @csrf
                                                         @method('DELETE')
@@ -104,27 +102,34 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post"
-                                                        action=""
-                                                        enctype="multipart/form-data" id="myForm">
+                                                    <form method="post" action="" enctype="multipart/form-data"
+                                                        id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Deskripsi kategori</label>
+                                                            <label for="desc_kpidir" class="form-label">ID
+                                                                kategori</label>
                                                             <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="">
+                                                                id="desc_kpidir" value="{{ $kateg->id_kat }}" readonly>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="desc_kpidir" class="form-label">Deskripsi
+                                                                kategori</label>
+                                                            <input name="desc_kpidir" type="text" class="form-control"
+                                                                id="desc_kpidir" value="{{ $kateg->kat_desc }}">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="satuan" class="form-label">Keterangan</label>
                                                             <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="">
+                                                                id="satuan" value="{{ $kateg->ket }}">
                                                         </div>
-                                                        
+
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="hstack gap-2 justify-content-end">
                                                         <button type="button" class="btn btn-light"
                                                             data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success" id="add-btn">Add KPI</button>
+                                                        <button type="submit" class="btn btn-success" id="add-btn">Add
+                                                            KPI</button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -170,19 +175,17 @@
             </div>
 
             <div class="modal-body">
-            <form method="post" action="{{  route('KategoriPms.store')  }}"
-            enctype="multipart/form-data" id="myForm">
-            @csrf
-                <div class="mb-3">
-                    <label for="kat_desc" class="form-label">Deskripsi Kategori</label>
-                    <input name="kat_desc" type="text" class="form-control"
-                    id="kat_desc" >
-                </div>
-                <div class="mb-3">
-                    <label for="ket" class="form-label">Keterangan</label>
-                    <input name="ket" type="text" class="form-control"
-                    id="ket" >
-                </div>                                            
+                <form method="post" action="{{  route('KategoriPms.store')  }}" enctype="multipart/form-data"
+                    id="myForm">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="kat_desc" class="form-label">Deskripsi Kategori</label>
+                        <input name="kat_desc" type="text" class="form-control" id="kat_desc">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ket" class="form-label">Keterangan</label>
+                        <input name="ket" type="text" class="form-control" id="ket">
+                    </div>
             </div>
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">

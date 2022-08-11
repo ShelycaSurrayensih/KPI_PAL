@@ -105,18 +105,23 @@
                                                 <div class="modal-body">
                                                     <form method="post" action="" enctype="multipart/form-data"
                                                         id="myForm">
-                                                        @csrf
+                                                        @csrf<div class="mb-3">
+                                                            <label for="desc_kpidir" class="form-label">ID
+                                                                Inisiatif</label>
+                                                            <input name="desc_kpidir" type="text" class="form-control"
+                                                                id="desc_kpidir" value="{{ $init->id_inisiatif }}" readonly>
+                                                        </div>
                                                         <div class="mb-3">
                                                             <label for="desc_kpidir" class="form-label">Deskripsi
                                                                 Inisiatif</label>
                                                             <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="">
+                                                                id="desc_kpidir" value="{{ $init->inisiatif_desc }}">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="satuan" class="form-label">Tahun
                                                                 Inisiatif</label>
                                                             <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="">
+                                                                id="satuan" value="{{ $init->tahun_inisiatif }}">
                                                         </div>
 
                                                 </div>

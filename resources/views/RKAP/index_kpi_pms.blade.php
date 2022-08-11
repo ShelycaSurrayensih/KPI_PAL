@@ -155,14 +155,54 @@
                                                         enctype="multipart/form-data" id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Deskripsi kategori</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="">
+                                                            <label for="desc_kpidir" class="form-label">ID KPI PMS</label>
+                                                            <input readonly name="desc_kpidir" type="text" class="form-control"
+                                                                id="desc_kpidir" value="{{ $kpi->id_kpipms }}" >
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Keterangan</label>
+                                                            <label for="satuan" class="form-label">Inisiatif Strategis</label>
                                                             <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="">
+                                                                id="satuan" value="{{ $kpi->id_inisiatif }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="desc_kpidir" class="form-label">Kategori</label>
+                                                            <input name="desc_kpidir" type="text" class="form-control"
+                                                                id="desc_kpidir" value="{{ $kpi->id_kat }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="satuan" class="form-label">Sub Kategori</label>
+                                                            <input name="satuan" type="text" class="form-control"
+                                                                id="satuan" value="{{ $kpi->sub_kat }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="desc_kpidir" class="form-label">Deskripsi kategori</label>
+                                                            <input name="desc_kpidir" type="text" class="form-control"
+                                                                id="desc_kpidir" value="{{ $kpi->kpi_desc }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="satuan" class="form-label">Polaritas</label>
+                                                            <input name="satuan" type="text" class="form-control"
+                                                                id="satuan" value="{{ $kpi->polaritas }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="desc_kpidir" class="form-label">Bobot</label>
+                                                            <input name="desc_kpidir" type="text" class="form-control"
+                                                                id="desc_kpidir" value="{{ $kpi->bobot }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="satuan" class="form-label">Target</label>
+                                                            <input name="satuan" type="text" class="form-control"
+                                                                id="satuan" value="{{ $kpi->target }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="desc_kpidir" class="form-label">Lead Divisi</label>
+                                                            <input name="desc_kpidir" type="text" class="form-control"
+                                                                id="desc_kpidir" value="{{ $kpi->div_lead }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="satuan" class="form-label">Tahun KPI PMS</label>
+                                                            <input name="satuan" type="text" class="form-control"
+                                                                id="satuan" value="{{ $kpi->tahun_kpipms }}">
                                                         </div>
                                                         
                                                 </div>

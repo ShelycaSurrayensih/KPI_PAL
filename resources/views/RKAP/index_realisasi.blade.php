@@ -116,16 +116,29 @@
                                                         id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Deskripsi
-                                                                Inisiatif</label>
+                                                            <label for="desc_kpidir" class="form-label">ID Realisasi</label>
                                                             <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="">
+                                                                id="desc_kpidir" value="{{ $real->id_real }}" readonly>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Tahun
-                                                                Inisiatif</label>
+                                                            <label for="satuan" class="form-label">Progress</label>
                                                             <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="">
+                                                                id="satuan" value="{{ $real->progres_real }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="desc_kpidir" class="form-label">Deskripsi</label>
+                                                            <input name="desc_kpidir" type="text" class="form-control"
+                                                                id="desc_kpidir" value="{{ $real->desc_real }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="satuan" class="form-label">Kendala</label>
+                                                            <input name="satuan" type="text" class="form-control"
+                                                                id="satuan" value="{{ $real->kendala }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="satuan" class="form-label">File Evidance</label>
+                                                            <input name="satuan" type="text" class="form-control"
+                                                                id="satuan" value="{{ $real->file_evidence }}">
                                                         </div>
 
                                                 </div>

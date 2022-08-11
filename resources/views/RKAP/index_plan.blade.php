@@ -120,26 +120,26 @@
                                                         id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="id_kpipms" class="form-label">KPI PMS</label>
+                                                            <label for="id_kpipms" class="form-label">ID Plan</label>
                                                             <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="">
+                                                                id="desc_kpidir" value="{{ $plan->id_plan }}" readonly>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="tw" class="form-label">TW</label>
                                                             <input name="tw" type="text" class="form-control" id="tw"
-                                                                value="">
+                                                                value="{{ $plan->tw }}">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="progress_plan"
                                                                 class="form-label">Progress</label>
                                                             <input name="progress_plan" type="text" class="form-control"
-                                                                id="progress_plan" value="">
+                                                                id="progress_plan" value="{{ $plan->progress_plan }}">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="desc_progress" class="form-label">Deskripsi
                                                                 Progress</label>
                                                             <input name="desc_progress" type="text" class="form-control"
-                                                                id="desc_progress" value="">
+                                                                id="desc_progress" value="{{ $plan->desc_progress }}">
                                                         </div>
                                                 </div>
                                                 <div class="modal-footer">
