@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\IndivKpiDir;
 use App\Models\IndivPlan;
 use App\Models\Divisi;
+use App\Models\Direktorat;
 
 class IndivPlanController extends Controller
 {
@@ -17,10 +18,11 @@ class IndivPlanController extends Controller
     public function index()
     {
         $users = auth()->user();
+        $direktorat = Direktorat::all();
         $kpidir = IndivKpiDir::all();
         $indivPlan = IndivPlan::all();
         $divisi = Divisi::all();
-        return view('KPI_Indiv.Indiv_Plan.index', compact ('users', 'kpidir', 'indivPlan', 'divisi'));
+        return view('KPI_Indiv.index', compact ('users', 'kpidir', 'direktorat','indivPlan', 'divisi'));
     }
 
     /**
@@ -31,10 +33,11 @@ class IndivPlanController extends Controller
     public function create()
     {
         $users = auth()->user();
+        $direktorat = Direktorat::all();
         $kpidir = IndivKpiDir::all();
         $indivPlan = IndivPlan::all();
         $divisi = Divisi::all();
-        return view('KPI_Indiv.Indiv_Plan.index', compact ('users', 'kpidir', 'indivPlan', 'divisi'));
+        return view('KPI_Indiv.index', compact ('users', 'kpidir', 'direktorat', 'indivPlan', 'divisi'));
     }
 
     /**
@@ -108,7 +111,7 @@ class IndivPlanController extends Controller
     {
         $indivPlan = IndivPlan::where('id_plan', $id_plan);
         $indivPlan->delete();
-        return redirect()->route('KPI_Indiv.IndivPlan.index')
+        return redirect()->route('KPI_Indiv.index')
             ->with('Sukses, data berhasil dihapus');
     }
 }
