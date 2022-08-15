@@ -90,7 +90,7 @@
                                                 </div>
                                                 <div class="remove">
 
-                                                    <form action="" method="POST">
+                                                    <form action="{{ route('planpms.destroy', $plan->id_plan) }}" method="POST">
 
                                                         @csrf
                                                         @method('DELETE')

@@ -49,7 +49,15 @@ Route::get('/KPI_PMS', [App\Http\Controllers\RKAP::class, 'kpi_pmsIndex'])->name
 Route::get('/Plan_PMS/{id_kpipms}', [App\Http\Controllers\RKAP::class, 'plan_pmsIndex'])->name('planpms.index');
 Route::get('/Realisasi_PMS/{id_kpipms}', [App\Http\Controllers\RKAP::class, 'real_pmsIndex'])->name('realpms.index');
 
+//RKAP Update
+Route::post('/inisiatifStrategis/update/{id}', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisUpdate'])->name('inisiatifStrategis.update');
+Route::post('/KategoriPMS/update/{id}', [App\Http\Controllers\RKAP::class, 'KategoriPmsUpdate'])->name('KategoriPms.update');
+
 //RKAP Delete
+Route::delete('/InisiatifStrategis/delete/{id}',[RKAP::class, 'inisiatifStrategisDelete'])->name('inisiatifStrategis.destroy');
+Route::delete('/KategoriPMS/delete/{id}',[RKAP::class, 'KategoriPmsDelete'])->name('KategoriPms.destroy');
+Route::delete('/KPI_PMS/delete/{id}',[RKAP::class, 'kpi_pmsDelete'])->name('kpi_pms.destroy');
+Route::delete('/Plan_PMS/delete/{id}',[RKAP::class, 'plan_pmsDelete'])->name('planpms.destroy');
 Route::delete('/Realisasi_PMS/destroy/{id}',[RKAP::class, 'real_pmsDestroy'])->name('realpms.destroy');
 
 Route::post('/KPI_IndhanTim/update/{id}',[IndhanTimController::class, 'update'])->name('indhanTim.update');

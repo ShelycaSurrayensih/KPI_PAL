@@ -16,7 +16,7 @@ class CreateRealisasiPmsTable extends Migration
         Schema::create('realisasi_pms', function (Blueprint $table) {
             $table->id('id_real');
             $table->unsignedBigInteger('id_plan');
-            $table->foreign('id_plan')->references('id_plan')->on('plan_pms');
+            $table->foreign('id_plan')->references('id_plan')->on('plan_pms')->onDelete('cascade');
             $table->string('progres_real');
             $table->text('desc_real');
             $table->text('kendala');

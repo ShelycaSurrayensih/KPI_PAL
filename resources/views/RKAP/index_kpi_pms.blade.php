@@ -123,7 +123,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="remove">
-                                                    <form action=""
+                                                    <form action="{{ route('kpi_pms.destroy', $kpi->id_kpipms) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')

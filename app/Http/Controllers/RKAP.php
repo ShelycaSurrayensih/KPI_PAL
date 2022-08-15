@@ -30,6 +30,22 @@ class RKAP extends Controller
         return view('RKAP.index_inisiatif', compact('inisiatif', 'users'));
     }
 
+    public function inisiatifStrategisUpdate(Request $request, $id)
+    {
+        $init = inisiatifStrategis::where('id_inisiatif', $id)->first();
+        $init->id_inisiatif = $request->get('id_inisiatif');
+        $init->inisiatif_desc = $request->get('inisiatif_desc');
+        $init->tahun_inisiatif = $request->get('tahun_inisiatif');
+        $init->save();
+        return redirect()->back();
+    }
+    public function inisiatifStrategisDelete($id)
+    {
+        $init = inisiatifStrategis::where('id_inisiatif', $id);
+        $init->delete();
+        return redirect()->back()
+            ->with('Sukses, data berhasil dihapus');
+    }
     //Kategori PMS
     public function KategoriPmsStore(Request $request)
     {
@@ -48,6 +64,21 @@ class RKAP extends Controller
         return view('RKAP.index_kategori', compact ('users', 'kategori'));
     }
     
+    public function KategoriPmsUpdate(Request $request, $id)
+    {
+        $kategori = KategoriPms::where('id_kat', $id)->first();
+        $kategori->kat_desc = $request->get('kat_desc');
+        $kategori->ket = $request->get('ket');
+        $kategori->save();
+        return redirect()->back();
+    }
+    public function KategoriPmsDelete($id)
+    {
+        $kategori = KategoriPms::where('id_kat', $id);
+        $kategori->delete();
+        return redirect()->back()
+            ->with('Sukses, data berhasil dihapus');
+    }
     //KPI PMS
     public function kpi_pmsStore(Request $request)
     {
@@ -73,7 +104,13 @@ class RKAP extends Controller
         $divisi = Divisi::all();
         return view('RKAP.index_kpi_pms', compact ('users', 'kpi', 'kategori', 'inisiatif', 'divisi'));
     }
-
+    public function kpi_pmsDelete($id)
+    {
+        $kpi = KpiPms::where('id_kpipms', $id);
+        $kpi->delete();
+        return redirect()->back()
+            ->with('Sukses, data berhasil dihapus');
+    }
     //Plan PMS
     public function plan_pmsStore(Request $request)
     {
@@ -93,11 +130,11 @@ class RKAP extends Controller
         $inisiatif = inisiatifStrategis::all();
         return view('RKAP.index_plan', compact ('users', 'kpi', 'plan','inisiatif'));
     }
-    public function plan_pmsDestroy($id_plan)
+    public function plan_pmsDelete($id)
     {
-        $plan = planPms::where('id_plan', $id_plan);
+        $plan = planPms::where('id_plan', $id);
         $plan->delete();
-        return redirect()->route('planpms.index')
+        return redirect()->back()
             ->with('Sukses, data berhasil dihapus');
     }
 
@@ -110,7 +147,7 @@ class RKAP extends Controller
         $real->desc_real = $request->desc_real;
         $real->kendala = $request->kendala;
         $real->file_evidence = $request->file_evidence;
-        $real->save();
+        $real->save(); 
         return redirect()->back();
     }
     public function real_pmsIndex($id)

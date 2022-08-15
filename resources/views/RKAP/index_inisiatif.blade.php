@@ -77,7 +77,7 @@
                                                 </div>
                                                 <div class="remove">
 
-                                                    <form action="" method="POST">
+                                                    <form action="{{ route('inisiatifStrategis.destroy', $init->id_inisiatif) }}" method="POST">
 
                                                         @csrf
                                                         @method('DELETE')
@@ -103,25 +103,32 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post" action="" enctype="multipart/form-data"
-                                                        id="myForm">
-                                                        @csrf<div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">ID
-                                                                Inisiatif</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="{{ $init->id_inisiatif }}" readonly>
+                                                    <form method="post"
+                                                        action="{{ route('inisiatifStrategis.update', $init->id_inisiatif) }}"
+                                                        enctype="multipart/form-data" id="myForm">
+                                                        @csrf
+                                                        <div class="mb-3">
+                                                            <label for="id" class="form-label">Divisi</label>
+                                                            <input name="id" value="{{$init->id_inisiatif}}"
+                                                                class="form-control" id="id" placeholder
+                                                                readonly="">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Deskripsi
-                                                                Inisiatif</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="{{ $init->inisiatif_desc }}">
+                                                            <label for="id_inisiatif" class="form-label">Divisi</label>
+                                                            <input name="id_inisiatif" value="{{$init->id_inisiatif}}"
+                                                                class="form-control" id="id_inisiatif" placeholder
+                                                                readonly="">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Tahun
-                                                                Inisiatif</label>
-                                                            <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="{{ $init->tahun_inisiatif }}">
+                                                            <label for="inisiatif_desc" class="form-label">Divisi</label>
+                                                            <input name="inisiatif_desc" value="{{$init->inisiatif_desc}}"
+                                                                class="form-control" id="inisiatif_desc" placeholder
+                                                                readonly="">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="tahun_inisiatif" class="form-label">KPI</label>
+                                                            <input name="tahun_inisiatif" type="text" class="form-control"
+                                                                id="tahun_inisiatif" value="{{$init->tahun_inisiatif}}">
                                                         </div>
 
                                                 </div>

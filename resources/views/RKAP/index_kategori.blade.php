@@ -72,11 +72,11 @@
                                             <div class="d-flex gap-2">
                                                 <div class="edit">
                                                     <button class="btn btn-sm btn-success edit-item-btn"
-                                                        data-bs-toggle="modal" data-bs-target="#showModal{{ $kateg->id_kategori }}">Edit</button>
+                                                        data-bs-toggle="modal" data-bs-target="#showModal{{ $kateg->id_kat }}">Edit</button>
                                                 </div>
                                                 <div class="remove">
 
-                                                    <form action="" method="POST">
+                                                    <form action="{{ route('KategoriPms.destroy', $kateg->id_kat) }}" method="POST">
 
                                                         @csrf
                                                         @method('DELETE')
@@ -91,7 +91,7 @@
                                     </tr><!-- end tr -->
 
                                     <!-- edit Modal -->
-                                    <div class="modal fade" id="showModal{{ $kateg->id_kategori }}" tabindex="-1"
+                                    <div class="modal fade" id="showModal{{ $kateg->id_kat }}" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -102,25 +102,19 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post" action="" enctype="multipart/form-data"
+                                                    <form method="post" action="{{ route('KategoriPms.update', $kateg->id_kat)}}" enctype="multipart/form-data"
                                                         id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">ID
-                                                                kategori</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="{{ $kateg->id_kat }}" readonly>
-                                                        </div>
-                                                        <div class="mb-3">
                                                             <label for="desc_kpidir" class="form-label">Deskripsi
                                                                 kategori</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="{{ $kateg->kat_desc }}">
+                                                            <input name="kat_desc" type="text" class="form-control"
+                                                                id="kat_desc" value="{{ $kateg->kat_desc }}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Keterangan</label>
-                                                            <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="{{ $kateg->ket }}">
+                                                            <label for="ket" class="form-label">Keterangan</label>
+                                                            <input name="ket" type="text" class="form-control"
+                                                                id="ket" value="{{ $kateg->ket }}">
                                                         </div>
 
                                                 </div>
