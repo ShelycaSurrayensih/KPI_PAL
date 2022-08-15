@@ -52,6 +52,9 @@ Route::get('/Realisasi_PMS/{id_kpipms}', [App\Http\Controllers\RKAP::class, 'rea
 //RKAP Update
 Route::post('/inisiatifStrategis/update/{id}', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisUpdate'])->name('inisiatifStrategis.update');
 Route::post('/KategoriPMS/update/{id}', [App\Http\Controllers\RKAP::class, 'KategoriPmsUpdate'])->name('KategoriPms.update');
+Route::post('/KPI_PMS/update/{id}', [App\Http\Controllers\RKAP::class, 'kpi_pmsUpdate'])->name('kpi_pms.update');
+Route::post('/Plan_PMS/update/{id}', [App\Http\Controllers\RKAP::class, 'plan_pmsUpdate'])->name('planpms.update');
+Route::post('/Realisasi_PMS/update/{id}', [App\Http\Controllers\RKAP::class, 'real_pmsUpdate'])->name('realpms.update');
 
 //RKAP Delete
 Route::delete('/InisiatifStrategis/delete/{id}',[RKAP::class, 'inisiatifStrategisDelete'])->name('inisiatifStrategis.destroy');

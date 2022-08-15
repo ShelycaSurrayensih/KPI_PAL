@@ -142,58 +142,59 @@
 
                                                 <div class="modal-body">
                                                     <form method="post"
-                                                        action=""
+                                                        action="{{ route('kpi_pms.update', $kpi->id_kpipms)}}"
                                                         enctype="multipart/form-data" id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">ID KPI PMS</label>
-                                                            <input readonly name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="{{ $kpi->id_kpipms }}" >
+                                                            <label for="id_inisiatif" class="form-label">Inisiatif Strategis</label>
+                                                            <select name="id_inisiatif" class="form-control" id="id_inisiatif">
+                                                            @foreach($inisiatif as $inis)
+                                                                <option value="{{$inis->id_inisiatif }}">{{ "$inis->inisiatif_desc" }}
+                                                            @endforeach
+                                                            </select>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Inisiatif Strategis</label>
-                                                            <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="{{ $kpi->id_inisiatif }}">
+                                                            <label for="id_kat" class="form-label">Kategori</label>
+                                                            <select name="id_kat" class="form-control" id="id_kat">
+                                                            @foreach($kategori as $kat)
+                                                                <option value="{{$kat->id_kat}}">{{ "$kat->kat_desc" }}
+                                                            @endforeach
+                                                            </select>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Kategori</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="{{ $kpi->id_kat }}">
+                                                            <label for="sub_kat" class="form-label">Sub Kategori</label>
+                                                            <input name="sub_kat" type="text" class="form-control"
+                                                                id="sub_kat" value="{{ $kpi->sub_kat }}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Sub Kategori</label>
-                                                            <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="{{ $kpi->sub_kat }}">
+                                                            <label for="kpi_desc" class="form-label">Deskripsi kategori</label>
+                                                            <input name="kpi_desc" type="text" class="form-control"
+                                                                id="kpi_desc" value="{{ $kpi->kpi_desc }}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Deskripsi kategori</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="{{ $kpi->kpi_desc }}">
+                                                            <label for="polaritas" class="form-label">Polaritas</label>
+                                                            <input name="polaritas" type="text" class="form-control"
+                                                                id="polaritas" value="{{ $kpi->polaritas }}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Polaritas</label>
-                                                            <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="{{ $kpi->polaritas }}">
+                                                            <label for="bobot" class="form-label">Bobot</label>
+                                                            <input name="bobot" type="text" class="form-control"
+                                                                id="bobot" value="{{ $kpi->bobot }}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Bobot</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="{{ $kpi->bobot }}">
+                                                            <label for="target" class="form-label">Target</label>
+                                                            <input name="target" type="text" class="form-control"
+                                                                id="target" value="{{ $kpi->target }}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Target</label>
-                                                            <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="{{ $kpi->target }}">
+                                                            <label for="div_lead" class="form-label">Lead Divisi</label>
+                                                            <input name="div_lead" type="text" class="form-control"
+                                                                id="div_lead" value="{{ $kpi->div_lead }}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Lead Divisi</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="{{ $kpi->div_lead }}">
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Tahun KPI PMS</label>
-                                                            <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="{{ $kpi->tahun_kpipms }}">
+                                                            <label for="tahun_kpipms" class="form-label">Tahun KPI PMS</label>
+                                                            <input name="tahun_kpipms" type="text" class="form-control"
+                                                                id="tahun_kpipms" value="{{ $kpi->tahun_kpipms }}">
                                                         </div>
                                                         
                                                 </div>
@@ -260,7 +261,7 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="id_kat" class="form-label">Kategori</label>
+                    <label for="id_kat" class="form-label">Inisiatif Strategis</label>
                     <select name="id_inisiatif" class="form-control" id="id_inisiatif">
                     @foreach($inisiatif as $inis)
                         <option value="{{$inis->id_inisiatif }}">{{ "$inis->inisiatif_desc" }}

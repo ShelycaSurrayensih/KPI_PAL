@@ -43,7 +43,6 @@
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                 <thead class="text-muted table-light ">
                                     <tr>
-                                        <th scope="col">ID Inisiatif</th>
                                         <th scope="col">Inisiatif Deskripsi</th>
                                         <th scope="col">Tahun Inisiatif KPI</th>
                                         <th scope="col">Action</th>

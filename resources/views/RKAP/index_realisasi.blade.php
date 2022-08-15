@@ -106,7 +106,7 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post" action="" enctype="multipart/form-data"
+                                                    <form method="post" action="{{ route('realpms.update', $real->id_real)}}" enctype="multipart/form-data"
                                                         id="myForm">
                                                         @csrf
                                                         <div class="mb-3">

@@ -110,7 +110,7 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post" action="" enctype="multipart/form-data"
+                                                    <form method="post" action="{{ route('planpms.update', $plan->id_plan)}}" enctype="multipart/form-data"
                                                         id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
