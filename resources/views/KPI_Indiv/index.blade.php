@@ -238,7 +238,7 @@
                                                             <label for="id_kpidir">ID KPI</label>
 
                                                             <input name="id_kpidir" class="form-control" id="id_kpidir"
-                                                                value="{{$kpidir->desc_kpidir}}" readonly="">
+                                                                value="{{$kpidir->id_kpidir}}" readonly="">
                                                             </input>
 
 
@@ -258,7 +258,7 @@
                                                             <label for="id_divisi">ID Divisi</label>
                                                             @foreach($divisi as $div)
                                                             @if($kpidir->id_divisi == $div->id_divisi)
-                                                            <input name="id_divisi" value="{{ $div->div_name }}"
+                                                            <input name="id_divisi" value="{{ $div->id_divisi }}"
                                                                 class="form-control" id="id_divisi" readonly="">
 
                                                             @endif @endforeach
