@@ -43,7 +43,6 @@
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                 <thead class="text-muted table-light ">
                                     <tr>
-                                        <th scope="col">ID Kategori</th>
                                         <th scope="col">Kategori Deskripsi</th>
                                         <th scope="col">Keterangan</th>
                                         <th scope="col">Action</th>
@@ -53,11 +52,6 @@
                                 <tbody>
                                     @foreach($kategori as $kateg)
                                     <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kateg->id_kat }}</div>
-                                            </div>
-                                        </td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kateg->kat_desc }}</div>

@@ -55,11 +55,6 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $init->id_inisiatif }}</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $init->inisiatif_desc }}</div>
                                             </div>
                                         </td>
@@ -108,13 +103,7 @@
                                                         enctype="multipart/form-data" id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="id" class="form-label">Divisi</label>
-                                                            <input name="id" value="{{$init->id_inisiatif}}"
-                                                                class="form-control" id="id" placeholder
-                                                                readonly="">
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="id_inisiatif" class="form-label">Divisi</label>
+                                                            <label for="id_inisiatif" class="form-label">ID_inisiatif</label>
                                                             <input name="id_inisiatif" value="{{$init->id_inisiatif}}"
                                                                 class="form-control" id="id_inisiatif" placeholder
                                                                 readonly="">

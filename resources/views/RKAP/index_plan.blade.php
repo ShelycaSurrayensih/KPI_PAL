@@ -43,7 +43,6 @@
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                 <thead class="text-muted table-light ">
                                     <tr>
-                                        <th scope="col">ID Plan</th>
                                         <th scope="col">TW</th>
                                         <th scope="col">Progress</th>
                                         <th scope="col">Deskripsi</th>
@@ -55,11 +54,6 @@
                                     @foreach($plan as $plan)
                                     @if($plan->id_kpipms == $kpi->id_kpipms)
                                     <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $plan->id_plan }}</div>
-                                            </div>
-                                        </td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $plan->tw }}</div>

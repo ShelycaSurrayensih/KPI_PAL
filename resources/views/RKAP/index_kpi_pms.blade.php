@@ -43,8 +43,6 @@
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                 <thead class="text-muted table-light ">
                                     <tr>
-                                        <th scope="col">ID KPI PMS</th>
-                                        <th scope="col">Inisiatif Strategis</th>
                                         <th scope="col">Kategori</th>
                                         <th scope="col">Sub Kategori</th>
                                         <th scope="col">Deskripsi</th>
@@ -60,20 +58,13 @@
                                 <tbody>
                                     @foreach($kpi as $kpi)
                                     <tr>
-                                        <td>
+                                        <td> @foreach($kategori as $kat)
+                                            @if($kat->id_kat == $kpi->id_kat)
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpi->id_kpipms }}</div>
+                                                <div class="flex-grow-1">{{ $kat->ket }}.{{ $kat->kat_desc }}</div>
                                             </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpi->id_inisiatif }}</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpi->id_kat }}</div>
-                                            </div>
+                                            @endif
+                                            @endforeach
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -119,7 +110,7 @@
                                                 </div>
                                                 <div class="edit">
                                                     <a  href="{{ route('planpms.index', $kpi->id_kpipms) }}">
-                                                        <button class="btn btn-sm btn-success edit-item-btn">Plan</button>
+                                                        <button class="btn btn-sm btn-success edit-item-btn">Details</button>
                                                     </a>
                                                 </div>
                                                 <div class="remove">
