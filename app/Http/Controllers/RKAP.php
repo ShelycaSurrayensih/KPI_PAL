@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Models\inisiatifStrategis;
+use App\Models\InisiatifStrategis;
 use App\Models\KategoriPms;
 use App\Models\KpiPms;
 use App\Models\planPms;
@@ -30,13 +30,9 @@ class RKAP extends Controller
         return view('RKAP.index_inisiatif', compact('inisiatif', 'users'));
     }
 
-    public function inisiatifStrategisUpdate(Request $request, $id)
+    public function inisiatifStrategisUpdate(Request $request, $id_inisiatif)
     {
-        $init = inisiatifStrategis::where('id_inisiatif', $id)->first();
-        $init->id_inisiatif = $request->get('id_inisiatif');
-        $init->inisiatif_desc = $request->get('inisiatif_desc');
-        $init->tahun_inisiatif = $request->get('tahun_inisiatif');
-        $init->save();
+        $init = InisiatifStrategis::where('id_inisiatif',$id_inisiatif)->update($request->except(['_token']));
         return redirect()->back();
     }
     public function inisiatifStrategisDelete($id)
@@ -66,10 +62,7 @@ class RKAP extends Controller
     
     public function KategoriPmsUpdate(Request $request, $id)
     {
-        $kategori = KategoriPms::where('id_kat', $id)->first();
-        $kategori->kat_desc = $request->get('kat_desc');
-        $kategori->ket = $request->get('ket');
-        $kategori->save();
+        $init = KategoriPms::where('id_kat',$id)->update($request->except(['_token']));
         return redirect()->back();
     }
     public function KategoriPmsDelete($id)
@@ -94,6 +87,11 @@ class RKAP extends Controller
         $kpi->tahun_kpipms = $request->tahun_kpippms;
         $kpi->save();
         return redirect()->route('kpi_pms.index');
+    }
+    public function kpi_pmsUpdate(Request $request, $id)
+    {
+        $kpi = KpiPms::where('id_kpipms',$id)->update($request->except(['_token']));
+        return redirect()->back();
     }
     public function kpi_pmsIndex()
     {
@@ -122,6 +120,11 @@ class RKAP extends Controller
         $plan->save();
         return redirect()->back();
     }
+    public function plan_pmsUpdate(Request $request, $id)
+    {
+        $init = planPms::where('id_plan',$id)->update($request->except(['_token']));
+        return redirect()->back();
+    }
     public function plan_pmsIndex($id_kpipms)
     {
         $users = auth()->user();
@@ -148,6 +151,11 @@ class RKAP extends Controller
         $real->kendala = $request->kendala;
         $real->file_evidence = $request->file_evidence;
         $real->save(); 
+        return redirect()->back();
+    }
+    public function real_pmsUpdate(Request $request, $id)
+    {
+        $real = realisasiPms::where('id_real',$id)->update($request->except(['_token']));
         return redirect()->back();
     }
     public function real_pmsIndex($id)

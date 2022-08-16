@@ -43,7 +43,6 @@
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                 <thead class="text-muted table-light ">
                                     <tr>
-                                        <th class="sort" data-sort="id_real">ID Realisasi</th>
                                         <th class="sort" data-sort="progres_real">Progress</th>
                                         <th class="sort" data-sort="desc_real">Deskripsi</th>
                                         <th class="sort" data-sort="kendala">Kendala</th>
@@ -56,11 +55,6 @@
                                     @foreach($real as $real)
                                     @if($real->id_plan == $plan->id_plan)
                                     <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $real->id_real }}</div>
-                                            </div>
-                                        </td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $real->progres_real }}</div>
@@ -112,7 +106,7 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post" action="" enctype="multipart/form-data"
+                                                    <form method="post" action="{{ route('realpms.update', $real->id_real)}}" enctype="multipart/form-data"
                                                         id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
