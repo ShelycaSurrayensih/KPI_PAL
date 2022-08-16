@@ -41,50 +41,24 @@
 
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col" style="width: 50px;">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="checkAll"
-                                                value="option">
-                                        </div>
-                                    </th>
-                                    <th class="sort" data-sort="id_tim">ID Tim</th>
-                                    <th class="sort" data-sort="id_divisi">ID Divisi</th>
+
+                                    <th class="sort" data-sort="no">No</th>
                                     <th class="sort" data-sort="program_strategis">Program Strategis</th>
                                     <th class="sort" data-sort="entitas">Entitas</th>
-                                    <th class="sort" data-sort="program_utama">Program Utama</th>
-                                    <th class="sort" data-sort="target">Target</th>
+                                    <th class="sort" data-sort="target">Target/Milestone</th>
+                                    <th class="sort" data-sort="program_utama">Realisasi</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
+                                <?php $no = 0;?>
                                 @foreach($indhan as $indhan)
                                 @if($users->divisi_id == $indhan->divisi)
 
                                 <tr>
-                                    <th scope="row">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="chk_child"
-                                                value="option1">
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            @foreach($indhanTim as $tim)
-                                            @if($indhan->id_tim == $tim->id_tim)
-                                            <div class="flex-grow-1">{{ $tim->nama_tim }}</div>
-                                            @endif
-                                            @endforeach
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            @foreach($divisi as $div)
-                                            @if($indhan->id_divisi == $div->id_divisi)
-                                            <div class="flex-grow-1">{{ $div->div_name }}</div>
-                                            @endif
-                                            @endforeach
-                                        </div>
-                                    </td>
+
+                                    <?php $no++ ;?>
+                                    <td>{{ $no }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $indhan->program_strategis }}</div>
@@ -97,14 +71,15 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $indhan->program_utama }}</div>
+                                            <div class="flex-grow-1">{{ $indhan->target }}</div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $indhan->target }}</div>
+                                            <div class="flex-grow-1">{{ $indhan->program_utama }}</div>
                                         </div>
                                     </td>
+
 
 
                                     <td>
@@ -114,8 +89,13 @@
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#showModal{{ $indhan->id_indhan }}">Edit</button>
                                             </div>
+                                            <div class="edit">
+                                                <a href="{{ route('indhanRealisasi.index', $indhan->id_indhan) }}">
+                                                    <button
+                                                        class="btn btn-sm btn-success edit-item-btn">Realisasi</button>
+                                                </a>
+                                            </div>
                                             <div class="remove">
-
                                                 <form action="{{ route('KPI_Indhan.destroy', $indhan->id_indhan) }}"
                                                     method="POST">
 
@@ -136,7 +116,7 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header bg-light p-3">
-                                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close" id="close-modal"></button>
                                             </div>
@@ -177,17 +157,18 @@
 
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="program_utama">Program Utama</label>
-                                                        <input type="text" name="program_utama" class="form-control"
-                                                            id="program_utama" value="{{ $indhan->program_utama }}">
-
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="target">Target</label>
+                                                        <label for="target">Target/Milestone</label>
                                                         <input type="text" name="target" class="form-control"
                                                             id="target" value="{{ $indhan->target }}">
 
                                                     </div>
+                                                    <div class="mb-3">
+                                                        <label for="program_utama">Realisasi</label>
+                                                        <input type="text" name="program_utama" class="form-control"
+                                                            id="program_utama" value="{{ $indhan->program_utama }}">
+
+                                                    </div>
+
                                                     <div class=" modal-footer">
                                                         <div class="hstack gap-2 justify-content-end">
                                                             <button type="button" class="btn btn-light"
@@ -240,7 +221,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     id="close-modal"></button>
             </div>
@@ -275,15 +256,16 @@
 
                     </div>
                     <div class="mb-3">
-                        <label for="program_utama">Program Utama</label>
-                        <input type="text" name="program_utama" class="form-control" id="program_utama">
-
-                    </div>
-                    <div class="mb-3">
                         <label for="target">Target</label>
                         <input type="text" name="target" class="form-control" id="target">
 
                     </div>
+                    <div class="mb-3">
+                        <label for="program_utama">Realisasi</label>
+                        <input type="text" name="program_utama" class="form-control" id="program_utama">
+
+                    </div>
+
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>

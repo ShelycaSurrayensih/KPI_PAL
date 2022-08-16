@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Indhan;
+use App\Models\IndhanRealisasi;
 use App\Models\IndhanTim;
 use App\Models\Divisi;
 
@@ -22,6 +23,17 @@ class IndhanController extends Controller
         $indhanTim = IndhanTim::all();
         $divisi = Divisi::all();
         return view('KPI_Indhan.index', compact ('users', 'indhan', 'indhanTim', 'divisi'));
+    }
+    
+    //realisasi
+    public function indhanRealisasiIndex($id)
+    {
+        $users = auth()->user();
+        $indhan = Indhan::where('id_indhan', $id)->first();
+        $indhanTim = IndhanTim::all();
+        $indhanRealisasi = IndhanRealisasi::all();
+        $divisi = Divisi::all();
+        return view('KPI_Indhan.Indhan_Realisasi.index', compact ('users', 'indhan', 'indhanRealisasi', 'indhanTim', 'divisi'));
     }
 
     /**

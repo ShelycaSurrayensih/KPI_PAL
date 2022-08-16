@@ -69,9 +69,13 @@
                                             </div>
                                         </td>
                                         <td>
+                                            @foreach($inisiatif as $init)
+                                            @if($kpi->id_inisiatif == $init->id_inisiatif)
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $inisiatif->inisiatif_desc }}</div>
+                                                <div class="flex-grow-1">{{ $init->inisiatif_desc }}</div>
                                             </div>
+                                            @endif
+                                            @endforeach
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -85,7 +89,7 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpip->bobot }}</div>
+                                                <div class="flex-grow-1">{{ $kpi->bobot }}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -107,7 +111,9 @@
                                                 </div>
                                                 <div class="remove">
 
-                                                    <form action="{{ route('inisiatifStrategis.destroy', $init->id_inisiatif) }}" method="POST">
+                                                    <form
+                                                        action="{{ route('inisiatifStrategis.destroy', $init->id_inisiatif) }}"
+                                                        method="POST">
 
                                                         @csrf
                                                         @method('DELETE')
@@ -138,20 +144,24 @@
                                                         enctype="multipart/form-data" id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="id_inisiatif" class="form-label">ID_inisiatif</label>
+                                                            <label for="id_inisiatif"
+                                                                class="form-label">ID_inisiatif</label>
                                                             <input name="id_inisiatif" value="{{$init->id_inisiatif}}"
                                                                 class="form-control" id="id_inisiatif" placeholder
                                                                 readonly="">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="inisiatif_desc" class="form-label">Deskripsi Inisiatif</label>
-                                                            <input name="inisiatif_desc" value="{{$init->inisiatif_desc}}"
-                                                                class="form-control" id="inisiatif_desc">
+                                                            <label for="inisiatif_desc" class="form-label">Deskripsi
+                                                                Inisiatif</label>
+                                                            <input name="inisiatif_desc"
+                                                                value="{{$init->inisiatif_desc}}" class="form-control"
+                                                                id="inisiatif_desc">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="tahun_inisiatif" class="form-label">KPI</label>
-                                                            <input name="tahun_inisiatif" type="text" class="form-control"
-                                                                id="tahun_inisiatif" value="{{$init->tahun_inisiatif}}">
+                                                            <input name="tahun_inisiatif" type="text"
+                                                                class="form-control" id="tahun_inisiatif"
+                                                                value="{{$init->tahun_inisiatif}}">
                                                         </div>
 
                                                 </div>
@@ -167,7 +177,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     @endforeach
                                 </tbody><!-- end tbody -->
 

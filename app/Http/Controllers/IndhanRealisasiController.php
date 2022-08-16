@@ -18,7 +18,6 @@ class IndhanRealisasiController extends Controller
         $users = auth()->user();
         $indhan = Indhan::all();
         $indhanRealisasi = IndhanRealisasi::all();
-        
         //dd($company->indhan);
         return view('KPI_Indhan.Indhan_Realisasi.index', compact ('users', 'indhan', 'indhanRealisasi'));
     }

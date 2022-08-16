@@ -726,24 +726,11 @@
                         </div>
                     </li> <!-- end Dashboard Menu -->
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button"
+                        <a class="nav-link menu-link" href="{{ route('KPI_Indiv.index') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarApps">
                             <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Indiv</span>
                         </a>
-                        <div class="collapse menu-dropdown" id="sidebarApps">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a href="{{ route('KPI_Indiv.index') }}" class="nav-link"
-                                        data-key="t-horizontal">Indiv</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('KPI_IndivRealisasi.index') }}" class="nav-link"
-                                        data-key="t-detached">Indiv
-                                        Plan
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+
 
                     </li>
                     <li class="nav-item">
@@ -776,6 +763,10 @@
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarIcons">
                             <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ route('overview.index') }}" class="nav-link"
+                                        data-key="t-remix">Overview</a>
+                                </li>
                                 <li class="nav-item">
                                     <a href="{{ route('inisiatifStrategis.index') }}" class="nav-link"
                                         data-key="t-remix">inisiatifStrategis</a>

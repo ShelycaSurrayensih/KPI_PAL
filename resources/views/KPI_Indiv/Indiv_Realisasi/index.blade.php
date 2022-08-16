@@ -4,7 +4,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Individual Realisasi</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Realisasi KPI {{$kpidir->desc_kpidir}}</h4>
                 <div class="flex-shrink-0">
                     <button type="button" class="btn btn-soft-info btn-sm shadow-none">
                         <i class="ri-file-list-3-line align-middle"></i> Generate Report
@@ -40,37 +40,20 @@
 
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col" style="width: 50px;">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="checkAll"
-                                                value="option">
-                                        </div>
-                                    </th>
-                                    <th class="sort" data-sort="id_kpidir">ID KPI</th>
+
                                     <th class="sort" data-sort="tw">TW</th>
                                     <th class="sort" data-sort="progres">Progres</th>
-                                    <th class="sort" data-sort="realisasi">Realisasi</th>
+                                    <th class="sort" data-sort="realisasi">Deskripsi Realisasi</th>
                                     <th class="sort" data-sort="prognosa">Prognosa</th>
                                     <th class="sort" data-sort="keterangan">Keterangan</th>
-                                    <th class="sort" data-sort="id_divisi">ID Divisi</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
+
                                 @foreach($indivRealisasi as $indivReal)
                                 @if($users->divisi_id == $indivReal->divisi)
                                 <tr>
-                                    <th scope="row">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="chk_child"
-                                                value="option1">
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $kpidir->desc_kpidir }}</div>
-                                        </div>
-                                    </td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $indivReal->tw }}</div>
@@ -97,16 +80,6 @@
                                             <div class="flex-grow-1">{{ $indivReal->keterangan }}</div>
                                         </div>
                                     </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            @foreach($divisi as $div)
-                                            @if($indivReal->id_divisi == $div->id_divisi)
-                                            <div class="flex-grow-1">{{ $div->div_name }}</div>
-                                            @endif
-                                            @endforeach
-                                        </div>
-                                    </td>
-
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
@@ -135,7 +108,7 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header bg-light p-3">
-                                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close" id="close-modal"></button>
                                             </div>
@@ -146,10 +119,10 @@
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="id_kpidir">ID KPI</label>
-                                                        <select name="id_kpidir" class="form-control" id="id_kpidir">
-                                                            <option value="{{$kpidir->id_kpidir}}">
-                                                                {{ "$kpidir->desc_kpidir" }}</option>
-                                                        </select>
+                                                        <input name="id_kpidir" class="form-control" id="id_kpidir"
+                                                            value="{{$kpidir->id_kpidir}}" readonly="">
+
+                                                        </input>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="tw">TW</label>
@@ -164,7 +137,7 @@
 
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="realisasi">Realisasi</label>
+                                                        <label for="realisasi">Deskripsi Realisasi</label>
                                                         <input type="text" name="realisasi" class="form-control"
                                                             id="realisasi" value="{{$indivReal->realisasi}}">
 
@@ -243,7 +216,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     id="close-modal"></button>
             </div>
@@ -269,7 +242,7 @@
 
                     </div>
                     <div class="mb-3">
-                        <label for="realisasi">Realisasi</label>
+                        <label for="realisasi">Deskripsi Realisasi</label>
                         <input type="text" name="realisasi" class="form-control" id="realisasi">
 
                     </div>
@@ -280,10 +253,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="keterangan">Keterangan</label>
-                        <input type="text" name="keterangan" class="form-control" id="keterangan">
+                        <input type="text" name="keterangan" class="form-control" id="keterangan"
+                            placeholder="Dapat diisi dengan kendala ketidaktercapaian">
 
                     </div>
-                    <div class="mb-3">
+                    <div class=" mb-3">
                         <label for="id_divisi">ID Divisi</label>
                         @foreach($divisi as $div)
                         @if($users->id_divisi == $div->id_divisi)

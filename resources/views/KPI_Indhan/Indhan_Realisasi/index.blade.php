@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Indhan</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Indhan Realisasi {{$indhan->program_strategis}}</h4>
                 <div class="flex-shrink-0">
                     <button type="button" class="btn btn-soft-info btn-sm shadow-none">
                         <i class="ri-file-list-3-line align-middle"></i> Generate Report
@@ -41,12 +41,8 @@
 
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col" style="width: 50px;">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="checkAll"
-                                                value="option">
-                                        </div>
-                                    </th>
+
+                                    <th class="sort" data-sort="no">No</th>
                                     <th class="sort" data-sort="id_indhan">ID KPI</th>
                                     <th class="sort" data-sort="bulan">Bulan</th>
                                     <th class="sort" data-sort="tahun">Tahun</th>
@@ -57,22 +53,15 @@
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
+                                <?php $no = 0;?>
                                 @foreach($indhanRealisasi as $indhanReal)
 
                                 <tr>
-                                    <th scope="row">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="chk_child"
-                                                value="option1">
-                                        </div>
-                                    </th>
+                                    <?php $no++ ;?>
+                                    <td>{{ $no }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            @foreach($indhan as $indhans)
-                                            @if($indhanReal->id_indhan == $indhans->id_indhan)
-                                            <div class="flex-grow-1">{{ $indhans->program_strategis }}</div>
-                                            @endif
-                                            @endforeach
+                                            <div class="flex-grow-1">{{ $indhan->program_strategis }}</div>
                                         </div>
                                     </td>
                                     <td>
@@ -130,7 +119,7 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header bg-light p-3">
-                                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close" id="close-modal"></button>
                                             </div>
@@ -141,17 +130,31 @@
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="id_indhan">ID KPI</label>
-                                                        <select name="id_indhan" class="form-control" id="id_indhan">
-                                                            @foreach ($indhan as $indhans)
-                                                            <option value="{{$indhans->id_indhan}}">
-                                                                {{ "$indhans->program_strategis" }}</option>
-                                                            @endforeach
-                                                        </select>
+                                                        <input name="id_indhan" class="form-control" id="id_indhan"
+                                                            value="{{$indhan->id_indhan}}" readonly="">
+
+                                                        </input>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="bulan">Bulan</label>
-                                                        <input type="text" name="bulan" class="form-control" id="bulan"
+                                                        <select name="bulan" class="form-control" id="bulan"
                                                             value="{{$indhanReal->bulan}}">
+                                                            <option>Januari</option>
+                                                            <option>Februari</option>
+                                                            <option>Maret</option>
+                                                            <option>April</option>
+                                                            <option>Mei</option>
+                                                            <option>Juni</option>
+                                                            <option>Juli</option>
+                                                            <option>Agustus</option>
+                                                            <option>September</option>
+                                                            <option>Oktober</option>
+                                                            <option>November</option>
+                                                            <option>Desember</option>
+
+
+
+                                                        </select>
 
                                                     </div>
                                                     <div class="mb-3">
@@ -225,7 +228,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     id="close-modal"></button>
             </div>
@@ -235,21 +238,45 @@
                     @csrf
                     <div class="mb-3">
                         <label for="id_indhan">ID KPI</label>
-                        <select name="id_indhan" class="form-control" id="id_indhan">
-                            @foreach ($indhan as $indhans)
-                            <option value="{{$indhans->id_indhan}}">{{ "$indhans->program_strategis" }}</option>
-                            @endforeach
-                        </select>
+                        <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}"
+                            readonly="">
+                        </input>
                     </div>
                     <div class="mb-3">
                         <label for="bulan">Bulan</label>
-                        <input type="text" name="bulan" class="form-control" id="bulan">
+                        <select name="bulan" class="form-control" id="bulan">
+                            <option>Januari</option>
+                            <option>Februari</option>
+                            <option>Maret</option>
+                            <option>April</option>
+                            <option>Mei</option>
+                            <option>Juni</option>
+                            <option>Juli</option>
+                            <option>Agustus</option>
+                            <option>September</option>
+                            <option>Oktober</option>
+                            <option>November</option>
+                            <option>Desember</option>
 
+
+
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="tahun">Tahun</label>
-                        <input type="text" name="tahun" class="form-control" id="tahun">
-
+                        <select name="tahun" class="form-control" id="tahun">
+                            <?php
+                            $tg_awal = date('Y')-0;
+                            $tg_akhir = date('Y')+2;
+                            for($i=$tg_akhir; $i>=$tg_awal; $i--)
+                            {
+                                echo"
+                                <option value='$i'";
+                                if(date('Y')==$i){echo "selected";}
+                                    echo">$i</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="realisasi">Realisasi</label>
@@ -258,12 +285,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="kendala">Kendala</label>
-                        <input type="text" name="kendala" class="form-control" id="kendala">
+                        <input type="text" name="kendala" class="form-control" id="kendala"
+                            placeholder="Dapat diisi dengan kendala ketidaktercapaian">
 
                     </div>
 
 
-                    <div class="modal-footer">
+                    <div class=" modal-footer">
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-success" id="add-btn">Add data</button>

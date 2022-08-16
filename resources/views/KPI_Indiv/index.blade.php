@@ -43,33 +43,26 @@
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                 <thead class="text-muted table-light ">
                                     <tr>
-                                        <th scope="col">ID Direktorat</th>
-                                        <th scope="col">ID Divisi</th>
-                                        <th scope="col">Deskripsi KPI</th>
+                                        <th scope="col">No</th>
+                                        <th scope="col">KPI</th>
                                         <th scope="col">Satuan</th>
                                         <th scope="col">Target</th>
                                         <th scope="col">Bobot</th>
-                                        <th scope="col">Keterangan</th>
                                         <th scope="col">Asal KPI</th>
+                                        <th scope="col">Keterangan</th>
                                         <th scope="col">Alasan</th>
                                         <th scope="col">Action</th>
                                     </tr>
 
                                 </thead>
                                 <tbody>
+                                    <?php $no = 0;?>
                                     @foreach($kpidir as $kpidir)
                                     @if($users->divisi_id == $kpidir->divisi)
                                     <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpidir->id_direktorat }}</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpidir->id_divisi }}</div>
-                                            </div>
-                                        </td>
+                                        <?php $no++ ;?>
+                                        <td>{{ $no }}</td>
+
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpidir->desc_kpidir }}</div>
@@ -92,12 +85,12 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpidir->ket }}</div>
+                                                <div class="flex-grow-1">{{ $kpidir->asal_kpi }}</div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpidir->asal_kpi }}</div>
+                                                <div class="flex-grow-1">{{ $kpidir->ket }}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -114,7 +107,8 @@
                                                 </div>
                                                 <div class="edit">
                                                     <a href="{{ route('realisasi.index', $kpidir->id_kpidir) }}">
-                                                        <button class="btn btn-sm btn-success edit-item-btn">Realisasi</button>
+                                                        <button
+                                                            class="btn btn-sm btn-success edit-item-btn">Realisasi</button>
                                                     </a>
                                                 </div>
                                                 <div class=" remove">
@@ -139,7 +133,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close" id="close-modal"></button>
                                                 </div>
@@ -250,7 +244,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     id="close-modal"></button>
             </div>
