@@ -5,7 +5,7 @@ use App\Http\Controllers\IndivController;
 use App\Http\Controllers\IndhanTimController;
 use App\Http\Controllers\IndhanController;
 use App\Http\Controllers\IndhanRealisasiController;
-use App\Http\Controllers\IndivPlanController;
+use App\Http\Controllers\IndivRealisasiController;
 use App\Http\Controllers\RKAP;
 
 /*
@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('KPI_Indiv',IndivController::class);
-    Route::resource('KPI_IndivPlan',IndivPlanController::class);
+    Route::resource('KPI_IndivRealisasi',IndivRealisasiController::class);
     Route::resource('KPI_Indhan',IndhanController::class);
     Route::resource('KPI_IndhanTim',IndhanTimController::class);
     Route::resource('KPI_IndhanRealisasi',IndhanRealisasiController::class);
@@ -34,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
     
 });
 Auth::routes();
+
+Route::get('/KPI_Indiv/Realisasi/{id}', [IndivController::class, 'realisasiIndex'])->name('realisasi.index');
 
 //RKAP Store
 Route::post('/inisiatifStrategis/store', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisStore'])->name('inisiatifStrategis.store');
@@ -49,6 +51,7 @@ Route::get('/KPI_PMS', [App\Http\Controllers\RKAP::class, 'kpi_pmsIndex'])->name
 Route::get('/Plan_PMS/{id_kpipms}', [App\Http\Controllers\RKAP::class, 'plan_pmsIndex'])->name('planpms.index');
 Route::get('/Realisasi_PMS/{id_kpipms}', [App\Http\Controllers\RKAP::class, 'real_pmsIndex'])->name('realpms.index');
 Route::get('/Overview', [App\Http\Controllers\RKAP::class, 'overviewIndex'])->name('overview.index');
+
 //RKAP Update
 Route::post('/inisiatifStrategis/update/{id}', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisUpdate'])->name('inisiatifStrategis.update');
 Route::post('/KategoriPMS/update/{id}', [App\Http\Controllers\RKAP::class, 'KategoriPmsUpdate'])->name('KategoriPms.update');
@@ -71,9 +74,10 @@ Route::post('/KPI_Indiv/update/{id}',[IndivController::class, 'update'])->name('
 Route::post('/KPI_Indiv/edit/{id}',[IndivController::class, 'edit'])->name('kpidir.edit');
 Route::delete('/KPI_Indiv/destroy/{id}',[IndivController::class, 'destroy'])->name('kpidir.destroy');
 
-Route::post('/KPI_IndivPlan/update/{id}',[IndivPlanController::class, 'update'])->name('plan.update');
-Route::post('/KPI_IndivPlan/edit/{id}',[IndivPlanController::class, 'edit'])->name('plan.edit');
-Route::delete('/KPI_IndivPlan/destroy/{id}',[IndivPlanController::class, 'destroy'])->name('plan.destroy');
+Route::get('/KPI_IndivRealisasi/{id}', [IndivRealisasiController::class, 'index'])->name('indivReal.index');
+Route::post('/KPI_IndivRealisasi/update/{id}',[IndivRealisasiController::class, 'update'])->name('indivReal.update');
+Route::post('/KPI_IndivRealisasi/edit/{id}',[IndivRealisasiController::class, 'edit'])->name('indivReal.edit');
+Route::delete('/KPI_IndivRealisasi/destroy/{id}',[IndivRealisasiController::class, 'destroy'])->name('indivReal.destroy');
 
 Route::post('/KPI_Indhan/update/{id}',[IndhanController::class, 'update'])->name('indhan.update');
 Route::post('/KPI_Indhan/edit/{id}',[IndhanController::class, 'edit'])->name('indhan.edit');

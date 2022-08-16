@@ -113,17 +113,14 @@
                                                         data-bs-target="#showModal{{ $kpidir->id_kpidir }}">Edit</button>
                                                 </div>
                                                 <div class="edit">
-
-                                                    <button type="button" class="btn btn-sm btn-primary"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModalgrid{{ $kpidir->id_kpidir }}">Add
-                                                        Plan</button>
+                                                    <a href="{{ route('realisasi.index', $kpidir->id_kpidir) }}">
+                                                        <button class="btn btn-sm btn-success edit-item-btn">Realisasi</button>
+                                                    </a>
                                                 </div>
                                                 <div class=" remove">
 
                                                     <form action="{{ route('KPI_Indiv.destroy', $kpidir->id_kpidir) }}"
                                                         method="POST">
-
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"
@@ -220,63 +217,6 @@
                                     </div>
                                     @endif
 
-                                    <!-- Add plan modals -->
-                                    <div class="modal fade" id="exampleModalgrid{{ $kpidir->id_kpidir }}" tabindex="-1"
-                                        aria-labelledby="exampleModalgridLabel" aria-modal="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalgridLabel">Grid Modals</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form method="post" action="{{ route('KPI_IndivPlan.store' ) }}"
-                                                        enctype="multipart/form-data" id="myForm">
-                                                        @csrf
-                                                        <div class="mb-3">
-                                                            <label for="id_kpidir">ID KPI</label>
-
-                                                            <input name="id_kpidir" class="form-control" id="id_kpidir"
-                                                                value="{{$kpidir->id_kpidir}}" readonly="">
-                                                            </input>
-
-
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="tw">TW</label>
-                                                            <input type="text" name="tw" class="form-control" id="tw">
-
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="prognosa">Prognosa</label>
-                                                            <input type="text" name="prognosa" class="form-control"
-                                                                id="prognosa">
-
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="id_divisi">ID Divisi</label>
-                                                            @foreach($divisi as $div)
-                                                            @if($kpidir->id_divisi == $div->id_divisi)
-                                                            <input name="id_divisi" value="{{ $div->id_divisi }}"
-                                                                class="form-control" id="id_divisi" readonly="">
-
-                                                            @endif @endforeach
-                                                        </div>
-
-                                                        <div class="modal-footer">
-                                                            <div class="hstack gap-2 justify-content-end">
-                                                                <button type="button" class="btn btn-light"
-                                                                    data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-success"
-                                                                    id="add-btn">Add data</button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     @endforeach
                                 </tbody><!-- end tbody -->
 

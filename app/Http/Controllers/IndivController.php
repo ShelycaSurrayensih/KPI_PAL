@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\IndivKpiDir;
 use App\Models\Divisi;
 use App\Models\Direktorat;
+use App\Models\IndivRealisasi;
 
 class IndivController extends Controller
 {
@@ -21,6 +22,19 @@ class IndivController extends Controller
         $direktorat = Direktorat::all();
         $divisi = Divisi::all();
         return view('KPI_Indiv.index', compact ('users', 'kpidir', 'direktorat', 'divisi'));
+    }
+    
+    //Realisasi
+    //
+    //
+    public function realisasiIndex($id)
+    {
+        $users = auth()->user();
+        $direktorat = Direktorat::all();
+        $kpidir = IndivKpiDir::where('id_kpidir', $id)->first();
+        $indivRealisasi = IndivRealisasi::all();
+        $divisi = Divisi::all();
+        return view('KPI_Indiv.Indiv_Realisasi.index', compact ('users', 'kpidir', 'direktorat','indivRealisasi', 'divisi'));
     }
 
     /**
