@@ -43,23 +43,59 @@
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                 <thead class="text-muted table-light ">
                                     <tr>
-                                        <th scope="col">Deskripsi Inisiatif</th>
-                                        <th scope="col">Tahun Inisiatif KPI</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Inisiatif Strategis</th>
+                                        <th scope="col">KPI PMS</th>
+                                        <th scope="col">Polaritas</th>
+                                        <th scope="col">Bobot</th>
+                                        <th scope="col">Target</th>
+                                        <th scope="col">Progress</th>
+                                        <th scope="col">Aksi</th>
                                     </tr>
 
                                 </thead>
                                 <tbody>
-                                    @foreach($inisiatif as $init)
+                                    <?php
+                                    $counter = 0;
+                                    ?>
+                                    @foreach($kpi as $kpi)
+                                    <?php
+                                    $counter++;
+                                    ?>
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $init->inisiatif_desc }}</div>
+                                                <div class="flex-grow-1">{{ $counter }}</div>
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $init->tahun_inisiatif }}</div>
+                                                <div class="flex-grow-1">{{ $inisiatif->inisiatif_desc }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->kpi_desc }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->polaritas }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpip->bobot }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->target }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1"></div>
                                             </div>
                                         </td>
                                         <td>
@@ -131,6 +167,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     @endforeach
                                 </tbody><!-- end tbody -->
 

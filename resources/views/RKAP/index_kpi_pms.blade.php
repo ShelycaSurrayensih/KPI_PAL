@@ -189,7 +189,7 @@
                                                         <div class="mb-3">
                                                             <label for="div_lead" class="form-label">Lead Divisi</label>
                                                             <input name="div_lead" type="text" class="form-control"
-                                                                id="div_lead" value="{{ $kpi->div_lead }}">
+                                                                id="div_lead" value="{{ $kpi->div_lead }}" readonly>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="tahun_kpipms" class="form-label">Tahun KPI PMS</label>
@@ -300,11 +300,13 @@
                 </div>
                 <div class="mb-3">
                     <label for="div_lead" class="form-label">Lead Divisi</label>
-                    <select name="div_lead" class="form-control" id="div_lead">
                     @foreach($divisi as $div)
-                        <option value="{{$div->id_divisi}}">{{ "$div->div_name" }}
+                    @if($users->id_divisi == $div->id_divisi)
+                    <input name="div_lead" type="text" class="form-control"
+                    id="div_lead" value="{{ $kpi->div_lead }}" readonly>
+                    @endif
                     @endforeach
-                    </select>
+
                 </div>     
                 <div class="mb-3">
                     <label for="tahun_kpippms" class="form-label">Tahun KPIPMS</label>

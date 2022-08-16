@@ -48,7 +48,7 @@ Route::get('/KategoriPMS', [App\Http\Controllers\RKAP::class, 'KategoriPmsIndex'
 Route::get('/KPI_PMS', [App\Http\Controllers\RKAP::class, 'kpi_pmsIndex'])->name('kpi_pms.index');
 Route::get('/Plan_PMS/{id_kpipms}', [App\Http\Controllers\RKAP::class, 'plan_pmsIndex'])->name('planpms.index');
 Route::get('/Realisasi_PMS/{id_kpipms}', [App\Http\Controllers\RKAP::class, 'real_pmsIndex'])->name('realpms.index');
-
+Route::get('/Overview', [App\Http\Controllers\RKAP::class, 'overviewIndex'])->name('overview.index');
 //RKAP Update
 Route::post('/inisiatifStrategis/update/{id}', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisUpdate'])->name('inisiatifStrategis.update');
 Route::post('/KategoriPMS/update/{id}', [App\Http\Controllers\RKAP::class, 'KategoriPmsUpdate'])->name('KategoriPms.update');

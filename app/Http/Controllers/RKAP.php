@@ -13,6 +13,16 @@ use App\Models\Divisi;
 
 class RKAP extends Controller
 {
+    //Overview
+    public function overviewIndex(Request $request)
+    {
+        $users = auth()->user();
+        $kpi = KpiPms::all();
+        $kategori = KategoriPms::all();
+        $inisiatif = inisiatifStrategis::all();
+        $divisi = Divisi::all();
+        return view('RKAP.overview', compact ('users', 'kpi', 'kategori', 'inisiatif', 'divisi'));
+    }
     //Inisiatif Strategis
     public function inisiatifStrategisStore(Request $request)
     {

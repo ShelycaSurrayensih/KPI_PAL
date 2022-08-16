@@ -777,6 +777,9 @@
                         <div class="collapse menu-dropdown" id="sidebarIcons">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
+                                    <a href="{{ route('overview.index') }}" class="nav-link" data-key="t-remix">Overview</a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="{{ route('inisiatifStrategis.index') }}" class="nav-link" data-key="t-remix">inisiatifStrategis</a>
                                 </li>
                                 <li class="nav-item">
