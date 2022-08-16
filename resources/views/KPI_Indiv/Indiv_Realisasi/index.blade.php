@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Individual Plan</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Individual Realisasi</h4>
                 <div class="flex-shrink-0">
                     <button type="button" class="btn btn-soft-info btn-sm shadow-none">
                         <i class="ri-file-list-3-line align-middle"></i> Generate Report
@@ -14,7 +14,7 @@
             </div><!-- end card header -->
 
             <div class="card-body">
-                <div id="IndivPlan">
+                <div id="IndivRealisasi">
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
                             <div>
@@ -49,14 +49,17 @@
                                     </th>
                                     <th class="sort" data-sort="id_kpidir">ID KPI</th>
                                     <th class="sort" data-sort="tw">TW</th>
+                                    <th class="sort" data-sort="progres">Progres</th>
+                                    <th class="sort" data-sort="realisasi">Realisasi</th>
                                     <th class="sort" data-sort="prognosa">Prognosa</th>
+                                    <th class="sort" data-sort="keterangan">Keterangan</th>
                                     <th class="sort" data-sort="id_divisi">ID Divisi</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                @foreach($indivPlan as $plan)
-                                @if($users->divisi_id == $plan->divisi)
+                                @foreach($indivRealisasi as $indivReal)
+                                @if($users->divisi_id == $indivReal->divisi)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -67,7 +70,7 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             @foreach($kpidir as $dir)
-                                            @if($plan->id_kpidir == $dir->id_kpidir)
+                                            @if($indivReal->id_kpidir == $dir->id_kpidir)
                                             <div class="flex-grow-1">{{ $dir->desc_kpidir }}</div>
                                             @endif
                                             @endforeach
@@ -75,18 +78,34 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $plan->tw }}</div>
+                                            <div class="flex-grow-1">{{ $indivReal->tw }}</div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $plan->prognosa }}</div>
+                                            <div class="flex-grow-1">{{ $indivReal->progres }}</div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1">{{ $indivReal->realisasi }}</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1">{{ $indivReal->prognosa }}</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1">{{ $indivReal->keterangan }}</div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             @foreach($divisi as $div)
-                                            @if($plan->id_divisi == $div->id_divisi)
+                                            @if($indivReal->id_divisi == $div->id_divisi)
                                             <div class="flex-grow-1">{{ $div->div_name }}</div>
                                             @endif
                                             @endforeach
@@ -98,11 +117,12 @@
                                             <div class="edit">
                                                 <button class="btn btn-sm btn-success edit-item-btn"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showModal{{ $plan->id_plan }}">Edit</button>
+                                                    data-bs-target="#showModal{{ $indivReal->id_realisasi }}">Edit</button>
                                             </div>
                                             <div class="remove">
 
-                                                <form action="{{ route('KPI_IndivPlan.destroy', $plan->id_plan) }}"
+                                                <form
+                                                    action="{{ route('KPI_IndivRealisasi.destroy', $indivReal->id_realisasi) }}"
                                                     method="POST">
 
                                                     @csrf
@@ -117,7 +137,7 @@
                                 </tr>
 
                                 <!-- edit Modal -->
-                                <div class="modal fade" id="showModal{{ $plan->id_plan }}" tabindex=" -1"
+                                <div class="modal fade" id="showModal{{ $indivReal->id_realisasi }}" tabindex=" -1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -127,7 +147,8 @@
                                                     aria-label="Close" id="close-modal"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="post" action="{{ route('plan.update', $plan->id_plan) }}"
+                                                <form method="post"
+                                                    action="{{ route('indivReal.update', $indivReal->id_realisasi) }}"
                                                     enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
@@ -142,20 +163,38 @@
                                                     <div class="mb-3">
                                                         <label for="tw">TW</label>
                                                         <input type="text" name="tw" class="form-control" id="tw"
-                                                            value="{{$plan->tw}}">
+                                                            value="{{$indivReal->tw}}">
+
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="progres">Progres</label>
+                                                        <input type="text" name="progres" class="form-control"
+                                                            id="progres" value="{{$indivReal->progres}}">
+
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="realisasi">Realisasi</label>
+                                                        <input type="text" name="realisasi" class="form-control"
+                                                            id="realisasi" value="{{$indivReal->realisasi}}">
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="prognosa">Prognosa</label>
                                                         <input type="text" name="prognosa" class="form-control"
-                                                            id="prognosa" value="{{$plan->prognosa}}">
+                                                            id="prognosa" value="{{$indivReal->prognosa}}">
+
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="keterangan">Keterangan</label>
+                                                        <input type="text" name="keterangan" class="form-control"
+                                                            id="keterangan" value="{{$indivReal->keterangan}}">
 
                                                     </div>
 
                                                     <div class="mb-3">
                                                         <label for="id_divisi">ID Divisi</label>
                                                         @foreach($divisi as $div)
-                                                        @if($plan->id_divisi == $div->id_divisi)
+                                                        @if($users->id_divisi == $div->id_divisi)
                                                         <input name="id_divisi" value="{{ $div->id_divisi }}"
                                                             class="form-control" id="id_divisi" readonly="">
 
@@ -218,9 +257,10 @@
                     id="close-modal"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('KPI_IndivPlan.store') }}" enctype="multipart/form-data"
+                <form method="post" action="{{ route('KPI_IndivRealisasi.store') }}" enctype="multipart/form-data"
                     id="myForm">
                     @csrf
+
                     <div class="mb-3">
                         <label for="id_kpidir">ID KPI</label>
                         <select name="id_kpidir" class="form-control" id="id_kpidir">
@@ -235,17 +275,31 @@
 
                     </div>
                     <div class="mb-3">
+                        <label for="progres">Progres</label>
+                        <input type="text" name="progres" class="form-control" id="progres">
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="realisasi">Realisasi</label>
+                        <input type="text" name="realisasi" class="form-control" id="realisasi">
+
+                    </div>
+                    <div class="mb-3">
                         <label for="prognosa">Prognosa</label>
                         <input type="text" name="prognosa" class="form-control" id="prognosa">
 
                     </div>
                     <div class="mb-3">
+                        <label for="keterangan">Keterangan</label>
+                        <input type="text" name="keterangan" class="form-control" id="keterangan">
+
+                    </div>
+                    <div class="mb-3">
                         <label for="id_divisi">ID Divisi</label>
                         @foreach($divisi as $div)
-                        @if($plan->id_divisi == $div->id_divisi)
+                        @if($users->id_divisi == $div->id_divisi)
                         <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi"
                             readonly="">
-
                         @endif @endforeach
                     </div>
 
@@ -255,7 +309,9 @@
                             <button type="submit" class="btn btn-success" id="add-btn">Add data</button>
                         </div>
                     </div>
+
                 </form>
+
             </div>
         </div>
     </div>

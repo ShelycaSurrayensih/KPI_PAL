@@ -737,7 +737,7 @@
                                         data-key="t-horizontal">Indiv</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('KPI_IndivPlan.index') }}" class="nav-link"
+                                    <a href="{{ route('KPI_IndivRealisasi.index') }}" class="nav-link"
                                         data-key="t-detached">Indiv
                                         Plan
                                     </a>
@@ -767,7 +767,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </li> 
+                    </li>
                     <!-- end Dashboard Menu -->
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarIcons" data-bs-toggle="collapse" role="button"
@@ -777,10 +777,12 @@
                         <div class="collapse menu-dropdown" id="sidebarIcons">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ route('inisiatifStrategis.index') }}" class="nav-link" data-key="t-remix">inisiatifStrategis</a>
+                                    <a href="{{ route('inisiatifStrategis.index') }}" class="nav-link"
+                                        data-key="t-remix">inisiatifStrategis</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('KategoriPms.index') }}" class="nav-link" data-key="t-boxicons">Kategori</a>
+                                    <a href="{{ route('KategoriPms.index') }}" class="nav-link"
+                                        data-key="t-boxicons">Kategori</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('kpi_pms.index') }}" class="nav-link"
@@ -1196,7 +1198,7 @@
                         </div>
                     </li>
 
-                    
+
 
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarMaps" data-bs-toggle="collapse" role="button"
