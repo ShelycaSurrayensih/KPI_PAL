@@ -21,7 +21,9 @@ class RKAP extends Controller
         $kategori = KategoriPms::all();
         $inisiatif = inisiatifStrategis::all();
         $divisi = Divisi::all();
-        return view('RKAP.overview', compact ('users', 'kpi', 'kategori', 'inisiatif', 'divisi'));
+        $plan = planPms::all();
+        $real = realisasiPms::all();
+        return view('RKAP.overview', compact ('users', 'kpi', 'kategori', 'inisiatif', 'divisi', 'real', 'plan'));
     }
     //Inisiatif Strategis
     public function inisiatifStrategisStore(Request $request)

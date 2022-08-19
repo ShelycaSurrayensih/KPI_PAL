@@ -98,9 +98,17 @@
                                             </div>
                                         </td>
                                         <td>
+                                            @foreach ($plan as $pl)
+                                            @if ($pl->id_kpipms == $kpi->id_kpipms)
+                                            @foreach ($real as $rl)
+                                            @if ($rl->id_plan == $pl->id_plan)
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1"></div>
+                                                <div class="flex-grow-1">{{$pl->bulan}} {{$pl->tahun}}, {{$rl->progress_real}}</div>
                                             </div>
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                            @endforeach
                                         </td>
                                         <td>
                                             <div class="d-flex gap-2">
