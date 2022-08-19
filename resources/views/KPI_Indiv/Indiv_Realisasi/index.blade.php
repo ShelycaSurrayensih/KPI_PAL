@@ -53,6 +53,7 @@
 
                                 @foreach($indivRealisasi as $indivReal)
                                 @if($users->divisi_id == $indivReal->divisi)
+                                @if($indivReal->id_kpidir == $kpidir->id_kpidir)
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -176,6 +177,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                     @endif
                                     @endforeach
                             </tbody>

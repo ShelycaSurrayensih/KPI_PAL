@@ -255,8 +255,14 @@
                     <div class="mb-3">
                         <label for="id_direktorat" class="form-label">Direktorat</label>
                         <select name="id_direktorat" class="form-control" id="id_direktorat">
+                            @foreach ($divisi as $div)
+                            @if($div->id_divisi == $users->id_divisi)
                             @foreach ($direktorat as $dir)
+                            @if($div->id_direktorat == $dir->id_direktorat)
                             <option value="{{$dir->id_direktorat}}">{{ "$dir->nama" }}</option>
+                            @endif
+                            @endforeach
+                            @endif
                             @endforeach
                         </select>
                     </div>
