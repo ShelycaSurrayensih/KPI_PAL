@@ -55,7 +55,7 @@
                             <tbody class="list form-check-all">
                                 <?php $no = 0;?>
                                 @foreach($indhanRealisasi as $indhanReal)
-
+                                @if($indhanReal->id_indhan == $indhan->id_indhan)
                                 <tr>
                                     <?php $no++ ;?>
                                     <td>{{ $no }}</td>
@@ -188,7 +188,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    @endif
                                     @endforeach
                             </tbody>
                         </table>

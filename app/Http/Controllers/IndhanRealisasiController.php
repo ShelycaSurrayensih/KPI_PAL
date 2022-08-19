@@ -110,7 +110,6 @@ class IndhanRealisasiController extends Controller
     {
         $indhanRealisasi = IndhanRealisasi::where('id_realisasi', $id_realisasi);
         $indhanRealisasi->delete();
-        return redirect()->route('KPI_IndhanRealisasi.index')
-            ->with('Sukses, data berhasil dihapus');
+        return redirect()->back();
     }
 }
