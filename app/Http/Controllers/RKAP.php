@@ -82,6 +82,7 @@ class RKAP extends Controller
         return redirect()->back()
             ->with('Sukses, data berhasil dihapus');
     }
+
     //KPI PMS
     public function kpi_pmsStore(Request $request)
     {
@@ -119,14 +120,17 @@ class RKAP extends Controller
         return redirect()->back()
             ->with('Sukses, data berhasil dihapus');
     }
+
+
     //Plan PMS
     public function plan_pmsStore(Request $request)
     {
         $plan = new planPms;
         $plan->id_kpipms = $request->get('id_kpipms');
-        $plan->tw = $request->get('tw');
         $plan->progress_plan = $request->get('progress_plan');
-        $plan->desc_progress = $request->get('desc_progress');
+        $plan->bulan = $request->get('bulan');
+        $plan->tahun = $request->get('tahun');
+        $plan->desc_plan = $request->get('desc_plan');
         $plan->save();
         return redirect()->back();
     }
@@ -156,9 +160,9 @@ class RKAP extends Controller
     {
         $real = new realisasiPms;
         $real->id_plan = $request->id_plan;
-        $real->progres_real = $request->progres_real;
+        $real->progress_real = $request->progress_real;
         $real->desc_real = $request->desc_real;
-        $real->kendala = $request->kendala;
+        $real->keterangan = $request->keterangan;
         $real->file_evidence = $request->file_evidence;
         $real->save(); 
         return redirect()->back();

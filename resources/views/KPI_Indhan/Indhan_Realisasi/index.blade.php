@@ -257,9 +257,6 @@
                             <option>Oktober</option>
                             <option>November</option>
                             <option>Desember</option>
-
-
-
                         </select>
                     </div>
                     <div class="mb-3">

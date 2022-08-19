@@ -5,7 +5,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Individual KPI</h4>
+                <h4 class="card-title mb-0 flex-grow-1">KPI PMS</h4>
                 <div class="flex-shrink-0">
                     <button type="button" class="btn btn-soft-info btn-sm shadow-none">
                         <i class="ri-file-list-3-line align-middle"></i> Generate Report
@@ -135,7 +135,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit {{ $kpi->kpi_desc }}</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close" id="close-modal"></button>
                                                 </div>
@@ -167,7 +167,7 @@
                                                                 id="sub_kat" value="{{ $kpi->sub_kat }}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="kpi_desc" class="form-label">Deskripsi kategori</label>
+                                                            <label for="kpi_desc" class="form-label">Deskripsi KPI PMS</label>
                                                             <input name="kpi_desc" type="text" class="form-control"
                                                                 id="kpi_desc" value="{{ $kpi->kpi_desc }}">
                                                         </div>
@@ -203,7 +203,7 @@
                                                         <button type="button" class="btn btn-light"
                                                             data-bs-dismiss="modal">Close</button>
                                                         <button type="submit" class="btn btn-success"
-                                                            id="edit-btn">Update</button>
+                                                            id="edit-btn">Update KPI PMS</button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -243,7 +243,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add KPI PMS</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     id="close-modal"></button>
             </div>
@@ -289,7 +289,7 @@
                     id="bobot" value="">
                 </div>
                 <div class="mb-3">
-                    <label for="desc_kpidir" class="form-label">Deskripsi Kategori</label>
+                    <label for="desc_kpidir" class="form-label">Deskripsi KPI PMS</label>
                     <input name="desc_kpidir" type="text" class="form-control"
                     id="desc_kpidir" value="">
                 </div>
@@ -318,7 +318,7 @@
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add Kategori</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add KPI PMS</button>
                 </div>
             </div>
             </form>

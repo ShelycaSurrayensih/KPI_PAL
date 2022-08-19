@@ -5,7 +5,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Individual KPI</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Inisiatif Strategis</h4>
                 <div class="flex-shrink-0">
                     <button type="button" class="btn btn-soft-info btn-sm shadow-none">
                         <i class="ri-file-list-3-line align-middle"></i> Generate Report
@@ -18,12 +18,9 @@
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
                             <div>
-                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
-                                    id="create-btn" data-bs-target="#showModal"><i
-                                        class="ri-add-line align-bottom me-1"></i>
+                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i
-                                        class="ri-delete-bin-2-line"></i></button>
+                                <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
                             </div>
                         </div>
                         <div class="col-sm">
@@ -65,9 +62,7 @@
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="edit">
-                                                    <button class="btn btn-sm btn-success edit-item-btn"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#showModal{{ $init->id_inisiatif }}">Edit</button>
+                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $init->id_inisiatif }}">Edit</button>
                                                 </div>
                                                 <div class="remove">
 
@@ -75,10 +70,8 @@
 
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit"
-                                                            class="btn btn-sm btn-danger remove-item-btn"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#deleteRecordModal">Delete</button>
+                                                        <button type="submit" class="btn btn-sm btn-danger remove-item-btn" 
+                                                        data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -86,45 +79,35 @@
                                     </tr><!-- end tr -->
 
                                     <!-- edit Modal -->
-                                    <div class="modal fade" id="showModal{{ $init->id_inisiatif }}" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="showModal{{ $init->id_inisiatif }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close" id="close-modal"></button>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit {{$init->inisiatif_desc}}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post"
-                                                        action="{{ route('inisiatifStrategis.update', $init->id_inisiatif) }}"
-                                                        enctype="multipart/form-data" id="myForm">
+                                                    <form method="post" action="{{ route('inisiatifStrategis.update', $init->id_inisiatif) }}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
                                                             <label for="id_inisiatif" class="form-label">ID_inisiatif</label>
-                                                            <input name="id_inisiatif" value="{{$init->id_inisiatif}}"
-                                                                class="form-control" id="id_inisiatif" placeholder
-                                                                readonly="">
+                                                            <input name="id_inisiatif" value="{{$init->id_inisiatif}}" class="form-control" id="id_inisiatif" placeholder readonly="">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="inisiatif_desc" class="form-label">Deskripsi Inisiatif</label>
-                                                            <input name="inisiatif_desc" value="{{$init->inisiatif_desc}}"
-                                                                class="form-control" id="inisiatif_desc">
+                                                            <input name="inisiatif_desc" value="{{$init->inisiatif_desc}}" class="form-control" id="inisiatif_desc">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="tahun_inisiatif" class="form-label">KPI</label>
-                                                            <input name="tahun_inisiatif" type="text" class="form-control"
-                                                                id="tahun_inisiatif" value="{{$init->tahun_inisiatif}}">
+                                                            <input name="tahun_inisiatif" type="text" class="form-control" id="tahun_inisiatif" value="{{$init->tahun_inisiatif}}">
                                                         </div>
 
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="hstack gap-2 justify-content-end">
-                                                        <button type="button" class="btn btn-light"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success"
-                                                            id="edit-btn">Update</button>
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" id="edit-btn">Update Inisiatif Strategis</button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -164,9 +147,8 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    id="close-modal"></button>
+                <h5 class="modal-title" id="exampleModalLabel">Add Inisiatif Strategis</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
 
             <div class="modal-body">
@@ -184,7 +166,7 @@
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add Inisiatif Strategis</button>
                 </div>
             </div>
             </form>

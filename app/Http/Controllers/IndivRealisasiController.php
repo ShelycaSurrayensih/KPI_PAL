@@ -57,7 +57,7 @@ class IndivRealisasiController extends Controller
         $indivRealisasi->keterangan= $request->keterangan;
         $indivRealisasi->id_divisi= $request->id_divisi;
         $indivRealisasi->save();
-        return redirect()->route('KPI_IndivRealisasi.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back();
     }
 
     /**
@@ -104,7 +104,7 @@ class IndivRealisasiController extends Controller
         $indivRealisasi->keterangan= $request->get('keterangan');
         $indivRealisasi->id_divisi= $request->get('id_divisi');
         $indivRealisasi->save();
-        return redirect()->route('KPI_IndivRealisasi.edit', $id_realisasi)->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back();
     }
 
     /**
@@ -117,7 +117,6 @@ class IndivRealisasiController extends Controller
     {
         $indivRealisasi = indivRealisasi::where('id_realisasi', $id_realisasi);
         $indivRealisasi->delete();
-        return redirect()->route('KPI_Indiv.Indiv_Realisasi.index')
-            ->with('Sukses, data berhasil dihapus');
+        return redirect()->back();
     }
 }

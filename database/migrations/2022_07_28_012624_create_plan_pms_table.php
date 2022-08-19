@@ -17,9 +17,10 @@ class CreatePlanPmsTable extends Migration
             $table->id('id_plan');
             $table->unsignedBigInteger('id_kpipms');
             $table->foreign('id_kpipms')->references('id_kpipms')->on('kpi_pms')->onDelete('cascade');
-            $table->integer('tw');
+            $table->String('bulan');
+            $table->year('tahun');
             $table->string('progress_plan');
-            $table->text('desc_progress');
+            $table->text('desc_plan');
         });
     }
 

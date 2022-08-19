@@ -82,7 +82,7 @@ class IndivController extends Controller
         $kpidir->asal_kpi = $request->get('asal_kpi');
         $kpidir->alasan = $request->get('alasan');
         $kpidir->save();
-        return redirect()->route('KPI_Indiv.create')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back();
     }
 
     /**
@@ -143,7 +143,7 @@ class IndivController extends Controller
         $kpidir->asal_kpi = $request->get('asal_kpi');
         $kpidir->alasan = $request->get('alasan');
         $kpidir->save();
-        return redirect()->route('KPI_Indiv.edit', $id_kpidir)->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back();
     }
 
     /**
@@ -156,7 +156,6 @@ class IndivController extends Controller
     {
         $kpidir = IndivKpiDir::where('id_kpidir', $id_kpidir);
         $kpidir->delete();
-        return redirect()->route('KPI_Indiv.index')
-            ->with('Sukses, data berhasil dihapus');
+        return redirect()->back();
     }
 }

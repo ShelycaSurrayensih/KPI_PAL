@@ -5,7 +5,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Individual KPI</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Kategori PMS</h4>
                 <div class="flex-shrink-0">
                     <button type="button" class="btn btn-soft-info btn-sm shadow-none">
                         <i class="ri-file-list-3-line align-middle"></i> Generate Report
@@ -90,7 +90,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit {{ $kateg->ket }}</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close" id="close-modal"></button>
                                                 </div>
@@ -117,7 +117,7 @@
                                                         <button type="button" class="btn btn-light"
                                                             data-bs-dismiss="modal">Close</button>
                                                         <button type="submit" class="btn btn-success" id="add-btn">Add
-                                                            KPI</button>
+                                                            Kategori</button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -157,7 +157,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Kategori</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     id="close-modal"></button>
             </div>
@@ -178,7 +178,7 @@
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add KPI</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add Kategori</button>
                 </div>
             </div>
             </form>

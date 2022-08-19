@@ -5,7 +5,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">{{$plan->desc_progress}}</h4>
+                <h4 class="card-title mb-0 flex-grow-1">{{$plan->desc_plan}}</h4>
                 <div class="flex-shrink-0">
                     <button type="button" class="btn btn-soft-info btn-sm shadow-none">
                         <i class="ri-file-list-3-line align-middle"></i> Generate Report
@@ -18,12 +18,9 @@
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
                             <div>
-                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
-                                    id="create-btn" data-bs-target="#showModal"><i
-                                        class="ri-add-line align-bottom me-1"></i>
+                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i
-                                        class="ri-delete-bin-2-line"></i></button>
+                                <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
                             </div>
                         </div>
                         <div class="col-sm">
@@ -57,7 +54,7 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $real->progres_real }}</div>
+                                                <div class="flex-grow-1">{{ $real->progress_real }}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -67,7 +64,7 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $real->kendala }}</div>
+                                                <div class="flex-grow-1">{{ $real->keterangan }}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -78,16 +75,12 @@
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="edit">
-                                                    <button class="btn btn-sm btn-success edit-item-btn"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#showModal{{ $real->id_real }}">Edit</button>
+                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $real->id_real }}">Edit</button>
                                                 </div>
                                                 <div class="remove">
 
 
-                                                    <button type="submit" class="btn btn-sm btn-danger remove-item-btn"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Delete</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
 
                                                 </div>
                                             </div>
@@ -95,53 +88,52 @@
                                     </tr><!-- end tr -->
 
                                     <!-- edit Modal -->
-                                    <div class="modal fade" id="showModal{{ $real->id_real }}" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="showModal{{ $real->id_real }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close" id="close-modal"></button>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Realisasi {{$plan->progress_plan}}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post" action="{{ route('realpms.update', $real->id_real)}}" enctype="multipart/form-data"
-                                                        id="myForm">
+                                                    <form method="post" action="{{ route('realpms.update', $real->id_real)}}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">ID Realisasi</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="{{ $real->id_real }}" readonly>
+                                                            <label for="id_plan" class="form-label">Plan</label>
+                                                            <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
+                                                            <input name="" type="text" class="form-control" id="" value="{{$plan->progress_plan}}" readonly>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Progress</label>
-                                                            <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="{{ $real->progres_real }}">
+                                                            <label for="" class="form-label">Bulan</label>
+                                                            <input name="" type="text" class="form-control" id="" value="{{$plan->bulan}}" readonly>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Deskripsi</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="{{ $real->desc_real }}">
+                                                            <label for="" class="form-label">Tahun</label>
+                                                            <input name="" type="text" class="form-control" id="" value="{{$plan->tahun}}" readonly>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">Kendala</label>
-                                                            <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="{{ $real->kendala }}">
+                                                            <label for="progress_real" class="form-label">Progress Realisasi</label>
+                                                            <input name="progress_real" type="text" class="form-control" id="progress_real" value="{{ $real->progress_real }}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="satuan" class="form-label">File Evidance</label>
-                                                            <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="{{ $real->file_evidence }}">
+                                                            <label for="desc_real" class="form-label">Deskripsi Realisasi</label>
+                                                            <input name="desc_real" type="text" class="form-control" id="desc_real" value="{{ $real->desc_real }}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="keterangan" class="form-label">Keterangan</label>
+                                                            <input name="keterangan" type="text" class="form-control" id="keterangan" value="{{ $real->keterangan }}" placeholder="Dapat diisi dengan kendala ketidaktercapaian">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="file_evidence" class="form-label">File Evidance</label>
+                                                            <input name="file_evidence" type="text" class="form-control" id="file_evidence" value="{{ $real->file_evidence }}">
                                                         </div>
 
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="hstack gap-2 justify-content-end">
-                                                        <button type="button" class="btn btn-light"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success"
-                                                            id="edit-btn">Update</button>
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" id="edit-btn">Update Realisasi</button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -150,19 +142,15 @@
                                     </div>
 
                                     <!-- Delete Modal -->
-                                    <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1"
-                                        aria-hidden="true">
+                                    <div class="modal fade zoomIn" id="deleteRecordModal" tabindex="-1" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close" id="btn-close"></button>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btn-close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="mt-2 text-center">
-                                                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json"
-                                                            trigger="loop" colors="primary:#f7b84b,secondary:#f06548"
-                                                            style="width:100px;height:100px"></lord-icon>
+                                                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop" colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
                                                         <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
                                                             <h4>Are you Sure ?</h4>
                                                             <p class="text-muted mx-4 mb-0">Are you Sure You want to
@@ -170,16 +158,13 @@
                                                         </div>
                                                     </div>
 
-                                                    <form action="{{ route('realpms.destroy', $real->id_real) }}"
-                                                        method="POST">
+                                                    <form action="{{ route('realpms.destroy', $real->id_real) }}" method="POST">
 
                                                         @csrf
                                                         @method('DELETE')
                                                         <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                                                            <button type="button" class="btn w-sm btn-light"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn w-sm btn-danger "
-                                                                id="delete-record">Yes, Delete It!</button>
+                                                            <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn w-sm btn-danger " id="delete-record">Yes, Delete It!</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -221,9 +206,8 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    id="close-modal"></button>
+                <h5 class="modal-title" id="exampleModalLabel">Realisasi {{$plan->progress_plan}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
 
             <div class="modal-body">
@@ -231,20 +215,28 @@
                     @csrf
                     <div class="mb-3">
                         <label for="id_plan" class="form-label">Plan</label>
-                            <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
-                            <input name="" type="text" class="form-control" id="" value="{{$plan->progress_plan}}" readonly>
+                        <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
+                        <input name="" type="text" class="form-control" id="" value="{{$plan->progress_plan}}" readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="progres_real" class="form-label">Progress</label>
-                        <input name="progres_real" type="text" class="form-control" id="progres_real" value="">
+                        <label for="" class="form-label">Bulan</label>
+                        <input name="" type="text" class="form-control" id="" value="{{$plan->bulan}}" readonly>
                     </div>
                     <div class="mb-3">
-                        <label for="desc_real" class="form-label">Deskripsi</label>
+                        <label for="" class="form-label">Tahun</label>
+                        <input name="" type="text" class="form-control" id="" value="{{$plan->tahun}}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="progress_real" class="form-label">Progress Realisasi</label>
+                        <input name="progress_real" type="text" class="form-control" id="progress_real" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc_real" class="form-label">Deskripsi Realisasi</label>
                         <input name="desc_real" type="text" class="form-control" id="desc_real" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="kendala" class="form-label">Kendala</label>
-                        <input name="kendala" type="text" class="form-control" id="kendala" value="">
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <input name="keterangan" type="text" class="form-control" id="keterangan" value="" placeholder="Dapat diisi dengan kendala ketidaktercapaian">
                     </div>
                     <div class="mb-3">
                         <label for="file_evidence" class="form-label">File</label>
@@ -254,7 +246,7 @@
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add KPI</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add Realisasi</button>
                 </div>
             </div>
             </form>

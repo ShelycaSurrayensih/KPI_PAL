@@ -50,7 +50,7 @@ class IndhanRealisasiController extends Controller
         $indhanRealisasi->kendala = $request->kendala;
         $indhanRealisasi->timestamp;
         $indhanRealisasi->save();
-        return redirect()->route('KPI_IndhanRealisasi.create')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back();
     }
 
     /**
@@ -76,7 +76,7 @@ class IndhanRealisasiController extends Controller
             $users = auth()->user();
             $indhan = Indhan::all();
             $indhanRealisasi = IndhanRealisasi::all();
-            return view('KPI_Indhan.Indhan_Realisasi.index', compact ('users', 'indhan', 'indhanRealisasi'));
+            return redirect()->back();
         }
     }
 
