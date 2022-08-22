@@ -96,10 +96,12 @@
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#showModal{{ $indhanReal->id_realisasi }}">Edit</button>
                                             </div>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModalgrid">
-                                                Launch Demo Modal
-                                            </button>
+                                            <div class="details">
+                                                <button type="button" class="btn btn-sm btn-success edit-item-btn"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
+                                                    Details
+                                                </button>
+                                            </div>
                                             <div class="remove">
 
                                                 <form
@@ -118,14 +120,14 @@
                                     </td>
                                 </tr>
 
-                                <!-- Grids in modals -->
+                                <!-- Details in modals -->
 
                                 <div class="modal fade" id="exampleModalgrid" tabindex="-1"
                                     aria-labelledby="exampleModalgridLabel" aria-modal="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalgridLabel">Grid Modals</h5>
+                                                <h5 class="modal-title" id="exampleModalgridLabel">Details Indhan</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -134,72 +136,104 @@
                                                     <div class="row g-3">
                                                         <div class="col-xxl-6">
                                                             <div>
-                                                                <label for="firstName" class="form-label">First
-                                                                    Name</label>
-                                                                <input type="text" class="form-control" id="firstName"
-                                                                    placeholder="Enter firstname">
+                                                                <label for="program_strategis">Program Strategis</label>
+                                                                <input name="program_strategis" class="form-control"
+                                                                    id="program_strategis"
+                                                                    value="{{ $indhan->program_strategis }}"
+                                                                    readonly="">
+                                                                </input>
                                                             </div>
                                                         </div>
                                                         <!--end col-->
                                                         <div class="col-xxl-6">
                                                             <div>
-                                                                <label for="lastName" class="form-label">Last
-                                                                    Name</label>
-                                                                <input type="text" class="form-control" id="lastName"
-                                                                    placeholder="Enter lastname">
+                                                                <label for="entitas">Bulan</label>
+                                                                <input type="text" name="entitas" class="form-control"
+                                                                    id="entitas" value="{{ $indhan->entitas }}"
+                                                                    readonly>
                                                             </div>
                                                         </div>
-                                                        <!--end col-->
-                                                        <div class="col-lg-12">
-                                                            <label for="genderInput" class="form-label">Gender</label>
+
+                                                        <div class="col-xxl-6">
                                                             <div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="inlineRadioOptions" id="inlineRadio1"
-                                                                        value="option1">
-                                                                    <label class="form-check-label"
-                                                                        for="inlineRadio1">Male</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="inlineRadioOptions" id="inlineRadio2"
-                                                                        value="option2">
-                                                                    <label class="form-check-label"
-                                                                        for="inlineRadio2">Female</label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="inlineRadioOptions" id="inlineRadio3"
-                                                                        value="option3">
-                                                                    <label class="form-check-label"
-                                                                        for="inlineRadio3">Others</label>
-                                                                </div>
+                                                                <label for="target">Target</label>
+                                                                <input name="target" class="form-control" id="target"
+                                                                    value="{{ $indhan->target }}" readonly="">
+                                                                </input>
                                                             </div>
                                                         </div>
                                                         <!--end col-->
                                                         <div class="col-xxl-6">
                                                             <div>
-                                                                <label for="emailInput" class="form-label">Email</label>
-                                                                <input type="email" class="form-control" id="emailInput"
-                                                                    placeholder="Enter your email">
+                                                                <label for="program_utama">Program Utama</label>
+                                                                <input type="text" name="program_utama"
+                                                                    class="form-control" id="program_utama"
+                                                                    value="{{ $indhan->program_utama }}" readonly>
+                                                            </div>
+                                                        </div>
+
+                                                        <div>
+                                                            <h5 class="modal-title" id="exampleModalgridLabel">Realisasi
+                                                            </h5>
+                                                        </div>
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="id_indhan">ID KPI</label>
+                                                                <input name="id_indhan" class="form-control"
+                                                                    id="id_indhan"
+                                                                    value="{{ $indhan->program_strategis }}"
+                                                                    readonly="">
+                                                                </input>
                                                             </div>
                                                         </div>
                                                         <!--end col-->
                                                         <div class="col-xxl-6">
                                                             <div>
-                                                                <label for="passwordInput"
-                                                                    class="form-label">Password</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="passwordInput" value="451326546">
+                                                                <label for="bulan">Bulan</label>
+                                                                <input type="text" name="bulan" class="form-control"
+                                                                    id="bulan" value="{{$indhanReal->bulan}}" readonly>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="tahun">Tahun</label>
+                                                                <input type="text" name="tahun" class="form-control"
+                                                                    id="tahun" value="{{$indhanReal->tahun}}" readonly>
                                                             </div>
                                                         </div>
                                                         <!--end col-->
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="realisasi">Realisasi</label>
+                                                                <input type="text" name="realisasi" class="form-control"
+                                                                    id="realisasi" value="{{ $indhanReal->realisasi }}"
+                                                                    readonly>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="timestamp">Tanggal Input</label>
+                                                                <input type="text" name="timestamp" class="form-control"
+                                                                    id="timestamp" value="{{ $indhanReal->created_at }}"
+                                                                    readonly>
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="kendala">Kendala</label>
+                                                                <input type="text" name="kendala" class="form-control"
+                                                                    id="kendala" value="{{ $indhanReal->kendala }}"
+                                                                    readonly>
+                                                            </div>
+                                                        </div>
                                                         <div class="col-lg-12">
                                                             <div class="hstack gap-2 justify-content-end">
                                                                 <button type="button" class="btn btn-light"
                                                                     data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit"
-                                                                    class="btn btn-primary">Submit</button>
                                                             </div>
                                                         </div>
                                                         <!--end col-->
@@ -381,8 +415,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="kendala">Kendala</label>
-                        <input type="text" name="kendala" class="form-control" id="kendala"
-                            placeholder="Dapat diisi dengan kendala ketidaktercapaian">
+                        <textarea type="text" name="kendala" class="form-control" id="kendala"
+                            placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
 
                     </div>
 

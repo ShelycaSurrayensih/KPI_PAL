@@ -88,6 +88,12 @@
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#showModal{{ $indivReal->id_realisasi }}">Edit</button>
                                             </div>
+                                            <div class="details">
+                                                <button type="button" class="btn btn-sm btn-success edit-item-btn"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
+                                                    Details
+                                                </button>
+                                            </div>
                                             <div class="remove">
                                                 <form
                                                     action="{{ route('KPI_IndivRealisasi.destroy', $indivReal->id_realisasi) }}"
@@ -102,6 +108,142 @@
                                         </div>
                                     </td>
                                 </tr>
+
+
+                                <!-- Details in modals -->
+
+                                <div class="modal fade" id="exampleModalgrid" tabindex="-1"
+                                    aria-labelledby="exampleModalgridLabel" aria-modal="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalgridLabel">Details Indiv</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="javascript:void(0);">
+                                                    <div class="row g-3">
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="id_kpidir">KPI</label>
+                                                                <input name="id_kpidir" class="form-control"
+                                                                    id="id_kpidir" value="{{ $kpidir->desc_kpidir }}"
+                                                                    readonly="">
+
+                                                                </input>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="target">Target</label>
+                                                                <input type="text" name="target" class="form-control"
+                                                                    id="target" value="{{ $kpidir->target }}" readonly>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="bobot">Bobot</label>
+                                                                <input name="bobot" class="form-control" id="bobot"
+                                                                    value="{{ $kpidir->bobot }}" readonly="">
+
+                                                                </input>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="asal">Asal KPI</label>
+                                                                <input type="text" name="asal" class="form-control"
+                                                                    id="asal" value="{{ $kpidir->target }}" readonly>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="keterangan">Keterangan</label>
+                                                                <input name="keterangan" class="form-control"
+                                                                    id="keterangan" value="{{ $kpidir->ket }}"
+                                                                    readonly="">
+
+                                                                </input>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="alasan">Alasan</label>
+                                                                <input type="text" name="alasan" class="form-control"
+                                                                    id="alasan" value="{{ $kpidir->alasan }}" readonly>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div>
+                                                            <h5 class="modal-title" id="exampleModalgridLabel">Realisasi</h5>
+                                                        </div>
+
+                                                        <!--end col-->
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="tw">TW</label>
+                                                                <input type="text" name="tw" class="form-control"
+                                                                    id="tw" value="{{$indivReal->tw}}" readonly>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="progres">Progres</label>
+                                                                <input type="text" name="progres" class="form-control"
+                                                                    id="progres" value="{{$indivReal->progres}}"
+                                                                    readonly>
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="realisasi">Deskripsi Realisasi</label>
+                                                                <input type="text" name="realisasi" class="form-control"
+                                                                    id="realisasi" value="{{$indivReal->realisasi}}"
+                                                                    readonly>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="prognosa">Prognosa</label>
+                                                                <input type="text" name="prognosa" class="form-control"
+                                                                    id="prognosa" value="{{$indivReal->prognosa}}"
+                                                                    readonly>
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="keterangan">Keterangan</label>
+                                                                <input type="text" name="keterangan"
+                                                                    class="form-control" id="keterangan"
+                                                                    value="{{$indivReal->keterangan}}" readonly>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-12">
+                                                            <div class="hstack gap-2 justify-content-end">
+                                                                <button type="button" class="btn btn-light"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                    </div>
+                                                    <!--end row-->
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <!-- edit Modal -->
                                 <div class="modal fade" id="showModal{{ $indivReal->id_realisasi }}" tabindex=" -1"
@@ -255,8 +397,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="keterangan">Keterangan</label>
-                        <input type="text" name="keterangan" class="form-control" id="keterangan"
-                            placeholder="Dapat diisi dengan kendala ketidaktercapaian">
+                        <textarea type="textarea" name="keterangan" class="form-control" id="keterangan"
+                            placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
 
                     </div>
                     <div class=" mb-3">
