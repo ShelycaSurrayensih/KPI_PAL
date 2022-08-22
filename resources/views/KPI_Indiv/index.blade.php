@@ -22,8 +22,6 @@
                                     id="create-btn" data-bs-target="#showModal"><i
                                         class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i
-                                        class="ri-delete-bin-2-line"></i></button>
                             </div>
                         </div>
                         <div class="col-sm">
@@ -47,10 +45,9 @@
                                         <th scope="col">KPI</th>
                                         <th scope="col">Satuan</th>
                                         <th scope="col">Target</th>
-                                        <th scope="col">Bobot</th>
                                         <th scope="col">Asal KPI</th>
                                         <th scope="col">Keterangan</th>
-                                        <th scope="col">Alasan</th>
+                                        <th scope="col">Progres</th>
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -76,11 +73,6 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpidir->target }}</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpidir->bobot }}</div>
                                             </div>
                                         </td>
                                         <td>
