@@ -2016,6 +2016,9 @@
     <!-- user -->
     <script src="{{ asset('assets') }}/js/pages/listjs.init.js"></script>
 
+    <!-- Modal Js -->
+    <script src="{{ asset('assets') }}/js/pages/modal.init.js"></script>
+
 
     <!-- App js -->
     <script src="{{ asset('assets') }}/js/app.js"></script>
