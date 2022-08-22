@@ -68,7 +68,7 @@ class IndivController extends Controller
             'bobot' => 'required',
             'ket' => 'required',
             'asal_kpi' => 'required',
-            'alasan' => 'required',
+            
         ]);
 
         $kpidir = new IndivKpiDir;
@@ -80,7 +80,7 @@ class IndivController extends Controller
         $kpidir->bobot = $request->get('bobot');
         $kpidir->ket = $request->get('ket');
         $kpidir->asal_kpi = $request->get('asal_kpi');
-        $kpidir->alasan = $request->get('alasan');
+        $kpidir->timestamp;
         $kpidir->save();
         return redirect()->back();
     }
@@ -129,7 +129,7 @@ class IndivController extends Controller
             'bobot' => 'required',
             'ket' => 'required',
             'asal_kpi' => 'required',
-            'alasan' => 'required',
+            
         ]);
 
         $kpidir=IndivKpiDir::where('id_kpidir', $id_kpidir)->first();
@@ -141,7 +141,7 @@ class IndivController extends Controller
         $kpidir->bobot = $request->get('bobot');
         $kpidir->ket = $request->get('ket');
         $kpidir->asal_kpi = $request->get('asal_kpi');
-        $kpidir->alasan = $request->get('alasan');
+        $kpidir->timestamp;
         $kpidir->save();
         return redirect()->back();
     }

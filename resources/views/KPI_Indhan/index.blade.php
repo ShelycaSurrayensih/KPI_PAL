@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Indhan</h4>
+                <h4 class="card-title mb-0 flex-grow-1"><strong>Indhan</strong></h4>
                 <div class="flex-shrink-0">
                 </div>
             </div><!-- end card header -->
@@ -40,6 +40,7 @@
                                     <th class="sort" data-sort="no">No</th>
                                     <th class="sort" data-sort="program_strategis">Program Strategis</th>
                                     <th class="sort" data-sort="entitas">Entitas</th>
+                                    <th class="sort" data-sort="entitas">Program Utama</th>
                                     <th class="sort" data-sort="target">Target/Milestone</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
@@ -61,6 +62,11 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $indhan->entitas }}</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1">{{ $indhan->program_utama }}</div>
                                         </div>
                                     </td>
                                     <td>
@@ -143,6 +149,12 @@
                                                         <label for="entitas">Entitas</label>
                                                         <input type="text" name="entitas" class="form-control"
                                                             id="entitas" value="{{ $indhan->entitas }}">
+
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="program_utama">Program Utama</label>
+                                                        <input type="text" name="program_utama" class="form-control"
+                                                            id="program_utama" value="{{ $indhan->program_utama }}">
 
                                                     </div>
                                                     <div class="mb-3">
@@ -239,10 +251,15 @@
 
                     </div>
                     <div class="mb-3">
+                        <label for="program_utama">Program Utama</label>
+                        <input type="text" name="program_utama" class="form-control" id="program_utama">
+
+                    </div>
+                    <div class="mb-3">
                         <label for="target">Target</label>
                         <input type="text" name="target" class="form-control" id="target">
 
-                    </div>-
+                    </div>
 
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">

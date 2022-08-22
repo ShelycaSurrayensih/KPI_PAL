@@ -4,7 +4,8 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Realisasi KPI {{$kpidir->desc_kpidir}}</h4>
+                <h4 class="card-title mb-0 flex-grow-1"><strong>Realisasi KPI {{$kpidir->desc_kpidir}}</strong></h4>
+
                 <div class="flex-shrink-0">
                 </div>
             </div><!-- end card header -->
@@ -13,12 +14,17 @@
                 <div id="IndivRealisasi">
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
+                            <div class="card-title mb-0 flex-grow-1">
+                                <h5> Keterangan : {{$kpidir->ket}}</h5>
+                                <h5> Bobot : {{$kpidir->target}}</h5>
+                            </div><br>
                             <div>
                                 <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
                                     id="create-btn" data-bs-target="#showModal"><i
                                         class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
                             </div>
+
                         </div>
                         <div class="col-sm">
                             <div class="d-flex justify-content-sm-end">
@@ -112,7 +118,8 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalgridLabel">Details Indiv</h5>
+                                                <h5 class="modal-title" id="exampleModalgridLabel">Details Indiv
+                                                </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -177,7 +184,9 @@
 
 
                                                         <div>
-                                                            <h5 class="modal-title" id="exampleModalgridLabel">Realisasi</h5>
+                                                            <h5 class="modal-title" id="exampleModalgridLabel">
+                                                                Realisasi
+                                                            </h5>
                                                         </div>
 
                                                         <!--end col-->
