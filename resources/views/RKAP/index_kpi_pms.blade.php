@@ -51,6 +51,7 @@
                                         <th scope="col">Target</th>
                                         <th scope="col">Lead Divisi</th>
                                         <th scope="col">Tahun KPI PMS</th>
+                                        <th scope="col">Progress</th>
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -101,6 +102,12 @@
                                                 <div class="flex-grow-1">{{ $kpi->tahun_kpipms }}</div>
                                             </div>
                                         </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1"></div>
+                                            </div>
+                                        </td>
+                                       
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="edit">
