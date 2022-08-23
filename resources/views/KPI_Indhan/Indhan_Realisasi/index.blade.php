@@ -5,11 +5,9 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Indhan Realisasi {{$indhan->program_strategis}}</h4>
+                <h4 class="card-title mb-0 flex-grow-1"><strong>Indhan Realisasi {{$indhan->program_strategis}}</strong>
+                </h4>
                 <div class="flex-shrink-0">
-                    <button type="button" class="btn btn-soft-info btn-sm shadow-none">
-                        <i class="ri-file-list-3-line align-middle"></i> Generate Report
-                    </button>
                 </div>
             </div><!-- end card header -->
 
@@ -17,13 +15,15 @@
                 <div id="IndivPlan">
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
+                            <div class="card-title mb-0 flex-grow-1">
+                                <h5> Entitas : {{$indhan->entitas}}</h5>
+                                <h5> Target : {{$indhan->target}}</h5>
+                            </div><br>
                             <div>
                                 <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
                                     id="create-btn" data-bs-target="#showModal"><i
                                         class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i
-                                        class="ri-delete-bin-2-line"></i></button>
                             </div>
                         </div>
                         <div class="col-sm">

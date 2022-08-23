@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class IndivKpiDir extends Model
 {
     use HasFactory;
-    public $timestamps = false;
+    
     public $table = 'indiv_kpidir';
     protected $primaryKey = 'id_kpidir';
     protected $fillable = [
@@ -21,8 +21,13 @@ class IndivKpiDir extends Model
         'bobot',
         'ket',
         'asal_kpi',
-        'alasan',
+        
     ];
+    public function getCreatedAtAttribute()
+{
+    return \Carbon\Carbon::parse($this->attributes['created_at'])
+       ->format('d, M Y');
+}
     public function divisi(){
         return $this->belongsTo('App\Models\Divisi');
     }

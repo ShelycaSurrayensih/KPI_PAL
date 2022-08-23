@@ -5,7 +5,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Individual KPI</h4>
+                <h4 class="card-title mb-0 flex-grow-1"><strong>Individual KPI</strong></h4>
                 <div class="flex-shrink-0">
                     <button type="button" class="btn btn-soft-info btn-sm shadow-none">
                         <i class="ri-file-list-3-line align-middle"></i> Generate Report
@@ -22,8 +22,6 @@
                                     id="create-btn" data-bs-target="#showModal"><i
                                         class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i
-                                        class="ri-delete-bin-2-line"></i></button>
                             </div>
                         </div>
                         <div class="col-sm">
@@ -47,10 +45,9 @@
                                         <th scope="col">KPI</th>
                                         <th scope="col">Satuan</th>
                                         <th scope="col">Target</th>
-                                        <th scope="col">Bobot</th>
                                         <th scope="col">Asal KPI</th>
                                         <th scope="col">Keterangan</th>
-                                        <th scope="col">Alasan</th>
+                                        <th scope="col">Progres</th>
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -80,11 +77,6 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpidir->bobot }}</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpidir->asal_kpi }}</div>
                                             </div>
                                         </td>
@@ -95,7 +87,7 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpidir->alasan }}</div>
+                                                <div class="flex-grow-1">{{ $kpidir->created_at }}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -190,11 +182,7 @@
                                                             <input name="asal_kpi" type="text" class="form-control"
                                                                 id="asal_kpi" value="{{$kpidir->asal_kpi}}">
                                                         </div>
-                                                        <div class="mb-3">
-                                                            <label for="alasan" class="form-label">Alasan</label>
-                                                            <input name="alasan" type="text" class="form-control"
-                                                                id="alasan" value="{{$kpidir->alasan}}">
-                                                        </div>
+
 
                                                 </div>
                                                 <div class="modal-footer">
@@ -295,10 +283,7 @@
                         <label for="asal_kpi" class="form-label">Asal KPI</label>
                         <input name="asal_kpi" type="text" class="form-control" id="asal_kpi">
                     </div>
-                    <div class="mb-3">
-                        <label for="alasan" class="form-label">Alasan</label>
-                        <input name="alasan" type="text" class="form-control" id="alasan">
-                    </div>
+
 
             </div>
             <div class="modal-footer">

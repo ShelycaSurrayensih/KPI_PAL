@@ -25,7 +25,7 @@ class IndivKpidir extends Migration
             $table->String('bobot');
             $table->String('ket');
             $table->String('asal_kpi');
-            $table->String('alasan');
+            $table->timestamps();
         });
     }
 

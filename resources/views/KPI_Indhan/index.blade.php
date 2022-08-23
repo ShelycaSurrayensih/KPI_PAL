@@ -5,11 +5,8 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Indhan</h4>
+                <h4 class="card-title mb-0 flex-grow-1"><strong>Indhan</strong></h4>
                 <div class="flex-shrink-0">
-                    <button type="button" class="btn btn-soft-info btn-sm shadow-none">
-                        <i class="ri-file-list-3-line align-middle"></i> Generate Report
-                    </button>
                 </div>
             </div><!-- end card header -->
 
@@ -22,8 +19,6 @@
                                     id="create-btn" data-bs-target="#showModal"><i
                                         class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i
-                                        class="ri-delete-bin-2-line"></i></button>
                             </div>
                         </div>
                         <div class="col-sm">
@@ -45,8 +40,8 @@
                                     <th class="sort" data-sort="no">No</th>
                                     <th class="sort" data-sort="program_strategis">Program Strategis</th>
                                     <th class="sort" data-sort="entitas">Entitas</th>
+                                    <th class="sort" data-sort="entitas">Program Utama</th>
                                     <th class="sort" data-sort="target">Target/Milestone</th>
-                                    <th class="sort" data-sort="program_utama">Realisasi</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -71,12 +66,12 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $indhan->target }}</div>
+                                            <div class="flex-grow-1">{{ $indhan->program_utama }}</div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $indhan->program_utama }}</div>
+                                            <div class="flex-grow-1">{{ $indhan->target }}</div>
                                         </div>
                                     </td>
 
@@ -157,15 +152,15 @@
 
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="target">Target/Milestone</label>
-                                                        <input type="text" name="target" class="form-control"
-                                                            id="target" value="{{ $indhan->target }}">
+                                                        <label for="program_utama">Program Utama</label>
+                                                        <input type="text" name="program_utama" class="form-control"
+                                                            id="program_utama" value="{{ $indhan->program_utama }}">
 
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="program_utama">Realisasi</label>
-                                                        <input type="text" name="program_utama" class="form-control"
-                                                            id="program_utama" value="{{ $indhan->program_utama }}">
+                                                        <label for="target">Target/Milestone</label>
+                                                        <input type="text" name="target" class="form-control"
+                                                            id="target" value="{{ $indhan->target }}">
 
                                                     </div>
 
@@ -256,13 +251,13 @@
 
                     </div>
                     <div class="mb-3">
-                        <label for="target">Target</label>
-                        <input type="text" name="target" class="form-control" id="target">
+                        <label for="program_utama">Program Utama</label>
+                        <input type="text" name="program_utama" class="form-control" id="program_utama">
 
                     </div>
                     <div class="mb-3">
-                        <label for="program_utama">Realisasi</label>
-                        <input type="text" name="program_utama" class="form-control" id="program_utama">
+                        <label for="target">Target</label>
+                        <input type="text" name="target" class="form-control" id="target">
 
                     </div>
 
