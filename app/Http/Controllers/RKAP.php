@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Arr;
 use App\Models\InisiatifStrategis;
 use App\Models\KategoriPms;
 use App\Models\KpiPms;
@@ -151,7 +152,9 @@ class RKAP extends Controller
         $kategori = KategoriPms::all();
         $real = realisasiPms::all();
         $inisiatif = inisiatifStrategis::all();
-        return view('RKAP.index_plan', compact ('users', 'kpi', 'plan', 'real','inisiatif','kategori', 'divisi'));
+        $realCount = realisasiPms::count();
+        return view('RKAP.index_plan', compact ('users', 'kpi', 'plan', 'real','inisiatif','kategori', 'divisi', 'realCount'));
+        
     }
     public function plan_pmsDelete($id)
     {
