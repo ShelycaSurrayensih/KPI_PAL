@@ -396,9 +396,9 @@
                         <label for="tahun">Tahun</label>
                         <select name="tahun" class="form-control" id="tahun">
                             <?php
-                            $tg_awal = date('Y')-0;
+                            $tg_awal = date('Y')+0;
                             $tg_akhir = date('Y')+2;
-                            for($i=$tg_akhir; $i>=$tg_awal; $i--)
+                            for($i=$tg_awal; $i<=$tg_akhir; $i++)
                             {
                                 echo"
                                 <option value='$i'";

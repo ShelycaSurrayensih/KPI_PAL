@@ -152,7 +152,7 @@
             </div>
 
             <div class="modal-body">
-                <form method="post" action="{{  route('planpms.store')  }}" enctype="multipart/form-data" id="myForm">
+                <form method="post" action="{{  route('inisiatifStrategis.store')  }}" enctype="multipart/form-data" id="myForm">
                     @csrf
                     <div class="mb-3">
                         <label for="inisiatif_desc" class="form-label">Deskripsi Inisiatif</label>

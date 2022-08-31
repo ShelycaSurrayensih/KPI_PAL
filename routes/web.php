@@ -5,7 +5,8 @@ use App\Http\Controllers\IndivController;
 use App\Http\Controllers\IndhanTimController;
 use App\Http\Controllers\IndhanController;
 use App\Http\Controllers\IndhanRealisasiController;
-use App\Http\Controllers\IndivRealisasiController;
+use App\Http\Controllers\TupoksiDepartemenController;
+use App\Http\Controllers\TupoksiKPIController;
 use App\Http\Controllers\RKAP;
 
 /*
@@ -29,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('KPI_Indhan',IndhanController::class);
     Route::resource('KPI_IndhanTim',IndhanTimController::class);
     Route::resource('KPI_IndhanRealisasi',IndhanRealisasiController::class);
+    Route::resource('KPI_TupoksiDepartemen',TupoksiDepartemenController::class);
+    Route::resource('KPI_TupoksiKpi',TupoksiKPIController::class);
     
     
     
@@ -88,6 +91,13 @@ Route::post('/KPI_IndhanRealisasi/update/{id}',[IndhanRealisasiController::class
 Route::post('/KPI_IndhanRealisasi/edit/{id}',[IndhanRealisasiController::class, 'edit'])->name('indhanReal.edit');
 Route::delete('/KPI_IndhanRealisasi/destroy/{id}',[IndhanRealisasiController::class, 'destroy'])->name('indhanReal.destroy');
 
+//tupoksi departemen
+Route::delete('/Tupoksi_Departemen/destroy/{id}',[TupoksiDepartemenController::class, 'destroy'])->name('tupoksiDepartemen.destroy');
+Route::post('/Tupoksi_Departemen/update/{id}',[TupoksiDepartemenController::class, 'update'])->name('tupoksiDepartemen.update');
+
+//tupoksi KPI
+Route::delete('/Tupoksi_Kpi/destroy/{id}',[TupoksiKPIController::class, 'destroy'])->name('tupoksiKpi.destroy');
+Route::post('/Tupoksi_Kpi/update/{id}',[TupoksiKPIController::class, 'update'])->name('tupoksiKpi.update');
 
 
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
