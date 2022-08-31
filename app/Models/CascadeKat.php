@@ -9,4 +9,8 @@ class CascadeKat extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    public function CascadeKpi(){
+        return $this->hasMany('App\Models\CascadeKpi');
+    }
 }

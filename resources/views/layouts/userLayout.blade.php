@@ -802,6 +802,13 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{route('cascadeKPI.index')}}">
+                            <i class="mdi mdi-account-circle-outline"></i> <span
+                                data-key="t-authentication">Cascading</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarPages">
                             <i class="mdi mdi-sticker-text-outline"></i> <span data-key="t-pages">Pages</span>

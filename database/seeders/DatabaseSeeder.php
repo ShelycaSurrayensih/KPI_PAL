@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CascadeKat;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +18,7 @@ class DatabaseSeeder extends Seeder
             DirektoratSeeder::class,
             DivisiSeeder::class,
             UserSeeder::class,
-            
+            CascadeKatSeeder::class,
             PMSSeeder::class,
         ]);
     }

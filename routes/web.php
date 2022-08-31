@@ -38,7 +38,8 @@ Route::middleware(['auth'])->group(function () {
 });
 Auth::routes();
 
-
+//Cascading
+Route::get('/Cascade/KPI', [App\Http\Controllers\CascadeController::class, 'cascadeKpiIndex'])->name('cascadeKPI.index');
 //RKAP Store
 Route::post('/inisiatifStrategis/store', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisStore'])->name('inisiatifStrategis.store');
 Route::post('/KategoriPMS/store', [App\Http\Controllers\RKAP::class, 'KategoriPmsStore'])->name('KategoriPms.store');
@@ -68,6 +69,7 @@ Route::delete('/KPI_PMS/delete/{id}',[RKAP::class, 'kpi_pmsDelete'])->name('kpi_
 Route::delete('/Plan_PMS/delete/{id}',[RKAP::class, 'plan_pmsDelete'])->name('planpms.destroy');
 Route::delete('/Realisasi_PMS/destroy/{id}',[RKAP::class, 'real_pmsDestroy'])->name('realpms.destroy');
 
+//Indhan
 Route::post('/KPI_IndhanTim/update/{id}',[IndhanTimController::class, 'update'])->name('indhanTim.update');
 Route::post('/KPI_IndhanTim/edit/{id}',[IndhanTimController::class, 'edit'])->name('indhanTim.edit');
 Route::delete('/KPI_IndhanTim/destroy/{id}',[IndhanTimController::class, 'destroy'])->name('indhanTim.destroy');
