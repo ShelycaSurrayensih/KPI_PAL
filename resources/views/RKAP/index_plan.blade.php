@@ -188,6 +188,7 @@
                                                         </div>
                                                         <!--end row-->
                                                     </form>
+                                                    @break
                                                     @elseif($counter == 0)
                                                     @foreach($real as $reals)
                                                     @if($reals->id_plan == $plan->id_plan)
