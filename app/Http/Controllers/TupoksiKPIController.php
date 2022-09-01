@@ -66,7 +66,7 @@ class TupoksiKPIController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_kpi)
     {
         $users = auth()->user();
         $tupoksiDepartemen = TupoksiDepartemen::all();

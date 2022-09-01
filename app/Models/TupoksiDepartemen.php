@@ -15,7 +15,7 @@ class TupoksiDepartemen extends Model
         'id_departemen',
         'departemen',
     ];
-    public function TupoksiKPI(){
+    public function tupoksiKPI(){
         return $this->hasMany('App\Models\TupoksiKPI');
     }
 }

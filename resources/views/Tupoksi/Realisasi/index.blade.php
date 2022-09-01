@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Tupoksi Proker</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Tupoksi Realisasi</h4>
                 <div class="flex-shrink-0">
                 </div>
             </div><!-- end card header -->
@@ -42,17 +42,16 @@
                                                 value="option">
                                         </div>
                                     </th>
-                                    <th class="sort" data-sort="kpi">KPI</th>
                                     <th class="sort" data-sort="proker">Proker</th>
-                                    <th class="sort" data-sort="target">target</th>
+                                    <th class="sort" data-sort="tw">TW</th>
+                                    <th class="sort" data-sort="progres">Progres</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                @foreach($tupoksiKPI as $kpi)
                                 @foreach($tupoksiProker as $proker)
-                                @if($kpi->id_kpi == $proker->id_kpi)
-                                @if($proker->proker == $kpi->id_proker)
+                                @foreach($tupoksiRealisasi as $realisasi)
+                                @if($proker->id_proker == $realisasi->id_proker)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -62,28 +61,30 @@
                                     </th>
                                     <td class="id" style="display:none;"><a href="javascript:void(0);"
                                             class="fw-medium link-primary">#VZ2101</a></td>
-                                    <td class="kpi">{{$kpi->kpi}}</td>
+                                    <td class="departemen">{{$proker->proker}}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $proker->proker }}</div>
+                                            <div class="flex-grow-1">{{ $realisasi->tw }}</div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $proker->target }}</div>
+                                            <div class="flex-grow-1">{{ $realisasi->progres }}</div>
                                         </div>
                                     </td>
+
 
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
                                                 <button class="btn btn-sm btn-success edit-item-btn"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#showModal{{ $proker->id_proker }}">Edit</button>
+                                                    data-bs-target="#showModal{{ $realisasi->id_realisasi }}">Edit</button>
                                             </div>
                                             <div class="remove">
 
-                                                <form action="{{ route('tupoksiProker.destroy', $proker->id_proker) }}"
+                                                <form
+                                                    action="{{ route('KPI_TupoksiRealisasi.destroy', $realisasi->id_realisasi) }}"
                                                     method="POST">
 
                                                     @csrf
@@ -98,7 +99,7 @@
                                 </tr>
 
                                 <!-- edit Modal -->
-                                <div class="modal fade" id="showModal{{ $proker->id_proker }}" tabindex=" -1"
+                                <div class="modal fade" id="showModal{{ $realisasi->id_realisasi }}" tabindex=" -1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -109,25 +110,28 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form method="post"
-                                                    action="{{ route('tupoksiProker.update', $proker->id_proker) }}"
+                                                    action="{{ route('KPI_TupoksiRealisasi.update', $realisasi->id_realisasi) }}"
                                                     enctype="multipart/form-data" id="myForm">
                                                     @csrf
+
+
+                                                    @method('PUT')
                                                     <div class="mb-3">
-                                                        <label for="kpi">KPI</label>
-                                                        <input type="text" name="kpi" class="form-control" id="kpi"
-                                                            value="{{$departemen->id_departemen}}">
+                                                        <label for="proker">Proker</label>
+                                                        <input type="text" name="id_proker" class="form-control"
+                                                            id="id_proker" value="{{$proker->id_proker}}" readonly="">
 
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="kpi">Proker</label>
-                                                        <input type="text" name="proker" class="form-control"
-                                                            id="proker" value="{{$proker->id_proker}}">
+                                                        <label for="tw">TW</label>
+                                                        <input type="text" name="tw" class="form-control" id="tw"
+                                                            value="{{$realisasi->tw}}">
 
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="target">target</label>
-                                                        <input type="text" name="target" class="form-control"
-                                                            id="target" value="{{$target->target}}">
+                                                        <label for="progres">Progres</label>
+                                                        <input type="text" name="progres" class="form-control"
+                                                            id="progres" value="{{$realisasi->progres}}">
 
                                                     </div>
                                                     <div class=" modal-footer">
@@ -143,7 +147,6 @@
                                         </div>
                                     </div>
                             </tbody>
-                            @endif
                             @endif
                             @endforeach
                             @endforeach
@@ -189,37 +192,39 @@
                     id="close-modal"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('KPI_TupoksiProker.store') }}" enctype="multipart/form-data"
+                <form method="post" action="{{ route('KPI_TupoksiRealisasi.store') }}" enctype="multipart/form-data"
                     id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="id_kpi">KPI</label>
-                        <select name="id_kpi" class="form-control" id="id_kpi">
-                            @foreach ($tupoksiKPI as $kpi)
-                            <option value="{{$kpi->id_kpi}}">{{ "$kpi->kpi" }}</option>
+                        <label for="id_proker">Proker</label>
+                        <select name="id_proker" class="form-control" id="id_proker">
+                            @foreach ($tupoksiProker as $proker)
+                            <option value="{{$proker->id_proker}}">{{ "$proker->proker" }}</option>
                             @endforeach
                         </select>
 
                     </div>
                     <div class="mb-3">
-                        <label for="proker">Proker</label>
-                        <input type="text" name="proker" class="form-control" id="proker">
+                        <label for="tw">TW</label>
+                        <input type="text" name="tw" class="form-control" id="tw">
 
                     </div>
                     <div class="mb-3">
-                        <label for="target">Target</label>
-                        <input type="text" name="target" class="form-control" id="target">
+                        <label for="progres">Progres</label>
+                        <input type="text" name="progres" class="form-control" id="progres">
 
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success" id="add-btn">Add Proker</button>
+                            <button type="submit" class="btn btn-success" id="add-btn">Add KPI</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+
 
     @endsection

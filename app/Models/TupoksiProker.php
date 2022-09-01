@@ -17,7 +17,7 @@ class TupoksiProker extends Model
         'proker',
         'target',
     ];
-    public function TupoksiKPI(){
+    public function tupoksiKPI(){
         return $this->hasMany('App\Models\TupoksiKPI');
     }
 }

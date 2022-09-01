@@ -107,8 +107,9 @@
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="departemen">Departemen</label>
-                                                        <input type="text" name="departemen" class="form-control"
-                                                            id="departemen" value="{{$departemen->departemen}}">
+                                                        <input type="text" name="id_departemen" class="form-control"
+                                                            id="id_departemen" value="{{$departemen->id_departemen}}"
+                                                            readonly="">
 
                                                     </div>
                                                     <div class="mb-3">
