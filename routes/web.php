@@ -7,6 +7,7 @@ use App\Http\Controllers\IndhanController;
 use App\Http\Controllers\IndhanRealisasiController;
 use App\Http\Controllers\TupoksiDepartemenController;
 use App\Http\Controllers\TupoksiKPIController;
+use App\Http\Controllers\TupoksiProkerController;
 use App\Http\Controllers\RKAP;
 
 /*
@@ -32,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('KPI_IndhanRealisasi',IndhanRealisasiController::class);
     Route::resource('KPI_TupoksiDepartemen',TupoksiDepartemenController::class);
     Route::resource('KPI_TupoksiKpi',TupoksiKPIController::class);
+    Route::resource('KPI_TupoksiProker',TupoksiProkerController::class);
     
     
     
@@ -100,6 +102,10 @@ Route::post('/Tupoksi_Departemen/update/{id}',[TupoksiDepartemenController::clas
 //tupoksi KPI
 Route::delete('/Tupoksi_Kpi/destroy/{id}',[TupoksiKPIController::class, 'destroy'])->name('tupoksiKpi.destroy');
 Route::post('/Tupoksi_Kpi/update/{id}',[TupoksiKPIController::class, 'update'])->name('tupoksiKpi.update');
+
+//tupoksi Proker
+Route::delete('/Tupoksi_Proker/destroy/{id}',[TupoksiProkerController::class, 'destroy'])->name('tupoksiProker.destroy');
+Route::post('/Tupoksi_Proker/update/{id}',[TupoksiProkerController::class, 'update'])->name('tupoksiProker.update');
 
 
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

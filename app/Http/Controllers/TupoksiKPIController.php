@@ -18,7 +18,6 @@ class TupoksiKPIController extends Controller
         $users = auth()->user();
         $tupoksiDepartemen = TupoksiDepartemen::all();
         $tupoksiKPI = TupoksiKPI::all();
-        //dd($company->indhan);
         return view('Tupoksi.KPI.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI'));
     }
 
@@ -32,7 +31,6 @@ class TupoksiKPIController extends Controller
         $users = auth()->user();
         $tupoksiDepartemen = TupoksiDepartemen::all();
         $tupoksiKPI = TupoksiKPI::all();
-        //dd($company->indhan);
         return view('Tupoksi.KPI.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI'));
     }
 
@@ -83,7 +81,7 @@ class TupoksiKPIController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_kpi)
     {
         $tupoksiKPI = TupoksiKPI::where('id_kpi', $id_kpi)->first();
         $tupoksiKPI->id_departemen = $request->get('id_departemen');
@@ -98,7 +96,7 @@ class TupoksiKPIController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_kpi)
     {
         $tupoksiKPI = TupoksiKPI::where('id_kpi', $id_kpi);
         $tupoksiKPI->delete();
