@@ -93,8 +93,7 @@ class TupoksiRealisasiController extends Controller
     public function update(Request $request, $id_realisasi)
     {
         $tupoksiRealisasi = TupoksiRealisasi::where('id_realisasi', $id_realisasi)->first();
-        $tupoksiRealisasi->id_realisasi = $request->get('id_realisasi');
-        $tupoksiRealisasi->id_proker = $request->get('id_realisasi');
+        $tupoksiRealisasi->id_proker = $request->get('id_proker');
         $tupoksiRealisasi->tw = $request->get('tw');
         $tupoksiRealisasi->progres = $request->get('progres');
         $tupoksiRealisasi->save();

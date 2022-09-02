@@ -49,10 +49,9 @@
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                @foreach($tupoksiKPI as $kpi)
-                                @foreach($tupoksiProker as $proker)
+                            @foreach($tupoksiKPI as $kpi)
+                            @foreach($tupoksiProker as $proker)    
                                 @if($kpi->id_kpi == $proker->id_kpi)
-                                @if($proker->proker == $kpi->id_proker)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -115,7 +114,7 @@
                                                     <div class="mb-3">
                                                         <label for="kpi">KPI</label>
                                                         <input type="text" name="kpi" class="form-control" id="kpi"
-                                                            value="{{$departemen->id_departemen}}">
+                                                            value="{{$kpi->id_kpi}}">
 
                                                     </div>
                                                     <div class="mb-3">
@@ -127,7 +126,7 @@
                                                     <div class="mb-3">
                                                         <label for="target">target</label>
                                                         <input type="text" name="target" class="form-control"
-                                                            id="target" value="{{$target->target}}">
+                                                            id="target" value="{{$proker->target}}">
 
                                                     </div>
                                                     <div class=" modal-footer">
@@ -143,7 +142,6 @@
                                         </div>
                                     </div>
                             </tbody>
-                            @endif
                             @endif
                             @endforeach
                             @endforeach
