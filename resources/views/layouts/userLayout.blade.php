@@ -785,16 +785,23 @@
                         <div class="collapse menu-dropdown" id="sidebarAuth">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ route('KPI_TupoksiDepartemen.index') }}" class="nav-link" data-key="t-signin"> Departemen
+                                    <a href="{{ route('KPI_TupoksiDepartemen.index') }}" class="nav-link"
+                                        data-key="t-signin"> Departemen
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('KPI_TupoksiKpi.index') }}" class="nav-link" data-key="t-signup"> KPI
+                                    <a href="{{ route('KPI_TupoksiKpi.index') }}" class="nav-link" data-key="t-signup">
+                                        KPI
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#sidebarSignUp" class="nav-link" data-bs-toggle="collapse" role="button"
-                                        aria-expanded="false" aria-controls="sidebarSignUp" data-key="t-signup"> Proker
+                                    <a href="{{ route('KPI_TupoksiProker.index') }}" class="nav-link"
+                                        data-key="t-signup"> Proker
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('KPI_TupoksiRealisasi.index') }}" class="nav-link"
+                                        data-key="t-signup">Realisasi
                                     </a>
                                 </li>
                             </ul>

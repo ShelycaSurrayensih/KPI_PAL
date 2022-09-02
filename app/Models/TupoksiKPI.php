@@ -16,7 +16,10 @@ class TupoksiKPI extends Model
         'id_departemen',
         'kpi',
     ];
-    public function TupokdiDepartemen(){
+    public function tupoksiDepartemen(){
         return $this->belongsTo('App\Models\TupoksiDepartemen');
+    }
+    public function TupoksiProker(){
+        return $this->belongsTo('App\Models\TupoksiProker');
     }
 }
