@@ -49,10 +49,9 @@
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                @foreach($tupoksiKPI as $kpi)
-                                @foreach($tupoksiProker as $proker)
+                            @foreach($tupoksiKPI as $kpi)
+                            @foreach($tupoksiProker as $proker)    
                                 @if($kpi->id_kpi == $proker->id_kpi)
-                                @if($proker->proker == $kpi->id_proker)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -62,7 +61,7 @@
                                     </th>
                                     <td class="id" style="display:none;"><a href="javascript:void(0);"
                                             class="fw-medium link-primary">#VZ2101</a></td>
-                                    <td class="id_kpi">{{$id_kpi->kpi}}</td>
+                                    <td class="kpi">{{$kpi->kpi}}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $proker->proker }}</div>
@@ -70,7 +69,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $target->target }}</div>
+                                            <div class="flex-grow-1">{{ $proker->target }}</div>
                                         </div>
                                     </td>
 
@@ -114,20 +113,20 @@
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="kpi">KPI</label>
-                                                        <input type="text" name="kpi" class="form-control"
-                                                            id="kpi" value="{{$departemen->id_departemen}}">
+                                                        <input type="text" name="kpi" class="form-control" id="kpi"
+                                                            value="{{$kpi->id_kpi}}">
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="kpi">Proker</label>
-                                                        <input type="text" name="proker" class="form-control" id="proker"
-                                                            value="{{$proker->id_proker}}">
+                                                        <input type="text" name="proker" class="form-control"
+                                                            id="proker" value="{{$proker->id_proker}}">
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="target">target</label>
-                                                        <input type="text" name="target" class="form-control" id="target"
-                                                            value="{{$target->target}}">
+                                                        <input type="text" name="target" class="form-control"
+                                                            id="target" value="{{$proker->target}}">
 
                                                     </div>
                                                     <div class=" modal-footer">
@@ -143,7 +142,6 @@
                                         </div>
                                     </div>
                             </tbody>
-                            @endif
                             @endif
                             @endforeach
                             @endforeach

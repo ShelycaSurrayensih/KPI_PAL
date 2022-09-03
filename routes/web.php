@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndivController;
+use App\Http\Controllers\IndivRealisasiController;
 use App\Http\Controllers\IndhanTimController;
 use App\Http\Controllers\IndhanController;
 use App\Http\Controllers\IndhanRealisasiController;
 use App\Http\Controllers\TupoksiDepartemenController;
 use App\Http\Controllers\TupoksiKPIController;
 use App\Http\Controllers\TupoksiProkerController;
+use App\Http\Controllers\TupoksiRealisasiController;
 use App\Http\Controllers\RKAP;
 
 /*
@@ -34,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('KPI_TupoksiDepartemen',TupoksiDepartemenController::class);
     Route::resource('KPI_TupoksiKpi',TupoksiKPIController::class);
     Route::resource('KPI_TupoksiProker',TupoksiProkerController::class);
-    
+    Route::resource('KPI_TupoksiRealisasi',TupoksiRealisasiController::class);
     
     
 });
@@ -42,6 +44,8 @@ Auth::routes();
 
 //Cascading
 Route::get('/Cascade/KPI', [App\Http\Controllers\CascadeController::class, 'cascadeKpiIndex'])->name('cascadeKPI.index');
+Route::post('/Cascade/KPI/store', [App\Http\Controllers\CascadeController::class, 'cascadeKpiStore'])->name('cascadeKPI.store');
+
 //RKAP Store
 Route::post('/inisiatifStrategis/store', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisStore'])->name('inisiatifStrategis.store');
 Route::post('/KategoriPMS/store', [App\Http\Controllers\RKAP::class, 'KategoriPmsStore'])->name('KategoriPms.store');
@@ -107,6 +111,10 @@ Route::post('/Tupoksi_Kpi/update/{id}',[TupoksiKPIController::class, 'update'])-
 Route::delete('/Tupoksi_Proker/destroy/{id}',[TupoksiProkerController::class, 'destroy'])->name('tupoksiProker.destroy');
 Route::post('/Tupoksi_Proker/update/{id}',[TupoksiProkerController::class, 'update'])->name('tupoksiProker.update');
 
+//tupoksi Realisasi
+Route::post('/KPI_TupoksiRealisasi/update/{id}',[TupoksiRealisasiController::class, 'update'])->name('realisasi.update');
+Route::post('/KPI_TupoksiRealisasi/edit/{id}',[TupoksiRealisasiController::class, 'edit'])->name('realisasi.edit');
+Route::delete('/KPI_TupoksiRealisasi/destroy/{id}',[TupoksiRealisasiController::class, 'destroy'])->name('realisasi.destroy');
 
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
  Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

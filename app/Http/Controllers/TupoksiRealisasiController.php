@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\TupoksiDepartemen;
 use App\Models\TupoksiKPI;
 use App\Models\TupoksiProker;
+use App\Models\TupoksiRealisasi;
 
-class TupoksiProkerController extends Controller
+
+class TupoksiRealisasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +19,9 @@ class TupoksiProkerController extends Controller
     public function index()
     {
         $users = auth()->user();
-        $tupoksiDepartemen = TupoksiDepartemen::all();
-        $tupoksiKPI = TupoksiKPI::all();
         $tupoksiProker = TupoksiProker::all();
-        return view('Tupoksi.Proker.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker'));
+        $tupoksiRealisasi = TupoksiRealisasi::all();
+        return view('Tupoksi.Realisasi.index', compact ('users', 'tupoksiProker', 'tupoksiRealisasi'));
     }
 
     /**
@@ -31,10 +32,9 @@ class TupoksiProkerController extends Controller
     public function create()
     {
         $users = auth()->user();
-        $tupoksiDepartemen = TupoksiDepartemen::all();
-        $tupoksiKPI = TupoksiKPI::all();
         $tupoksiProker = TupoksiProker::all();
-        return view('Tupoksi.Proker.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker'));
+        $tupoksiRealisasi = TupoksiRealisasi::all();
+        return view('Tupoksi.Realisasi.index', compact ('users', 'tupoksiProker', 'tupoksiRealisasi'));
     }
 
     /**
@@ -45,12 +45,12 @@ class TupoksiProkerController extends Controller
      */
     public function store(Request $request)
     {
-        $tupoksiProker = new TupoksiProker;
-        $tupoksiProker->id_proker = $request->id_proker;
-        $tupoksiProker->id_kpi = $request->id_kpi;
-        $tupoksiProker->proker = $request->proker;
-        $tupoksiProker->target = $request->target;
-        $tupoksiProker->save();
+        $tupoksiRealisasi = new TupoksiRealisasi;
+        $tupoksiRealisasi->id_realisasi = $request->id_realisasi;
+        $tupoksiRealisasi->id_proker = $request->id_proker;
+        $tupoksiRealisasi->tw = $request->tw;
+        $tupoksiRealisasi->progres = $request->progres;
+        $tupoksiRealisasi->save();
         return redirect()->back();
     }
 
@@ -60,9 +60,12 @@ class TupoksiProkerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_realisasi)
     {
-        //
+        $users = auth()->user();
+        $tupoksiProker = TupoksiProker::all();
+        $tupoksiRealisasi = TupoksiRealisasi::all();
+        return redirect()->back();
     }
 
     /**
@@ -71,12 +74,12 @@ class TupoksiProkerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_proker)
+    public function edit($id_realisasi)
     {
+        
         $users = auth()->user();
-        $tupoksiDepartemen = TupoksiDepartemen::all();
-        $tupoksiKPI = TupoksiKPI::all();
         $tupoksiProker = TupoksiProker::all();
+        $tupoksiRealisasi = TupoksiRealisasi::all();
         return redirect()->back();
     }
 
@@ -87,15 +90,14 @@ class TupoksiProkerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_proker)
+    public function update(Request $request, $id_realisasi)
     {
-        $tupoksiProker = TupoksiProker::where('id_proker', $id_proker)->first();
-        $tupoksiProker->id_proker = $request->get('id_proker');
-        $tupoksiProker->id_kpi = $request->get('id_kpi');
-        $tupoksiProker->proker = $request->get('proker');
-        $tupoksiProker->target = $request->get('target');
-        $tupoksiProker->save();
-        return redirect()->route('KPI_TupoksiKpi.edit', $id_kpi)->with('success', 'Data berhasil ditambahkan');
+        $tupoksiRealisasi = TupoksiRealisasi::where('id_realisasi', $id_realisasi)->first();
+        $tupoksiRealisasi->id_proker = $request->get('id_proker');
+        $tupoksiRealisasi->tw = $request->get('tw');
+        $tupoksiRealisasi->progres = $request->get('progres');
+        $tupoksiRealisasi->save();
+        return redirect()->route('KPI_TupoksiRealisasi.edit', $id_realisasi)->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -104,10 +106,10 @@ class TupoksiProkerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_proker)
+    public function destroy($id_realisasi)
     {
-        $tupoksiProker = TupoksiProker::where('id_proker', $id_proker);
-        $tupoksiProker->delete();
+        $tupoksiRealisasi = TupoksiRealisasi::where('id_realisasi', $id_realisasi);
+        $tupoksiRealisasi->delete();
         return redirect()->back();
     }
 }

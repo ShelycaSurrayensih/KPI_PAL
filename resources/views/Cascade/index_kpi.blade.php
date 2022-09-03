@@ -42,6 +42,7 @@
                                         <th scope="col">D * E</th>
                                         <th scope="col">Target</th>
                                         <th scope="col">Lead Divisi</th>
+                                        <th scope="col">Action</th>
                                     </tr>
 
                                 </thead>
@@ -63,9 +64,34 @@
                                             </div>
                                         </td>
                                         <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->bobot_kpi }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->bobot_cascade }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->bkXbc }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->target }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpi->div_lead }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
                                             <div class="d-flex gap-2">
                                                 <div class="edit">
-                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $init->id_inisiatif }}">Edit</button>
+                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
                                                 </div>
                                                 <div class="remove">
 
@@ -73,8 +99,7 @@
 
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger remove-item-btn" 
-                                                        data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
+                                                        <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -82,11 +107,11 @@
                                     </tr><!-- end tr -->
 
                                     <!-- edit Modal -->
-                                    <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <!-- <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit {{$init->inisiatif_desc}}</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                 </div>
 
@@ -116,7 +141,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     @endforeach
                                 </tbody><!-- end tbody -->
 
@@ -155,15 +180,39 @@
             </div>
 
             <div class="modal-body">
-                <form method="post" action="" enctype="multipart/form-data" id="myForm">
+                <form method="post" action="{{route('cascadeKPI.store')}}" enctype="multipart/form-data" id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="" class="form-label">Deskripsi Inisiatif</label>
-                        <input name="" type="text" class="form-control" id="inisiatif_desc">
+                        <label for="cas_kpiName" class="form-label">Nama KPI</label>
+                        <input name="cas_kpiName" type="text" class="form-control" id="inisiatif_desc">
                     </div>
                     <div class="mb-3">
-                        <label for="tahun_inisiatif" class="form-label">Tahun Inisiatif</label>
-                        <input name="tahun_inisiatif" type="text" class="form-control" id="tahun_inisiatif">
+                        <label for="id_kat" class="form-label">Kategori</label>
+                        <select name="id_kat" class="form-control" id="id_inisiatif">
+                            @foreach($casKat as $kat)
+                            <option value="{{$kat->id_kat }}">{{ "$kat->desc_kat" }}
+                                @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bobot_kpi" class="form-label">Bobot KPI</label>
+                        <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bobot_cascade" class="form-label">Bobot Cascade</label>
+                        <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade">
+                    </div>
+                    <div class="mb-3">
+                        <label for="target" class="form-label">Target</label>
+                        <input name="target" type="text" class="form-control" id="target">
+                    </div>
+                    <div class="mb-3">
+                        <label for="div_lead" class="form-label">Lead Divisi</label>
+                        <select name="div_lead" class="form-control" id="id_inisiatif">
+                            @foreach($divisi as $div)
+                            <option value="{{$div->id_divisi }}">{{ "$div->div_name" }}
+                            @endforeach
+                        </select>
                     </div>
             </div>
             <div class="modal-footer">
