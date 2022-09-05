@@ -72,12 +72,8 @@
                                                 <div class="modal-body">
                                                     <form method="post" action="{{route('KPI_TupoksiTw.store')}}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
-                                                        @foreach($tupoksiProker as $proker)
-                                                        @if($proker->id_proker == $prokerID)
                                                         <input name="id_proker" type="text" class="form-control"  id="id_proker"
-                                                        value="{{$proker->id_proker }}" readonly hidden>
-                                                        @endif
-                                                        @endforeach
+                                                        value="{{$tupoksiProker->id_proker }}" readonly hidden>
                                                         <div class="mb-3">
                                                             <label for="tw" class="form-label">TW</label>
                                                             <input name="tw" type="text" class="form-control" id="tw" value="{{$prok_count}}" readonly>
@@ -100,6 +96,7 @@
                                     @endfor
                                     @else
                                     @foreach($tupoksiTw as $tw)
+                                    @if($tw->id_proker == $tupoksiProker->id_proker)
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -131,12 +128,8 @@
                                                 <div class="modal-body">
                                                     <form method="post" action="{{route('tupoksiTw.update', $tw->id_tw)}}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
-                                                        @foreach($tupoksiProker as $proker)
-                                                        @if($proker->id_proker == $prokerID)
                                                         <input name="id_proker" type="text" class="form-control"  id="id_proker"
-                                                        value="{{$proker->id_proker }}" readonly hidden>
-                                                        @endif
-                                                        @endforeach
+                                                        value="{{$tupoksiProker->id_proker }}" readonly hidden>
                                                         <div class="mb-3">
                                                             <label for="tw" class="form-label">TW</label>
                                                             <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$tw->tw}}" readonly>
@@ -156,6 +149,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                     @endforeach
                                     @for($prok_count= 1 + $twCount ; $prok_count <= 4 ; $prok_count++)<tr>
                                         <td>
@@ -178,22 +172,18 @@
                                         </tr>
                                         <!-- Add Modal -->
                                         <div class="modal fade" id="Modal{{$prok_count}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header bg-light p-3">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Add Cascade Proker</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
-                                                    </div>
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-light p-3">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Add Cascade Proker</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                                                </div>
 
-                                                    <div class="modal-body">
-                                                        <form method="post" action="{{route('cascadeProker.store')}}" enctype="multipart/form-data" id="myForm">
-                                                            @csrf
-                                                            @foreach($tupoksiProker as $proker)
-                                                        @if($proker->id_proker == $prokerID)
+                                                <div class="modal-body">
+                                                    <form method="post" action="{{route('KPI_TupoksiTw.store')}}" enctype="multipart/form-data" id="myForm">
+                                                        @csrf
                                                         <input name="id_proker" type="text" class="form-control"  id="id_proker"
-                                                        value="{{$proker->id_proker }}" readonly hidden>
-                                                        @endif
-                                                        @endforeach
+                                                        value="{{$tupoksiProker->id_proker }}" readonly hidden>
                                                         <div class="mb-3">
                                                             <label for="tw" class="form-label">TW</label>
                                                             <input name="tw" type="text" class="form-control" id="tw" value="{{$prok_count}}" readonly>
@@ -202,17 +192,17 @@
                                                             <label for="deskripsi" class="form-label">Deskripsi</label>
                                                             <input name="deskripsi" type="text" class="form-control" id="deskripsi">
                                                         </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <div class="hstack gap-2 justify-content-end">
-                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success" id="add-btn">Add Cascade Proker</button>
-                                                        </div>
-                                                    </div>
-                                                    </form>
                                                 </div>
+                                                <div class="modal-footer">
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" id="add-btn">Add TW</button>
+                                                    </div>
+                                                </div>
+                                                </form>
                                             </div>
                                         </div>
+                                    </div>
                                         @endfor
                                         @endif
                             </tbody>
@@ -266,9 +256,7 @@
                     <div class="mb-3">
                         <label for="id_proker">Program Utama</label>
                         <select name="id_proker" class="form-control" id="id_proker" readonly>
-                            @foreach ($tupoksiProker as $proker)
-                            <option value="{{$proker->id_proker}}">{{ "$proker->proker" }}</option>
-                            @endforeach
+                            <option value="{{$tupoksiProker->id_proker}}">{{ "$tupoksiProker->proker" }}</option>
                         </select>
 
                     </div>

@@ -20,11 +20,10 @@ class TwController extends Controller
         $users = auth()->user();
         $tupoksiDepartemen = TupoksiDepartemen::all();
         $tupoksiKPI = TupoksiKPI::all();
-        $tupoksiProker = TupoksiProker::all();
+        $tupoksiProker = TupoksiProker::where('id_proker', $id)->first();
         $twCount = TupoksiTw::where('id_proker', $id)->count();
         $tupoksiTw = TupoksiTw::all();
-        $prokerID = $id;
-        return view('Tupoksi.Proker.Tw.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiTw', 'twCount', 'prokerID'));
+        return view('Tupoksi.Proker.Tw.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiTw', 'twCount'));
     }
 
     /**
