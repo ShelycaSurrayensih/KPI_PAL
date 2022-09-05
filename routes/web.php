@@ -10,6 +10,7 @@ use App\Http\Controllers\TupoksiDepartemenController;
 use App\Http\Controllers\TupoksiKPIController;
 use App\Http\Controllers\TupoksiProkerController;
 use App\Http\Controllers\TupoksiRealisasiController;
+use App\Http\Controllers\TwController;
 use App\Http\Controllers\RKAP;
 
 /*
@@ -37,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('KPI_TupoksiKpi',TupoksiKPIController::class);
     Route::resource('KPI_TupoksiProker',TupoksiProkerController::class);
     Route::resource('KPI_TupoksiRealisasi',TupoksiRealisasiController::class);
+    Route::resource('KPI_TupoksiTw',TwController::class);
     
     
 });
@@ -120,6 +122,12 @@ Route::post('/Tupoksi_Proker/update/{id}',[TupoksiProkerController::class, 'upda
 Route::post('/KPI_TupoksiRealisasi/update/{id}',[TupoksiRealisasiController::class, 'update'])->name('realisasi.update');
 Route::post('/KPI_TupoksiRealisasi/edit/{id}',[TupoksiRealisasiController::class, 'edit'])->name('realisasi.edit');
 Route::delete('/KPI_TupoksiRealisasi/destroy/{id}',[TupoksiRealisasiController::class, 'destroy'])->name('realisasi.destroy');
+
+
+//tupoksi Tw
+Route::post('/Tupoksi_Tw/update/{id}',[TwController::class, 'update'])->name('tupoksiTw.update');
+Route::delete('/Tupoksi_Tw/destroy/{id}',[TwController::class, 'destroy'])->name('tupoksiTw.destroy');
+Route::get('/Tupoksi_Tw/index/{id}',[TwController::class, 'index'])->name('tupoksiTw.index');
 
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
  Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
