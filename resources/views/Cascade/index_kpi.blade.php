@@ -91,7 +91,14 @@
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="edit">
-                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
+                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{$kpi->id}}">Edit</button>
+                                                </div>
+                                                <div class="details">
+                                                    <a href="{{ route('cascadeProker.index', $kpi->id) }}">
+                                                        <button type="button" class="btn btn-sm btn-success edit-item-btn">
+                                                            Proker
+                                                        </button>
+                                                    </a>
                                                 </div>
                                                 <div class="remove">
 
@@ -107,7 +114,7 @@
                                     </tr><!-- end tr -->
 
                                     <!-- edit Modal -->
-                                    <!-- <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="showModal{{$kpi->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-light p-3">
@@ -116,32 +123,51 @@
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post" action="" enctype="multipart/form-data" id="myForm">
+                                                    <form method="post" action="{{route('cascadeKPI.update', $kpi->id)}}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="" class="form-label">ID_inisiatif</label>
-                                                            <input name="" value="" class="form-control" id="id_inisiatif" placeholder readonly="">
+                                                            <label for="cas_kpiName" class="form-label">Nama KPI</label>
+                                                            <input name="cas_kpiName" type="text" class="form-control" id="cas_kpiName" value="{{$kpi->cas_kpiName}}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="" class="form-label">Deskripsi Inisiatif</label>
-                                                            <input name="" value="" class="form-control" id="inisiatif_desc">
+                                                            <label for="id_kat" class="form-label">Kategori</label>
+                                                            <select name="id_kat" class="form-control" id="id_inisiatif">
+                                                                @foreach($casKat as $kat)
+                                                                <option value="{{$kat->id_kat }}">{{ "$kat->desc_kat" }}
+                                                                    @endforeach
+                                                            </select>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="" class="form-label">KPI</label>
-                                                            <input name="" type="text" class="form-control" id="" value="">
+                                                            <label for="bobot_kpi" class="form-label">Bobot KPI</label>
+                                                            <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi" value="{{$kpi->bobot_kpi}}">
                                                         </div>
-
+                                                        <div class="mb-3">
+                                                            <label for="bobot_cascade" class="form-label">Bobot Cascade</label>
+                                                            <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade" value="{{$kpi->bobot_cascade}}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="target" class="form-label">Target</label>
+                                                            <input name="target" type="text" class="form-control" id="target" value="{{$kpi->target}}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="div_lead" class="form-label">Lead Divisi</label>
+                                                            <select name="div_lead" class="form-control" id="div_lead">
+                                                                @foreach($divisi as $div)
+                                                                <option value="{{$div->id_divisi }}">{{ "$div->div_name" }}
+                                                                    @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="hstack gap-2 justify-content-end">
+                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-success" id="edit-btn">Update KPI Cascade</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <div class="hstack gap-2 justify-content-end">
-                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success" id="edit-btn">Update Inisiatif Strategis</button>
-                                                    </div>
-                                                </div>
-                                                </form>
                                             </div>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     @endforeach
                                 </tbody><!-- end tbody -->
 
@@ -175,7 +201,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel">Add Inisiatif Strategis</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Cascade KPI</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
 
@@ -211,14 +237,14 @@
                         <select name="div_lead" class="form-control" id="id_inisiatif">
                             @foreach($divisi as $div)
                             <option value="{{$div->id_divisi }}">{{ "$div->div_name" }}
-                            @endforeach
+                                @endforeach
                         </select>
                     </div>
             </div>
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add Inisiatif Strategis</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add Cascade</button>
                 </div>
             </div>
             </form>

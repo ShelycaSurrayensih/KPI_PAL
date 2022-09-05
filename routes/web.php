@@ -42,10 +42,15 @@ Route::middleware(['auth'])->group(function () {
 });
 Auth::routes();
 
-//Cascading
+//Cascading Index
 Route::get('/Cascade/KPI', [App\Http\Controllers\CascadeController::class, 'cascadeKpiIndex'])->name('cascadeKPI.index');
 Route::post('/Cascade/KPI/store', [App\Http\Controllers\CascadeController::class, 'cascadeKpiStore'])->name('cascadeKPI.store');
+Route::post('/Cascade/KPI/update/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeKpiUpdate'])->name('cascadeKPI.update');
 
+//Cascading Proker
+Route::get('/Cascade/Proker/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeProkerIndex'])->name('cascadeProker.index');
+Route::post('/Cascade/Proker/store', [App\Http\Controllers\CascadeController::class, 'cascadeProkerStore'])->name('cascadeProker.store');
+Route::post('/Cascade/Proker/update/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeProkerUpdate'])->name('cascadeProker.update');
 //RKAP Store
 Route::post('/inisiatifStrategis/store', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisStore'])->name('inisiatifStrategis.store');
 Route::post('/KategoriPMS/store', [App\Http\Controllers\RKAP::class, 'KategoriPmsStore'])->name('KategoriPms.store');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\CascadeKat;
 use App\Models\CascadeKpi;
 use App\Models\Divisi;
+use App\Models\CascadeProker;
+use App\Models\CascadeRealisasi;
 use Illuminate\Http\Request;
 
 class CascadeController extends Controller
@@ -31,6 +33,39 @@ class CascadeController extends Controller
         $casKpi->target = $request->target;
         $casKpi->div_lead = $request->div_lead;
         $casKpi->save();
+        return redirect()->back();
+    }
+
+    public function cascadeKpiUpdate(Request $request, $id)
+    {
+        $cascade = CascadeKpi::where('id',$id)->update($request->except(['_token']));
+        return redirect()->back();
+    }
+
+    //Proker
+    public function cascadeProkerIndex(Request $request, $id)
+    {
+        $users = auth()->user();
+        $casProk = CascadeProker::all();
+        $prokCount = CascadeProker::where('id_CKpi', $id)->count();
+        $casKpi = CascadeKpi::find($id);
+        $divisi = Divisi::all();
+
+        return view('Cascade.proker_kpi', compact('users', 'casKpi','casProk','divisi', 'prokCount'));
+    }
+    public function cascadeProkerStore(Request $request)
+    {
+        $casProk = new CascadeProker;
+        $casProk->id_CKpi = $request->id_CKpi;
+        $casProk->tw = $request->tw;
+        $casProk->progress = $request->progress;
+        $casProk->deskripsi = $request->deskripsi;
+        $casProk->save();
+        return redirect()->back();
+    }
+    public function cascadeProkerUpdate(Request $request, $id)
+    {
+        $cascade = CascadeProker::where('id',$id)->update($request->except(['_token']));
         return redirect()->back();
     }
 }
