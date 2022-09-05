@@ -20,9 +20,11 @@ class TwController extends Controller
         $users = auth()->user();
         $tupoksiDepartemen = TupoksiDepartemen::all();
         $tupoksiKPI = TupoksiKPI::all();
-        $proker = TupoksiProker::where('id_proker', $id);
+        $tupoksiProker = TupoksiProker::all();
+        $twCount = TupoksiTw::where('id_proker', $id)->count();
         $tupoksiTw = TupoksiTw::all();
-        return view('Tupoksi.Proker.Tw.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'proker', 'tupoksiTw'));
+        $prokerID = $id;
+        return view('Tupoksi.Proker.Tw.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiTw', 'twCount', 'prokerID'));
     }
 
     /**
@@ -49,7 +51,6 @@ class TwController extends Controller
     public function store(Request $request)
     {
         $tupoksiTw = new TupoksiTw;
-        $tupoksiTw->id_tw = $request->id_tw;
         $tupoksiTw->id_proker = $request->id_proker;
         $tupoksiTw->tw = $request->tw;
         $tupoksiTw->deskripsi = $request->deskripsi;
@@ -94,7 +95,6 @@ class TwController extends Controller
     public function update(Request $request, $id_tw)
     {
         $tupoksiTw = TupoksiTw::where('id_tw', $id_tw)->first();
-        $tupoksiTw->id_tw = $request->get('id_tw');
         $tupoksiTw->id_proker = $request->get('id_proker');
         $tupoksiTw->tw = $request->get('tw');
         $tupoksiTw->deskripsi = $request->get('deskripsi');

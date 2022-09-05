@@ -15,9 +15,7 @@
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
                             <div>
-                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
-                                    id="create-btn" data-bs-target="#showModal"><i
-                                        class="ri-add-line align-bottom me-1"></i>
+                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
                             </div>
                         </div>
@@ -36,118 +34,192 @@
 
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col" style="width: 50px;">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="checkAll"
-                                                value="option">
-                                        </div>
-                                    </th>
                                     <th class="sort" data-sort="tw">TW</th>
-                                    <th class="sort" data-sort="proker">Program Utama</th>
                                     <th class="sort" data-sort="deskripsi">deskripsi</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
-                            <tbody class="list form-check-all">  
-                            @foreach($tupoksiTw as $tw)
-                                @if($tw->id_proker == $proker->id_tw)
-                                <tr>
-                                    <th scope="row">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="chk_child"
-                                                value="option1">
-                                        </div>
-                                    </th>
-                                    <td class="id" style="display:none;"><a href="javascript:void(0);"
-                                            class="fw-medium link-primary">#VZ2101</a></td>
-                                    <td class="tw">{{$tw->tw}}</td>
+                            <tbody class="list form-check-all">
+                                @if($twCount == 0)
+                                @for($prok_count=1 ; $prok_count <= 4 ; $prok_count++) <tr>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $proker->proker }}</div>
+                                            <div class="flex-grow-1">{{ $prok_count }}</div>
                                         </div>
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $tw->deskripsi }}</div>
+                                            <div class="flex-grow-1">Belum Terisi</div>
                                         </div>
                                     </td>
-
                                     <td>
                                         <div class="d-flex gap-2">
-                                            <div class="edit">
-                                                <button class="btn btn-sm btn-success edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showModal{{ $tw->id_tw }}">Edit</button>
-                                            </div>
-                                            <div class="remove">
-
-                                                <form action="{{ route('tupoksiTw.destroy', $tw->id_tw) }}"
-                                                    method="POST">
-
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger remove-item-btn"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Delete</button>
-                                                </form>
+                                            <div class="add">
+                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#Modal{{$prok_count}}">Add Proker</button>
                                             </div>
                                         </div>
                                     </td>
-                                </tr>
+                                    </tr>
+                                    <!-- Add Modal -->
+                                    <div class="modal fade" id="Modal{{$prok_count}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-light p-3">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Add Cascade Proker</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                                                </div>
 
-                                <!-- edit Modal -->
-                                <div class="modal fade" id="showModal{{ $tw->id_tw }}" tabindex=" -1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-light p-3">
-                                                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close" id="close-modal"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="post"
-                                                    action="{{ route('tupoksiTw.update', $tw->id_tw) }}"
-                                                    enctype="multipart/form-data" id="myForm">
-                                                    @csrf
-                                                    <div class="mb-3">
-                                                        <label for="tw">TW</label>
-                                                        <input type="text" name="tw" class="form-control" id="tw"
-                                                            value="{{$tw->tw}}">
-
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="proker">Program Utama</label>
-                                                        <input type="text" name="proker" class="form-control"
-                                                            id="proker" value="{{$proker->proker}}">
-
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="deskripsi">Deskripsi</label>
-                                                        <input type="text" name="deskripsi" class="form-control"
-                                                            id="deskripsi" value="{{$tw->deskripsi}}">
-
-                                                    </div>
-                                                    <div class=" modal-footer">
-                                                        <div class="hstack gap-2 justify-content-end">
-                                                            <button type="button" class="btn btn-light"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success"
-                                                                id="edit-btn">Update</button>
+                                                <div class="modal-body">
+                                                    <form method="post" action="{{route('KPI_TupoksiTw.store')}}" enctype="multipart/form-data" id="myForm">
+                                                        @csrf
+                                                        @foreach($tupoksiProker as $proker)
+                                                        @if($proker->id_proker == $prokerID)
+                                                        <input name="id_proker" type="text" class="form-control"  id="id_proker"
+                                                        value="{{$proker->id_proker }}" readonly hidden>
+                                                        @endif
+                                                        @endforeach
+                                                        <div class="mb-3">
+                                                            <label for="tw" class="form-label">TW</label>
+                                                            <input name="tw" type="text" class="form-control" id="tw" value="{{$prok_count}}" readonly>
                                                         </div>
+                                                        <div class="mb-3">
+                                                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                                                            <input name="deskripsi" type="text" class="form-control" id="deskripsi">
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" id="add-btn">Add TW</button>
                                                     </div>
+                                                </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
+                                    @endfor
+                                    @else
+                                    @foreach($tupoksiTw as $tw)
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $tw->tw }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $tw->deskripsi }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                <div class="add">
+                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{$tw->id_tw}}">Edit Proker</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- edit Modal -->
+                                    <div class="modal fade" id="showModal{{$tw->id_tw}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-light p-3">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit TW</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <form method="post" action="{{route('tupoksiTw.update', $tw->id_tw)}}" enctype="multipart/form-data" id="myForm">
+                                                        @csrf
+                                                        @foreach($tupoksiProker as $proker)
+                                                        @if($proker->id_proker == $prokerID)
+                                                        <input name="id_proker" type="text" class="form-control"  id="id_proker"
+                                                        value="{{$proker->id_proker }}" readonly hidden>
+                                                        @endif
+                                                        @endforeach
+                                                        <div class="mb-3">
+                                                            <label for="tw" class="form-label">TW</label>
+                                                            <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$tw->tw}}" readonly>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                                                            <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$tw->deskripsi}}">
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    @for($prok_count= 1 + $twCount ; $prok_count <= 4 ; $prok_count++)<tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $prok_count }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">Belum Terisi</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex gap-2">
+                                                <div class="add">
+                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#Modal{{$prok_count}}">Add Proker</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        </tr>
+                                        <!-- Add Modal -->
+                                        <div class="modal fade" id="Modal{{$prok_count}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header bg-light p-3">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Add Cascade Proker</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <form method="post" action="{{route('cascadeProker.store')}}" enctype="multipart/form-data" id="myForm">
+                                                            @csrf
+                                                            @foreach($tupoksiProker as $proker)
+                                                        @if($proker->id_proker == $prokerID)
+                                                        <input name="id_proker" type="text" class="form-control"  id="id_proker"
+                                                        value="{{$proker->id_proker }}" readonly hidden>
+                                                        @endif
+                                                        @endforeach
+                                                        <div class="mb-3">
+                                                            <label for="tw" class="form-label">TW</label>
+                                                            <input name="tw" type="text" class="form-control" id="tw" value="{{$prok_count}}" readonly>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="deskripsi" class="form-label">Deskripsi</label>
+                                                            <input name="deskripsi" type="text" class="form-control" id="deskripsi">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <div class="hstack gap-2 justify-content-end">
+                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-success" id="add-btn">Add Cascade Proker</button>
+                                                        </div>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endfor
+                                        @endif
                             </tbody>
-                            @endif
-                            @endforeach
                         </table>
                         <div class="noresult" style="display: none">
                             <div class="text-center">
-                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                    colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
+                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
                                 </lord-icon>
                                 <h5 class="mt-2">Sorry! No Result Found</h5>
                                 <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
@@ -181,12 +253,10 @@
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    id="close-modal"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('KPI_TupoksiTw.store') }}" enctype="multipart/form-data"
-                    id="myForm">
+                <form method="post" action="{{ route('KPI_TupoksiTw.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
                     <div class="mb-3">
                         <label for="tw">Tw</label>

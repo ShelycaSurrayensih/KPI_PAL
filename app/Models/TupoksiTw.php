@@ -12,7 +12,6 @@ class TupoksiTw extends Model
     public $table = 'tupoksi_tw';
     protected $primaryKey = 'id_tw';
     protected $fillable = [
-        'id_tw',
         'id_proker',
         'tw',
         'deskripsi',
