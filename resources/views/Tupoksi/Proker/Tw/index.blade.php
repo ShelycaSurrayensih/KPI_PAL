@@ -13,12 +13,7 @@
             <div class="card-body">
                 <div id="tupoksiDepartemen">
                     <div class="row g-4 mb-3">
-                        <div class="col-sm-auto">
-                            <div>
-                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
-                                    Add</button>
-                            </div>
-                        </div>
+                        
                         <div class="col-sm">
                             <div class="d-flex justify-content-sm-end">
                                 <div class="search-box ms-2">
@@ -55,7 +50,7 @@
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="add">
-                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#Modal{{$prok_count}}">Add Proker</button>
+                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#Modal{{$prok_count}}">Add Tw</button>
                                             </div>
                                         </div>
                                     </td>
@@ -65,7 +60,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Add Cascade Proker</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Add Tw</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                 </div>
 
@@ -111,10 +106,16 @@
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="add">
-                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{$tw->id_tw}}">Edit Proker</button>
+                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{$tw->id_tw}}">Edit Tw</button>
                                                 </div>
+                                                <div class="edit">
+                                                <a href="{{ route('KPI_TupoksiRealisasi.index') }}">
+                                                    <button class="btn btn-sm btn-success edit-item-btn">Realisasi</button>
+                                                </a>
+                                            </div>
                                             </div>
                                         </td>
+                                        
                                     </tr>
                                     <!-- edit Modal -->
                                     <div class="modal fade" id="showModal{{$tw->id_tw}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -142,7 +143,7 @@
                                                 <div class="modal-footer">
                                                     <div class="hstack gap-2 justify-content-end">
                                                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
+                                                        <button type="submit" class="btn btn-success" id="add-btn">Edit Tw</button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -165,7 +166,7 @@
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="add">
-                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#Modal{{$prok_count}}">Add Proker</button>
+                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#Modal{{$prok_count}}">Add Tw</button>
                                                 </div>
                                             </div>
                                         </td>
@@ -175,7 +176,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Add Cascade Proker</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Add Tw</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                 </div>
 

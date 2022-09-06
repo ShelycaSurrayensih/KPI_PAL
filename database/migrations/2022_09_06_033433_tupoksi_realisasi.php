@@ -15,10 +15,10 @@ class TupoksiRealisasi extends Migration
     {
         Schema::create('tupoksi_realisasi', function (Blueprint $table) {
             $table->id('id_realisasi');
-            $table->String('tw');
             $table->String('progres');
-            $table->unsignedBigInteger('id_proker')->nullable();
-            $table->foreign('id_proker')->references('id_proker')->on('tupoksi_proker')->onDelete('set null')->onUpdate('cascade');
+            $table->String('deskripsi');
+            $table->unsignedBigInteger('id_tw')->nullable();
+            $table->foreign('id_tw')->references('id_tw')->on('tupoksi_tw')->onDelete('set null')->onUpdate('cascade');
            
     });
     }
