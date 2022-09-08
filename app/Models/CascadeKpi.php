@@ -13,4 +13,7 @@ class CascadeKpi extends Model
     public function CascadeKat(){
         return $this->belongsTo('App\Models\CascadeKat');
     }
+    public function CascadeKpiDiv(){
+        return $this->hasMany('App\Models\CascadeKpiDiv');
+    }
 }

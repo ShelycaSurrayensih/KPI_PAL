@@ -9,8 +9,8 @@ class CascadeProker extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public function CascadeKpi(){
-        return $this->belongsTo('App\Models\CascadeKpi');
+    public function CascadeKpiDiv(){
+        return $this->belongsTo('App\Models\CascadeKpiDiv');
     }
 
     public function CascadeRealisasi(){

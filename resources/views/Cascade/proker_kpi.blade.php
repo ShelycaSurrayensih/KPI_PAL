@@ -7,7 +7,6 @@
             <div class="card-header align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1">Cascade KPI</h4>
             </div><!-- end card header -->
-
             <div class="card-body">
                 <div id="IndivKPI">
                     <div class="row g-4 mb-3">
@@ -20,9 +19,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <div class="card-body">
                         <div class="table-responsive table-card">
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
@@ -133,7 +129,7 @@
                                                     </div>
 
                                                     <div class="modal-body">
-                                                        <form method="post" action="{{route('cascadeProker.store')}}" enctype="multipart/form-data" id="myForm">
+                                                        <form method="post" action="{{route('cascadeProker.update, $prok->tw')}}" enctype="multipart/form-data" id="myForm">
                                                             @csrf
                                                             <input name="id_CKpi" type="text" class="form-control" id="id_CKpi" value="{{$casKpi->id}}" readonly hidden>
                                                             <div class="mb-3">

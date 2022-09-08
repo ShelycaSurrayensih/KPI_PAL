@@ -15,8 +15,8 @@ class CreateCascadeProkersTable extends Migration
     {
         Schema::create('cascade_prokers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_CKpi');
-            $table->foreign('id_CKpi')->references('id')->on('cascade_kpis')->onDelete('cascade');
+            $table->unsignedBigInteger('id_CDiv');
+            $table->foreign('id_CDiv')->references('id')->on('cascade_kpi_divs')->onDelete('cascade');
             $table->string('tw');
             $table->string('progress');
             $table->string('deskripsi');
