@@ -39,16 +39,16 @@
                                             <input class="form-check-input" type="checkbox" id="checkAll" value="option">
                                         </div>
                                     </th>
-                                    <th class="sort" data-sort="proker">Proker</th>
-                                    <th class="sort" data-sort="tw">TW</th>
+                                    <th class="sort" data-sort="proker">Tw</th>
                                     <th class="sort" data-sort="progres">Progres</th>
+                                    <th class="sort" data-sort="dekripsi">Dekripsi</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                @foreach($tupoksiProker as $proker)
+                                @foreach($tupoksiTw as $tw)
                                 @foreach($tupoksiRealisasi as $realisasi)
-                                @if($proker->id_proker == $realisasi->id_proker)
+                                @if($tw->id_tw == $realisasi->id_tw)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -56,18 +56,18 @@
                                         </div>
                                     </th>
                                     <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
-                                    <td class="departemen">{{$proker->proker}}</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $realisasi->tw }}</div>
-                                        </div>
-                                    </td>
+                                    <td class="departemen">{{$tw->deskripsi}}</td>
+                                    
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $realisasi->progres }}</div>
                                         </div>
                                     </td>
-
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1">{{ $realisasi->deskripsi }}</div>
+                                        </div>
+                                    </td>
 
                                     <td>
                                         <div class="d-flex gap-2">
@@ -102,20 +102,21 @@
 
                                                     @method('PUT')
                                                     <div class="mb-3">
-                                                        <label for="id_proker">Proker</label>
-                                                        <select name="id_proker" class="form-control" id="id_proker">
-                                                            @foreach ($tupoksiProker as $proker)
-                                                            <option value="{{$proker->id_proker}}">{{ "$proker->proker" }}</option>
+                                                        <label for="id_tw">Proker</label>
+                                                        <select name="id_tw" class="form-control" id="id_tw">
+                                                            @foreach ($tupoksiTw as $tw)
+                                                            <option value="{{$tw->id_tw}}">{{ "$tw->id_tw" }}</option>
                                                             @endforeach
                                                         </select>
-                                                        <div class="mb-3">
-                                                            <label for="tw">TW</label>
-                                                            <input type="text" name="tw" class="form-control" id="tw" value="{{$realisasi->tw}}">
-
-                                                        </div>
+                                                       
                                                         <div class="mb-3">
                                                             <label for="progres">Progres</label>
                                                             <input type="text" name="progres" class="form-control" id="progres" value="{{$realisasi->progres}}">
+
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="deskripsi">Deskripsi</label>
+                                                            <input type="text" name="deskripsi" class="form-control" id="deskripsi" value="{{$realisasi->deskripsi}}">
 
                                                         </div>
                                                         <div class=" modal-footer">
@@ -175,22 +176,23 @@
                 <form method="post" action="{{ route('KPI_TupoksiRealisasi.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="id_proker">Proker</label>
-                        <select name="id_proker" class="form-control" id="id_proker">
-                            @foreach ($tupoksiProker as $proker)
-                            <option value="{{$proker->id_proker}}">{{ "$proker->proker" }}</option>
+                        <label for="id_tw">Proker</label>
+                        <select name="id_tw" class="form-control" id="id_tw">
+                            @foreach ($tupoksiTw as $tw)
+                            <option value="{{$tw->id_tw}}">{{ "$tw->id_tw" }}</option>
                             @endforeach
                         </select>
 
                     </div>
-                    <div class="mb-3">
-                        <label for="tw">TW</label>
-                        <input type="text" name="tw" class="form-control" id="tw">
-
-                    </div>
+                    
                     <div class="mb-3">
                         <label for="progres">Progres</label>
                         <input type="text" name="progres" class="form-control" id="progres">
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="deskripsi">Deskripsi</label>
+                        <input type="text" name="deskripsi" class="form-control" id="deskripsi">
 
                     </div>
                     <div class="modal-footer">

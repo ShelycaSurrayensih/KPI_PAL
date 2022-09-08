@@ -13,11 +13,11 @@ class TupoksiRealisasi extends Model
     protected $primaryKey = 'id_realisasi';
     protected $fillable = [
         'id_realisasi',
-        'id_proker',
-        'tw',
+        'id_tw',
         'progres',
+        'deskripsi',
     ];
-    public function tupoksiProker(){
-        return $this->hasMany('App\Models\TupoksiProker');
+    public function tupoksiTw(){
+        return $this->hasMany('App\Models\TupoksiTw');
     }
 }
