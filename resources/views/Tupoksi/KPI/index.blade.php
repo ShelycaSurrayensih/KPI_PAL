@@ -15,10 +15,53 @@
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
                             <div>
-                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
-                                    id="create-btn" data-bs-target="#showModal"><i
-                                        class="ri-add-line align-bottom me-1"></i>
-                                    Add</button>
+
+                                <div>
+                                    <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
+                                        id="create-btn" data-bs-target="#exampleModalgrid"><i
+                                            class="ri-add-line align-bottom me-1"></i>
+                                        Add Departemen
+                                    </button>
+                                    <div class="modal fade" id="exampleModalgrid" tabindex="-1"
+                                        aria-labelledby="exampleModalgridLabel">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalgridLabel">Tupoksi
+                                                        Departemen</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="post"
+                                                        action="{{ route('KPI_TupoksiDepartemen.store') }}"
+                                                        enctype="multipart/form-data" id="myForm">
+                                                        @csrf
+                                                        <div class="mb-3">
+                                                            <label for="departemen">Departemen</label>
+                                                            <input type="text" name="departemen" class="form-control"
+                                                                id="departemen">
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="hstack gap-2 justify-content-end">
+                                                                <button type="button" class="btn btn-light"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-success"
+                                                                    id="add-btn">Add Departemen</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
+                                        id="create-btn" data-bs-target="#showModal"><i
+                                            class="ri-add-line align-bottom me-1"></i>
+                                        Add KPI
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm">
@@ -73,6 +116,12 @@
                                                 <button class="btn btn-sm btn-success edit-item-btn"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#showModal{{ $kpi->id_kpi }}">Edit</button>
+                                            </div>
+                                            <div class="edit">
+                                                <a href="{{ route('tupoksiProker.index', $kpi->id_kpi) }}">
+                                                    <button
+                                                        class="btn btn-sm btn-success edit-item-btn">Details</button>
+                                                </a>
                                             </div>
                                             <div class="remove">
 

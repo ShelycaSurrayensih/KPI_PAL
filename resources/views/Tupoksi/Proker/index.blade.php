@@ -21,14 +21,6 @@
                                     Add</button>
                             </div>
                         </div>
-                        <div class="col-sm">
-                            <div class="d-flex justify-content-sm-end">
-                                <div class="search-box ms-2">
-                                    <input type="text" class="form-control search" placeholder="Search...">
-                                    <i class="ri-search-line search-icon"></i>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                     <div class="table-responsive table-card mt-3 mb-1">
@@ -51,7 +43,7 @@
                             <tbody class="list form-check-all">
                                 @foreach($tupoksiKPI as $kpi)
                                 @foreach($tupoksiProker as $proker)
-                                @if($kpi->id_kpi == $proker->id_kpi)
+                                @if($proker->id_kpi == $proker->id_kpi)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -82,7 +74,8 @@
                                             </div>
                                             <div class="edit">
                                                 <a href="{{ route('tupoksiTw.index', $proker->id_proker) }}">
-                                                    <button class="btn btn-sm btn-success edit-item-btn">Add Tw {{($proker->id_proker) }}</button>
+                                                    <button class="btn btn-sm btn-success edit-item-btn">Add Tw
+                                                        {{($proker->id_proker) }}</button>
                                                 </a>
                                             </div>
                                             <div class="remove">
@@ -181,6 +174,7 @@
     </div>
     <!-- end col -->
 </div>
+
 
 <!-- add Modal -->
 <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -14,12 +14,13 @@ class TupoksiProkerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
         $users = auth()->user();
         $tupoksiDepartemen = TupoksiDepartemen::all();
         $tupoksiKPI = TupoksiKPI::all();
         $tupoksiProker = TupoksiProker::all();
+        $tupoksiProker = TupoksiProker::where('id_proker', $id)->first();
         return view('Tupoksi.Proker.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker'));
     }
 

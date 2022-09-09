@@ -119,6 +119,7 @@ Route::post('/Tupoksi_Departemen/update/{id}',[TupoksiDepartemenController::clas
 //tupoksi KPI
 Route::delete('/Tupoksi_Kpi/destroy/{id}',[TupoksiKPIController::class, 'destroy'])->name('tupoksiKpi.destroy');
 Route::post('/Tupoksi_Kpi/update/{id}',[TupoksiKPIController::class, 'update'])->name('tupoksiKpi.update');
+Route::get('/Tupoksi_Proker/index/{id}',[TupoksiProkerController::class, 'index'])->name('tupoksiProker.index');
 
 //tupoksi Proker
 Route::delete('/Tupoksi_Proker/destroy/{id}',[TupoksiProkerController::class, 'destroy'])->name('tupoksiProker.destroy');
