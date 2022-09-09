@@ -18,9 +18,9 @@ class TupoksiProkerController extends Controller
     {
         $users = auth()->user();
         $tupoksiDepartemen = TupoksiDepartemen::all();
-        $tupoksiKPI = TupoksiKPI::all();
+        $tupoksiKPI = TupoksiKPI::where('id_kpi', $id)->first();
         $tupoksiProker = TupoksiProker::all();
-        $tupoksiProker = TupoksiProker::where('id_proker', $id)->first();
+        //$tupoksiProker = TupoksiProker::where('id_proker', $id)->first();
         return view('Tupoksi.Proker.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker'));
     }
 
@@ -96,7 +96,7 @@ class TupoksiProkerController extends Controller
         $tupoksiProker->proker = $request->get('proker');
         $tupoksiProker->target = $request->get('target');
         $tupoksiProker->save();
-        return redirect()->route('KPI_TupoksiKpi.edit', $id_kpi)->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back();
     }
 
     /**

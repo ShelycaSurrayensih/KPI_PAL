@@ -41,9 +41,8 @@
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                @foreach($tupoksiKPI as $kpi)
                                 @foreach($tupoksiProker as $proker)
-                                @if($proker->id_kpi == $proker->id_kpi)
+                                @if($proker->id_kpi == $tupoksiKPI->id_kpi)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -53,7 +52,7 @@
                                     </th>
                                     <td class="id" style="display:none;"><a href="javascript:void(0);"
                                             class="fw-medium link-primary">#VZ2101</a></td>
-                                    <td class="kpi">{{$kpi->kpi}}</td>
+                                    <td class="kpi">{{$tupoksiKPI->kpi}}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $proker->proker }}</div>
@@ -74,8 +73,7 @@
                                             </div>
                                             <div class="edit">
                                                 <a href="{{ route('tupoksiTw.index', $proker->id_proker) }}">
-                                                    <button class="btn btn-sm btn-success edit-item-btn">Add Tw
-                                                        {{($proker->id_proker) }}</button>
+                                                    <button class="btn btn-sm btn-success edit-item-btn">Add Tw</button>
                                                 </a>
                                             </div>
                                             <div class="remove">
@@ -112,7 +110,7 @@
                                                     <div class="mb-3">
                                                         <label for="kpi">KPI</label>
                                                         <input type="text" name="kpi" class="form-control" id="kpi"
-                                                            value="{{$kpi->id_kpi}}">
+                                                            value="{{$tupoksiKPI->id_kpi}}">
 
                                                     </div>
                                                     <div class="mb-3">
@@ -141,7 +139,6 @@
                                     </div>
                             </tbody>
                             @endif
-                            @endforeach
                             @endforeach
                         </table>
                         <div class="noresult" style="display: none">
@@ -191,12 +188,8 @@
                     @csrf
                     <div class="mb-3">
                         <label for="id_kpi">KPI</label>
-                        <select name="id_kpi" class="form-control" id="id_kpi">
-                            @foreach ($tupoksiKPI as $kpi)
-                            <option value="{{$kpi->id_kpi}}">{{ "$kpi->kpi" }}</option>
-                            @endforeach
-                        </select>
-
+                        <input type="text" name="id_kpi" class="form-control" id="id_kpi" value="{{$tupoksiKPI->id_kpi}}" readonly hidden>
+                        <input type="text" name="" class="form-control" id="" value="{{$tupoksiKPI->kpi}}" readonly >
                     </div>
                     <div class="mb-3">
                         <label for="proker">Proker</label>
