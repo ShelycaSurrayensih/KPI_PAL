@@ -68,7 +68,7 @@
                                                     <div class="modal-body">
                                                         <form method="post" action="{{route('cascadeProker.store')}}" enctype="multipart/form-data" id="myForm">
                                                             @csrf
-                                                            <input name="id_CKpi" type="text" class="form-control" id="id_CKpi" value="{{$casKpi->id}}" readonly hidden>
+                                                            <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
                                                             <div class="mb-3">
                                                                 <label for="tw" class="form-label">TW</label>
                                                                 <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok_count}}" readonly>
@@ -129,9 +129,9 @@
                                                     </div>
 
                                                     <div class="modal-body">
-                                                        <form method="post" action="{{route('cascadeProker.update, $prok->tw')}}" enctype="multipart/form-data" id="myForm">
+                                                        <form method="post" action="{{route('cascadeProker.update', $prok->id)}}" enctype="multipart/form-data" id="myForm">
                                                             @csrf
-                                                            <input name="id_CKpi" type="text" class="form-control" id="id_CKpi" value="{{$casKpi->id}}" readonly hidden>
+                                                            <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
                                                             <div class="mb-3">
                                                                 <label for="tw" class="form-label">TW</label>
                                                                 <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok->tw}}" readonly>
@@ -192,7 +192,7 @@
                                                     <div class="modal-body">
                                                         <form method="post" action="{{route('cascadeProker.store')}}" enctype="multipart/form-data" id="myForm">
                                                             @csrf
-                                                            <input name="id_CKpi" type="text" class="form-control" id="id_CKpi" value="{{$casKpi->id}}" readonly hidden>
+                                                            <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
                                                             <div class="mb-3">
                                                                 <label for="tw" class="form-label">TW</label>
                                                                 <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok_count}}" readonly>

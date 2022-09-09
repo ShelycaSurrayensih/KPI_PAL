@@ -72,22 +72,36 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpiDiv->status_div }}</div>
+                                                @if($kpiDiv->status_div == 1)
+                                                <div class="flex-grow-1">Lead KPI</div>
+                                                @elseif($kpiDiv->status_div == 0)
+                                                <div class="flex-grow-1">Contribute KPI</div>
+                                                @else
+                                                <div class="flex-grow-1">Incorrect Value</div>
+                                                @endif
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex gap-2">
-                                                
-                                                <div class="remove">
-
-                                                    <form action="" method="POST">
-
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
-                                                    </form>
+                                                <div class="edit">
+                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{$kpiDiv->id}}">Edit</button>
                                                 </div>
-                                            </div>
+                                                <div class="details">
+                                                    <a href="{{ route('cascadeProker.index', $kpiDiv->id) }}">
+                                                        <button type="button" class="btn btn-sm btn-success edit-item-btn">
+                                                            Proker
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                                <div class="d-flex gap-2">
+                                                    <div class="remove">
+                                                        <form action="" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                         </td>
                                     </tr><!-- end tr -->
 
@@ -103,7 +117,7 @@
                                                 <div class="modal-body">
                                                     <form method="post" action="{{route('casDiv.update', $kpiDiv->id)}}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
-                                                        <input name="id_CasKpi" type="text" class="form-control" id="id_CasKpi" value="{{$casKpi->id_CasKpi}}" hidden>
+                                                        <input name="id_CasKpi" type="text" class="form-control" id="id_CasKpi" value="{{$casKpi->id}}" hidden>
                                                         <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi" value="{{$casKpi->bobot_kpi}}" hidden>
                                                         <div class="mb-3">
                                                             <label for="kpi_divisi" class="form-label">Nama KPI Divisi</label>
@@ -119,8 +133,10 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="status_div" class="form-label">Status Divisi</label>
-                                                            
-                                                            <input name="status_div" type="text" class="form-control" id="status_div" value="{{$kpiDiv->status_div}}">
+                                                            <select name="status_div" class="form-control" id="status_div">
+                                                                <option value="1">Lead</option>
+                                                                <option value="0">Contribute</option>
+                                                            </select>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="hstack gap-2 justify-content-end">
@@ -173,8 +189,24 @@
             <div class="modal-body">
                 <form method="post" action="{{route('casDiv.store')}}" enctype="multipart/form-data" id="myForm">
                     @csrf
-                    <input name="id_CasKpi" type="text" class="form-control" id="id_CasKpi" value="{{$casKpi->id}}" hidden>
+                    <!-- <input name="id_CasKpi" type="text" class="form-control" id="id_CasKpi" value="{{$casKpi->id}}" hidden> -->
                     <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi" value="{{$casKpi->bobot_kpi}}" hidden>
+                    <div class="mb-3">
+                        <label for="id_CasKpi" class="form-label">Kategori</label>
+                        <select name="id_CasKpi" class="form-control" id="id_CasKpi">
+                            @foreach($casKpiCount as $casKPiCount)
+                            <option value="{{$casKPiCount->id }}">{{ "$casKPiCount->cas_kpiName" }}
+                                @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_kat" class="form-label">Kategori</label>
+                        <select name="id_kat" class="form-control" id="id_inisiatif">
+                            @foreach($casKat as $kat)
+                            <option value="{{$casKpi->id }}">{{ "$kat->desc_kat" }}
+                                @endforeach
+                        </select>
+                    </div>
                     <div class="mb-3">
                         <label for="kpi_divisi" class="form-label">Nama KPI Divisi</label>
                         <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi">
@@ -189,7 +221,10 @@
                     </div>
                     <div class="mb-3">
                         <label for="status_div" class="form-label">Status Divisi</label>
-                        <input name="status_div" type="text" class="form-control" id="status_div">
+                        <select name="status_div" class="form-control" id="status_div">
+                            <option value="1">Lead</option>
+                            <option value="0">Contribute</option>
+                        </select>
                     </div>
             </div>
             <div class="modal-footer">

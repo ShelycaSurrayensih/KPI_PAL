@@ -44,29 +44,41 @@ class CascadeController extends Controller
     {
         $users = auth()->user();
         $casKpiDiv = CascadeKpiDiv::all();
+        $casKpiCount = CascadeKpi::all();
+        $casKat = CascadeKat::all();
         $casKpi = CascadeKpi::find($id)->first();
         $divisi = Divisi::all();
 
-        return view('Cascade.kpi_divisi', compact('users', 'casKpiDiv', 'casKpi','divisi'));
+        return view('Cascade.kpi_divisi', compact('users', 'casKpiDiv', 'casKpi','divisi', 'casKpiCount','casKat'));
     }
     public function cascadeKpiDivStore(Request $request)
     {
-        $CasKpiDiv = new CascadeKpiDiv;
+        $casKpiDiv = new CascadeKpiDiv;
         $bobot_kpi =  $request->bobot_kpi;
         $bobot_cascade = $request->bobot_cascade;
-        $CasKpiDiv->id_CasKpi = $request->id_CasKpi;
-        $CasKpiDiv->kpi_divisi = $request->kpi_divisi;
-        $CasKpiDiv->bobot_cascade = $bobot_cascade;
-        $CasKpiDiv->target = $request->target;
-        $CasKpiDiv->bkXbc = $bobot_kpi * ($bobot_cascade/100); 
-        $CasKpiDiv->status_div = $request->status_div;
-        $CasKpiDiv->save();
+        $casKpiDiv->id_CasKpi = $request->id_CasKpi;
+        $casKpiDiv->kpi_divisi = $request->kpi_divisi;
+        $casKpiDiv->bobot_cascade = $bobot_cascade;
+        $casKpiDiv->target = $request->target;
+        $casKpiDiv->bkXbc = $bobot_kpi * ($bobot_cascade/100); 
+        $casKpiDiv->status_div = $request->status_div;
+        $casKpiDiv->save();
         return redirect()->back();
     }
 
     public function cascadeKpiDivUpdate(Request $request, $id)
     {
-        $cascade = CascadeKpiDiv::where('id',$id)->update($request->except(['_token']));
+        $casKpiDiv = CascadeKpiDiv::find($id);
+        $bobot_kpi =  $request->bobot_kpi;
+        $bobot_cascade = $request->bobot_cascade;
+        $casKpiDiv->id_CasKpi = $request->id_CasKpi;
+        $casKpiDiv->kpi_divisi = $request->kpi_divisi;
+        $casKpiDiv->bobot_cascade = $bobot_cascade;
+        $casKpiDiv->target = $request->target;
+        $casKpiDiv->bkXbc = $bobot_kpi * ($bobot_cascade/100); 
+        $casKpiDiv->status_div = $request->status_div;
+        $casKpiDiv->update();
+        //$cascade = CascadeKpiDiv::where('id',$id)->update($request->except(['_token']));
         return redirect()->back();
     }
 
@@ -75,16 +87,16 @@ class CascadeController extends Controller
     {
         $users = auth()->user();
         $casProk = CascadeProker::all();
-        $prokCount = CascadeProker::where('id_CKpi', $id)->count();
-        $casKpi = CascadeKpi::find($id);
+        $prokCount = CascadeProker::where('id_CDiv', $id)->count();
+        $casKpiDiv = CascadeKpiDiv::find($id);
         $divisi = Divisi::all();
 
-        return view('Cascade.proker_kpi', compact('users', 'casKpi','casProk','divisi', 'prokCount'));
+        return view('Cascade.proker_kpi', compact('users', 'casKpiDiv','casProk','divisi', 'prokCount'));
     }
     public function cascadeProkerStore(Request $request)
     {
         $casProk = new CascadeProker;
-        $casProk->id_CKpi = $request->id_CKpi;
+        $casProk->id_CDiv = $request->id_CDiv;
         $casProk->tw = $request->tw;
         $casProk->progress = $request->progress;
         $casProk->deskripsi = $request->deskripsi;
