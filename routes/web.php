@@ -59,6 +59,10 @@ Route::get('/Cascade/Proker/{id}', [App\Http\Controllers\CascadeController::clas
 Route::post('/Cascade/Proker/store', [App\Http\Controllers\CascadeController::class, 'cascadeProkerStore'])->name('cascadeProker.store');
 Route::post('/Cascade/Proker/update/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeProkerUpdate'])->name('cascadeProker.update');
 
+//Cascading Realisasi
+Route::post('/Cascade/Realisas/store', [App\Http\Controllers\CascadeController::class, 'cascadeRealisStore'])->name('cascadeRealis.store');
+Route::post('/Cascade/Realisas/update/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeRealisUpdate'])->name('cascadeRealis.update');
+
 //RKAP Store
 Route::post('/inisiatifStrategis/store', [App\Http\Controllers\RKAP::class, 'inisiatifStrategisStore'])->name('inisiatifStrategis.store');
 Route::post('/KategoriPMS/store', [App\Http\Controllers\RKAP::class, 'KategoriPmsStore'])->name('KategoriPms.store');

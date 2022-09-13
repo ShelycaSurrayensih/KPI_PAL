@@ -90,8 +90,11 @@ class CascadeController extends Controller
         $prokCount = CascadeProker::where('id_CDiv', $id)->count();
         $casKpiDiv = CascadeKpiDiv::find($id);
         $divisi = Divisi::all();
+        //Realisasi
+        $casReal = CascadeRealisasi::all();
+        $casRealCount = CascadeRealisasi::count();
 
-        return view('Cascade.proker_kpi', compact('users', 'casKpiDiv','casProk','divisi', 'prokCount'));
+        return view('Cascade.proker_kpi', compact('users', 'casKpiDiv','casProk','divisi', 'prokCount', 'casReal', 'casRealCount'));
     }
     public function cascadeProkerStore(Request $request)
     {
@@ -108,4 +111,21 @@ class CascadeController extends Controller
         $cascade = CascadeProker::where('id',$id)->update($request->except(['_token']));
         return redirect()->back();
     }
+
+    //Cascade Realisasi
+    public function cascadeRealisStore(Request $request)
+    {
+        $casReal = new CascadeRealisasi;
+        $casReal->id_CProk = $request->id_CProk;
+        $casReal->progress = $request->progress;
+        $casReal->deskripsi = $request->deskripsi;
+        $casReal->save();
+        return redirect()->back();
+    }
+    public function cascadeRealisUpdate(Request $request, $id)
+    {
+        $cascade = CascadeRealisasi::where('id',$id)->update($request->except(['_token']));
+        return redirect()->back();
+    }
+
 }

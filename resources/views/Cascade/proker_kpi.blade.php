@@ -32,7 +32,7 @@
                                 </thead>
                                 <tbody>
                                     @if($prokCount == 0)
-                                        @for($prok_count=1 ; $prok_count <= 4 ; $prok_count++) <tr>
+                                    @for($prok_count=1 ; $prok_count <= 4 ; $prok_count++) <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $prok_count }}</div>
@@ -93,151 +93,293 @@
                                             </div>
                                         </div>
                                         @endfor
-                                    @else
-                                        @foreach($casProk as $prok)
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1">{{ $prok->tw }}</div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1">{{ $prok->progress }}</div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1">{{ $prok->deskripsi }}</div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex gap-2">
-                                                    <div class="add">
-                                                        <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{$prok->tw}}">Edit Proker</button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <!-- edit Modal -->
-                                        <div class="modal fade" id="showModal{{$prok->tw}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header bg-light p-3">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
-                                                    </div>
+                                        @else
 
-                                                    <div class="modal-body">
-                                                        <form method="post" action="{{route('cascadeProker.update', $prok->id)}}" enctype="multipart/form-data" id="myForm">
-                                                            @csrf
-                                                            <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
-                                                            <div class="mb-3">
-                                                                <label for="tw" class="form-label">TW</label>
-                                                                <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok->tw}}" readonly>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="progress" class="form-label">Progress</label>
-                                                                <input name="progress" type="text" class="form-control" id="progress" value="{{$prok->progress}}">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="deskripsi" class="form-label">Deskripsi</label>
-                                                                <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$prok->deskripsi}}">
-                                                            </div>
+                                        @for($prok_count=1 ; $prok_count <= 4 ; $prok_count++) 
+                                        <?php
+                                                                                                $count = 1;
+                                                                                                $counter = 0;
+                                                                                                $show = 0;
+                                                                                                ?>
+                                        
+                                        @foreach($casProk as $prok) 
+                                        @if($prok->id_CDiv == $casKpiDiv->id)
+                                        @if($prok_count==$prok->tw)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-grow-1">{{ $prok->tw }}</div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <div class="hstack gap-2 justify-content-end">
-                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-grow-1">{{ $prok->progress }}</div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-grow-1">{{ $prok->deskripsi }}</div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex gap-2">
+                                                        <div class="add">
+                                                            <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{$prok->tw}}">Edit Proker</button>
+                                                            <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid{{ $prok->tw }}">
+                                                                Realisasi
+                                                            </button>
                                                         </div>
                                                     </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                            @endforeach
-                                        @for($prok_count= 1 + $prokCount ; $prok_count <= 4 ; $prok_count++)<tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $prok_count }}</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">Belum Terisi</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">Belum Terisi</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex gap-2">
-                                                <div class="add">
-                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#Modal{{$prok_count}}">Add Proker</button>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        </tr>
-                                        <!-- Add Modal -->
-                                        <div class="modal fade" id="Modal{{$prok_count}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header bg-light p-3">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Add Cascade Proker</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
-                                                    </div>
-
-                                                    <div class="modal-body">
-                                                        <form method="post" action="{{route('cascadeProker.store')}}" enctype="multipart/form-data" id="myForm">
-                                                            @csrf
-                                                            <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
-                                                            <div class="mb-3">
-                                                                <label for="tw" class="form-label">TW</label>
-                                                                <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok_count}}" readonly>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="progress" class="form-label">Progress</label>
-                                                                <input name="progress" type="text" class="form-control" id="progress">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="deskripsi" class="form-label">Deskripsi</label>
-                                                                <input name="deskripsi" type="text" class="form-control" id="deskripsi">
-                                                            </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <div class="hstack gap-2 justify-content-end">
-                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success" id="add-btn">Add Cascade Proker</button>
+                                                </td>
+                                            </tr>
+                                            <!-- edit Modal -->
+                                            <div class="modal fade" id="showModal{{$prok->tw}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header bg-light p-3">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                         </div>
+
+                                                        <div class="modal-body">
+                                                            <form method="post" action="{{route('cascadeProker.update', $prok->id)}}" enctype="multipart/form-data" id="myForm">
+                                                                @csrf
+                                                                <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
+                                                                <div class="mb-3">
+                                                                    <label for="tw" class="form-label">TW</label>
+                                                                    <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok->tw}}" readonly>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="progress" class="form-label">Progress</label>
+                                                                    <input name="progress" type="text" class="form-control" id="progress" value="{{$prok->progress}}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$prok->deskripsi}}">
+                                                                </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="hstack gap-2 justify-content-end">
+                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
+                                                            </div>
+                                                        </div>
+                                                        </form>
                                                     </div>
-                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
-                                        @endfor
-                                        @endif
-                                </tbody><!-- end tbody -->
+                                            <!-- edit modal -->
+                                            <div class="modal fade" id="exampleModalgrid{{ $prok->id }}" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalgridLabel">Realisasi Plan</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
 
-                            </table><!-- end table -->
+
+                                                        @for($counterReal = 0; $counterReal < 1; $counterReal++) 
+                                                        @if($casRealCount==0) 
+                                                        <!-- Add Realisasi -->
+                                                            <form method="post" action="{{ route('cascadeRealis.store') }}" enctype="multipart/form-data" id="myForm">
+                                                                @csrf
+                                                                <input name="id_CProk" type="text" class="form-control" id="id_CDiv" value="{{$prok->id}}" readonly hidden>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label"></label>
+                                                                    <input name="" type="text" class="form-control" id="cas_kpiName" value="{{$prok->id}}" readonly>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="progress" class="form-label">Progress</label>
+                                                                    <input name="progress" type="text" class="form-control" id="progress">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi">
+                                                                </div>
+                                                                <!-- <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="file_evidence">File Evidence</label>
+                                                                <div class="fallback">
+                                                                    <input type="file" name="file" multiple="multiple">
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+                                                                <div class="hstack gap-2 justify-content-end">
+                                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-success" id="edit-btn">Add Realisasi</button>
+                                                                </div>
+                                                                <!--end row-->
+                                                            </form>
+                                                            @break
+                                                            @elseif($counterReal == 0)
+                                                            @foreach($casReal as $cReal)
+                                                            @if($cReal->id_CProk == $prok->id)
+                                                            <form method="post" action="{{ route('cascadeRealis.update', $prok->id) }}" enctype="multipart/form-data" id="myForm">
+                                                                @csrf
+                                                                <input name="id_CProk" type="text" class="form-control" id="id_CProk" value="{{$prok->id}}" readonly hidden>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">TW</label>
+                                                                    <input name="" type="text" class="form-control" id="cas_kpiName" value="{{$prok->tw}}" readonly>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="progress" class="form-label">Progress</label>
+                                                                    <input name="progress" type="text" class="form-control" id="progress">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi">
+                                                                </div>
+                                                                <!-- <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="file_evidence">File Evidence</label>
+                                                                <div class="fallback">
+                                                                    <input type="file" name="file" multiple="multiple">
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+                                                                <div class="hstack gap-2 justify-content-end">
+                                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-success" id="edit-btn">Update Realisasi</button>
+                                                                </div>
+                                                                <!--end row-->
+                                                            </form>
+                                                            @break
+                                                            @elseif($show == 0 && ($counterReal + 1) == $prokCount)
+                                                            <?php
+                                                            $show = 1;
+                                                            $counterReal = $prokCount;
+                                                            ?>
+                                                            <form method="post" action="{{ route('cascadeRealis.store') }}" enctype="multipart/form-data" id="myForm">
+                                                                @csrf
+                                                                <input name="id_CProk" type="text" class="form-control" id="id_CDiv" value="{{$prok->id}}" readonly hidden>
+                                                                <div class="mb-3">
+                                                                    <label for="" class="form-label">TW</label>
+                                                                    <input name="" type="text" class="form-control" id="cas_kpiName" value="{{$prok->tw}}" readonly>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="progress" class="form-label">Progress</label>
+                                                                    <input name="progress" type="text" class="form-control" id="progress">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi">
+                                                                </div>
+                                                                <!-- <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="file_evidence">File Evidence</label>
+                                                                <div class="fallback">
+                                                                    <input type="file" name="file" multiple="multiple">
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+                                                                <div class="hstack gap-2 justify-content-end">
+                                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-success" id="edit-btn">Add Realisasi</button>
+                                                                </div>
+                                                                <!--end row-->
+                                                            </form>
+                                                            @break
+                                                            @endif
+                                                            @endforeach
+                                                            @endif
+                                                            @endfor
+                                                    </div>
+                                                </div>
+                                            </div>
                         </div>
+
+                        <?php
+                        $count++;
+                        ?>
+                        @endif
+                        @endif
+                        @endforeach
+                        @if($count == 1) <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">{{ $prok_count }}</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">Belum Terisi</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">Belum Terisi</div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <div class="add">
+                                        <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#Modal{{$prok_count}}">Add Proker</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Add Modal -->
+                        <div class="modal fade" id="Modal{{$prok_count}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-light p-3">
+                                        <h5 class="modal-title" id="exampleModalLabel">Add Cascade Proker</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form method="post" action="{{route('cascadeProker.store')}}" enctype="multipart/form-data" id="myForm">
+                                            @csrf
+                                            <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
+                                            <div class="mb-3">
+                                                <label for="tw" class="form-label">TW</label>
+                                                <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok_count}}" readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="progress" class="form-label">Progress</label>
+                                                <input name="progress" type="text" class="form-control" id="progress">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="deskripsi" class="form-label">Deskripsi</label>
+                                                <input name="deskripsi" type="text" class="form-control" id="deskripsi">
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="hstack gap-2 justify-content-end">
+                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-success" id="add-btn">Add Cascade Proker</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        <?php
+                        $count = 0;
+                        ?>
+                        @endfor
+                        @endif
+                        </tbody><!-- end tbody -->
+
+                        </table><!-- end table -->
                     </div>
-                </div> <!-- .card-->
-            </div> <!-- .col-->
-        </div> <!-- end row-->
-        <div class="d-flex justify-content-end">
-            <div class="pagination-wrap hstack gap-2">
-                <a class="page-item pagination-prev disabled" href="#">
-                    Previous
-                </a>
-                <ul class="pagination listjs-pagination mb-0"></ul>
-                <a class="page-item pagination-next" href="#">
-                    Next
-                </a>
-            </div>
+                </div>
+            </div> <!-- .card-->
+        </div> <!-- .col-->
+    </div> <!-- end row-->
+    <div class="d-flex justify-content-end">
+        <div class="pagination-wrap hstack gap-2">
+            <a class="page-item pagination-prev disabled" href="#">
+                Previous
+            </a>
+            <ul class="pagination listjs-pagination mb-0"></ul>
+            <a class="page-item pagination-next" href="#">
+                Next
+            </a>
         </div>
     </div>
+</div>
 </div><!-- end card -->
 </div>
 <!-- end col -->
