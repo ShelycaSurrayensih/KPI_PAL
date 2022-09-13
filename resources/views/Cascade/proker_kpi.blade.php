@@ -98,8 +98,6 @@
                                         @for($prok_count=1 ; $prok_count <= 4 ; $prok_count++) 
                                         <?php
                                                                                                 $count = 1;
-                                                                                                $counter = 0;
-                                                                                                $show = 0;
                                                                                                 ?>
                                         
                                         @foreach($casProk as $prok) 
@@ -125,7 +123,7 @@
                                                     <div class="d-flex gap-2">
                                                         <div class="add">
                                                             <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{$prok->tw}}">Edit Proker</button>
-                                                            <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid{{ $prok->tw }}">
+                                                            <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid{{ $prok->id }}">
                                                                 Realisasi
                                                             </button>
                                                         </div>
@@ -168,7 +166,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- edit modal -->
+                                            @foreach($casReal as $real)
+                                            @if($real->id_CProk == $prok->id)
+                                            <!-- edit modal realisasi -->
                                             <div class="modal fade" id="exampleModalgrid{{ $prok->id }}" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -176,45 +176,7 @@
                                                             <h5 class="modal-title" id="exampleModalgridLabel">Realisasi Plan</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
-
-
-                                                        @for($counterReal = 0; $counterReal < 1; $counterReal++) 
-                                                        @if($casRealCount==0) 
-                                                        <!-- Add Realisasi -->
-                                                            <form method="post" action="{{ route('cascadeRealis.store') }}" enctype="multipart/form-data" id="myForm">
-                                                                @csrf
-                                                                <input name="id_CProk" type="text" class="form-control" id="id_CDiv" value="{{$prok->id}}" readonly hidden>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label"></label>
-                                                                    <input name="" type="text" class="form-control" id="cas_kpiName" value="{{$prok->id}}" readonly>
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="progress" class="form-label">Progress</label>
-                                                                    <input name="progress" type="text" class="form-control" id="progress">
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="deskripsi" class="form-label">Deskripsi</label>
-                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi">
-                                                                </div>
-                                                                <!-- <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="file_evidence">File Evidence</label>
-                                                                <div class="fallback">
-                                                                    <input type="file" name="file" multiple="multiple">
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                                                <div class="hstack gap-2 justify-content-end">
-                                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit" class="btn btn-success" id="edit-btn">Add Realisasi</button>
-                                                                </div>
-                                                                <!--end row-->
-                                                            </form>
-                                                            @break
-                                                            @elseif($counterReal == 0)
-                                                            @foreach($casReal as $cReal)
-                                                            @if($cReal->id_CProk == $prok->id)
-                                                            <form method="post" action="{{ route('cascadeRealis.update', $prok->id) }}" enctype="multipart/form-data" id="myForm">
+                                                        <form method="post" action="{{ route('cascadeRealis.update', $prok->id) }}" enctype="multipart/form-data" id="myForm">
                                                                 @csrf
                                                                 <input name="id_CProk" type="text" class="form-control" id="id_CProk" value="{{$prok->id}}" readonly hidden>
                                                                 <div class="mb-3">
@@ -223,66 +185,26 @@
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="progress" class="form-label">Progress</label>
-                                                                    <input name="progress" type="text" class="form-control" id="progress">
+                                                                    <input name="progress" type="text" class="form-control" id="progress" value="{{$real->progress}}">
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="deskripsi" class="form-label">Deskripsi</label>
-                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi">
+                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$real->deskripsi}}">
                                                                 </div>
-                                                                <!-- <div class="col-xxl-6">
+                                                                <div class="col-xxl-6">
                                                             <div>
-                                                                <label for="file_evidence">File Evidence</label>
+                                                                <label for="evidence">File Evidence</label>
                                                                 <div class="fallback">
                                                                     <input type="file" name="file" multiple="multiple">
                                                                 </div>
                                                             </div>
-                                                        </div> -->
+                                                        </div>
                                                                 <div class="hstack gap-2 justify-content-end">
                                                                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                                                                     <button type="submit" class="btn btn-success" id="edit-btn">Update Realisasi</button>
                                                                 </div>
-                                                                <!--end row-->
-                                                            </form>
-                                                            @break
-                                                            @elseif($show == 0 && ($counterReal + 1) == $prokCount)
-                                                            <?php
-                                                            $show = 1;
-                                                            $counterReal = $prokCount;
-                                                            ?>
-                                                            <form method="post" action="{{ route('cascadeRealis.store') }}" enctype="multipart/form-data" id="myForm">
-                                                                @csrf
-                                                                <input name="id_CProk" type="text" class="form-control" id="id_CDiv" value="{{$prok->id}}" readonly hidden>
-                                                                <div class="mb-3">
-                                                                    <label for="" class="form-label">TW</label>
-                                                                    <input name="" type="text" class="form-control" id="cas_kpiName" value="{{$prok->tw}}" readonly>
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="progress" class="form-label">Progress</label>
-                                                                    <input name="progress" type="text" class="form-control" id="progress">
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="deskripsi" class="form-label">Deskripsi</label>
-                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi">
-                                                                </div>
-                                                                <!-- <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="file_evidence">File Evidence</label>
-                                                                <div class="fallback">
-                                                                    <input type="file" name="file" multiple="multiple">
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                                                <div class="hstack gap-2 justify-content-end">
-                                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit" class="btn btn-success" id="edit-btn">Add Realisasi</button>
-                                                                </div>
-                                                                <!--end row-->
-                                                            </form>
-                                                            @break
-                                                            @endif
-                                                            @endforeach
-                                                            @endif
-                                                            @endfor
+                                                                @endif
+                                                                @endforeach
                                                     </div>
                                                 </div>
                                             </div>

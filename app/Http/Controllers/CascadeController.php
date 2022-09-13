@@ -104,6 +104,15 @@ class CascadeController extends Controller
         $casProk->progress = $request->progress;
         $casProk->deskripsi = $request->deskripsi;
         $casProk->save();
+
+        $id_CDiv = $request->id_CDiv;
+        $tw = $request->tw;
+        $casProkDiv = CascadeProker::where('id_Cdiv', $id_CDiv)->where('tw', $tw)->first();
+        $casReal = new CascadeRealisasi;
+        $casReal->id_CProk = $casProkDiv->id;
+
+        $casReal->save();
+
         return redirect()->back();
     }
     public function cascadeProkerUpdate(Request $request, $id)
@@ -124,7 +133,19 @@ class CascadeController extends Controller
     }
     public function cascadeRealisUpdate(Request $request, $id)
     {
-        $cascade = CascadeRealisasi::where('id',$id)->update($request->except(['_token']));
+        $casReal = CascadeRealisasi::where('id_CProk',$id)->first();
+        $casReal->id_CProk = $request->id_CProk;
+        $casReal->progress = $request->progress;
+        $casReal->deskripsi = $request->deskripsi;
+
+        if($request->file != Null){
+            $fileName = $request->file->getClientOriginalName();
+            $request->file->move(public_path('File'), $fileName);
+        $casReal->evidence = $fileName;
+        }
+
+        //dd($request);
+        $casReal->save();
         return redirect()->back();
     }
 
