@@ -11,6 +11,7 @@
             </div><!-- end card header -->
 
             <div class="card-body">
+            <h4 class="card-title mb-0 flex-grow-1">KPI: {{$tupoksiKPI->kpi}}</h4><br>
                 <div id="tupoksiDepartemen">
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
@@ -34,7 +35,7 @@
                                                 value="option">
                                         </div>
                                     </th>
-                                    <th class="sort" data-sort="kpi">KPI</th>
+                                    <th class="sort" data-sort="kpi">Departemen</th>
                                     <th class="sort" data-sort="proker">Proker</th>
                                     <th class="sort" data-sort="target">target</th>
                                     <th class="sort" data-sort="action">Action</th>
@@ -42,7 +43,9 @@
                             </thead>
                             <tbody class="list form-check-all">
                                 @foreach($tupoksiProker as $proker)
+                                @foreach($tupoksiDepartemen as $departemen)
                                 @if($proker->id_kpi == $tupoksiKPI->id_kpi)
+                                @if($departemen->id_departemen == $proker->id_departemen)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -52,7 +55,7 @@
                                     </th>
                                     <td class="id" style="display:none;"><a href="javascript:void(0);"
                                             class="fw-medium link-primary">#VZ2101</a></td>
-                                    <td class="kpi">{{$tupoksiKPI->kpi}}</td>
+                                    <td class="kpi">{{$departemen->departemen}}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $proker->proker }}</div>
@@ -139,6 +142,8 @@
                                     </div>
                             </tbody>
                             @endif
+                            @endif
+                            @endforeach
                             @endforeach
                         </table>
                         <div class="noresult" style="display: none">

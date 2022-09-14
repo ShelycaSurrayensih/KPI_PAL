@@ -795,7 +795,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('KPI_TupoksiProker.index') }}" class="nav-link"
+                                    <a href="{{ route('tupoksiProkerAll.index') }}" class="nav-link"
                                         data-key="t-signup"> Proker
                                     </a>
                                 </li>
