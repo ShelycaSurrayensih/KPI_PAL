@@ -40,6 +40,18 @@ class CascadeController extends Controller
     }
 
     //KPI Divisi
+    public function cascadeKpiDivAll()
+    {
+        $users = auth()->user();
+        $casKpiDiv = CascadeKpiDiv::all();
+        $casKpiCount = CascadeKpi::all();
+        $casKat = CascadeKat::all();
+        $casKpi = CascadeKpi::all();
+        $divisi = Divisi::all();
+
+        return view('Cascade.indexAll_divisi', compact('users', 'casKpiDiv', 'casKpi','divisi', 'casKpiCount','casKat'));
+    }
+
     public function cascadeKpiDivIndex(Request $request, $id)
     {
         $users = auth()->user();
@@ -51,6 +63,7 @@ class CascadeController extends Controller
 
         return view('Cascade.kpi_divisi', compact('users', 'casKpiDiv', 'casKpi','divisi', 'casKpiCount','casKat'));
     }
+   
     public function cascadeKpiDivStore(Request $request)
     {
         $casKpiDiv = new CascadeKpiDiv;

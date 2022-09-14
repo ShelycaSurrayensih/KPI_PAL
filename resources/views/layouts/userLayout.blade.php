@@ -809,10 +809,26 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{route('cascadeKPI.index')}}">
+                        <a class="nav-link menu-link" href="#sidebarCascading" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="sidebarCascading" >
                             <i class="mdi mdi-account-circle-outline"></i> <span
                                 data-key="t-authentication">Cascading</span>
                         </a>
+                        <div class="collapse menu-dropdown" id="sidebarCascading">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{route('cascadeKPI.index')}}" class="nav-link"
+                                        data-key="t-signin"> Cascading
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a  href="{{ route('casDivAll.cascadeKpiDivAll') }}" class="nav-link" data-key="t-signup">
+                                        KPI Divisi
+                                    </a>
+                                </li>
+                              
+                            </ul>
+                        </div>
                     </li>
 
                     <li class="nav-item">
