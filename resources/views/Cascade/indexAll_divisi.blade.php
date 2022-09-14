@@ -43,11 +43,13 @@
 
                                 </thead>
                                 <tbody>
+                                    @foreach($casKpi as $kpi)
                                     @foreach($casKpiDiv as $kpiDiv)
+                                    @if($kpiDiv->id_CasKpi == $kpi->id)
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $casKpi->cas_kpiName }}</div>
+                                                <div class="flex-grow-1">{{ $kpi->cas_kpiName }}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -117,8 +119,8 @@
                                                 <div class="modal-body">
                                                     <form method="post" action="{{route('casDiv.update', $kpiDiv->id)}}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
-                                                        <input name="id_CasKpi" type="text" class="form-control" id="id_CasKpi" value="{{$casKpi->id}}" hidden>
-                                                        <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi" value="{{$casKpi->bobot_kpi}}" hidden>
+                                                        <input name="id_CasKpi" type="text" class="form-control" id="id_CasKpi" value="{{$kpi->id}}" hidden>
+                                                        <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi" value="{{$kpi->bobot_kpi}}" hidden>
                                                         <div class="mb-3">
                                                             <label for="kpi_divisi" class="form-label">Nama KPI Divisi</label>
                                                             <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi" value="{{$kpiDiv->kpi_divisi}}">
@@ -149,6 +151,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
+                                    @endforeach
                                     @endforeach
                                 </tbody><!-- end tbody -->
 
@@ -189,8 +193,6 @@
             <div class="modal-body">
                 <form method="post" action="{{route('casDiv.store')}}" enctype="multipart/form-data" id="myForm">
                     @csrf
-                    <!-- <input name="id_CasKpi" type="text" class="form-control" id="id_CasKpi" value="{{$casKpi->id}}" hidden> -->
-                    <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi" value="{{$casKpi->bobot_kpi}}" hidden>
                     <div class="mb-3">
                         <label for="id_CasKpi" class="form-label">Kategori</label>
                         <select name="id_CasKpi" class="form-control" id="id_CasKpi">
@@ -203,7 +205,7 @@
                         <label for="id_kat" class="form-label">Kategori</label>
                         <select name="id_kat" class="form-control" id="id_inisiatif">
                             @foreach($casKat as $kat)
-                            <option value="{{$casKpi->id }}">{{ "$kat->desc_kat" }}
+                            <option value="{{$kpi->id }}">{{ "$kat->desc_kat" }}
                                 @endforeach
                         </select>
                     </div>

@@ -822,7 +822,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a  href="{{ route('casDivAll.cascadeKpiDivAll') }}" class="nav-link" data-key="t-signup">
+                                    <a  href="{{ route('casDiv.all') }}" class="nav-link" data-key="t-signup">
                                         KPI Divisi
                                     </a>
                                 </li>

@@ -51,7 +51,7 @@ Route::post('/Cascade/KPI/update/{id}', [App\Http\Controllers\CascadeController:
 
 //Cascading KPI Divisi
 Route::get('/Cascade/KPIDiv/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDivIndex'])->name('casDiv.index');
-Route::get('/Cascade/KPIDiv/index', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDivAll'])->name('casDivAll.cascadeKpiDivAll');
+Route::get('/Cascade/KPIDiv', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDivAll'])->name('casDiv.all');
 Route::post('/Cascade/KPIDiv/store', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDivStore'])->name('casDiv.store');
 Route::post('/Cascade/KPIDiv/update/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDivUpdate'])->name('casDiv.update');
 
