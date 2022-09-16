@@ -44,6 +44,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($casKpiDiv as $kpiDiv)
+                                    @if($kpiDiv->id_CasKpi == $casKpi->id)
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -149,6 +150,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                     @endforeach
                                 </tbody><!-- end tbody -->
 
@@ -189,24 +191,8 @@
             <div class="modal-body">
                 <form method="post" action="{{route('casDiv.store')}}" enctype="multipart/form-data" id="myForm">
                     @csrf
-                    <!-- <input name="id_CasKpi" type="text" class="form-control" id="id_CasKpi" value="{{$casKpi->id}}" hidden> -->
+                    <input name="id_CasKpi" type="text" class="form-control" id="id_CasKpi" value="{{$casKpi->id}}" hidden>
                     <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi" value="{{$casKpi->bobot_kpi}}" hidden>
-                    <div class="mb-3">
-                        <label for="id_CasKpi" class="form-label">Kategori</label>
-                        <select name="id_CasKpi" class="form-control" id="id_CasKpi">
-                            @foreach($casKpiCount as $casKPiCount)
-                            <option value="{{$casKPiCount->id }}">{{ "$casKPiCount->cas_kpiName" }}
-                                @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_kat" class="form-label">Kategori</label>
-                        <select name="id_kat" class="form-control" id="id_inisiatif">
-                            @foreach($casKat as $kat)
-                            <option value="{{$casKpi->id }}">{{ "$kat->desc_kat" }}
-                                @endforeach
-                        </select>
-                    </div>
                     <div class="mb-3">
                         <label for="kpi_divisi" class="form-label">Nama KPI Divisi</label>
                         <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi">

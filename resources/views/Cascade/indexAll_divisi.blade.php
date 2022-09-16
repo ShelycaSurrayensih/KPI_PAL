@@ -194,21 +194,31 @@
                 <form method="post" action="{{route('casDiv.store')}}" enctype="multipart/form-data" id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="id_CasKpi" class="form-label">Kategori</label>
-                        <select name="id_CasKpi" class="form-control" id="id_CasKpi">
-                            @foreach($casKpiCount as $casKPiCount)
-                            <option value="{{$casKPiCount->id }}">{{ "$casKPiCount->cas_kpiName" }}
+                        <label for="kategori" class="col-md-4 col-form-label text-md-right">{{ __('Kategori') }}</label>
+                        <div class="col-md-6">
+                            <select class="form-control" name="" id="kategori">
+                                <option>Choose Category</option>
+                                @foreach ($casKat as $kat)
+                                <option value="{{ $kat->id_kat }}">{{ $kat->desc_kat }}</option>
                                 @endforeach
-                        </select>
+                            </select>
+                        </div>
                     </div>
+
                     <div class="mb-3">
-                        <label for="id_kat" class="form-label">Kategori</label>
-                        <select name="id_kat" class="form-control" id="id_inisiatif">
-                            @foreach($casKat as $kat)
-                            <option value="{{$kpi->id }}">{{ "$kat->desc_kat" }}
-                                @endforeach
-                        </select>
+                        <label for="kategori" class="col-md-4 col-form-label text-md-right">{{ __('KPI') }}</label>
+                        <div class="form-group mt-2 mb-2 pd-2">
+                            <select name="id_CasKpi" id="kpi" class="form-control">
+                                <option value="">Select Kategori</option>
+                            </select>
+                        </div>
                     </div>
+                    <!-- <div class="form-group mt-2 mb-2 pd-2">
+                        <select name="kpi_id" id="kpi" class="form-control">
+                            <option value="">Select Kategori</option>
+                        </select>
+                    </div> -->
+
                     <div class="mb-3">
                         <label for="kpi_divisi" class="form-label">Nama KPI Divisi</label>
                         <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi">
@@ -240,5 +250,37 @@
     </div>
 </div>
 
+<!-- JQuery -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#kategori').change(function() {
+            let id = $(this).val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            //call country on region selected
+            $.ajax({
+                dataType: 'json',
+                url: "/Cascade/KPIDiv/KPI/" + id,
+                type: "GET",
+                success: function(data) {
+                    console.log(data);
+                    $('select[name="id_CasKpi"]').empty();
+                    $.each(data, function(key, data) {
+                        $('select[name="id_CasKpi"]').append('<option value="' + data.id + '">' + data.cas_kpiName + '</option>');
+                    });
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 @endsection

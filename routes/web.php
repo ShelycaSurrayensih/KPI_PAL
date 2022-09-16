@@ -55,6 +55,10 @@ Route::get('/Cascade/KPIDiv', [App\Http\Controllers\CascadeController::class, 'c
 Route::post('/Cascade/KPIDiv/store', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDivStore'])->name('casDiv.store');
 Route::post('/Cascade/KPIDiv/update/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDivUpdate'])->name('casDiv.update');
 
+//Query KPI Divisi
+Route::get('/Cascade/KPIDiv/KPI/{id}', [App\Http\Controllers\CascadeController::class, 'kpiDivList'])->name('kpiDiv.list');
+
+
 //Cascading Proker
 Route::get('/Cascade/Proker/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeProkerIndex'])->name('cascadeProker.index');
 Route::post('/Cascade/Proker/store', [App\Http\Controllers\CascadeController::class, 'cascadeProkerStore'])->name('cascadeProker.store');

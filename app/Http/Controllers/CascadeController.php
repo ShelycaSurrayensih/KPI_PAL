@@ -46,7 +46,8 @@ class CascadeController extends Controller
         $casKpiDiv = CascadeKpiDiv::all();
         $casKpiCount = CascadeKpi::all();
         $casKat = CascadeKat::all();
-        $casKpi = CascadeKpi::find($id)->first();
+        $casKpi = CascadeKpi::where('id',$id)->first();
+        //dd($casKpi);
         $divisi = Divisi::all();
 
         return view('Cascade.kpi_divisi', compact('users', 'casKpiDiv', 'casKpi','divisi', 'casKpiCount','casKat'));
@@ -162,4 +163,10 @@ class CascadeController extends Controller
         return redirect()->back();
     }
 
+    public function kpiDivList($id)
+    {
+        $casKPI =CascadeKpi::where('id_kat',$id)->get();
+        // dd($casKPI);
+        return response()->json($casKPI);
+    }
 }
