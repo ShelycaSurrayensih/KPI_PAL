@@ -43,9 +43,8 @@
                             </thead>
                             <tbody class="list form-check-all">
                                 @foreach($tupoksiProker as $proker)
-                                @foreach($tupoksiDepartemen as $departemen)
                                 @if($proker->id_kpi == $tupoksiKPI->id_kpi)
-                                @if($departemen->id_departemen == $proker->id_departemen)
+                               
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -55,7 +54,11 @@
                                     </th>
                                     <td class="id" style="display:none;"><a href="javascript:void(0);"
                                             class="fw-medium link-primary">#VZ2101</a></td>
-                                    <td class="kpi">{{$departemen->departemen}}</td>
+                                            @foreach($tupoksiDepartemen as $departemen)
+                                            @if($tupoksiKPI->id_departemen == $departemen->id_departemen)
+                                                <td class="departemen">{{$departemen->departemen}}</td>
+                                            @endif
+                                            @endforeach
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $proker->proker }}</div>
@@ -142,9 +145,8 @@
                                     </div>
                             </tbody>
                             @endif
-                            @endif
                             @endforeach
-                            @endforeach
+                        </table>
                         </table>
                         <div class="noresult" style="display: none">
                             <div class="text-center">

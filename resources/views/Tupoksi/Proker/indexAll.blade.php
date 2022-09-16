@@ -47,11 +47,10 @@
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
+                                
+                            @foreach($tupoksiProker as $proker)
                                 @foreach($tupoksiKPI as $kpi)
-                                @foreach($tupoksiProker as $proker)
-                                @foreach($tupoksiDepartemen as $departemen)
-                                @if($kpi->id_kpi == $proker->id_kpi)
-                                @if($proker->id_kpi == $proker->id_kpi)
+                                @if($proker->id_kpi == $kpi->id_kpi)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -61,7 +60,11 @@
                                     </th>
                                     <td class="id" style="display:none;"><a href="javascript:void(0);"
                                             class="fw-medium link-primary">#VZ2101</a></td>
-                                    <td class="departemen">{{$departemen->departemen}}</td>
+                                            @foreach($tupoksiDepartemen as $departemen)
+                                            @if($kpi->id_departemen == $departemen->id_departemen)
+                                                <td class="departemen">{{$departemen->departemen}}</td>
+                                            @endif
+                                            @endforeach
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{$kpi->kpi}}</div>
@@ -146,8 +149,6 @@
                                     </div>
                             </tbody>
                             @endif
-                            @endif
-                            @endforeach
                             @endforeach
                             @endforeach
                         </table>
