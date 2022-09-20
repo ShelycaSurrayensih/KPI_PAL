@@ -19,12 +19,9 @@ class CascadeController extends Controller
         $casKat = CascadeKat::all();
         $casKpi = CascadeKpi::all();
         $divisi = Divisi::all();
-        if($users->status == 'administrator'){
+        
         return view('Cascade.index_kpi', compact('users', 'casKat', 'casKpi','divisi'));
-        }
-        else{
-            return redirect()->back();
-        }
+       
     }
     public function cascadeKpiStore(Request $request)
     {

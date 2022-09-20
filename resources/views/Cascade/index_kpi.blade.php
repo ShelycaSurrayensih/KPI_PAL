@@ -168,10 +168,6 @@
                 <form method="post" action="{{route('cascadeKPI.store')}}" enctype="multipart/form-data" id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="cas_kpiName" class="form-label">Nama KPI</label>
-                        <input name="cas_kpiName" type="text" class="form-control" id="inisiatif_desc">
-                    </div>
-                    <div class="mb-3">
                         <label for="id_kat" class="form-label">Kategori</label>
                         <select name="id_kat" class="form-control" id="id_inisiatif">
                             @foreach($casKat as $kat)
@@ -179,6 +175,11 @@
                                 @endforeach
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label for="cas_kpiName" class="form-label">Nama KPI</label>
+                        <input name="cas_kpiName" type="text" class="form-control" id="inisiatif_desc">
+                    </div>
+                    
                     <div class="mb-3">
                         <label for="bobot_kpi" class="form-label">Bobot KPI</label>
                         <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi">
