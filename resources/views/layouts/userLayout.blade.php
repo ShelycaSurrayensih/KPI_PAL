@@ -740,10 +740,12 @@
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarLayouts">
                             <ul class="nav nav-sm flex-column">
+                            @if(Auth::user()->status == 'administrator')
                                 <li class="nav-item">
                                     <a href="{{ route('KPI_IndhanTim.index') }}" class="nav-link"
                                         data-key="t-horizontal">Tim</a>
                                 </li>
+                                @endif
                                 <li class="nav-item">
                                     <a href="{{ route('KPI_Indhan.index') }}" class="nav-link" data-key="t-detached">Tim
                                         Integrasi Indhan</a>
@@ -775,7 +777,6 @@
                         </div>
                     </li>
                     <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Pages</span></li>
-
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarAuth" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarAuth">
@@ -807,7 +808,6 @@
                             </ul>
                         </div>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarCascading" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarCascading" >
