@@ -17,6 +17,7 @@ class TupoksiTw extends Migration
             $table->id('id_tw');
             $table->String('tw');
             $table->String('deskripsi');
+            $table->String('progres');
             $table->unsignedBigInteger('id_proker')->nullable();
             $table->foreign('id_proker')->references('id_proker')->on('tupoksi_proker')->onDelete('set null')->onUpdate('cascade');
         });

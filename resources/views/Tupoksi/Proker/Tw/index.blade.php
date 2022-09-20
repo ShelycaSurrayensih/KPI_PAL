@@ -11,6 +11,7 @@
             </div><!-- end card header -->
 
             <div class="card-body">
+            <h4 class="card-title mb-0 flex-grow-1">Proker: {{$tupoksiProker->proker}}</h4><br>
                 <div id="tupoksiDepartemen">
                     <div class="row g-4 mb-3">
                         
@@ -31,6 +32,7 @@
                                 <tr>
                                     <th class="sort" data-sort="tw">TW</th>
                                     <th class="sort" data-sort="deskripsi">deskripsi</th>
+                                    <th class="sort" data-sort="progres">progres</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -40,6 +42,11 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $prok_count }}</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1">Belum Terisi</div>
                                         </div>
                                     </td>
                                     <td>
@@ -77,6 +84,10 @@
                                                             <label for="deskripsi" class="form-label">Deskripsi</label>
                                                             <input name="deskripsi" type="text" class="form-control" id="deskripsi">
                                                         </div>
+                                                        <div class="mb-3">
+                                                            <label for="progres" class="form-label">Progres</label>
+                                                            <input name="progres" type="text" class="form-control" id="progres">
+                                                        </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="hstack gap-2 justify-content-end">
@@ -101,6 +112,11 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $tw->deskripsi }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $tw->progres }}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -139,6 +155,10 @@
                                                             <label for="deskripsi" class="form-label">Deskripsi</label>
                                                             <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$tw->deskripsi}}">
                                                         </div>
+                                                        <div class="mb-3">
+                                                            <label for="progres" class="form-label">Progres</label>
+                                                            <input name="progres" type="text" class="form-control" id="progres" value="{{$tw->progres}}">
+                                                        </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="hstack gap-2 justify-content-end">
@@ -156,6 +176,11 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $prok_count }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">Belum Terisi</div>
                                             </div>
                                         </td>
                                         <td>
@@ -192,6 +217,10 @@
                                                         <div class="mb-3">
                                                             <label for="deskripsi" class="form-label">Deskripsi</label>
                                                             <input name="deskripsi" type="text" class="form-control" id="deskripsi">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="progres" class="form-label">Progres</label>
+                                                            <input name="progres" type="text" class="form-control" id="progres">
                                                         </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -264,6 +293,11 @@
                     <div class="mb-3">
                         <label for="deskripsi">Deskripsi</label>
                         <input type="text" name="deskripsi" class="form-control" id="deskripsi">
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="progres">Progres</label>
+                        <input type="text" name="progres" class="form-control" id="progres">
 
                     </div>
                     <div class="modal-footer">

@@ -15,6 +15,7 @@ class TupoksiTw extends Model
         'id_proker',
         'tw',
         'deskripsi',
+        'progres',
     ];
     public function tupoksiProker(){
         return $this->hasMany('App\Models\TupoksiProker');

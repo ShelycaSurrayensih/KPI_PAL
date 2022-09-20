@@ -76,16 +76,16 @@
                         </button>
 
                         <!-- App Search-->
-                       
+
                     </div>
-                    
+
 
                     <div class="d-flex align-items-center">
-                    <div>
-                        <span class="logo-sm">
-                                    <img src="assets/images/logo defendid.png" alt="" height="22">
-                                </span>
-</div>
+                        <div>
+                            <span class="logo-sm">
+                                <img src="assets/images/logo defendid.png" alt="" height="22">
+                            </span>
+                        </div>
 
                         <div class="dropdown d-md-none topbar-head-dropdown header-item">
                             <button type="button"
@@ -96,8 +96,6 @@
                             </button>
 
                         </div>
-                       
-                        
 
                         <div class="ms-1 header-item d-none d-sm-flex">
                             <button type="button"
@@ -114,7 +112,6 @@
                             </button>
                         </div>
 
-                        
                         <div class="dropdown ms-sm-3 header-item topbar-user">
                             <button type="button" class="btn shadow-none" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -186,13 +183,13 @@
                 <div id="two-column-menu">
                 </div>
                 <ul class="navbar-nav" id="navbar-nav">
-                   
+
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="#sidebarDashboards"  role="button"
-                            aria-expanded="false" aria-controls="sidebarDashboards">
+                        <a class="nav-link menu-link" href="#sidebarDashboards" role="button" aria-expanded="false"
+                            aria-controls="sidebarDashboards">
                             <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Dashboards</span>
                         </a>
-                        
+
                     </li> <!-- end Dashboard Menu -->
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('KPI_Indiv.index') }}" role="button"
@@ -209,7 +206,7 @@
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarLayouts">
                             <ul class="nav nav-sm flex-column">
-                            @if(Auth::user()->status == 'administrator')
+                                @if(Auth::user()->status == 'administrator')
                                 <li class="nav-item">
                                     <a href="{{ route('KPI_IndhanTim.index') }}" class="nav-link"
                                         data-key="t-horizontal">Tim</a>
@@ -230,7 +227,7 @@
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarIcons">
                             <ul class="nav nav-sm flex-column">
-                            @if(Auth::user()->status == 'administrator')
+                                @if(Auth::user()->status == 'administrator')
                                 <li class="nav-item">
                                     <a href="{{ route('inisiatifStrategis.index') }}" class="nav-link"
                                         data-key="t-remix">inisiatifStrategis</a>
@@ -247,7 +244,7 @@
                             </ul>
                         </div>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarAuth" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarAuth">
@@ -276,23 +273,23 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarCascading" data-bs-toggle="collapse" role="button"
-                            aria-expanded="false" aria-controls="sidebarCascading" >
+                            aria-expanded="false" aria-controls="sidebarCascading">
                             <i class="mdi mdi-account-circle-outline"></i> <span
                                 data-key="t-authentication">Cascading</span>
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarCascading">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{route('cascadeKPI.index')}}" class="nav-link"
-                                        data-key="t-signin"> Cascading
+                                    <a href="{{route('cascadeKPI.index')}}" class="nav-link" data-key="t-signin">
+                                        Cascading
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a  href="{{ route('casDiv.all') }}" class="nav-link" data-key="t-signup">
+                                    <a href="{{ route('casDiv.all') }}" class="nav-link" data-key="t-signup">
                                         KPI Divisi
                                     </a>
                                 </li>
-                              
+
                             </ul>
                         </div>
                     </li>
@@ -319,9 +316,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <span class="logo-sm">
-                                    <img src="assets/images/logo defendid.png" alt="" height="22">
-                                </span>
+                            <span class="logo-sm">
+                                <img src="assets/images/logo defendid.png" alt="" height="22">
+                            </span>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
