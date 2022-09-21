@@ -95,6 +95,7 @@ class IndhanRealisasiController extends Controller
         $indhanRealisasi->bulan = $request->get('bulan');
         $indhanRealisasi->tahun = $request->get('tahun');
         $indhanRealisasi->kendala = $request->get('kendala');
+        $indhanRealisasi->comment = $request->get('comment');
         $indhanRealisasi->timestamp;
         $indhanRealisasi->save();
         return redirect()->route('KPI_IndhanRealisasi.edit', $id_realisasi)->with('success', 'Data berhasil ditambahkan');

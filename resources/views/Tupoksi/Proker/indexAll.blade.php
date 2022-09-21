@@ -89,7 +89,7 @@
                                             </div>
                                             <div class="edit">
                                                 <a href="{{ route('tupoksiTw.index', $proker->id_proker) }}">
-                                                    <button class="btn btn-sm btn-success edit-item-btn">Add Tw {{($proker->id_proker) }}</button>
+                                                    <button class="btn btn-sm btn-success edit-item-btn">Add Tw</button>
                                                 </a>
                                             </div>
                                             <div class="remove">

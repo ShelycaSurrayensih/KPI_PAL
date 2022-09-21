@@ -27,6 +27,8 @@
                                         <th scope="col">TW</th>
                                         <th scope="col">Progress</th>
                                         <th scope="col">Deskripsi</th>
+                                        <th scope="col">Comment</th>
+                                        <th scope="col">Action</th>
                                     </tr>
 
                                 </thead>
@@ -36,6 +38,11 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $prok_count }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">Belum Terisi</div>
                                             </div>
                                         </td>
                                         <td>
@@ -116,12 +123,20 @@
                                                     </div>
                                                 </td>
                                                 <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-grow-1">{{ $prok->comment }}</div>
+                                                    </div>
+                                                </td>
+                                                <td>
                                                     <div class="d-flex gap-2">
                                                         <div class="add">
                                                             <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{$prok->tw}}">Edit Proker</button>
                                                             <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid{{ $prok->id }}">
                                                                 Realisasi
                                                             </button>
+                                                            @if($users->status == 'administrator')
+                                                            <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#comment{{$prok->tw}}">Comment</button>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                 </td>
@@ -150,6 +165,36 @@
                                                                 <div class="mb-3">
                                                                     <label for="deskripsi" class="form-label">Deskripsi</label>
                                                                     <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$prok->deskripsi}}">
+                                                                </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="hstack gap-2 justify-content-end">
+                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
+                                                            </div>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" id="comment{{$prok->tw}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header bg-light p-3">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                                                        </div>
+
+                                                        <div class="modal-body">
+                                                            <form method="post" action="{{route('cascadeProker.update', $prok->id)}}" enctype="multipart/form-data" id="myForm">
+                                                                @csrf
+                                                                <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
+                                                                <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok->tw}}" readonly hidden>
+                                                                <input name="progress" type="text" class="form-control" id="progress" value="{{$prok->progress}}" readonly hidden>
+                                                                <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$prok->deskripsi}}" readonly hidden>
+                                                                <div class="mb-3">
+                                                                    <label for="comment" class="form-label">Comment</label>
+                                                                    <input name="comment" type="text" class="form-control" id="comment" value="comment ">
                                                                 </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -194,6 +239,7 @@
                                                             <div class="hstack gap-2 justify-content-end">
                                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                                                                 <button type="submit" class="btn btn-success" id="edit-btn">Update Plan</button>
+                                                                
                                                             </div>
                                                         </div>
                                                         </form>
@@ -217,6 +263,11 @@
                 <td>
                     <div class="d-flex align-items-center">
                         <div class="flex-grow-1">{{ $prok_count }}</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">Belum Terisi</div>
                     </div>
                 </td>
                 <td>

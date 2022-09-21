@@ -103,6 +103,7 @@ class IndivRealisasiController extends Controller
         $indivRealisasi->prognosa = $request->get('prognosa');
         $indivRealisasi->keterangan= $request->get('keterangan');
         $indivRealisasi->id_divisi= $request->get('id_divisi');
+        $indivRealisasi->comment= $request->get('comment');
         $indivRealisasi->save();
         return redirect()->back();
     }

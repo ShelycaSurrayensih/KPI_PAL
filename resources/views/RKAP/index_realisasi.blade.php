@@ -78,10 +78,10 @@
                                                     <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $real->id_real }}">Edit</button>
                                                 </div>
                                                 <div class="remove">
-
-
                                                     <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
-
+                                                    @if($users->status == 'administrator')
+                                                            <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#comment{{$prok->tw}}">Comment</button>
+                                                            @endif
                                                 </div>
                                             </div>
                                         </td>
