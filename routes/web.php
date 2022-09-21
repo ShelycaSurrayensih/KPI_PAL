@@ -12,6 +12,7 @@ use App\Http\Controllers\TupoksiProkerController;
 use App\Http\Controllers\TupoksiRealisasiController;
 use App\Http\Controllers\TwController;
 use App\Http\Controllers\RKAP;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -148,3 +149,4 @@ Route::get('/Tupoksi_Tw/index/{id}',[TwController::class, 'index'])->name('tupok
 
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
  Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+ Route::get('/Profile/index',[ProfileController::class, 'index'])->name('profile.index');
