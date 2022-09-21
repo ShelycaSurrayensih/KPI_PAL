@@ -38,7 +38,7 @@ class DivisiSeeder extends Seeder
         [
             'id_divisi' => '14000',
             'div_name' => 'Divisi Desain',
-            'username'=>'divti',
+            'username'=>'desain',
             'id_direktorat' => '10000',
         ],
         [
@@ -81,6 +81,12 @@ class DivisiSeeder extends Seeder
             'id_divisi' => '31000',
             'div_name' => 'Divisi Pemasaran dan Penjualan Kapal',
             'username'=>'penjualankapal',
+            'id_direktorat' => '30000',
+        ],
+        [
+            'id_divisi' => '32000',
+            'div_name' => 'Divisi Penjualan Rekumhar',
+            'username'=>'penjualanrekumhar',
             'id_direktorat' => '30000',
         ],
         [
