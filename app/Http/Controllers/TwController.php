@@ -7,6 +7,7 @@ use App\Models\TupoksiDepartemen;
 use App\Models\TupoksiKPI;
 use App\Models\TupoksiProker;
 use App\Models\TupoksiTw;
+use App\Models\TupoksiRealisasi;
 
 class TwController extends Controller
 {
@@ -23,7 +24,8 @@ class TwController extends Controller
         $tupoksiProker = TupoksiProker::where('id_proker', $id)->first();
         $twCount = TupoksiTw::where('id_proker', $id)->count();
         $tupoksiTw = TupoksiTw::all();
-        return view('Tupoksi.Proker.Tw.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiTw', 'twCount'));
+        $tupoksiRealisasi = TupoksiRealisasi::all();
+        return view('Tupoksi.Proker.Tw.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiTw', 'twCount', 'tupoksiRealisasi'));
     }
 
     /**
@@ -38,7 +40,8 @@ class TwController extends Controller
         $tupoksiKPI = TupoksiKPI::all();
         $tupoksiProker = TupoksiProker::all();
         $tupoksiTw = TupoksiTw::all();
-        return view('Tupoksi.Proker.Tw.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiTw'));
+        $tupoksiRealisasi = TupoksiRealisasi::all();
+        return view('Tupoksi.Proker.Tw.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiTw', 'tupoksiRealisasi'));
     }
 
     /**
@@ -82,6 +85,7 @@ class TwController extends Controller
         $tupoksiKPI = TupoksiKPI::all();
         $tupoksiProker = TupoksiProker::all();
         $tupoksiTw = TupoksiTw::all();
+        $tupoksiRealisasi = TupoksiRealisasi::all();
         return redirect()->back();
     }
 

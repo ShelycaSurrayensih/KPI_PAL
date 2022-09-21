@@ -21,7 +21,7 @@ class TupoksiRealisasiController extends Controller
         $users = auth()->user();
         $tupoksiTw = TupoksiTw::all();
         $tupoksiRealisasi = TupoksiRealisasi::all();
-        return view('Tupoksi.Realisasi.index', compact ('users', 'tupoksiTw', 'tupoksiRealisasi'));
+        return view('Tupoksi.Proker.Tw.index', compact ('users', 'tupoksiTw', 'tupoksiRealisasi'));
     }
 
     /**
@@ -34,7 +34,7 @@ class TupoksiRealisasiController extends Controller
         $users = auth()->user();
         $tupoksiTw = TupoksiTw::all();
         $tupoksiRealisasi = TupoksiRealisasi::all();
-        return view('Tupoksi.Realisasi.index', compact ('users', 'tupoksiTw', 'tupoksiRealisasi'));
+        return view('Tupoksi.Proker.Tw.index', compact ('users', 'tupoksiTw', 'tupoksiRealisasi'));
     }
 
     /**
