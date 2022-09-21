@@ -21,6 +21,7 @@ class CreatePlanPmsTable extends Migration
             $table->year('tahun');
             $table->string('progress_plan');
             $table->text('desc_plan');
+            $table->string('comment')->default('Belum ada Komentar');
         });
     }
 

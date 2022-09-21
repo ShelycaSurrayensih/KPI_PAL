@@ -24,6 +24,7 @@ class IndivPlan extends Migration
             $table->String('keterangan');
             $table->unsignedBigInteger('id_divisi')->nullable();
             $table->foreign('id_divisi')->references('id_divisi')->on('divisi')->onDelete('set null')->onUpdate('cascade');
+            $table->string('comment')->default('Belum ada Komentar');
         });
     }
 

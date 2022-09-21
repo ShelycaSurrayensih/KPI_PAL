@@ -55,6 +55,7 @@
                                         <th scope="col">Bulan</th>
                                         <th scope="col">Progress</th>
                                         <th scope="col">Deskripsi</th>
+                                        <th scope="col">Komentar</th>
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -64,8 +65,8 @@
                                     @if($plan->id_kpipms == $kpi->id_kpipms)
                                     <?php
                                     $counterPlan = $plan->id_plan;
-                                    $counter=0;
-                                    $show=0;
+                                    $counter = 0;
+                                    $show = 0;
                                     ?>
                                     <tr>
                                         <td>
@@ -88,29 +89,64 @@
                                                 <div class="flex-grow-1">{{ $plan->desc_plan }}</div>
                                             </div>
                                         </td>
-
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $plan->comment }}</div>
+                                            </div>
+                                        </td>
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="edit">
                                                     <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $plan->id_plan }}">Edit</button>
                                                 </div>
+                                                @if($users->status == 'administrator')
+                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#comment{{$plan->id_plan}}">Comment</button>
+                                                @endif
                                                 <div class="details">
                                                     <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid{{ $plan->id_plan }}">
                                                         Realisasi
                                                     </button>
                                                 </div>
                                                 <div class="remove">
-
                                                     <form action="{{ route('planpms.destroy', $plan->id_plan) }}" method="POST">
-
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
                                                     </form>
                                                 </div>
+
                                             </div>
                                         </td>
                                     </tr><!-- end tr -->
+                                    <div class="modal fade" id="comment{{$plan->id_plan}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-light p-3">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <form method="post" action="{{route('planpms.update', $plan->id_plan)}}" enctype="multipart/form-data" id="myForm">
+                                                        @csrf
+                                                        <input name="bulan" type="text" class="form-control" id="bulan" value="{{$plan->bulan}}" readonly hidden>
+                                                        <input name="tahun" type="text" class="form-control" id="tahun" value="{{$plan->tahun}}" readonly hidden>
+                                                        <input name="progress_plan" type="text" class="form-control" id="progress_plan" value="{{$plan->progress_plan}}" readonly hidden>
+                                                        <div class="mb-3">
+                                                            <label for="comment" class="form-label">Comment</label>
+                                                            <input name="comment" type="text" class="form-control" id="comment" value="{{$plan->comment}} ">
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="modal fade" id="exampleModalgrid{{ $plan->id_plan }}" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -118,75 +154,73 @@
                                                     <h5 class="modal-title" id="exampleModalgridLabel">Realisasi Plan {{ $plan->desc_plan }}</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                    @for($counterReal = 0; $counterReal < $counterPlan; $counterReal++)
-                                                    @if($realCount == 0)
-                                                    <form method="post" action="{{ route('realpms.store') }}" enctype="multipart/form-data" id="myForm">
-                                                        @csrf
-                                                        <div class="row g-3">
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="bulan">Bulan</label>
-                                                                    <input name="" class="form-control" id="" value="{{$plan->bulan}}" readonly="">
-                                                                    </input>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="tahun">Tahun</label>
-                                                                    <input type="text" name="" class="form-control" id="" value="{{$plan->tahun}}" readonly>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="bobot">Progress Plan</label>
-                                                                    <input name="" class="form-control" id="" value="{{$plan->progress_plan}}" readonly="">
-                                                                    <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
-                                                                    </input>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <h5 class="modal-title" id="exampleModalgridLabel">Realisasi</h5>
-                                                            </div>
-
-                                                            <!--end col-->
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="progress_real">Progress Realisasi</label>
-                                                                    <input type="text" name="progress_real" class="form-control" id="progress_real" value="">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="desc_real">Deskripsi Realisasi</label>
-                                                                    <input type="text" name="desc_real" class="form-control" id="desc_real" value="">
-                                                                </div>
-                                                            </div>
-                                                            <!--end col-->
-                                                            <div class="mb-3">
-                                                                <div>
-                                                                    <label for="keterangan">Keterangan</label>
-                                                                    <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <!--end col-->
-
-                                                        </div>
+                                                @for($counterReal = 0; $counterReal < $counterPlan; $counterReal++) @if($realCount==0) <form method="post" action="{{ route('realpms.store') }}" enctype="multipart/form-data" id="myForm">
+                                                    @csrf
+                                                    <div class="row g-3">
                                                         <div class="col-xxl-6">
                                                             <div>
-                                                                <label for="file_evidence">File Evidence</label>
-                                                                <div class="fallback">
-                                                                    <input type="file" name="file" multiple="multiple">
-                                                                </div>
+                                                                <label for="bulan">Bulan</label>
+                                                                <input name="" class="form-control" id="" value="{{$plan->bulan}}" readonly="">
+                                                                </input>
                                                             </div>
                                                         </div>
-                                                        <div class="hstack gap-2 justify-content-end">
-                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success" id="edit-btn">Add Realisasi</button>
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="tahun">Tahun</label>
+                                                                <input type="text" name="" class="form-control" id="" value="{{$plan->tahun}}" readonly>
+                                                            </div>
                                                         </div>
-                                                        <!--end row-->
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="bobot">Progress Plan</label>
+                                                                <input name="" class="form-control" id="" value="{{$plan->progress_plan}}" readonly="">
+                                                                <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
+                                                                </input>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <h5 class="modal-title" id="exampleModalgridLabel">Realisasi</h5>
+                                                        </div>
+
+                                                        <!--end col-->
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="progress_real">Progress Realisasi</label>
+                                                                <input type="text" name="progress_real" class="form-control" id="progress_real" value="">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-xxl-6">
+                                                            <div>
+                                                                <label for="desc_real">Deskripsi Realisasi</label>
+                                                                <input type="text" name="desc_real" class="form-control" id="desc_real" value="">
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+                                                        <div class="mb-3">
+                                                            <div>
+                                                                <label for="keterangan">Keterangan</label>
+                                                                <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <!--end col-->
+
+                                                    </div>
+                                                    <div class="col-xxl-6">
+                                                        <div>
+                                                            <label for="file_evidence">File Evidence</label>
+                                                            <div class="fallback">
+                                                                <input type="file" name="file" multiple="multiple">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" id="edit-btn">Add Realisasi</button>
+                                                    </div>
+                                                    <!--end row-->
                                                     </form>
                                                     @break
                                                     @elseif($counter == 0)
@@ -261,14 +295,14 @@
                                                         <!--end row-->
                                                     </form>
                                                     <?php
-                                                    $counterReal=$counterPlan;
+                                                    $counterReal = $counterPlan;
                                                     $show = 1;
                                                     ?>
                                                     @break
                                                     @elseif($show == 0 && ($counterReal +1) == $counterPlan)
                                                     <?php
                                                     $show = 1;
-                                                    $counterReal=$counterPlan;
+                                                    $counterReal = $counterPlan;
                                                     ?>
                                                     <form method="post" action="{{ route('realpms.store') }}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
@@ -338,107 +372,107 @@
                                                         </div>
                                                         <!--end row-->
                                                     </form>
-                                                    @break                                                
+                                                    @break
                                                     @endif
                                                     @endforeach
                                                     @endif
                                                     @endfor
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- edit Modal -->
-                                    <div class="modal fade" id="showModal{{ $plan->id_plan }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
-                                                </div>
-
-                                                <div class="modal-body">
-                                                    <form method="post" action="{{ route('planpms.update', $plan->id_plan)}}" enctype="multipart/form-data" id="myForm">
-                                                        @csrf
-                                                        <div class="mb-3">
-                                                            <label for="id_kpipms" class="form-label">ID Plan</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control" id="desc_kpidir" value="{{ $plan->id_plan }}" readonly>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="bulan">Bulan</label>
-                                                            <select name="bulan" class="form-control" id="bulan">
-                                                                <option>Januari</option>
-                                                                <option>Februari</option>
-                                                                <option>Maret</option>
-                                                                <option>April</option>
-                                                                <option>Mei</option>
-                                                                <option>Juni</option>
-                                                                <option>Juli</option>
-                                                                <option>Agustus</option>
-                                                                <option>September</option>
-                                                                <option>Oktober</option>
-                                                                <option>November</option>
-                                                                <option>Desember</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="tahun">Tahun</label>
-                                                            <select name="tahun" class="form-control" id="tahun">
-                                                                <?php
-                                                                $tg_awal = date('Y') - 0;
-                                                                $tg_akhir = date('Y') + 2;
-                                                                for ($i = $tg_akhir; $i >= $tg_awal; $i--) {
-                                                                    echo "<option value='$i'";
-                                                                    if (date('Y') == $i) {
-                                                                        echo "selected";
-                                                                    }
-                                                                    echo ">$i</option>";
-                                                                }
-                                                                ?>
-                                                            </select>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="progress_plan" class="form-label">Progress</label>
-                                                            <input name="progress_plan" type="text" class="form-control" id="progress_plan" value="{{ $plan->progress_plan }}">
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="desc_plan" class="form-label">Deskripsi
-                                                                Progress</label>
-                                                            <input name="desc_plan" type="text" class="form-control" id="desc_plan" value="{{ $plan->desc_plan }}">
-                                                        </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <div class="hstack gap-2 justify-content-end">
-                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success" id="edit-btn">Update Plan</button>
-                                                    </div>
-                                                </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    @endif
-                                    @endforeach
-                                </tbody><!-- end tbody -->
-
-                            </table><!-- end table -->
                         </div>
+                        <!-- edit Modal -->
+                        <div class="modal fade" id="showModal{{ $plan->id_plan }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-light p-3">
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form method="post" action="{{ route('planpms.update', $plan->id_plan)}}" enctype="multipart/form-data" id="myForm">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="id_kpipms" class="form-label">ID Plan</label>
+                                                <input name="desc_kpidir" type="text" class="form-control" id="desc_kpidir" value="{{ $plan->id_plan }}" readonly>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="bulan">Bulan</label>
+                                                <select name="bulan" class="form-control" id="bulan">
+                                                    <option>Januari</option>
+                                                    <option>Februari</option>
+                                                    <option>Maret</option>
+                                                    <option>April</option>
+                                                    <option>Mei</option>
+                                                    <option>Juni</option>
+                                                    <option>Juli</option>
+                                                    <option>Agustus</option>
+                                                    <option>September</option>
+                                                    <option>Oktober</option>
+                                                    <option>November</option>
+                                                    <option>Desember</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="tahun">Tahun</label>
+                                                <select name="tahun" class="form-control" id="tahun">
+                                                    <?php
+                                                    $tg_awal = date('Y') - 0;
+                                                    $tg_akhir = date('Y') + 2;
+                                                    for ($i = $tg_akhir; $i >= $tg_awal; $i--) {
+                                                        echo "<option value='$i'";
+                                                        if (date('Y') == $i) {
+                                                            echo "selected";
+                                                        }
+                                                        echo ">$i</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="progress_plan" class="form-label">Progress</label>
+                                                <input name="progress_plan" type="text" class="form-control" id="progress_plan" value="{{ $plan->progress_plan }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="desc_plan" class="form-label">Deskripsi
+                                                    Progress</label>
+                                                <input name="desc_plan" type="text" class="form-control" id="desc_plan" value="{{ $plan->desc_plan }}">
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <div class="hstack gap-2 justify-content-end">
+                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-success" id="edit-btn">Update Plan</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        @endif
+                        @endforeach
+                        </tbody><!-- end tbody -->
+
+                        </table><!-- end table -->
                     </div>
-                </div> <!-- .card-->
-            </div> <!-- .col-->
-        </div> <!-- end row-->
-        <div class="d-flex justify-content-end">
-            <div class="pagination-wrap hstack gap-2">
-                <a class="page-item pagination-prev disabled" href="#">
-                    Previous
-                </a>
-                <ul class="pagination listjs-pagination mb-0"></ul>
-                <a class="page-item pagination-next" href="#">
-                    Next
-                </a>
-            </div>
+                </div>
+            </div> <!-- .card-->
+        </div> <!-- .col-->
+    </div> <!-- end row-->
+    <div class="d-flex justify-content-end">
+        <div class="pagination-wrap hstack gap-2">
+            <a class="page-item pagination-prev disabled" href="#">
+                Previous
+            </a>
+            <ul class="pagination listjs-pagination mb-0"></ul>
+            <a class="page-item pagination-next" href="#">
+                Next
+            </a>
         </div>
     </div>
+</div>
 </div><!-- end card -->
 </div>
 <!-- end col -->

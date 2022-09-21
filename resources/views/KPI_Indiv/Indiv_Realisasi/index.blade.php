@@ -19,9 +19,7 @@
                                 <h5> Bobot : {{$kpidir->target}}</h5>
                             </div><br>
                             <div>
-                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
-                                    id="create-btn" data-bs-target="#showModal"><i
-                                        class="ri-add-line align-bottom me-1"></i>
+                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
                             </div>
 
@@ -47,6 +45,7 @@
                                     <th class="sort" data-sort="realisasi">Deskripsi Realisasi</th>
                                     <th class="sort" data-sort="prognosa">Prognosa</th>
                                     <th class="sort" data-sort="keterangan">Keterangan</th>
+                                    <th class="sort" data-sort="keterangan">Komentar</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -83,45 +82,75 @@
                                         </div>
                                     </td>
                                     <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1">{{ $indivReal->comment }}</div>
+                                        </div>
+                                    </td>
+                                    <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
-                                                <button class="btn btn-sm btn-success edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showModal{{ $indivReal->id_realisasi }}">Edit</button>
+                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $indivReal->id_realisasi }}">Edit</button>
                                             </div>
                                             <div class="details">
-                                                <button type="button" class="btn btn-sm btn-success edit-item-btn"
-                                                    data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
+                                                <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
                                                     Details
                                                 </button>
                                             </div>
                                             <div class="remove">
-                                                <form
-                                                    action="{{ route('KPI_IndivRealisasi.destroy', $indivReal->id_realisasi) }}"
-                                                    method="POST">
+                                                <form action="{{ route('KPI_IndivRealisasi.destroy', $indivReal->id_realisasi) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger remove-item-btn"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Delete</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
                                                 </form>
                                             </div>
+                                            @if($users->status == 'administrator')
+                                            <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#comment{{$indivReal->tw}}">Comment</button>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>
 
+                                <div class="modal fade" id="comment{{$indivReal->tw}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-light p-3">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                                                </div>
 
+                                                <div class="modal-body">
+                                                    <form method="post" action="{{route('indivReal.update', $indivReal->id_realisasi)}}" enctype="multipart/form-data" id="myForm">
+                                                        @csrf
+                                                        <input name="tw" type="text" class="form-control" id="tw" value="{{$indivReal->tw}}" readonly hidden>
+                                                        <input name="id_kpidir" type="text" class="form-control" id="id_kpidir" value="{{$indivReal->id_kpidir}}" readonly hidden>
+                                                        <input name="progres" type="text" class="form-control" id="progres" value="{{$indivReal->progres}}" readonly hidden>
+                                                        <input name="realisasi" type="text" class="form-control" id="realisasi" value="{{$indivReal->realisasi}}" readonly hidden>
+                                                        <input name="prognosa" type="text" class="form-control" id="prognosa" value="{{$indivReal->prognosa}}" readonly hidden>
+                                                        <input name="keterangan" type="text" class="form-control" id="keterangan" value="{{$indivReal->keterangan}}" readonly hidden>
+                                                        <div class="mb-3">
+                                                            <label for="comment" class="form-label">Comment</label>
+                                                            <input name="comment" type="text" class="form-control" id="comment" value="{{$indivReal->comment}} ">
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <!-- Details in modals -->
 
-                                <div class="modal fade" id="exampleModalgrid" tabindex="-1"
-                                    aria-labelledby="exampleModalgridLabel" aria-modal="true">
+                                <div class="modal fade" id="exampleModalgrid" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalgridLabel">Details Indiv
                                                 </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <form action="javascript:void(0);">
@@ -129,9 +158,7 @@
                                                         <div class="col-xxl-6">
                                                             <div>
                                                                 <label for="id_kpidir">KPI</label>
-                                                                <input name="id_kpidir" class="form-control"
-                                                                    id="id_kpidir" value="{{ $kpidir->desc_kpidir }}"
-                                                                    readonly="">
+                                                                <input name="id_kpidir" class="form-control" id="id_kpidir" value="{{ $kpidir->desc_kpidir }}" readonly="">
 
                                                                 </input>
                                                             </div>
@@ -140,16 +167,14 @@
                                                         <div class="col-xxl-6">
                                                             <div>
                                                                 <label for="target">Target</label>
-                                                                <input type="text" name="target" class="form-control"
-                                                                    id="target" value="{{ $kpidir->target }}" readonly>
+                                                                <input type="text" name="target" class="form-control" id="target" value="{{ $kpidir->target }}" readonly>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-xxl-6">
                                                             <div>
                                                                 <label for="bobot">Bobot</label>
-                                                                <input name="bobot" class="form-control" id="bobot"
-                                                                    value="{{ $kpidir->bobot }}" readonly="">
+                                                                <input name="bobot" class="form-control" id="bobot" value="{{ $kpidir->bobot }}" readonly="">
 
                                                                 </input>
                                                             </div>
@@ -158,17 +183,14 @@
                                                         <div class="col-xxl-6">
                                                             <div>
                                                                 <label for="asal">Asal KPI</label>
-                                                                <input type="text" name="asal" class="form-control"
-                                                                    id="asal" value="{{ $kpidir->target }}" readonly>
+                                                                <input type="text" name="asal" class="form-control" id="asal" value="{{ $kpidir->target }}" readonly>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-xxl-6">
                                                             <div>
                                                                 <label for="keterangan">Keterangan</label>
-                                                                <input name="keterangan" class="form-control"
-                                                                    id="keterangan" value="{{ $kpidir->ket }}"
-                                                                    readonly="">
+                                                                <input name="keterangan" class="form-control" id="keterangan" value="{{ $kpidir->ket }}" readonly="">
 
                                                                 </input>
                                                             </div>
@@ -177,8 +199,7 @@
                                                         <div class="col-xxl-6">
                                                             <div>
                                                                 <label for="alasan">Alasan</label>
-                                                                <input type="text" name="alasan" class="form-control"
-                                                                    id="alasan" value="{{ $kpidir->alasan }}" readonly>
+                                                                <input type="text" name="alasan" class="form-control" id="alasan" value="{{ $kpidir->alasan }}" readonly>
                                                             </div>
                                                         </div>
 
@@ -193,51 +214,41 @@
                                                         <div class="col-xxl-6">
                                                             <div>
                                                                 <label for="tw">TW</label>
-                                                                <input type="text" name="tw" class="form-control"
-                                                                    id="tw" value="{{$indivReal->tw}}" readonly>
+                                                                <input type="text" name="tw" class="form-control" id="tw" value="{{$indivReal->tw}}" readonly>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-xxl-6">
                                                             <div>
                                                                 <label for="progres">Progres</label>
-                                                                <input type="text" name="progres" class="form-control"
-                                                                    id="progres" value="{{$indivReal->progres}}"
-                                                                    readonly>
+                                                                <input type="text" name="progres" class="form-control" id="progres" value="{{$indivReal->progres}}" readonly>
                                                             </div>
                                                         </div>
                                                         <!--end col-->
                                                         <div class="col-xxl-6">
                                                             <div>
                                                                 <label for="realisasi">Deskripsi Realisasi</label>
-                                                                <input type="text" name="realisasi" class="form-control"
-                                                                    id="realisasi" value="{{$indivReal->realisasi}}"
-                                                                    readonly>
+                                                                <input type="text" name="realisasi" class="form-control" id="realisasi" value="{{$indivReal->realisasi}}" readonly>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-xxl-6">
                                                             <div>
                                                                 <label for="prognosa">Prognosa</label>
-                                                                <input type="text" name="prognosa" class="form-control"
-                                                                    id="prognosa" value="{{$indivReal->prognosa}}"
-                                                                    readonly>
+                                                                <input type="text" name="prognosa" class="form-control" id="prognosa" value="{{$indivReal->prognosa}}" readonly>
                                                             </div>
                                                         </div>
                                                         <!--end col-->
                                                         <div class="col-xxl-6">
                                                             <div>
                                                                 <label for="keterangan">Keterangan</label>
-                                                                <input type="text" name="keterangan"
-                                                                    class="form-control" id="keterangan"
-                                                                    value="{{$indivReal->keterangan}}" readonly>
+                                                                <input type="text" name="keterangan" class="form-control" id="keterangan" value="{{$indivReal->keterangan}}" readonly>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-lg-12">
                                                             <div class="hstack gap-2 justify-content-end">
-                                                                <button type="button" class="btn btn-light"
-                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                                                             </div>
                                                         </div>
                                                         <!--end col-->
@@ -250,55 +261,45 @@
                                 </div>
 
                                 <!-- edit Modal -->
-                                <div class="modal fade" id="showModal{{ $indivReal->id_realisasi }}" tabindex=" -1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="showModal{{ $indivReal->id_realisasi }}" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header bg-light p-3">
                                                 <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close" id="close-modal"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="post"
-                                                    action="{{ route('indivReal.update', $indivReal->id_realisasi) }}"
-                                                    enctype="multipart/form-data" id="myForm">
+                                                <form method="post" action="{{ route('indivReal.update', $indivReal->id_realisasi) }}" enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="id_kpidir">ID KPI</label>
-                                                        <input name="id_kpidir" class="form-control" id="id_kpidir"
-                                                            value="{{$kpidir->id_kpidir}}" readonly="">
+                                                        <input name="id_kpidir" class="form-control" id="id_kpidir" value="{{$kpidir->id_kpidir}}" readonly="">
 
                                                         </input>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="tw">TW</label>
-                                                        <input type="text" name="tw" class="form-control" id="tw"
-                                                            value="{{$indivReal->tw}}">
+                                                        <input type="text" name="tw" class="form-control" id="tw" value="{{$indivReal->tw}}">
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="progres">Progres</label>
-                                                        <input type="text" name="progres" class="form-control"
-                                                            id="progres" value="{{$indivReal->progres}}">
+                                                        <input type="text" name="progres" class="form-control" id="progres" value="{{$indivReal->progres}}">
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="realisasi">Deskripsi Realisasi</label>
-                                                        <input type="text" name="realisasi" class="form-control"
-                                                            id="realisasi" value="{{$indivReal->realisasi}}">
+                                                        <input type="text" name="realisasi" class="form-control" id="realisasi" value="{{$indivReal->realisasi}}">
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="prognosa">Prognosa</label>
-                                                        <input type="text" name="prognosa" class="form-control"
-                                                            id="prognosa" value="{{$indivReal->prognosa}}">
+                                                        <input type="text" name="prognosa" class="form-control" id="prognosa" value="{{$indivReal->prognosa}}">
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="keterangan">Keterangan</label>
-                                                        <input type="text" name="keterangan" class="form-control"
-                                                            id="keterangan" value="{{$indivReal->keterangan}}">
+                                                        <input type="text" name="keterangan" class="form-control" id="keterangan" value="{{$indivReal->keterangan}}">
 
                                                     </div>
 
@@ -306,17 +307,14 @@
                                                         <label for="id_divisi">ID Divisi</label>
                                                         @foreach($divisi as $div)
                                                         @if($users->id_divisi == $div->id_divisi)
-                                                        <input name="id_divisi" value="{{ $div->id_divisi }}"
-                                                            class="form-control" id="id_divisi" readonly="">
+                                                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly="">
 
                                                         @endif @endforeach
                                                     </div>
                                                     <div class=" modal-footer">
                                                         <div class="hstack gap-2 justify-content-end">
-                                                            <button type="button" class="btn btn-light"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success"
-                                                                id="edit-btn">Update</button>
+                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -330,8 +328,7 @@
                         </table>
                         <div class="noresult" style="display: none">
                             <div class="text-center">
-                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                    colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
+                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
                                 </lord-icon>
                                 <h5 class="mt-2">Sorry! No Result Found</h5>
                                 <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
@@ -365,12 +362,10 @@
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    id="close-modal"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('KPI_IndivRealisasi.store') }}" enctype="multipart/form-data"
-                    id="myForm">
+                <form method="post" action="{{ route('KPI_IndivRealisasi.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
 
                     <div class="mb-3">
@@ -401,16 +396,14 @@
                     </div>
                     <div class="mb-3">
                         <label for="keterangan">Keterangan</label>
-                        <textarea type="textarea" name="keterangan" class="form-control" id="keterangan"
-                            placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
+                        <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
 
                     </div>
                     <div class=" mb-3">
                         <label for="id_divisi">ID Divisi</label>
                         @foreach($divisi as $div)
                         @if($users->id_divisi == $div->id_divisi)
-                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi"
-                            readonly="">
+                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly="">
                         @endif @endforeach
                     </div>
 

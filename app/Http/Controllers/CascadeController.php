@@ -132,20 +132,21 @@ class CascadeController extends Controller
     }
     public function cascadeProkerUpdate(Request $request, $id)
     {
-        $cascade = CascadeProker::where('id',$id)->update($request->except(['_token']));
+        if($request->comment != null){
+            $cascade = CascadeProker::where('id',$id)->update($request->except(['_token']));
+        } else{
+        $casProk = CascadeProker::find($id);
+        $casProk->id_CDiv = $request->id_CDiv;
+        $casProk->tw = $request->tw;
+        $casProk->progress = $request->progress;
+        $casProk->deskripsi = $request->deskripsi;
+        $casProk->comment = 'Belum ada Komentar';
+        $casProk->save();
+        }
         return redirect()->back();
     }
 
     //Cascade Realisasi
-    public function cascadeRealisStore(Request $request)
-    {
-        $casReal = new CascadeRealisasi;
-        $casReal->id_CProk = $request->id_CProk;
-        $casReal->progress = $request->progress;
-        $casReal->deskripsi = $request->deskripsi;
-        $casReal->save();
-        return redirect()->back();
-    }
     public function cascadeRealisUpdate(Request $request, $id)
     {
         $casReal = CascadeRealisasi::where('id_CProk',$id)->first();

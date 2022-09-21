@@ -20,9 +20,7 @@
                                 <h5> Target : {{$indhan->target}}</h5>
                             </div><br>
                             <div>
-                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
-                                    id="create-btn" data-bs-target="#showModal"><i
-                                        class="ri-add-line align-bottom me-1"></i>
+                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
                             </div>
                         </div>
@@ -49,15 +47,16 @@
                                     <th class="sort" data-sort="realisasi">Realisasi</th>
                                     <th class="sort" data-sort="kendala">Kendala</th>
                                     <th class="sort" data-sort="timestamp">Tanggal Input</th>
+                                    <th class="sort" data-sort="timestamp">Komentar</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                <?php $no = 0;?>
+                                <?php $no = 0; ?>
                                 @foreach($indhanRealisasi as $indhanReal)
                                 @if($indhanReal->id_indhan == $indhan->id_indhan)
                                 <tr>
-                                    <?php $no++ ;?>
+                                    <?php $no++; ?>
                                     <td>{{ $no }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -90,245 +89,243 @@
                                         </div>
                                     </td>
                                     <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1">{{ $indhanReal->comment }}</div>
+                                        </div>
+                                    </td>
+                                    <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
-                                                <button class="btn btn-sm btn-success edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showModal{{ $indhanReal->id_realisasi }}">Edit</button>
+                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $indhanReal->id_realisasi }}">Edit</button>
                                             </div>
                                             <div class="details">
-                                                <button type="button" class="btn btn-sm btn-success edit-item-btn"
-                                                    data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
+                                                <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
                                                     Details
                                                 </button>
                                             </div>
                                             <div class="remove">
 
-                                                <form
-                                                    action="{{ route('KPI_IndhanRealisasi.destroy', $indhanReal->id_realisasi) }}"
-                                                    method="POST">
+                                                <form action="{{ route('KPI_IndhanRealisasi.destroy', $indhanReal->id_realisasi) }}" method="POST">
 
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger remove-item-btn"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal">Delete</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
                                                 </form>
                                             </div>
-
+                                            @if($users->status == 'administrator')
+                                            <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#comment{{$indhanReal->id_realisasi}}">Comment</button>
+                                            @endif
                                         </div>
-                                    </td>
-                                </tr>
+                    </div>
+                    </td>
+                    </tr>
 
-                                <!-- Details in modals -->
-
-                                <div class="modal fade" id="exampleModalgrid" tabindex="-1"
-                                    aria-labelledby="exampleModalgridLabel" aria-modal="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalgridLabel">Details Indhan</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="javascript:void(0);">
-                                                    <div class="row g-3">
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="program_strategis">Program Strategis</label>
-                                                                <input name="program_strategis" class="form-control"
-                                                                    id="program_strategis"
-                                                                    value="{{ $indhan->program_strategis }}"
-                                                                    readonly="">
-                                                                </input>
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="entitas">Bulan</label>
-                                                                <input type="text" name="entitas" class="form-control"
-                                                                    id="entitas" value="{{ $indhan->entitas }}"
-                                                                    readonly>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="target">Target</label>
-                                                                <input name="target" class="form-control" id="target"
-                                                                    value="{{ $indhan->target }}" readonly="">
-                                                                </input>
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="program_utama">Program Utama</label>
-                                                                <input type="text" name="program_utama"
-                                                                    class="form-control" id="program_utama"
-                                                                    value="{{ $indhan->program_utama }}" readonly>
-                                                            </div>
-                                                        </div>
-
-                                                        <div>
-                                                            <h5 class="modal-title" id="exampleModalgridLabel">Realisasi
-                                                            </h5>
-                                                        </div>
-
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="id_indhan">ID KPI</label>
-                                                                <input name="id_indhan" class="form-control"
-                                                                    id="id_indhan"
-                                                                    value="{{ $indhan->program_strategis }}"
-                                                                    readonly="">
-                                                                </input>
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="bulan">Bulan</label>
-                                                                <input type="text" name="bulan" class="form-control"
-                                                                    id="bulan" value="{{$indhanReal->bulan}}" readonly>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="tahun">Tahun</label>
-                                                                <input type="text" name="tahun" class="form-control"
-                                                                    id="tahun" value="{{$indhanReal->tahun}}" readonly>
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="realisasi">Realisasi</label>
-                                                                <input type="text" name="realisasi" class="form-control"
-                                                                    id="realisasi" value="{{ $indhanReal->realisasi }}"
-                                                                    readonly>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="timestamp">Tanggal Input</label>
-                                                                <input type="text" name="timestamp" class="form-control"
-                                                                    id="timestamp" value="{{ $indhanReal->created_at }}"
-                                                                    readonly>
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="kendala">Kendala</label>
-                                                                <input type="text" name="kendala" class="form-control"
-                                                                    id="kendala" value="{{ $indhanReal->kendala }}"
-                                                                    readonly>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <div class="hstack gap-2 justify-content-end">
-                                                                <button type="button" class="btn btn-light"
-                                                                    data-bs-dismiss="modal">Close</button>
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                    </div>
-                                                    <!--end row-->
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                    <!-- Details in modals -->
+                    <div class="modal fade" id="comment{{$indhanReal->id_realisasi}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header bg-light p-3">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                 </div>
 
-                                <!-- edit Modal -->
-                                <div class="modal fade" id="showModal{{ $indhanReal->id_realisasi }}" tabindex=" -1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header bg-light p-3">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close" id="close-modal"></button>
+                                <div class="modal-body">
+                                    <form method="post" action="{{route('indhanReal.update', $indhanReal->id_realisasi)}}" enctype="multipart/form-data" id="myForm">
+                                        @csrf
+                                        <input name="bulan" type="text" class="form-control" id="bulan" value="{{$indhanReal->bulan}}" readonly hidden>
+                                        <input name="id_indhan" type="text" class="form-control" id="id_indhan" value="{{$indhanReal->id_indhan}}" readonly hidden>
+                                        <input name="tahun" type="text" class="form-control" id="tahun" value="{{$indhanReal->tahun}}" readonly hidden>
+                                        <input name="realisasi" type="text" class="form-control" id="realisasi" value="{{$indhanReal->realisasi}}" readonly hidden>
+                                        <input name="kendala" type="text" class="form-control" id="kendala" value="{{$indhanReal->kendala}}" readonly hidden>
+                                        <div class="mb-3">
+                                            <label for="comment" class="form-label">Comment</label>
+                                            <input name="comment" type="text" class="form-control" id="comment" value="{{$indhanReal->comment}} ">
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="hstack gap-2 justify-content-end">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="exampleModalgrid" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalgridLabel">Details Indhan</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="javascript:void(0);">
+                                        <div class="row g-3">
+                                            <div class="col-xxl-6">
+                                                <div>
+                                                    <label for="program_strategis">Program Strategis</label>
+                                                    <input name="program_strategis" class="form-control" id="program_strategis" value="{{ $indhan->program_strategis }}" readonly="">
+                                                    </input>
+                                                </div>
                                             </div>
-                                            <div class="modal-body">
-                                                <form method="post"
-                                                    action="{{ route('indhanReal.update', $indhanReal->id_realisasi) }}"
-                                                    enctype="multipart/form-data" id="myForm">
-                                                    @csrf
-                                                    <div class="mb-3">
-                                                        <label for="id_indhan">ID KPI</label>
-                                                        <input name="id_indhan" class="form-control" id="id_indhan"
-                                                            value="{{$indhan->id_indhan}}" readonly="">
+                                            <!--end col-->
+                                            <div class="col-xxl-6">
+                                                <div>
+                                                    <label for="entitas">Bulan</label>
+                                                    <input type="text" name="entitas" class="form-control" id="entitas" value="{{ $indhan->entitas }}" readonly>
+                                                </div>
+                                            </div>
 
-                                                        </input>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="bulan">Bulan</label>
-                                                        <select name="bulan" class="form-control" id="bulan"
-                                                            value="{{$indhanReal->bulan}}">
-                                                            <option>Januari</option>
-                                                            <option>Februari</option>
-                                                            <option>Maret</option>
-                                                            <option>April</option>
-                                                            <option>Mei</option>
-                                                            <option>Juni</option>
-                                                            <option>Juli</option>
-                                                            <option>Agustus</option>
-                                                            <option>September</option>
-                                                            <option>Oktober</option>
-                                                            <option>November</option>
-                                                            <option>Desember</option>
+                                            <div class="col-xxl-6">
+                                                <div>
+                                                    <label for="target">Target</label>
+                                                    <input name="target" class="form-control" id="target" value="{{ $indhan->target }}" readonly="">
+                                                    </input>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-xxl-6">
+                                                <div>
+                                                    <label for="program_utama">Program Utama</label>
+                                                    <input type="text" name="program_utama" class="form-control" id="program_utama" value="{{ $indhan->program_utama }}" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <h5 class="modal-title" id="exampleModalgridLabel">Realisasi
+                                                </h5>
+                                            </div>
+
+                                            <div class="col-xxl-6">
+                                                <div>
+                                                    <label for="id_indhan">ID KPI</label>
+                                                    <input name="id_indhan" class="form-control" id="id_indhan" value="{{ $indhan->program_strategis }}" readonly="">
+                                                    </input>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-xxl-6">
+                                                <div>
+                                                    <label for="bulan">Bulan</label>
+                                                    <input type="text" name="bulan" class="form-control" id="bulan" value="{{$indhanReal->bulan}}" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xxl-6">
+                                                <div>
+                                                    <label for="tahun">Tahun</label>
+                                                    <input type="text" name="tahun" class="form-control" id="tahun" value="{{$indhanReal->tahun}}" readonly>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-xxl-6">
+                                                <div>
+                                                    <label for="realisasi">Realisasi</label>
+                                                    <input type="text" name="realisasi" class="form-control" id="realisasi" value="{{ $indhanReal->realisasi }}" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xxl-6">
+                                                <div>
+                                                    <label for="timestamp">Tanggal Input</label>
+                                                    <input type="text" name="timestamp" class="form-control" id="timestamp" value="{{ $indhanReal->created_at }}" readonly>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                            <div class="col-xxl-6">
+                                                <div>
+                                                    <label for="kendala">Kendala</label>
+                                                    <input type="text" name="kendala" class="form-control" id="kendala" value="{{ $indhanReal->kendala }}" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="hstack gap-2 justify-content-end">
+                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                            <!--end col-->
+                                        </div>
+                                        <!--end row-->
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- edit Modal -->
+                    <div class="modal fade" id="showModal{{ $indhanReal->id_realisasi }}" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header bg-light p-3">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="{{ route('indhanReal.update', $indhanReal->id_realisasi) }}" enctype="multipart/form-data" id="myForm">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label for="id_indhan">ID KPI</label>
+                                            <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}" readonly="">
+
+                                            </input>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="bulan">Bulan</label>
+                                            <select name="bulan" class="form-control" id="bulan" value="{{$indhanReal->bulan}}">
+                                                <option>Januari</option>
+                                                <option>Februari</option>
+                                                <option>Maret</option>
+                                                <option>April</option>
+                                                <option>Mei</option>
+                                                <option>Juni</option>
+                                                <option>Juli</option>
+                                                <option>Agustus</option>
+                                                <option>September</option>
+                                                <option>Oktober</option>
+                                                <option>November</option>
+                                                <option>Desember</option>
 
 
 
-                                                        </select>
+                                            </select>
 
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="tahun">Tahun</label>
-                                                        <input type="text" name="tahun" class="form-control" id="tahun"
-                                                            value="{{$indhanReal->tahun}}">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="realisasi">Realisasi</label>
-                                                        <input type="text" name="realisasi" class="form-control"
-                                                            id="realisasi" value=" {{$indhanReal->realisasi}}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="tahun">Tahun</label>
+                                            <input type="text" name="tahun" class="form-control" id="tahun" value="{{$indhanReal->tahun}}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="realisasi">Realisasi</label>
+                                            <input type="text" name="realisasi" class="form-control" id="realisasi" value=" {{$indhanReal->realisasi}}">
 
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="kendala">Kendala</label>
-                                                        <input type="text" name="kendala" class="form-control"
-                                                            id="kendala" value=" {{$indhanReal->kendala}}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="kendala">Kendala</label>
+                                            <input type="text" name="kendala" class="form-control" id="kendala" value=" {{$indhanReal->kendala}}">
 
-                                                    </div>
+                                        </div>
 
-                                                    <div class=" modal-footer">
-                                                        <div class="hstack gap-2 justify-content-end">
-                                                            <button type="button" class="btn btn-light"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success"
-                                                                id="edit-btn">Update</button>
-                                                        </div>
-                                                    </div>
-
-                                                </form>
+                                        <div class=" modal-footer">
+                                            <div class="hstack gap-2 justify-content-end">
+                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    @endif
-                                    @endforeach
-                            </tbody>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        @endif
+                        @endforeach
+                        </tbody>
                         </table>
                         <div class="noresult" style="display: none">
                             <div class="text-center">
-                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                    colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
+                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
                                 </lord-icon>
                                 <h5 class="mt-2">Sorry! No Result Found</h5>
                                 <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
@@ -362,17 +359,14 @@
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
                 <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    id="close-modal"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('KPI_IndhanRealisasi.store') }}" enctype="multipart/form-data"
-                    id="myForm">
+                <form method="post" action="{{ route('KPI_IndhanRealisasi.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
                     <div class="mb-3">
                         <label for="id_indhan">ID KPI</label>
-                        <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}"
-                            readonly="">
+                        <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}" readonly="">
                         </input>
                     </div>
                     <div class="mb-3">
@@ -396,14 +390,15 @@
                         <label for="tahun">Tahun</label>
                         <select name="tahun" class="form-control" id="tahun">
                             <?php
-                            $tg_awal = date('Y')+0;
-                            $tg_akhir = date('Y')+2;
-                            for($i=$tg_awal; $i<=$tg_akhir; $i++)
-                            {
-                                echo"
+                            $tg_awal = date('Y') + 0;
+                            $tg_akhir = date('Y') + 2;
+                            for ($i = $tg_awal; $i <= $tg_akhir; $i++) {
+                                echo "
                                 <option value='$i'";
-                                if(date('Y')==$i){echo "selected";}
-                                    echo">$i</option>";
+                                if (date('Y') == $i) {
+                                    echo "selected";
+                                }
+                                echo ">$i</option>";
                             }
                             ?>
                         </select>
@@ -415,8 +410,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="kendala">Kendala</label>
-                        <textarea type="text" name="kendala" class="form-control" id="kendala"
-                            placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
+                        <textarea type="text" name="kendala" class="form-control" id="kendala" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
 
                     </div>
 
