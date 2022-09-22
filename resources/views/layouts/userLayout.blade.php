@@ -185,7 +185,7 @@
                 <ul class="navbar-nav" id="navbar-nav">
 
                     <li class="nav-item">
-                        <a class="nav-link menu-link" href="#sidebarDashboards" role="button" aria-expanded="false"
+                        <a class="nav-link menu-link" href="/home" role="button" aria-expanded="false"
                             aria-controls="sidebarDashboards">
                             <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Dashboards</span>
                         </a>
