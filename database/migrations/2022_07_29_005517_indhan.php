@@ -23,6 +23,7 @@ class Indhan extends Migration
             $table->String('entitas');
             $table->String('program_utama');
             $table->String('target');
+            $table->String('created_by')->default('0');
         });
     }
 

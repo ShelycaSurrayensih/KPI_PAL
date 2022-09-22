@@ -30,6 +30,7 @@ class CascadeController extends Controller
         $casKpi->cas_kpiName = $request->cas_kpiName;
         $casKpi->id_kat = $request->id_kat;
         $casKpi->bobot_kpi = $bobot_kpi;
+        $casKpi->created_by = $request->created_by;
         $casKpi->save();
         return redirect()->back();
     }
@@ -77,6 +78,7 @@ class CascadeController extends Controller
         $casKpiDiv->target = $request->target;
         $casKpiDiv->bkXbc = $bobot_kpi * ($bobot_cascade/100); 
         $casKpiDiv->status_div = $request->status_div;
+        $casKpiDiv->created_by = $request->created_by;
         $casKpiDiv->save();
         return redirect()->back();
     }
@@ -118,6 +120,7 @@ class CascadeController extends Controller
         $casProk->tw = $request->tw;
         $casProk->progress = $request->progress;
         $casProk->deskripsi = $request->deskripsi;
+        $casProk->created_by = $request->created_by;
         $casProk->save();
 
         $id_CDiv = $request->id_CDiv;

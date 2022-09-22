@@ -56,6 +56,7 @@
                                         <th scope="col">Progress</th>
                                         <th scope="col">Deskripsi</th>
                                         <th scope="col">Komentar</th>
+                                        <th scope="col">Created By</th>
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -92,6 +93,15 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $plan->comment }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                @foreach($divisi as $div)
+                                                @if($div->id_divisi == $plan->created_by)
+                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                @endif
+                                                @endforeach
                                             </div>
                                         </td>
                                         <td>
@@ -493,6 +503,8 @@
 
                 <form method="post" action="{{ route('planpms.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
+                    <input name="created_by" type="text" class="form-control"
+                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="id_kpipms" class="form-label">KPI PMS</label>
                         <input name="id_kpipms" type="text" class="form-control" id="id_kpipms" value="{{$kpi->id_kpipms}}" readonly hidden>

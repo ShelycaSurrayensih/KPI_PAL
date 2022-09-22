@@ -28,6 +28,7 @@
                                         <th scope="col">Progress</th>
                                         <th scope="col">Deskripsi</th>
                                         <th scope="col">Comment</th>
+                                        <th scope="col">Created By</th>
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -38,6 +39,11 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $prok_count }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">Belum Terisi</div>
                                             </div>
                                         </td>
                                         <td>
@@ -75,6 +81,8 @@
                                                     <div class="modal-body">
                                                         <form method="post" action="{{route('cascadeProker.store')}}" enctype="multipart/form-data" id="myForm">
                                                             @csrf
+                                                            <input name="created_by" type="text" class="form-control"
+                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                                                             <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
                                                             <div class="mb-3">
                                                                 <label for="tw" class="form-label">TW</label>
@@ -128,6 +136,15 @@
                                                     </div>
                                                 </td>
                                                 <td>
+                                            <div class="d-flex align-items-center">
+                                                @foreach($divisi as $div)
+                                                @if($div->id_divisi == $prok->created_by)
+                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                @endif
+                                                @endforeach
+                                            </div>
+                                        </td>
+                                                <td>
                                                     <div class="d-flex gap-2">
                                                         <div class="add">
                                                             <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{$prok->tw}}">Edit Proker</button>
@@ -177,6 +194,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- Comment Modal -->
                                             <div class="modal fade" id="comment{{$prok->tw}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
@@ -281,6 +299,11 @@
                     </div>
                 </td>
                 <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">Belum Terisi</div>
+                                            </div>
+                                        </td>
+                <td>
                     <div class="d-flex gap-2">
                         <div class="add">
                             <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#Modal{{$prok_count}}">Add Proker</button>
@@ -300,6 +323,8 @@
                         <div class="modal-body">
                             <form method="post" action="{{route('cascadeProker.store')}}" enctype="multipart/form-data" id="myForm">
                                 @csrf
+                                <input name="created_by" type="text" class="form-control"
+                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                                 <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
                                 <div class="mb-3">
                                     <label for="tw" class="form-label">TW</label>
@@ -356,8 +381,4 @@
 </div>
 <!-- end col -->
 </div>
-
-<!-- add Modal -->
-
-
 @endsection

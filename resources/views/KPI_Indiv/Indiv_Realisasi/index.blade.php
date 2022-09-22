@@ -46,6 +46,7 @@
                                     <th class="sort" data-sort="prognosa">Prognosa</th>
                                     <th class="sort" data-sort="keterangan">Keterangan</th>
                                     <th class="sort" data-sort="keterangan">Komentar</th>
+                                    <th class="sort" data-sort="keterangan">Created By</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -87,6 +88,15 @@
                                         </div>
                                     </td>
                                     <td>
+                                        <div class="d-flex align-items-center">
+                                            @foreach($divisi as $div)
+                                            @if($div->id_divisi == $kpidir->created_by)
+                                            <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                            @endif
+                                            @endforeach
+                                        </div>
+                                    </td>
+                                    <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $indivReal->id_realisasi }}">Edit</button>
@@ -109,7 +119,7 @@
                                         </div>
                                     </td>
                                 </tr>
-
+                                <!-- comment Model -->
                                 <div class="modal fade" id="comment{{$indivReal->tw}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -143,7 +153,6 @@
                                         </div>
                                     </div>
                                 <!-- Details in modals -->
-
                                 <div class="modal fade" id="exampleModalgrid" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -368,6 +377,7 @@
                 <form method="post" action="{{ route('KPI_IndivRealisasi.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
 
+                    <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="id_kpidir">ID KPI</label>
                         <select name="id_kpidir" class="form-control" id="id_kpidir">
@@ -397,7 +407,6 @@
                     <div class="mb-3">
                         <label for="keterangan">Keterangan</label>
                         <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
-
                     </div>
                     <div class=" mb-3">
                         <label for="id_divisi">ID Divisi</label>

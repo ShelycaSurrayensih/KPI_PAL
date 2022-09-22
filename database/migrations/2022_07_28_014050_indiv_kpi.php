@@ -21,6 +21,7 @@ class IndivKpi extends Migration
             $table->unsignedBigInteger('id_divisi')->nullable();
             $table->foreign('id_divisi')->references('id_divisi')->on('divisi')->onDelete('set null')->onUpdate('cascade');
             $table->String('total');
+            $table->String('created_by')->default('0');
         });
     }
 

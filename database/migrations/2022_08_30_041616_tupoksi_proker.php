@@ -19,6 +19,7 @@ class TupoksiProker extends Migration
             $table->foreign('id_kpi')->references('id_kpi')->on('tupoksi_kpi')->onDelete('set null')->onUpdate('cascade');
             $table->String('proker');
             $table->String('target');
+            $table->String('created_by')->default('0');
         });
     }
 

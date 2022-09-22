@@ -18,6 +18,7 @@ class TupoksiKpi extends Migration
             $table->unsignedBigInteger('id_departemen')->nullable();
             $table->foreign('id_departemen')->references('id_departemen')->on('tupoksi_departemen')->onDelete('set null')->onUpdate('cascade');
             $table->String('kpi');
+            $table->String('created_by')->default('0');
         });
     }
 

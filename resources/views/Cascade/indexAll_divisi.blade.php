@@ -82,6 +82,15 @@
                                                 <div class="flex-grow-1">Incorrect Value</div>
                                                 @endif
                                             </div>
+                                        </td> 
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                @foreach($divisi as $div)
+                                                @if($div->id_divisi == $kpiDiv->created_by)
+                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                @endif
+                                                @endforeach
+                                            </div>
                                         </td>
                                         <td>
                                             <div class="d-flex gap-2">
@@ -193,6 +202,8 @@
             <div class="modal-body">
                 <form method="post" action="{{route('casDiv.store')}}" enctype="multipart/form-data" id="myForm">
                     @csrf
+                    <input name="created_by" type="text" class="form-control"
+                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="kategori" class="col-md-4 col-form-label text-md-right">{{ __('Kategori') }}</label>
                         <div class="col-md-6">

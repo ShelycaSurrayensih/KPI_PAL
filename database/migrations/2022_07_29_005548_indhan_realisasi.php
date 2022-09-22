@@ -23,6 +23,7 @@ class IndhanRealisasi extends Migration
             $table->String('kendala');
             $table->string('comment')->default('Belum ada Komentar');
             $table->timestamps();
+            $table->String('created_by')->default('0');
         });
     }
 

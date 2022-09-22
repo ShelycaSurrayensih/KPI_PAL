@@ -28,6 +28,7 @@ class CreateKpiPmsTable extends Migration
             //$table->foreign('div_lead')->references('id_divisi')->on('divisi');
             // $table->string('staging')->default(1);
             $table->year('tahun_kpipms');
+            $table->String('created_by')->default('0');
         });
     }
 

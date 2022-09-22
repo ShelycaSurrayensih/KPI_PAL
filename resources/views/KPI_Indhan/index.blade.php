@@ -42,6 +42,7 @@
                                     <th class="sort" data-sort="entitas">Entitas</th>
                                     <th class="sort" data-sort="entitas">Program Utama</th>
                                     <th class="sort" data-sort="target">Target/Milestone</th>
+                                    <th class="sort" data-sort="target">Created By</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -74,9 +75,15 @@
                                             <div class="flex-grow-1">{{ $indhan->target }}</div>
                                         </div>
                                     </td>
-
-
-
+                                    <td>
+                                            <div class="d-flex align-items-center">
+                                                @foreach($divisi as $div)
+                                                @if($div->id_divisi == $indhan->created_by)
+                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                @endif
+                                                @endforeach
+                                            </div>
+                                        </td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
@@ -161,7 +168,6 @@
                                                         <label for="target">Target/Milestone</label>
                                                         <input type="text" name="target" class="form-control"
                                                             id="target" value="{{ $indhan->target }}">
-
                                                     </div>
 
                                                     <div class=" modal-footer">
@@ -223,6 +229,8 @@
             <div class="modal-body">
                 <form method="post" action="{{ route('KPI_Indhan.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
+                    <input name="created_by" type="text" class="form-control"
+                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="id_tim">ID Tim</label>
                         <select name="id_tim" class="form-control" id="id_tim">
@@ -258,7 +266,6 @@
                     <div class="mb-3">
                         <label for="target">Target</label>
                         <input type="text" name="target" class="form-control" id="target">
-
                     </div>
 
                     <div class="modal-footer">

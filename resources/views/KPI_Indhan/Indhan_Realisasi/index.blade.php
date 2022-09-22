@@ -48,6 +48,7 @@
                                     <th class="sort" data-sort="kendala">Kendala</th>
                                     <th class="sort" data-sort="timestamp">Tanggal Input</th>
                                     <th class="sort" data-sort="timestamp">Komentar</th>
+                                    <th class="sort" data-sort="timestamp">Created By</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -93,6 +94,15 @@
                                             <div class="flex-grow-1">{{ $indhanReal->comment }}</div>
                                         </div>
                                     </td>
+                                    <td>
+                                            <div class="d-flex align-items-center">
+                                                @foreach($divisi as $div)
+                                                @if($div->id_divisi == $indhanReal->created_by)
+                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                @endif
+                                                @endforeach
+                                            </div>
+                                        </td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
@@ -364,6 +374,8 @@
             <div class="modal-body">
                 <form method="post" action="{{ route('KPI_IndhanRealisasi.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
+                    <input name="created_by" type="text" class="form-control"
+                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="id_indhan">ID KPI</label>
                         <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}" readonly="">
