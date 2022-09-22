@@ -26,6 +26,7 @@ class IndivKpidir extends Migration
             $table->String('ket');
             $table->String('asal_kpi');
             $table->timestamps();
+            $table->String('created_by')->default('0');
         });
     }
 

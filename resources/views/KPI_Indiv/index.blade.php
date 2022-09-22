@@ -48,6 +48,7 @@
                                         <th scope="col">Asal KPI</th>
                                         <th scope="col">Keterangan</th>
                                         <th scope="col">Progres</th>
+                                        <th scope="col">Created By</th>
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -88,6 +89,15 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpidir->created_at }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                @foreach($divisi as $div)
+                                                @if($div->id_divisi == $kpidir->created_by)
+                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                @endif
+                                                @endforeach
                                             </div>
                                         </td>
                                         <td>
@@ -135,6 +145,8 @@
                                                         action="{{ route('kpidir.update', $kpidir->id_kpidir) }}"
                                                         enctype="multipart/form-data" id="myForm">
                                                         @csrf
+                                                        <input name="created_by" type="text" class="form-control"
+                                                                id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                                                         <div class="mb-3">
                                                             <label for="id_direktorat"
                                                                 class="form-label">Direktorat</label>
@@ -240,24 +252,30 @@
             <div class="modal-body">
                 <form method="POST" action="{{ route('KPI_Indiv.store') }}" id="myForm" enctype="multipart/form-data">
                     @csrf
+                    <input name="created_by" type="text" class="form-control"
+                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="id_direktorat" class="form-label">Direktorat</label>
-                        <select name="id_direktorat" class="form-control" id="id_direktorat">
                             @foreach ($divisi as $div)
                             @if($div->id_divisi == $users->id_divisi)
                             @foreach ($direktorat as $dir)
                             @if($div->id_direktorat == $dir->id_direktorat)
-                            <option value="{{$dir->id_direktorat}}">{{ "$dir->nama" }}</option>
+                            <input name="id_direktorat" value="{{$dir->id_direktorat}}" class="form-control" id="id_direktorat" readonly hidden>
+                            <input name="" value="{{$dir->nama}}" class="form-control" id="" readonly hidden>
                             @endif
                             @endforeach
                             @endif
                             @endforeach
-                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="id_divisi" class="form-label">Divisi</label>
                         <input name="id_divisi" value="{{$users->id_divisi}}" class="form-control" id="id_divisi"
-                            placeholder readonly="">
+                            placeholder readonly hidden>
+                            @foreach($divisi as $div)
+                            @if($div->id_divisi == $users->id_divisi)
+                            <input name="" value="{{$div->div_name}}" class="form-control" id="" readonly>
+                            @endif
+                            @endforeach
                     </div>
                     <div class="mb-3">
                         <label for="desc_kpidir" class="form-label">KPI</label>

@@ -48,6 +48,7 @@ class IndhanRealisasiController extends Controller
         $indhanRealisasi->bulan = $request->bulan;
         $indhanRealisasi->tahun = $request->tahun;
         $indhanRealisasi->kendala = $request->kendala;
+        $indhanRealisasi->created_by = $request->created_by;
         $indhanRealisasi->timestamp;
         $indhanRealisasi->save();
         return redirect()->back();

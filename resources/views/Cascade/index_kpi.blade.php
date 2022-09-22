@@ -38,6 +38,7 @@
                                         <th scope="col">Nama KPI</th>
                                         <th scope="col">Kategori KPI</th>
                                         <th scope="col">Bobot KPI</th>
+                                        <th scope="col">Created By</th>
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -62,6 +63,15 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpi->bobot_kpi }}</div>
+                                            </div>
+                                        </td> 
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                @foreach($divisi as $div)
+                                                @if($div->id_divisi == $kpi->created_by)
+                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                @endif
+                                                @endforeach
                                             </div>
                                         </td>
                                         <td>
@@ -167,6 +177,8 @@
             <div class="modal-body">
                 <form method="post" action="{{route('cascadeKPI.store')}}" enctype="multipart/form-data" id="myForm">
                     @csrf
+                    <input name="created_by" type="text" class="form-control"
+                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="id_kat" class="form-label">Kategori</label>
                         <select name="id_kat" class="form-control" id="id_inisiatif">

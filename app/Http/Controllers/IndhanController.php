@@ -65,6 +65,7 @@ class IndhanController extends Controller
         $indhan->entitas = $request->entitas;
         $indhan->program_utama = $request->program_utama;
         $indhan->target = $request->target;
+        $indhan->created_by = $request->created_by;
         $indhan->save();
         return redirect()->route('KPI_Indhan.create')->with('success', 'Data berhasil ditambahkan');
     }

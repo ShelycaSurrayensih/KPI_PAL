@@ -80,6 +80,7 @@ class IndivController extends Controller
         $kpidir->bobot = $request->get('bobot');
         $kpidir->ket = $request->get('ket');
         $kpidir->asal_kpi = $request->get('asal_kpi');
+        $kpidir->created_by = $request->get('created_by');
         $kpidir->timestamp;
         $kpidir->save();
         return redirect()->back();

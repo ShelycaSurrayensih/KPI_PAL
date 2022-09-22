@@ -21,6 +21,7 @@ class CreateCascadeProkersTable extends Migration
             $table->string('progress');
             $table->string('deskripsi');
             $table->string('comment')->default('Belum ada Komentar');
+            $table->String('created_by')->default('0');
         });
     }
 

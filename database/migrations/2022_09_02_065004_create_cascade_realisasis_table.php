@@ -20,6 +20,7 @@ class CreateCascadeRealisasisTable extends Migration
             $table->string('progress')->default('Placeholder');
             $table->string('deskripsi')->default('Placeholder');
             $table->string('evidence')->default('NO');
+            $table->String('created_by')->default('0');
         });
     }
 

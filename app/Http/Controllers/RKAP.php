@@ -99,6 +99,7 @@ class RKAP extends Controller
         $kpi->target = $request->target;
         $kpi->div_lead = $request->div_lead;
         $kpi->tahun_kpipms = $request->tahun_kpippms;
+        $kpi->created_by = $request->created_by;
         $kpi->save();
         return redirect()->route('kpi_pms.index');
     }
@@ -135,6 +136,7 @@ class RKAP extends Controller
         $plan->bulan = $request->get('bulan');
         $plan->tahun = $request->get('tahun');
         $plan->desc_plan = $request->get('desc_plan');
+        $plan->created_by = $request->get('created_by');
         $plan->save();
         return redirect()->back();
     }

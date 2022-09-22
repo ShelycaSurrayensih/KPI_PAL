@@ -21,6 +21,7 @@ class CreateRealisasiPmsTable extends Migration
             $table->text('desc_real');
             $table->text('keterangan');
             $table->text('file_evidence')->nullable();
+            $table->String('created_by')->default('0');
         });
     }
 

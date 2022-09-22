@@ -19,6 +19,7 @@ class CreateCascadeKpisTable extends Migration
             $table->unsignedBigInteger('id_kat');
             $table->foreign('id_kat')->references('id_kat')->on('cascade_kats')->onDelete('cascade');
             $table->float('bobot_kpi');
+            $table->String('created_by')->default('0');
         });
     }
 
