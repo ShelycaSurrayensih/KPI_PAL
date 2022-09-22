@@ -58,6 +58,16 @@ class TwController extends Controller
         $tupoksiTw->deskripsi = $request->deskripsi;
         $tupoksiTw->progres = $request->progres;
         $tupoksiTw->save();
+
+        $tupoksiTW = $request->tw;
+        $tupoksiIdTW = $request->id_proker;
+        $tupoksiTW = TupoksiTw::where('id_proker', $tupoksiIdTW)->where('tw', $tupoksiTW)->first();
+
+        $tupoksiRealisasi = new TupoksiRealisasi;
+        $tupoksiRealisasi->id_tw = $tupoksiTW->id_tw;
+        $tupoksiRealisasi->progres = 'Placeholder';
+        $tupoksiRealisasi->deskripsi = 'Placeholder';
+        $tupoksiRealisasi->save();
         return redirect()->back();
     }
 
@@ -104,6 +114,9 @@ class TwController extends Controller
         $tupoksiTw->deskripsi = $request->get('deskripsi');
         $tupoksiTw->progres = $request->get('progres');
         $tupoksiTw->save();
+
+        
+
         return redirect()->route('KPI_TupoksiTw.edit', $id_tw)->with('success', 'Data berhasil ditambahkan');
     }
 

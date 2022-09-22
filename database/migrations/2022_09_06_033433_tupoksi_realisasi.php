@@ -17,7 +17,6 @@ class TupoksiRealisasi extends Migration
             $table->id('id_realisasi');
             $table->String('progres');
             $table->String('deskripsi');
-            $table->string('tw');
             $table->unsignedBigInteger('id_tw')->nullable();
             $table->foreign('id_tw')->references('id_tw')->on('tupoksi_tw')->onDelete('set null')->onUpdate('cascade');
             $table->string('comment')->default('Belum ada Komentar');
