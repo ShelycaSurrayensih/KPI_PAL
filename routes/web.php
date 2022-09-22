@@ -13,6 +13,7 @@ use App\Http\Controllers\TupoksiRealisasiController;
 use App\Http\Controllers\TwController;
 use App\Http\Controllers\RKAP;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -149,4 +150,10 @@ Route::get('/Tupoksi_Tw/index/{id}',[TwController::class, 'index'])->name('tupok
 
  Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
  Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
- Route::get('/Profile/index',[ProfileController::class, 'index'])->name('profile.index');
+
+ //Change Password dan User Profile
+Route::get('/user/password',[ChangePasswordController::class,'CPassword'])->name('change.password');
+
+Route::post('/password/update',[ChangePasswordController::class,'UpdatePassword'])->name('password.update');
+
+Route::get('/Profile/index',[ProfileController::class, 'index'])->name('profile.index');
