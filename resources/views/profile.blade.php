@@ -68,27 +68,24 @@
                                                         class="img-fluid d-block rounded-circle" />
                                                 </div>
                                                 <div class="team-content">
-                                                    <a data-bs-toggle="offcanvas" href="#offcanvasExample"
-                                                        aria-controls="offcanvasExample">
-                                                        <h2><strong>{{ Auth::user()->name }} </h2>
-                                                    </a>
                                                     @foreach($divisi as $div)
                                                     @if($users->id_divisi == $div->id_divisi)
-                                                    <p class="text-muted mb-0">{{$div->div_name}}</p>
+                                                    <p class="text-muted mb-0"> <h2><strong>{{$div->div_name}}</h2></p>
                                                     @endif @endforeach
+                                                    <h3>PT PAL Indonesia (Persero)</h3>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div><br><br>
                                         <!--end col-->
                                         <div class="col-lg-4 col">
                                             <div class="row text-muted text-center">
                                                 <div class="col-6 border-end border-end-dashed">
-                                                    <h5 class="mb-1">145</h5>
-                                                    <p class="text-muted mb-0">Projects</p>
+                                                    <h5 class="mb-1">{{ Auth::user()->name }}</h5>
+                                                    <p class="text-muted mb-0">Name</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <h5 class="mb-1">210</h5>
-                                                    <p class="text-muted mb-0">Tasks</p>
+                                                    <h5 class="mb-1">{{ Auth::user()->email }}</h5>
+                                                    <p class="text-muted mb-0">Email</p>
                                                 </div>
                                             </div>
                                         </div>

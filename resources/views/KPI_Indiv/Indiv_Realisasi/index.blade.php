@@ -45,8 +45,10 @@
                                     <th class="sort" data-sort="realisasi">Deskripsi Realisasi</th>
                                     <th class="sort" data-sort="prognosa">Prognosa</th>
                                     <th class="sort" data-sort="keterangan">Keterangan</th>
-                                    <th class="sort" data-sort="keterangan">Komentar</th>
+                                    <th class="sort" data-sort="keterangan">Komentar Admin</th>
+                                    @if($users->status == 'administrator')
                                     <th class="sort" data-sort="keterangan">Created By</th>
+                                    @endif
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -87,6 +89,7 @@
                                             <div class="flex-grow-1">{{ $indivReal->comment }}</div>
                                         </div>
                                     </td>
+                                    @if($users->status == 'administrator')
                                     <td>
                                         <div class="d-flex align-items-center">
                                             @foreach($divisi as $div)
@@ -96,6 +99,7 @@
                                             @endforeach
                                         </div>
                                     </td>
+                                    @endif
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">

@@ -49,8 +49,10 @@
                                     <th class="sort" data-sort="realisasi">Realisasi</th>
                                     <th class="sort" data-sort="kendala">Kendala</th>
                                     <th class="sort" data-sort="timestamp">Tanggal Input</th>
-                                    <th class="sort" data-sort="timestamp">Komentar</th>
+                                    <th class="sort" data-sort="timestamp">Komentar Admin</th>
+                                    @if($users->status == 'administrator')
                                     <th class="sort" data-sort="timestamp">Created By</th>
+                                    @endif
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -87,9 +89,11 @@
                                         </div>
                                     </td>
                                     <td>
+                                    @if($users->status == 'administrator')
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $indhanReal->created_at }}</div>
                                         </div>
+                                        @endif
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -376,9 +380,10 @@
             <div class="modal-body">
                 <form method="post" action="{{ route('KPI_IndhanRealisasi.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
+                    
                     <input name="created_by" type="text" class="form-control"
                         id="created_by" value="{{$users->id_divisi}}" readonly hidden>
-                    <div class="mb-3">
+                    <div class="mb-3">   
                         <label for="id_indhan">ID KPI</label>
                         <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}" readonly="">
                         </input>
@@ -439,6 +444,9 @@
             </div>
         </div>
     </div>
+    </div>
+    </div>
+
 
 
 

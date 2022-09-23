@@ -23,7 +23,7 @@
                                     id="create-btn" data-bs-target="#showModal"><i
                                         class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                    @if($users->status != 'administrator')
+                                    @endif
                             </div>
                         </div>
                         <div class="col-sm">
@@ -50,7 +50,9 @@
                                         <th scope="col">Asal KPI</th>
                                         <th scope="col">Keterangan</th>
                                         <th scope="col">Progres</th>
+                                        @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
+                                        @endif
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -93,6 +95,7 @@
                                                 <div class="flex-grow-1">{{ $kpidir->created_at }}</div>
                                             </div>
                                         </td>
+                                        @if($users->status == 'administrator')
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 @foreach($divisi as $div)
@@ -102,6 +105,7 @@
                                                 @endforeach
                                             </div>
                                         </td>
+                                        @endif
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="edit">

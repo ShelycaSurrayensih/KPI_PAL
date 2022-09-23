@@ -54,7 +54,9 @@
                                         <th scope="col">Lead Divisi</th>
                                         <th scope="col">Tahun KPI PMS</th>
                                         <th scope="col">Progress</th>
+                                        @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
+                                        @endif
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -110,6 +112,7 @@
                                                 <div class="flex-grow-1"></div>
                                             </div>
                                         </td>
+                                        @if($users->status == 'administrator')
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 @foreach($divisi as $div)
@@ -119,7 +122,7 @@
                                                 @endforeach
                                             </div>
                                         </td>
-                                       
+                                       @endif
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="edit">

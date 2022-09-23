@@ -55,8 +55,10 @@
                                         <th scope="col">Bulan</th>
                                         <th scope="col">Progress</th>
                                         <th scope="col">Deskripsi</th>
-                                        <th scope="col">Komentar</th>
+                                        <th scope="col">Komentar Admin</th>
+                                        @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
+                                        @endif
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -95,6 +97,7 @@
                                                 <div class="flex-grow-1">{{ $plan->comment }}</div>
                                             </div>
                                         </td>
+                                        @if($users->status == 'administrator')
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 @foreach($divisi as $div)
@@ -104,6 +107,7 @@
                                                 @endforeach
                                             </div>
                                         </td>
+                                        @endif
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="edit">
@@ -166,6 +170,8 @@
                                                 </div>
                                                 @for($counterReal = 0; $counterReal < $counterPlan; $counterReal++) @if($realCount==0) <form method="post" action="{{ route('realpms.store') }}" enctype="multipart/form-data" id="myForm">
                                                     @csrf
+                                                    <div class="modal-body">
+                                                <form action="javascript:void(0);">
                                                     <div class="row g-3">
                                                         <div class="col-xxl-6">
                                                             <div>
@@ -302,6 +308,7 @@
                                                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                                                             <button type="submit" class="btn btn-success" id="edit-btn">Update Realisasi</button>
                                                         </div>
+</div>
                                                         <!--end row-->
                                                     </form>
                                                     <?php
@@ -316,6 +323,8 @@
                                                     ?>
                                                     <form method="post" action="{{ route('realpms.store') }}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
+                                                        <div class="modal-body">
+                                                <form action="javascript:void(0);">
                                                         <div class="row g-3">
                                                             <div class="col-xxl-6">
                                                                 <div>
@@ -388,6 +397,7 @@
                                                     @endif
                                                     @endfor
                                             </div>
+                                        </div>
                                         </div>
                                     </div>
                         </div>

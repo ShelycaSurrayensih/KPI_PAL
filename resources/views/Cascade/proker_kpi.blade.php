@@ -27,8 +27,10 @@
                                         <th scope="col">TW</th>
                                         <th scope="col">Progress</th>
                                         <th scope="col">Deskripsi</th>
-                                        <th scope="col">Comment</th>
+                                        <th scope="col">Komentar Admin</th>
+                                        @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
+                                        @endif
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -135,15 +137,17 @@
                                                         <div class="flex-grow-1">{{ $prok->comment }}</div>
                                                     </div>
                                                 </td>
+                                                @if($users->status == 'administrator')
                                                 <td>
-                                            <div class="d-flex align-items-center">
-                                                @foreach($divisi as $div)
-                                                @if($div->id_divisi == $prok->created_by)
-                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
-                                                @endif
-                                                @endforeach
+                                                <div class="d-flex align-items-center">
+                                                    @foreach($divisi as $div)
+                                                    @if($div->id_divisi == $prok->created_by)
+                                                    <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                    @endif
+                                                    @endforeach
                                             </div>
                                         </td>
+                                        @endif
                                                 <td>
                                                     <div class="d-flex gap-2">
                                                         <div class="add">

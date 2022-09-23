@@ -44,7 +44,9 @@
                                     <th class="sort" data-sort="entitas">Entitas</th>
                                     <th class="sort" data-sort="entitas">Program Utama</th>
                                     <th class="sort" data-sort="target">Target/Milestone</th>
+                                    @if($users->status == 'administrator')
                                     <th class="sort" data-sort="target">Created By</th>
+                                    @endif
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -77,6 +79,7 @@
                                             <div class="flex-grow-1">{{ $indhan->target }}</div>
                                         </div>
                                     </td>
+                                    @if($users->status == 'administrator')
                                     <td>
                                             <div class="d-flex align-items-center">
                                                 @foreach($divisi as $div)
@@ -86,6 +89,7 @@
                                                 @endforeach
                                             </div>
                                         </td>
+                                        @endif
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
