@@ -20,8 +20,10 @@
                                 <h5> Target : {{$indhan->target}}</h5>
                             </div><br>
                             <div>
+                            @if($users->status != 'administrator')
                                 <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
+                            @endif
                             </div>
                         </div>
                         <div class="col-sm">

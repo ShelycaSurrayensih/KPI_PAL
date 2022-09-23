@@ -18,6 +18,7 @@
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
                             <div>
+                            @if($users->status != 'administrator')
                                 <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
                                     id="create-btn" data-bs-target="#showModal"><i
                                         class="ri-add-line align-bottom me-1"></i>
@@ -25,6 +26,7 @@
                                 <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i
                                         class="ri-delete-bin-2-line"></i></button>
                             </div>
+                            @endif
                         </div>
                         <div class="col-sm">
                             <div class="d-flex justify-content-sm-end">
