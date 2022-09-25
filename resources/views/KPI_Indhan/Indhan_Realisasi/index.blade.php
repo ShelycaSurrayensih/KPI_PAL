@@ -20,10 +20,10 @@
                                 <h5> Target : {{$indhan->target}}</h5>
                             </div><br>
                             <div>
-                            @if($users->status != 'administrator')
+                                @if($users->status != 'administrator')
                                 <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                            @endif
+                                @endif
                             </div>
                         </div>
                         <div class="col-sm">
@@ -89,7 +89,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                    @if($users->status == 'administrator')
+                                        @if($users->status == 'administrator')
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $indhanReal->created_at }}</div>
                                         </div>
@@ -101,14 +101,14 @@
                                         </div>
                                     </td>
                                     <td>
-                                            <div class="d-flex align-items-center">
-                                                @foreach($divisi as $div)
-                                                @if($div->id_divisi == $indhanReal->created_by)
-                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
-                                                @endif
-                                                @endforeach
-                                            </div>
-                                        </td>
+                                        <div class="d-flex align-items-center">
+                                            @foreach($divisi as $div)
+                                            @if($div->id_divisi == $indhanReal->created_by)
+                                            <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                            @endif
+                                            @endforeach
+                                        </div>
+                                    </td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
@@ -130,6 +130,11 @@
                                             </div>
                                             @if($users->status == 'administrator')
                                             <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#comment{{$indhanReal->id_realisasi}}">Comment</button>
+                                            @if($indhanReal->comment != 'Belum ada Komentar')
+                                            <a href="{{route('indhanReal.delComment', $indhanReal->id_realisasi)}}">
+                                                <button class="btn btn-sm btn-danger edit-item-btn"> Delete Comment</button>
+                                            </a>
+                                            @endif
                                             @endif
                                         </div>
                     </div>
@@ -154,14 +159,14 @@
                                         <input name="realisasi" type="text" class="form-control" id="realisasi" value="{{$indhanReal->realisasi}}" readonly hidden>
                                         <input name="kendala" type="text" class="form-control" id="kendala" value="{{$indhanReal->kendala}}" readonly hidden>
                                         <div class="mb-3">
-                                            <label for="comment" class="form-label">Comment</label>
+                                            <label for="comment" class="form-label">Komentar</label>
                                             <input name="comment" type="text" class="form-control" id="comment" value="{{$indhanReal->comment}} ">
                                         </div>
                                 </div>
                                 <div class="modal-footer">
                                     <div class="hstack gap-2 justify-content-end">
                                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
+                                        <button type="submit" class="btn btn-success" id="add-btn">Edit Komentar</button>
                                     </div>
                                 </div>
                                 </form>
@@ -380,10 +385,9 @@
             <div class="modal-body">
                 <form method="post" action="{{ route('KPI_IndhanRealisasi.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
-                    
-                    <input name="created_by" type="text" class="form-control"
-                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
-                    <div class="mb-3">   
+
+                    <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
+                    <div class="mb-3">
                         <label for="id_indhan">ID KPI</label>
                         <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}" readonly="">
                         </input>
@@ -444,10 +448,10 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
+</div>
+</div>
 
 
 
 
-    @endsection
+@endsection

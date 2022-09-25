@@ -114,4 +114,12 @@ class IndhanRealisasiController extends Controller
         $indhanRealisasi->delete();
         return redirect()->back();
     }
+
+    public function deleteComment($id)
+    {
+        $delete = IndhanRealisasi::find($id);
+        $delete->comment = 'Belum ada Komentar';
+        $delete->save();
+        return redirect()->back();
+    }
 }

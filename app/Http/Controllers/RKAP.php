@@ -203,4 +203,12 @@ class RKAP extends Controller
         return redirect()->route('realpms.index')
             ->with('Sukses, data berhasil dihapus');
     }
+
+    public function deleteComment($id)
+    {
+        $delete = planPms::find($id);
+        $delete->comment = 'Belum ada Komentar';
+        $delete->save();
+        return redirect()->back();
+    }
 }

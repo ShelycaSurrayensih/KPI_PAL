@@ -113,9 +113,6 @@
                                                 <div class="edit">
                                                     <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $plan->id_plan }}">Edit</button>
                                                 </div>
-                                                @if($users->status == 'administrator')
-                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#comment{{$plan->id_plan}}">Comment</button>
-                                                @endif
                                                 <div class="details">
                                                     <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid{{ $plan->id_plan }}">
                                                         Realisasi
@@ -128,7 +125,14 @@
                                                         <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
                                                     </form>
                                                 </div>
-
+                                                @if($users->status == 'administrator')
+                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#comment{{$plan->id_plan}}">Comment</button>
+                                                @if($plan->comment != 'Belum ada Komentar')
+                                                <a href="{{route('planpms.delComment', $plan->id_plan)}}">
+                                                    <button class="btn btn-sm btn-danger edit-item-btn"> Delete Comment</button>
+                                                </a>
+                                                @endif
+                                                @endif
                                             </div>
                                         </td>
                                     </tr><!-- end tr -->
@@ -147,14 +151,14 @@
                                                         <input name="tahun" type="text" class="form-control" id="tahun" value="{{$plan->tahun}}" readonly hidden>
                                                         <input name="progress_plan" type="text" class="form-control" id="progress_plan" value="{{$plan->progress_plan}}" readonly hidden>
                                                         <div class="mb-3">
-                                                            <label for="comment" class="form-label">Comment</label>
+                                                            <label for="comment" class="form-label">Komentar</label>
                                                             <input name="comment" type="text" class="form-control" id="comment" value="{{$plan->comment}} ">
                                                         </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="hstack gap-2 justify-content-end">
                                                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
+                                                        <button type="submit" class="btn btn-success" id="add-btn">Edit Komentar</button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -171,145 +175,145 @@
                                                 @for($counterReal = 0; $counterReal < $counterPlan; $counterReal++) @if($realCount==0) <form method="post" action="{{ route('realpms.store') }}" enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="modal-body">
-                                                <form action="javascript:void(0);">
-                                                    <div class="row g-3">
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="bulan">Bulan</label>
-                                                                <input name="" class="form-control" id="" value="{{$plan->bulan}}" readonly="">
-                                                                </input>
-                                                            </div>
-                                                        </div>
+                                                        <form action="javascript:void(0);">
+                                                            <div class="row g-3">
+                                                                <div class="col-xxl-6">
+                                                                    <div>
+                                                                        <label for="bulan">Bulan</label>
+                                                                        <input name="" class="form-control" id="" value="{{$plan->bulan}}" readonly="">
+                                                                        </input>
+                                                                    </div>
+                                                                </div>
 
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="tahun">Tahun</label>
-                                                                <input type="text" name="" class="form-control" id="" value="{{$plan->tahun}}" readonly>
-                                                            </div>
-                                                        </div>
+                                                                <div class="col-xxl-6">
+                                                                    <div>
+                                                                        <label for="tahun">Tahun</label>
+                                                                        <input type="text" name="" class="form-control" id="" value="{{$plan->tahun}}" readonly>
+                                                                    </div>
+                                                                </div>
 
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="bobot">Progress Plan</label>
-                                                                <input name="" class="form-control" id="" value="{{$plan->progress_plan}}" readonly="">
-                                                                <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
-                                                                </input>
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <h5 class="modal-title" id="exampleModalgridLabel">Realisasi</h5>
-                                                        </div>
+                                                                <div class="col-xxl-6">
+                                                                    <div>
+                                                                        <label for="bobot">Progress Plan</label>
+                                                                        <input name="" class="form-control" id="" value="{{$plan->progress_plan}}" readonly="">
+                                                                        <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
+                                                                        </input>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <h5 class="modal-title" id="exampleModalgridLabel">Realisasi</h5>
+                                                                </div>
 
-                                                        <!--end col-->
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="progress_real">Progress Realisasi</label>
-                                                                <input type="text" name="progress_real" class="form-control" id="progress_real" value="">
-                                                            </div>
-                                                        </div>
+                                                                <!--end col-->
+                                                                <div class="col-xxl-6">
+                                                                    <div>
+                                                                        <label for="progress_real">Progress Realisasi</label>
+                                                                        <input type="text" name="progress_real" class="form-control" id="progress_real" value="">
+                                                                    </div>
+                                                                </div>
 
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="desc_real">Deskripsi Realisasi</label>
-                                                                <input type="text" name="desc_real" class="form-control" id="desc_real" value="">
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
-                                                        <div class="mb-3">
-                                                            <div>
-                                                                <label for="keterangan">Keterangan</label>
-                                                                <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <!--end col-->
+                                                                <div class="col-xxl-6">
+                                                                    <div>
+                                                                        <label for="desc_real">Deskripsi Realisasi</label>
+                                                                        <input type="text" name="desc_real" class="form-control" id="desc_real" value="">
+                                                                    </div>
+                                                                </div>
+                                                                <!--end col-->
+                                                                <div class="mb-3">
+                                                                    <div>
+                                                                        <label for="keterangan">Keterangan</label>
+                                                                        <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <!--end col-->
 
-                                                    </div>
-                                                    <div class="col-xxl-6">
-                                                        <div>
-                                                            <label for="file_evidence">File Evidence</label>
-                                                            <div class="fallback">
-                                                                <input type="file" name="file" multiple="multiple">
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="hstack gap-2 justify-content-end">
-                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success" id="edit-btn">Add Realisasi</button>
+                                                            <div class="col-xxl-6">
+                                                                <div>
+                                                                    <label for="file_evidence">File Evidence</label>
+                                                                    <div class="fallback">
+                                                                        <input type="file" name="file" multiple="multiple">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="hstack gap-2 justify-content-end">
+                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-success" id="edit-btn">Add Realisasi</button>
+                                                            </div>
+                                                            <!--end row-->
+                                                        </form>
+                                                        @break
+                                                        @elseif($counter == 0)
+                                                        @foreach($real as $reals)
+                                                        @if($reals->id_plan == $plan->id_plan)
+                                                        <form method="post" action="{{ route('realpms.update', $reals->id_real) }}" enctype="multipart/form-data" id="myForm">
+                                                            @csrf
+                                                            <div class="row g-3">
+                                                                <div class="col-xxl-6">
+                                                                    <div>
+                                                                        <label for="bulan">Bulan</label>
+                                                                        <input name="" class="form-control" id="" value="{{$plan->bulan}}" readonly="">
+                                                                        </input>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-xxl-6">
+                                                                    <div>
+                                                                        <label for="tahun">Tahun</label>
+                                                                        <input type="text" name="" class="form-control" id="" value="{{$plan->tahun}}" readonly>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-xxl-6">
+                                                                    <div>
+                                                                        <label for="bobot">Progress Plan</label>
+                                                                        <input name="" class="form-control" id="" value="{{$plan->progress_plan}}" readonly="">
+                                                                        <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
+                                                                        </input>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <h5 class="modal-title" id="exampleModalgridLabel">Realisasi</h5>
+                                                                </div>
+
+                                                                <!--end col-->
+                                                                <div class="col-xxl-6">
+                                                                    <div>
+                                                                        <label for="progress_real">Progress Realisasi</label>
+                                                                        <input type="text" name="progress_real" class="form-control" id="progress_real" value="{{$reals->progress_real}}">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-xxl-6">
+                                                                    <div>
+                                                                        <label for="desc_real">Deskripsi Realisasi</label>
+                                                                        <input type="text" name="desc_real" class="form-control" id="desc_real" value="{{$reals->desc_real}}">
+                                                                    </div>
+                                                                </div>
+                                                                <!--end col-->
+                                                                <div class="mb-3">
+                                                                    <div>
+                                                                        <label for="keterangan">Keterangan</label>
+                                                                        <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="{{$reals->keterangan}}"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <!--end col-->
+
+                                                            </div>
+                                                            <div class="col-xxl-6">
+                                                                <div>
+                                                                    <label for="file_evidence">File Evidence</label>
+                                                                    <div class="fallback">
+                                                                        <input type="file" name="file" multiple="multiple">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="hstack gap-2 justify-content-end">
+                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-success" id="edit-btn">Update Realisasi</button>
+                                                            </div>
                                                     </div>
                                                     <!--end row-->
-                                                    </form>
-                                                    @break
-                                                    @elseif($counter == 0)
-                                                    @foreach($real as $reals)
-                                                    @if($reals->id_plan == $plan->id_plan)
-                                                    <form method="post" action="{{ route('realpms.update', $reals->id_real) }}" enctype="multipart/form-data" id="myForm">
-                                                        @csrf
-                                                        <div class="row g-3">
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="bulan">Bulan</label>
-                                                                    <input name="" class="form-control" id="" value="{{$plan->bulan}}" readonly="">
-                                                                    </input>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="tahun">Tahun</label>
-                                                                    <input type="text" name="" class="form-control" id="" value="{{$plan->tahun}}" readonly>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="bobot">Progress Plan</label>
-                                                                    <input name="" class="form-control" id="" value="{{$plan->progress_plan}}" readonly="">
-                                                                    <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
-                                                                    </input>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <h5 class="modal-title" id="exampleModalgridLabel">Realisasi</h5>
-                                                            </div>
-
-                                                            <!--end col-->
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="progress_real">Progress Realisasi</label>
-                                                                    <input type="text" name="progress_real" class="form-control" id="progress_real" value="{{$reals->progress_real}}">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="desc_real">Deskripsi Realisasi</label>
-                                                                    <input type="text" name="desc_real" class="form-control" id="desc_real" value="{{$reals->desc_real}}">
-                                                                </div>
-                                                            </div>
-                                                            <!--end col-->
-                                                            <div class="mb-3">
-                                                                <div>
-                                                                    <label for="keterangan">Keterangan</label>
-                                                                    <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="{{$reals->keterangan}}"></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <!--end col-->
-
-                                                        </div>
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="file_evidence">File Evidence</label>
-                                                                <div class="fallback">
-                                                                    <input type="file" name="file" multiple="multiple">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="hstack gap-2 justify-content-end">
-                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success" id="edit-btn">Update Realisasi</button>
-                                                        </div>
-</div>
-                                                        <!--end row-->
                                                     </form>
                                                     <?php
                                                     $counterReal = $counterPlan;
@@ -324,80 +328,80 @@
                                                     <form method="post" action="{{ route('realpms.store') }}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
                                                         <div class="modal-body">
-                                                <form action="javascript:void(0);">
-                                                        <div class="row g-3">
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="bulan">Bulan</label>
-                                                                    <input name="" class="form-control" id="" value="{{$plan->bulan}}" readonly="">
-                                                                    </input>
-                                                                </div>
-                                                            </div>
+                                                            <form action="javascript:void(0);">
+                                                                <div class="row g-3">
+                                                                    <div class="col-xxl-6">
+                                                                        <div>
+                                                                            <label for="bulan">Bulan</label>
+                                                                            <input name="" class="form-control" id="" value="{{$plan->bulan}}" readonly="">
+                                                                            </input>
+                                                                        </div>
+                                                                    </div>
 
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="tahun">Tahun</label>
-                                                                    <input type="text" name="" class="form-control" id="" value="{{$plan->tahun}}" readonly>
-                                                                </div>
-                                                            </div>
+                                                                    <div class="col-xxl-6">
+                                                                        <div>
+                                                                            <label for="tahun">Tahun</label>
+                                                                            <input type="text" name="" class="form-control" id="" value="{{$plan->tahun}}" readonly>
+                                                                        </div>
+                                                                    </div>
 
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="bobot">Progress Plan</label>
-                                                                    <input name="" class="form-control" id="" value="{{$plan->progress_plan}}" readonly="">
-                                                                    <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
-                                                                    </input>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <h5 class="modal-title" id="exampleModalgridLabel">Realisasi</h5>
-                                                            </div>
+                                                                    <div class="col-xxl-6">
+                                                                        <div>
+                                                                            <label for="bobot">Progress Plan</label>
+                                                                            <input name="" class="form-control" id="" value="{{$plan->progress_plan}}" readonly="">
+                                                                            <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
+                                                                            </input>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <h5 class="modal-title" id="exampleModalgridLabel">Realisasi</h5>
+                                                                    </div>
 
-                                                            <!--end col-->
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="progress_real">Progress Realisasi</label>
-                                                                    <input type="text" name="progress_real" class="form-control" id="progress_real" value="">
-                                                                </div>
-                                                            </div>
+                                                                    <!--end col-->
+                                                                    <div class="col-xxl-6">
+                                                                        <div>
+                                                                            <label for="progress_real">Progress Realisasi</label>
+                                                                            <input type="text" name="progress_real" class="form-control" id="progress_real" value="">
+                                                                        </div>
+                                                                    </div>
 
-                                                            <div class="col-xxl-6">
-                                                                <div>
-                                                                    <label for="desc_real">Deskripsi Realisasi</label>
-                                                                    <input type="text" name="desc_real" class="form-control" id="desc_real" value="">
-                                                                </div>
-                                                            </div>
-                                                            <!--end col-->
-                                                            <div class="mb-3">
-                                                                <div>
-                                                                    <label for="keterangan">Keterangan</label>
-                                                                    <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <!--end col-->
+                                                                    <div class="col-xxl-6">
+                                                                        <div>
+                                                                            <label for="desc_real">Deskripsi Realisasi</label>
+                                                                            <input type="text" name="desc_real" class="form-control" id="desc_real" value="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--end col-->
+                                                                    <div class="mb-3">
+                                                                        <div>
+                                                                            <label for="keterangan">Keterangan</label>
+                                                                            <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--end col-->
 
+                                                                </div>
+                                                                <div class="col-xxl-6">
+                                                                    <div>
+                                                                        <label for="file_evidence">File Evidence</label>
+                                                                        <div class="fallback">
+                                                                            <input type="file" name="file" multiple="multiple">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="hstack gap-2 justify-content-end">
+                                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-success" id="edit-btn">Add Realisasi</button>
+                                                                </div>
+                                                                <!--end row-->
+                                                            </form>
+                                                            @break
+                                                            @endif
+                                                            @endforeach
+                                                            @endif
+                                                            @endfor
                                                         </div>
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="file_evidence">File Evidence</label>
-                                                                <div class="fallback">
-                                                                    <input type="file" name="file" multiple="multiple">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="hstack gap-2 justify-content-end">
-                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success" id="edit-btn">Add Realisasi</button>
-                                                        </div>
-                                                        <!--end row-->
-                                                    </form>
-                                                    @break
-                                                    @endif
-                                                    @endforeach
-                                                    @endif
-                                                    @endfor
                                             </div>
-                                        </div>
                                         </div>
                                     </div>
                         </div>
@@ -513,8 +517,7 @@
 
                 <form method="post" action="{{ route('planpms.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
-                    <input name="created_by" type="text" class="form-control"
-                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
+                    <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="id_kpipms" class="form-label">KPI PMS</label>
                         <input name="id_kpipms" type="text" class="form-control" id="id_kpipms" value="{{$kpi->id_kpipms}}" readonly hidden>

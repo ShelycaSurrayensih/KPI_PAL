@@ -120,4 +120,12 @@ class IndivRealisasiController extends Controller
         $indivRealisasi->delete();
         return redirect()->back();
     }
+
+    public function deleteComment($id)
+    {
+        $delete = IndivRealisasi::find($id);
+        $delete->comment = 'Belum ada Komentar';
+        $delete->save();
+        return redirect()->back();
+    }
 }

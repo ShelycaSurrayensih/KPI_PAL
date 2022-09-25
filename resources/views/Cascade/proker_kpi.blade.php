@@ -157,6 +157,11 @@
                                                             </button>
                                                             @if($users->status == 'administrator')
                                                             <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#comment{{$prok->tw}}">Comment</button>
+                                                            @if($prok->comment != 'Belum ada Komentar')
+                                                            <a href="{{route('cascade.delComment', $prok->id)}}">
+                                                                <button class="btn btn-sm btn-danger edit-item-btn"> Delete Comment</button>
+                                                            </a>
+                                                            @endif
                                                             @endif
                                                         </div>
                                                     </div>
@@ -216,7 +221,7 @@
                                                                 <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$prok->deskripsi}}" readonly hidden>
                                                                 <div class="mb-3">
                                                                     <label for="comment" class="form-label">Comment</label>
-                                                                    <input name="comment" type="text" class="form-control" id="comment" value="comment ">
+                                                                    <input name="comment" type="text" class="form-control" id="comment" value="{{$prok->comment}} ">
                                                                 </div>
                                                         </div>
                                                         <div class="modal-footer">

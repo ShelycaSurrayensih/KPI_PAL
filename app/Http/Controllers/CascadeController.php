@@ -174,4 +174,12 @@ class CascadeController extends Controller
         // dd($casKPI);
         return response()->json($casKPI);
     }
+
+    public function deleteComment($id)
+    {
+        $delete = CascadeProker::find($id);
+        $delete->comment = 'Belum ada Komentar';
+        $delete->save();
+        return redirect()->back();
+    }
 }

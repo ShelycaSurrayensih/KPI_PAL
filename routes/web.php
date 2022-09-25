@@ -157,3 +157,12 @@ Route::get('/user/password',[ChangePasswordController::class,'CPassword'])->name
 Route::post('/password/update',[ChangePasswordController::class,'UpdatePassword'])->name('password.update');
 
 Route::get('/Profile/index',[ProfileController::class, 'index'])->name('profile.index');
+
+
+//Delete Comment
+Route::get('/Cascade/KPI/commentDelete/{id}', [App\Http\Controllers\CascadeController::class, 'deleteComment'])->name('cascade.delComment');
+Route::get('/KPI_Indhan/Realisasi/commentDelete/{id}', [App\Http\Controllers\IndhanRealisasiController::class, 'deleteComment'])->name('indhanReal.delComment');
+Route::get('/KPI_Indiv/Realisasi/commentDelete/{id}', [App\Http\Controllers\IndivRealisasiController::class, 'deleteComment'])->name('indivReal.delComment');
+Route::get('/Plan_PMS/commentDelete/{id}', [App\Http\Controllers\RKAP::class, 'deleteComment'])->name('planpms.delComment');
+
+Route::get('/KPI_Indhan/Realisasi/commentDelete/{id}', [App\Http\Controllers\CascadeController::class, 'deleteComment'])->name('indhanReal.delComment');

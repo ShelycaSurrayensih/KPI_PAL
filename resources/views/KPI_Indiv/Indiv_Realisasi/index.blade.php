@@ -119,43 +119,48 @@
                                             </div>
                                             @if($users->status == 'administrator')
                                             <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#comment{{$indivReal->tw}}">Comment</button>
+                                            @if($indivReal->comment != 'Belum ada Komentar')
+                                            <a href="{{route('indivReal.delComment', $indivReal->id_realisasi)}}">
+                                                <button class="btn btn-sm btn-danger edit-item-btn"> Delete Comment</button>
+                                            </a>
+                                            @endif
                                             @endif
                                         </div>
                                     </td>
                                 </tr>
                                 <!-- comment Model -->
                                 <div class="modal fade" id="comment{{$indivReal->tw}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
-                                                </div>
-
-                                                <div class="modal-body">
-                                                    <form method="post" action="{{route('indivReal.update', $indivReal->id_realisasi)}}" enctype="multipart/form-data" id="myForm">
-                                                        @csrf
-                                                        <input name="tw" type="text" class="form-control" id="tw" value="{{$indivReal->tw}}" readonly hidden>
-                                                        <input name="id_kpidir" type="text" class="form-control" id="id_kpidir" value="{{$indivReal->id_kpidir}}" readonly hidden>
-                                                        <input name="progres" type="text" class="form-control" id="progres" value="{{$indivReal->progres}}" readonly hidden>
-                                                        <input name="realisasi" type="text" class="form-control" id="realisasi" value="{{$indivReal->realisasi}}" readonly hidden>
-                                                        <input name="prognosa" type="text" class="form-control" id="prognosa" value="{{$indivReal->prognosa}}" readonly hidden>
-                                                        <input name="keterangan" type="text" class="form-control" id="keterangan" value="{{$indivReal->keterangan}}" readonly hidden>
-                                                        <div class="mb-3">
-                                                            <label for="comment" class="form-label">Comment</label>
-                                                            <input name="comment" type="text" class="form-control" id="comment" value="{{$indivReal->comment}} ">
-                                                        </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <div class="hstack gap-2 justify-content-end">
-                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
-                                                    </div>
-                                                </div>
-                                                </form>
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-light p-3">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                             </div>
+
+                                            <div class="modal-body">
+                                                <form method="post" action="{{route('indivReal.update', $indivReal->id_realisasi)}}" enctype="multipart/form-data" id="myForm">
+                                                    @csrf
+                                                    <input name="tw" type="text" class="form-control" id="tw" value="{{$indivReal->tw}}" readonly hidden>
+                                                    <input name="id_kpidir" type="text" class="form-control" id="id_kpidir" value="{{$indivReal->id_kpidir}}" readonly hidden>
+                                                    <input name="progres" type="text" class="form-control" id="progres" value="{{$indivReal->progres}}" readonly hidden>
+                                                    <input name="realisasi" type="text" class="form-control" id="realisasi" value="{{$indivReal->realisasi}}" readonly hidden>
+                                                    <input name="prognosa" type="text" class="form-control" id="prognosa" value="{{$indivReal->prognosa}}" readonly hidden>
+                                                    <input name="keterangan" type="text" class="form-control" id="keterangan" value="{{$indivReal->keterangan}}" readonly hidden>
+                                                    <div class="mb-3">
+                                                        <label for="comment" class="form-label">Komentar</label>
+                                                        <input name="comment" type="text" class="form-control" id="comment" value="{{$indivReal->comment}} ">
+                                                    </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="hstack gap-2 justify-content-end">
+                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-success" id="add-btn">Edit Komentar</button>
+                                                </div>
+                                            </div>
+                                            </form>
                                         </div>
                                     </div>
+                                </div>
                                 <!-- Details in modals -->
                                 <div class="modal fade" id="exampleModalgrid" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
                                     <div class="modal-dialog">
