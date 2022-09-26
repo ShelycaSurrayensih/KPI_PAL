@@ -100,6 +100,7 @@ class RKAP extends Controller
         $kpi->div_lead = $request->div_lead;
         $kpi->tahun_kpipms = $request->tahun_kpippms;
         $kpi->created_by = $request->created_by;
+        $kpi->timestamp;
         $kpi->save();
         return redirect()->route('kpi_pms.index');
     }

@@ -1,4 +1,4 @@
-<!doctype html>th
+<!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none">
 
 
@@ -78,11 +78,11 @@
 
 
                     <div class="d-flex align-items-center">
-                        <div>
+                        <!-- <div>
                             <span class="logo-sm">
                                 <img src="assets/images/logo defendid.png" alt="" height="22">
                             </span>
-                        </div>
+                        </div> -->
 
                         <div class="dropdown d-md-none topbar-head-dropdown header-item">
                             <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -289,17 +289,17 @@
                 <!-- start page title -->
                 <div class="row">
                     <div class="col-12">
-                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <span class="logo-sm">
+                        <!-- <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <!-- <span class="logo-sm">
                                 <img src="assets/images/logo defendid.png" alt="" height="22">
-                            </span>
+                            </span> -->
 
-                            <div class="page-title-right">
+                            <!-- <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboards</a></li>
                                     <li class="breadcrumb-item active">Dashboard</li>
                                 </ol>
-                            </div>
+                            </div> -->
 
                         </div>
                     </div>

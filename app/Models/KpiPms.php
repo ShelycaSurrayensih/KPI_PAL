@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class KpiPms extends Model
 {
     use HasFactory;
-    public $timestamps = false;
+   
     protected $fillable = [
         'id_kat',
         'id_inisiatif',
@@ -21,6 +21,11 @@ class KpiPms extends Model
         'staging',
         'tahun'
     ];
+    public function getCreatedAtAttribute()
+{
+    return \Carbon\Carbon::parse($this->attributes['created_at'])
+       ->format('d, M Y');
+}
 
     public function inisiatifStrategis(){
         return $this->belongsTo('App\Models\InisiatifStrategis');

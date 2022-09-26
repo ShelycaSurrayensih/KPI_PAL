@@ -29,6 +29,7 @@ class CreateKpiPmsTable extends Migration
             // $table->string('staging')->default(1);
             $table->year('tahun_kpipms');
             $table->String('created_by')->default('0');
+            $table->timestamps();
         });
     }
 

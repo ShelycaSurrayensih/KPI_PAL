@@ -49,7 +49,7 @@
                                         <th scope="col">Target</th>
                                         <th scope="col">Asal KPI</th>
                                         <th scope="col">Keterangan</th>
-                                        <th scope="col">Progres</th>
+                                        <th scope="col">Updated</th>
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
                                         @endif
@@ -153,23 +153,29 @@
                                                         @csrf
                                                         <input name="created_by" type="text" class="form-control"
                                                                 id="created_by" value="{{$users->id_divisi}}" readonly hidden>
-                                                        <div class="mb-3">
-                                                            <label for="id_direktorat"
-                                                                class="form-label">Direktorat</label>
-                                                            <select name="id_direktorat" class="form-control"
-                                                                id="id_direktorat">
-                                                                @foreach ($direktorat as $dir)
-                                                                <option value="{{$dir->id_direktorat}}">
-                                                                    {{ "$dir->nama" }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="id_divisi" class="form-label">Divisi</label>
-                                                            <input name="id_divisi" value="{{$users->id_divisi}}"
-                                                                class="form-control" id="id_divisi" placeholder
-                                                                readonly="">
-                                                        </div>
+                                                                <div class="mb-3">
+                        <label for="id_direktorat" class="form-label">Direktorat</label>
+                            @foreach ($divisi as $div)
+                            @if($div->id_divisi == $users->id_divisi)
+                            @foreach ($direktorat as $dir)
+                            @if($div->id_direktorat == $dir->id_direktorat)
+                            <input name="id_direktorat" value="{{$dir->id_direktorat}}" class="form-control" id="id_direktorat" readonly hidden>
+                            <input name="" value="{{$dir->nama}}" class="form-control" id="" readonly >
+                            @endif
+                            @endforeach
+                            @endif
+                            @endforeach
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_divisi" class="form-label">Divisi</label>
+                        <input name="id_divisi" value="{{$users->id_divisi}}" class="form-control" id="id_divisi"
+                            placeholder readonly hidden>
+                            @foreach($divisi as $div)
+                            @if($div->id_divisi == $users->id_divisi)
+                            <input name="" value="{{$div->div_name}}" class="form-control" id="" readonly>
+                            @endif
+                            @endforeach
+                    </div>
                                                         <div class="mb-3">
                                                             <label for="desc_kpidir" class="form-label">KPI</label>
                                                             <input name="desc_kpidir" type="text" class="form-control"
@@ -267,7 +273,7 @@
                             @foreach ($direktorat as $dir)
                             @if($div->id_direktorat == $dir->id_direktorat)
                             <input name="id_direktorat" value="{{$dir->id_direktorat}}" class="form-control" id="id_direktorat" readonly hidden>
-                            <input name="" value="{{$dir->nama}}" class="form-control" id="" readonly hidden>
+                            <input name="" value="{{$dir->nama}}" class="form-control" id="" readonly >
                             @endif
                             @endforeach
                             @endif

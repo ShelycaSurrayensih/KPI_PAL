@@ -23,8 +23,7 @@
                                     id="create-btn" data-bs-target="#showModal"><i
                                         class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i
-                                        class="ri-delete-bin-2-line"></i></button>
+                               
                             </div>
                             @endif
                         </div>
@@ -53,7 +52,7 @@
                                         <th scope="col">Target</th>
                                         <th scope="col">Lead Divisi</th>
                                         <th scope="col">Tahun KPI PMS</th>
-                                        <th scope="col">Progress</th>
+                                        <th scope="col">Updated</th>
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
                                         @endif
@@ -109,7 +108,7 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1"></div>
+                                                <div class="flex-grow-1">{{ $kpi->created_at }}</div>
                                             </div>
                                         </td>
                                         @if($users->status == 'administrator')
