@@ -20,31 +20,16 @@
                                                 <img src="assets/images/logo3.png" alt="" height="30%" width="40%">
                                             </a>
                                         </div>
-                                        <div class="mt-auto"><br>
+                                        <div class="mt-auto">
 
                                             <div id="qoutescarouselIndicators" class="carousel slide"
                                                 data-bs-ride="carousel">
-                                                <div class="carousel-indicators">
-                                                    <button type="button" data-bs-target="#qoutescarouselIndicators"
-                                                        data-bs-slide-to="0" class="active" aria-current="true"
-                                                        aria-label="Slide 1"></button>
-                                                    <button type="button" data-bs-target="#qoutescarouselIndicators"
-                                                        data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                                    <button type="button" data-bs-target="#qoutescarouselIndicators"
-                                                        data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                                </div>
-                                                <div class="carousel-inner text-center text-white pb-5">
+                                                <div class="carousel-inner text-center text-white pb-0">
                                                     <div class="carousel-item active">
-                                                        <p class="fs-15 fst-italic">" Great! Clean code, clean design,
-                                                            easy for customization. Thanks very much! "</p>
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <p class="fs-15 fst-italic">" The theme is really great with an
-                                                            amazing customer support."</p>
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <p class="fs-15 fst-italic">" Great! Clean code, clean design,
-                                                            easy for customization. Thanks very much! "</p>
+                                                        <p class="fs-5 fst-bold"><b>AKHLAK</b></p>
+                                                                <p class="fs-15 fst-italic"><b>"AMANAH,
+                                                                        KOMPETEN, HARMONIS, LOYAL, ADAPTIF,
+                                                                        KOLABORATIF"</b></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -60,7 +45,7 @@
                                     <form method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="text-center mt-2">
-                                            <h5 class="text-primary">Login Page</h5><br>
+                                            <h5 class="text-idigo">Login Page</h5><br>
                                         </div>
 
                                         <div class="mt-4">
