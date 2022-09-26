@@ -108,13 +108,14 @@ class TwController extends Controller
      */
     public function update(Request $request, $id_tw)
     {
-        $tupoksiTw = TupoksiTw::where('id_tw', $id_tw)->first();
-        $tupoksiTw->id_proker = $request->get('id_proker');
-        $tupoksiTw->tw = $request->get('tw');
-        $tupoksiTw->deskripsi = $request->get('deskripsi');
-        $tupoksiTw->progres = $request->get('progres');
-        $tupoksiTw->save();
-
+        // $tupoksiTw = TupoksiTw::where('id_tw', $id_tw)->first();
+        // $tupoksiTw->id_proker = $request->get('id_proker');
+        // $tupoksiTw->tw = $request->get('tw');
+        // $tupoksiTw->deskripsi = $request->get('deskripsi');
+        // $tupoksiTw->progres = $request->get('progres');
+        // $tupoksiTw->save();
+        $tupoksiTw = TupoksiTw::where('id_tw',$id_tw)->update($request->except(['_token']));
+        return redirect()->back();
         
 
         return redirect()->route('KPI_TupoksiTw.edit', $id_tw)->with('success', 'Data berhasil ditambahkan');

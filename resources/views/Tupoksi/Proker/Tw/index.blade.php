@@ -147,50 +147,55 @@
                                                         <div class="d-flex gap-2">
                                                             <div class="add">
 
-                                                                <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#varyingcontentModal{{$tw->tw}}" data-bs-whatever="Mary">Edit</button>
+                                                                <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#tw{{$tw->id_tw}}">Edit</button>
                                                             </div>
                                                             <div class="edit">
-                                                                <button type="button" class="btn btn-sm btn-success edit-item-btn data-bs-toggle=" data-bs-toggle="modal" id="create-btn" data-bs-target="#realisasi{{$prok_count}}">Realisasi</button>
+                                                                <button type="button" class="btn btn-sm btn-success edit-item-btn data-bs-toggle=" data-bs-toggle="modal" id="create-btn" data-bs-target="#realisasi{{$tw->tw}}">Realisasi</button>
                                                             </div>
                                                         </div>
                                                     </td>
 
                                                 </tr>
                                                 <!-- Edit Modal -->
-                                                <div class="modal fade" id="varyingcontentModal{{$tw->id_tw}}" tabindex="-1" aria-labelledby="varyingcontentModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
+                                                <div class="modal fade" id="tw{{$tw->id_tw}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="varyingcontentModalLabel">New message</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <div class="modal-header bg-light p-3">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Realisasi</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                             </div>
+
                                                             <div class="modal-body">
                                                                 <form method="post" action="{{route('tupoksiTw.update', $tw->id_tw)}}" enctype="multipart/form-data" id="myForm">
                                                                     @csrf
-                                                                    <input name="id_proker" type="text" class="form-control" id="id_proker" value="{{$tupoksiProker->id_proker }}" readonly hidden>
-                                                                    <div class="mb-3">
-                                                                        <label for="tw" class="form-label">TW</label>
-                                                                        <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$tw->tw}}" readonly>
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label for="deskripsi" class="form-label">Deskripsi
-                                                                            Proker</label>
-                                                                        <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$tw->deskripsi}}">
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label for="progres" class="form-label">Progres
-                                                                            proker</label>
-                                                                        <input name="progres" type="text" class="form-control" id="progres" value="{{$tw->progres}}">
-                                                                    </div>
+                                                                    <input name="id_proker" type="text" class="form-control"
+                                                            id="id_proker" value="{{$tupoksiProker->id_proker }}"
+                                                            readonly hidden>
+                                                        <div class="mb-3">
+                                                            <label for="tw" class="form-label">TW</label>
+                                                            <input name="tw" type="text" class="form-control"
+                                                                id="cas_kpiName" value="{{$tw->tw}}" readonly>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="deskripsi" class="form-label">Deskripsi
+                                                                Proker</label>
+                                                            <input name="deskripsi" type="text" class="form-control"
+                                                                id="deskripsi" value="{{$tw->deskripsi}}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="progres" class="form-label">Progres
+                                                                proker</label>
+                                                            <input name="progres" type="text" class="form-control"
+                                                                id="progres" value="{{$tw->progres}}">
+                                                        </div>
                                                             </div>
-
                                                             <div class="modal-footer">
                                                                 <div class="hstack gap-2 justify-content-end">
                                                                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit" class="btn btn-success" id="add-btn">Edit
-                                                                        Tw</button>
+                                                                    <button type="submit" class="btn btn-success" id="add-btn">Realisasi</button>
                                                                 </div>
                                                             </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
