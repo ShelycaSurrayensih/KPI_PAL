@@ -27,7 +27,8 @@
                                         <th scope="col">TW</th>
                                         <th scope="col">Progress</th>
                                         <th scope="col">Deskripsi</th>
-                                        <th scope="col">Komentar Admin</th>
+                                        <th scope="col">Progress Realisasi</th>
+                                        <th scope="col">Deskripsi Realisasi</th>
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
                                         @endif
@@ -83,8 +84,7 @@
                                                     <div class="modal-body">
                                                         <form method="post" action="{{route('cascadeProker.store')}}" enctype="multipart/form-data" id="myForm">
                                                             @csrf
-                                                            <input name="created_by" type="text" class="form-control"
-                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
+                                                            <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                                                             <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
                                                             <div class="mb-3">
                                                                 <label for="tw" class="form-label">TW</label>
@@ -137,17 +137,33 @@
                                                         <div class="flex-grow-1">{{ $prok->comment }}</div>
                                                     </div>
                                                 </td>
-                                                @if($users->status == 'administrator')
+                                                @foreach($casReal as $realisasi)
+                                                @if($prok->id == $realisasi->id_CProk)
                                                 <td>
-                                                <div class="d-flex align-items-center">
-                                                    @foreach($divisi as $div)
-                                                    @if($div->id_divisi == $prok->created_by)
-                                                    <div class="flex-grow-1">{{ $div->div_name }}</div>
-                                                    @endif
-                                                    @endforeach
-                                            </div>
-                                        </td>
-                                        @endif
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-grow-1">{{ $realisasi->deskripsi }}</div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-grow-1">{{ $realisasi->progres }}</div>
+                                                    </div>
+                                                </td>
+                                                @endif
+                                                @endforeach
+                                                @if($users->status == 'administrator')
+
+                                                @foreach($divisi as $div)
+                                                @if($div->id_divisi == $prok->created_by)
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                    </div>
+                                                </td>
+                                                @endif
+                                                @endforeach
+
+                                                @endif
                                                 <td>
                                                     <div class="d-flex gap-2">
                                                         <div class="add">
@@ -266,7 +282,7 @@
                                                             <div class="hstack gap-2 justify-content-end">
                                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                                                                 <button type="submit" class="btn btn-success" id="edit-btn">Update Plan</button>
-                                                                
+
                                                             </div>
                                                         </div>
                                                         </form>
@@ -308,10 +324,10 @@
                     </div>
                 </td>
                 <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">Belum Terisi</div>
-                                            </div>
-                                        </td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">Belum Terisi</div>
+                    </div>
+                </td>
                 <td>
                     <div class="d-flex gap-2">
                         <div class="add">
@@ -332,8 +348,7 @@
                         <div class="modal-body">
                             <form method="post" action="{{route('cascadeProker.store')}}" enctype="multipart/form-data" id="myForm">
                                 @csrf
-                                <input name="created_by" type="text" class="form-control"
-                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
+                                <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                                 <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
                                 <div class="mb-3">
                                     <label for="tw" class="form-label">TW</label>
