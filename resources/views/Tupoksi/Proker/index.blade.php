@@ -21,7 +21,7 @@
                                     id="create-btn" data-bs-target="#showModal"><i
                                         class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                    @if($users->status != 'administrator')
+                                    @endif
                             </div>
                         </div>
                     </div>

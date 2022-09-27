@@ -161,6 +161,8 @@ class CascadeController extends Controller
         $casReal->id_CProk = $request->id_CProk;
         $casReal->progress = $request->progress;
         $casReal->deskripsi = $request->deskripsi;
+        
+        $casReal->keterangan = $request->keterangan;
 
         if($request->file != Null){
             $fileName = $request->file->getClientOriginalName();

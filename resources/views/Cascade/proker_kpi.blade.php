@@ -290,6 +290,11 @@
                                                                     <label for="deskripsi" class="form-label">Deskripsi Progres</label>
                                                                     <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{ $real->deskripsi }}">
                                                                 </div>
+                                                                
+                                                                <div class="mb-3">
+                                                                    <label for="keterangan" class="form-label">Keterangan</label>
+                                                                    <textarea name="keterangan" type="text" class="form-control" id="keterangan" value="{{ $real->keterangan }}">{{ $real->keterangan }}</textarea>
+                                                                </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="hstack gap-2 justify-content-end">
