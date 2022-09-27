@@ -42,7 +42,7 @@
 
                                     <th class="sort" data-sort="tw">TW</th>
                                     <th class="sort" data-sort="progres">Progres</th>
-                                    <th class="sort" data-sort="realisasi">Deskripsi Realisasi</th>
+                                    <th class="sort" data-sort="realisasi">Realisasi</th>
                                     <th class="sort" data-sort="prognosa">Prognosa</th>
                                     <th class="sort" data-sort="keterangan">Keterangan</th>
                                     <th class="sort" data-sort="keterangan">Komentar Admin</th>
@@ -114,7 +114,7 @@
                                                 <form action="{{ route('KPI_IndivRealisasi.destroy', $indivReal->id_realisasi) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                 </form>
                                             </div>
                                             @if($users->status == 'administrator')
@@ -133,7 +133,7 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header bg-light p-3">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Komentar</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                             </div>
 
@@ -166,7 +166,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalgridLabel">Details Indiv
+                                                <h5 class="modal-title" id="exampleModalgridLabel">Detail
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
@@ -245,7 +245,7 @@
                                                         <!--end col-->
                                                         <div class="col-xxl-6">
                                                             <div>
-                                                                <label for="realisasi">Deskripsi Realisasi</label>
+                                                                <label for="realisasi">Realisasi</label>
                                                                 <input type="text" name="realisasi" class="form-control" id="realisasi" value="{{$indivReal->realisasi}}" readonly>
                                                             </div>
                                                         </div>
@@ -283,14 +283,14 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header bg-light p-3">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <form method="post" action="{{ route('indivReal.update', $indivReal->id_realisasi) }}" enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
-                                                        <label for="id_kpidir">ID KPI</label>
+                                                        <label for="id_kpidir">KPI</label>
                                                         <input name="id_kpidir" class="form-control" id="id_kpidir" value="{{$kpidir->id_kpidir}}" readonly="">
 
                                                         </input>
@@ -306,7 +306,7 @@
 
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="realisasi">Deskripsi Realisasi</label>
+                                                        <label for="realisasi">Realisasi</label>
                                                         <input type="text" name="realisasi" class="form-control" id="realisasi" value="{{$indivReal->realisasi}}">
 
                                                     </div>
@@ -379,7 +379,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
             <div class="modal-body">
@@ -404,7 +404,7 @@
 
                     </div>
                     <div class="mb-3">
-                        <label for="realisasi">Deskripsi Realisasi</label>
+                        <label for="realisasi">Realisasi</label>
                         <input type="text" name="realisasi" class="form-control" id="realisasi">
 
                     </div>
@@ -428,7 +428,7 @@
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success" id="add-btn">Add data</button>
+                            <button type="submit" class="btn btn-success" id="add-btn">Add </button>
                         </div>
                     </div>
 

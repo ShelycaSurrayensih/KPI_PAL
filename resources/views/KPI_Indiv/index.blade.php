@@ -126,9 +126,9 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"
-                                                            class="btn btn-sm btn-danger remove-item-btn"
+                                                            class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#deleteRecordModal">Delete</button>
+                                                            data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -141,7 +141,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close" id="close-modal"></button>
                                                 </div>
@@ -256,7 +256,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     id="close-modal"></button>
             </div>
@@ -319,7 +319,7 @@
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add KPI</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add </button>
                 </div>
             </div>
             </form>

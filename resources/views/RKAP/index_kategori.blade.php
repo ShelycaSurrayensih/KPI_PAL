@@ -42,7 +42,7 @@
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                 <thead class="text-muted table-light ">
                                     <tr>
-                                        <th scope="col">Kategori Deskripsi</th>
+                                        <th scope="col">Kategori </th>
                                         <th scope="col">Keterangan</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -74,9 +74,9 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"
-                                                            class="btn btn-sm btn-danger remove-item-btn"
+                                                            class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#deleteRecordModal">Delete</button>
+                                                            data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -116,7 +116,7 @@
                                                         <button type="button" class="btn btn-light"
                                                             data-bs-dismiss="modal">Close</button>
                                                         <button type="submit" class="btn btn-success" id="add-btn">Add
-                                                            Kategori</button>
+                                                            </button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -156,7 +156,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel">Add Kategori</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     id="close-modal"></button>
             </div>
@@ -166,7 +166,7 @@
                     id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="kat_desc" class="form-label">Deskripsi Kategori</label>
+                        <label for="kat_desc" class="form-label">Deskripsi</label>
                         <input name="kat_desc" type="text" class="form-control" id="kat_desc">
                     </div>
                     <div class="mb-3">
@@ -177,7 +177,7 @@
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add Kategori</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add </button>
                 </div>
             </div>
             </form>

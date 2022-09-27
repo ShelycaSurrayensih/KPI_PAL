@@ -88,13 +88,14 @@
                                             <div class="flex-grow-1">{{ $indhanReal->kendala }}</div>
                                         </div>
                                     </td>
+                                    @if($users->status == 'administrator')
                                     <td>
-                                        @if($users->status == 'administrator')
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $indhanReal->created_at }}</div>
                                         </div>
-                                        @endif
+                                       
                                     </td>
+                                    @endif
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $indhanReal->comment }}</div>
@@ -125,7 +126,7 @@
 
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                 </form>
                                             </div>
                                             @if($users->status == 'administrator')
@@ -146,7 +147,7 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header bg-light p-3">
-                                    <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit Komentar</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                 </div>
 
@@ -178,7 +179,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalgridLabel">Details Indhan</h5>
+                                    <h5 class="modal-title" id="exampleModalgridLabel">Detail</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -280,7 +281,7 @@
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header bg-light p-3">
-                                    <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                 </div>
                                 <div class="modal-body">
@@ -379,7 +380,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
             <div class="modal-body">
@@ -441,7 +442,7 @@
                     <div class=" modal-footer">
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success" id="add-btn">Add data</button>
+                            <button type="submit" class="btn btn-success" id="add-btn">Add</button>
                         </div>
                     </div>
                 </form>

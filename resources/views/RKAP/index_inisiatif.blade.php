@@ -40,8 +40,8 @@
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                 <thead class="text-muted table-light ">
                                     <tr>
-                                        <th scope="col">Deskripsi Inisiatif</th>
-                                        <th scope="col">Tahun Inisiatif KPI</th>
+                                        <th scope="col">Deskripsi</th>
+                                        <th scope="col">Tahun</th>
                                         <th scope="col">Action</th>
                                     </tr>
 
@@ -70,8 +70,8 @@
 
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger remove-item-btn" 
-                                                        data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
+                                                        <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light" 
+                                                        data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -91,11 +91,11 @@
                                                     <form method="post" action="{{ route('inisiatifStrategis.update', $init->id_inisiatif) }}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="id_inisiatif" class="form-label">ID_inisiatif</label>
+                                                            <label for="id_inisiatif" class="form-label">inisiatif</label>
                                                             <input name="id_inisiatif" value="{{$init->id_inisiatif}}" class="form-control" id="id_inisiatif" placeholder readonly="">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="inisiatif_desc" class="form-label">Deskripsi Inisiatif</label>
+                                                            <label for="inisiatif_desc" class="form-label">Deskripsi</label>
                                                             <input name="inisiatif_desc" value="{{$init->inisiatif_desc}}" class="form-control" id="inisiatif_desc">
                                                         </div>
                                                         <div class="mb-3">
@@ -107,7 +107,7 @@
                                                 <div class="modal-footer">
                                                     <div class="hstack gap-2 justify-content-end">
                                                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success" id="edit-btn">Update Inisiatif Strategis</button>
+                                                        <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -147,7 +147,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel">Add Inisiatif Strategis</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
 
@@ -155,18 +155,18 @@
                 <form method="post" action="{{  route('inisiatifStrategis.store')  }}" enctype="multipart/form-data" id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="inisiatif_desc" class="form-label">Deskripsi Inisiatif</label>
+                        <label for="inisiatif_desc" class="form-label">Deskripsi </label>
                         <input name="inisiatif_desc" type="text" class="form-control" id="inisiatif_desc">
                     </div>
                     <div class="mb-3">
-                        <label for="tahun_inisiatif" class="form-label">Tahun Inisiatif</label>
+                        <label for="tahun_inisiatif" class="form-label">Tahun </label>
                         <input name="tahun_inisiatif" type="text" class="form-control" id="tahun_inisiatif">
                     </div>
             </div>
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add Inisiatif Strategis</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add </button>
                 </div>
             </div>
             </form>
