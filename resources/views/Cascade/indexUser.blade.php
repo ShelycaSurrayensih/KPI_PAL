@@ -242,7 +242,7 @@
                         <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi">
                     </div>
                     <div class="mb-3">
-                        <label for="bobot_cascade" class="form-label">Bobot</label>
+                        <label for="bobot_cascade" class="form-label">Bobot (Dalam Persen)</label>
                         <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade">
                     </div>
                     <div class="mb-3">

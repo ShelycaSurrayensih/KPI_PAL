@@ -17,8 +17,8 @@ class CreateCascadeRealisasisTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_CProk');
             $table->foreign('id_CProk')->references('id')->on('cascade_prokers')->onDelete('cascade');
-            $table->string('progress')->default('Placeholder');
-            $table->string('deskripsi')->default('Placeholder');
+            $table->string('progress')->default('Belum Terisi');
+            $table->string('deskripsi')->default('Belum Terisi');
             $table->string('evidence')->default('NO');
             $table->String('created_by')->default('0');
         });

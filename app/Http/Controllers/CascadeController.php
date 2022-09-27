@@ -20,7 +20,7 @@ class CascadeController extends Controller
         $casKpi = CascadeKpi::all();
         $divisi = Divisi::all();
         
-        return view('Cascade.index_kpi', compact('users', 'casKat', 'casKpi','divisi'));
+        return view('Cascade.indexAdmin', compact('users', 'casKat', 'casKpi','divisi'));
        
     }
     public function cascadeKpiStore(Request $request)
@@ -52,7 +52,7 @@ class CascadeController extends Controller
         //dd($casKpi);
         $divisi = Divisi::all();
 
-        return view('Cascade.kpi_divisi', compact('users', 'casKpiDiv', 'casKpi','divisi', 'casKpiCount','casKat'));
+        return view('Cascade.kpiDivisi_Admin', compact('users', 'casKpiDiv', 'casKpi','divisi', 'casKpiCount','casKat'));
     }
 
     public function cascadeKpiDivAll()
@@ -64,19 +64,24 @@ class CascadeController extends Controller
         $casKpi = CascadeKpi::all();
         $divisi = Divisi::all();
 
-        return view('Cascade.indexAll_divisi', compact('users', 'casKpiDiv', 'casKpi','divisi', 'casKpiCount','casKat'));
+        return view('Cascade.indexUser', compact('users', 'casKpiDiv', 'casKpi','divisi', 'casKpiCount','casKat'));
     }
    
     public function cascadeKpiDivStore(Request $request)
     {
         $casKpiDiv = new CascadeKpiDiv;
-        $bobot_kpi =  $request->bobot_kpi;
+        
         $bobot_cascade = $request->bobot_cascade;
+        $id_kpi = $request->id_CasKpi;
+        $casKpi = CascadeKpi::find($id_kpi)->first();
+        $bobot_kpi =  $casKpi->bobot_kpi;
+        $bkXbc = $bobot_kpi * ($bobot_cascade/100);
+        
         $casKpiDiv->id_CasKpi = $request->id_CasKpi;
         $casKpiDiv->kpi_divisi = $request->kpi_divisi;
         $casKpiDiv->bobot_cascade = $bobot_cascade;
         $casKpiDiv->target = $request->target;
-        $casKpiDiv->bkXbc = $bobot_kpi * ($bobot_cascade/100); 
+        $casKpiDiv->bkXbc = $bkXbc;
         $casKpiDiv->status_div = $request->status_div;
         $casKpiDiv->created_by = $request->created_by;
         $casKpiDiv->save();

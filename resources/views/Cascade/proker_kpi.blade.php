@@ -29,6 +29,7 @@
                                         <th scope="col">Deskripsi</th>
                                         <th scope="col">Progres Realisasi</th>
                                         <th scope="col">Deskripsi Realisasi</th>
+                                        <th scope="col">Komentar</th>
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
                                         @endif
@@ -64,6 +65,18 @@
                                                 <div class="flex-grow-1">Belum Terisi</div>
                                             </div>
                                         </td>
+                                        @if($users->status == 'administrator')
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">Belum Terisi</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">Belum Terisi</div>
+                                            </div>
+                                        </td>
+                                        @endif
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="add">
@@ -91,8 +104,8 @@
                                                                 <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok_count}}" readonly>
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label for="progress" class="form-label">Progres</label>
-                                                                <input name="progress" type="text" class="form-control" id="progress">
+                                                                <label for="progress" class="form-label">Progress</label>
+                                                                <input name="progress" type="text" class="form-control" id="progress" value="{{$casKpiDiv->bkXbc / 4}}" readonly>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="deskripsi" class="form-label">Deskripsi</label>
@@ -132,7 +145,7 @@
                                                         <div class="flex-grow-1">{{ $prok->deskripsi }}</div>
                                                     </div>
                                                 </td>
-                                                
+
                                                 @foreach($casReal as $realisasi)
                                                 @if($prok->id == $realisasi->id_CProk)
                                                 <td>
@@ -147,7 +160,7 @@
                                                 </td>
                                                 @endif
                                                 @endforeach
-                                                
+
                                                 @if($users->status == 'administrator')
                                                 <td>
                                                     <div class="d-flex align-items-center">
@@ -327,6 +340,18 @@
                     <div class="d-flex align-items-center">
                         <div class="flex-grow-1">Belum Terisi</div>
                 </td>
+                @if($users->status == 'administrator')
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">Belum Terisi</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">Belum Terisi</div>
+                    </div>
+                </td>
+                @endif
                 <td>
                     <div class="d-flex gap-2">
                         <div class="add">
@@ -354,8 +379,8 @@
                                     <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok_count}}" readonly>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="progress" class="form-label">Progres</label>
-                                    <input name="progress" type="text" class="form-control" id="progress">
+                                    <label for="progress" class="form-label">Progress</label>
+                                    <input name="progress" type="text" class="form-control" id="progress" value="{{$casKpiDiv->bkXbc / 4}}" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="deskripsi" class="form-label">Deskripsi</label>
