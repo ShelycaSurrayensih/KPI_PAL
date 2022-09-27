@@ -294,7 +294,7 @@
                                                                 <div class="mb-3">
                                                                     <div>
                                                                         <label for="keterangan">Keterangan</label>
-                                                                        <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="{{$reals->keterangan}}"></textarea>
+                                                                        <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" valuej="{{$reals->keterangan}}"></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <!--end col-->

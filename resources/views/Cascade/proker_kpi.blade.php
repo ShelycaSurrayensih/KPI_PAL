@@ -132,11 +132,7 @@
                                                         <div class="flex-grow-1">{{ $prok->deskripsi }}</div>
                                                     </div>
                                                 </td>
-                                                <td>
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="flex-grow-1">{{ $prok->comment }}</div>
-                                                    </div>
-                                                </td>
+                                                
                                                 @foreach($casReal as $realisasi)
                                                 @if($prok->id == $realisasi->id_CProk)
                                                 <td>
@@ -146,13 +142,18 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex align-items-center">
-                                                        <div class="flex-grow-1">{{ $realisasi->progres }}</div>
+                                                        <div class="flex-grow-1">{{ $realisasi->progress }}</div>
                                                     </div>
                                                 </td>
                                                 @endif
                                                 @endforeach
+                                                
                                                 @if($users->status == 'administrator')
-
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-grow-1">{{ $prok->comment }}</div>
+                                                    </div>
+                                                </td>
                                                 @foreach($divisi as $div)
                                                 @if($div->id_divisi == $prok->created_by)
                                                 <td>
@@ -162,7 +163,6 @@
                                                 </td>
                                                 @endif
                                                 @endforeach
-
                                                 @endif
                                                 <td>
                                                     <div class="d-flex gap-2">
@@ -326,7 +326,6 @@
                 <td>
                     <div class="d-flex align-items-center">
                         <div class="flex-grow-1">Belum Terisi</div>
-                    </div>
                 </td>
                 <td>
                     <div class="d-flex gap-2">
