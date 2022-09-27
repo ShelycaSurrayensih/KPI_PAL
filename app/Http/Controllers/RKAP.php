@@ -184,6 +184,16 @@ class RKAP extends Controller
         $real->save(); 
         return redirect()->back();
     }
+    public function view($file_name)
+    {
+        $file = $file_name;
+        $path = public_path('File/'. $file_name);
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return Response::file($path);
+        
+    }
     public function real_pmsUpdate(Request $request, $id)
     {
         $real = realisasiPms::where('id_real',$id)->update($request->except(['_token']));

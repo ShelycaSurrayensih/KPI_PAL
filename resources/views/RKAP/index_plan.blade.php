@@ -113,6 +113,17 @@
                                                 <div class="edit">
                                                     <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $plan->id_plan }}">Edit</button>
                                                 </div>
+                                                <div class="view">
+                                                @foreach($real as $reals)
+                                                @if($reals->id_plan == $plan->id_plan)
+                                                <a href="{{ route('viewFile', $reals->file_evidence) }}">
+                                                    <button type="submit" class="btn btn-sm btn-primary">
+                                                        View
+                                                    </button>
+                                                </a>
+                                                @endif
+                                                @endforeach
+                                                </div>
                                                 <div class="details">
                                                     <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid{{ $plan->id_plan }}">
                                                         Realisasi

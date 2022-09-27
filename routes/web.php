@@ -166,3 +166,6 @@ Route::get('/KPI_Indiv/Realisasi/commentDelete/{id}', [App\Http\Controllers\Indi
 Route::get('/Plan_PMS/commentDelete/{id}', [App\Http\Controllers\RKAP::class, 'deleteComment'])->name('planpms.delComment');
 
 Route::get('/KPI_Indhan/Realisasi/commentDelete/{id}', [App\Http\Controllers\CascadeController::class, 'deleteComment'])->name('indhanReal.delComment');
+
+//view document
+Route::get('/view/{filename}', [App\Http\Controllers\RKAP::class, 'view'])->name('viewFile');
