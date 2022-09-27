@@ -98,7 +98,11 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpi->div_lead }}</div>
+                                                @foreach($divisi as $div)
+                                                @if($div->id_divisi == $kpi->div_lead)
+                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                @endif
+                                                @endforeach
                                             </div>
                                         </td>
                                         <td>

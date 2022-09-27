@@ -8,6 +8,9 @@ use App\Models\IndivRealisasi;
 use App\Models\Divisi;
 use App\Models\Direktorat;
 
+use Illuminate\Support\Facades\Response;
+use PDF;
+
 class IndivRealisasiController extends Controller
 {
     /**
@@ -54,8 +57,14 @@ class IndivRealisasiController extends Controller
         $indivRealisasi->progres= $request->progres;
         $indivRealisasi->realisasi= $request->realisasi;
         $indivRealisasi->prognosa = $request->prognosa;
-        $indivRealisasi->keterangan= $request->keterangan;
+        $indivRealisasi->kendala= $request->keterangan;
         $indivRealisasi->id_divisi= $request->id_divisi;
+
+        if($request->file != Null){
+            $fileName = $request->file->getClientOriginalName();
+            $request->file->move(public_path('File/Indiv'), $fileName);
+        $indivRealisasi->file_evidence = $fileName;
+        }
         $indivRealisasi->save();
         return redirect()->back();
     }
@@ -127,5 +136,17 @@ class IndivRealisasiController extends Controller
         $delete->comment = 'Belum ada Komentar';
         $delete->save();
         return redirect()->back();
+    }
+
+    //View File
+    public function view($file_name)
+    {
+        $file = $file_name;
+        $path = public_path('File/Indiv/'. $file_name);
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return Response::file($path);
+        
     }
 }

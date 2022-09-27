@@ -9,6 +9,8 @@ use App\Models\CascadeKpiDiv;
 use App\Models\CascadeProker;
 use App\Models\CascadeRealisasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use PDF;
 
 class CascadeController extends Controller
 {
@@ -166,8 +168,8 @@ class CascadeController extends Controller
 
         if($request->file != Null){
             $fileName = $request->file->getClientOriginalName();
-            $request->file->move(public_path('File'), $fileName);
-        $casReal->evidence = $fileName;
+            $request->file->move(public_path('File/Cascade'), $fileName);
+        $casReal->file_evidence = $fileName;
         }
 
         //dd($casReal);
@@ -188,5 +190,16 @@ class CascadeController extends Controller
         $delete->comment = 'Belum ada Komentar';
         $delete->save();
         return redirect()->back();
+    }
+
+    public function view($file_name)
+    {
+        $file = $file_name;
+        $path = public_path('File/Cascade/'. $file_name);
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return Response::file($path);
+        
     }
 }

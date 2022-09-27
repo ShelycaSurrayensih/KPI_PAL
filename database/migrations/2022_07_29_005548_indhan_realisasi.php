@@ -20,8 +20,9 @@ class IndhanRealisasi extends Migration
             $table->String('realisasi');
             $table->String('bulan');
             $table->year('tahun');
-            $table->String('kendala');
             $table->string('comment')->default('Belum ada Komentar');
+            $table->String('kendala')->nullable();
+            $table->String('file_evidence')->nullable();
             $table->timestamps();
             $table->String('created_by')->default('0');
         });

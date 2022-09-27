@@ -180,22 +180,13 @@ class RKAP extends Controller
 
         if($request->file != Null){
             $fileName = $request->file->getClientOriginalName();
-            $request->file->move(public_path('File'), $fileName);
+            $request->file->move(public_path('File/RKAP'), $fileName);
         $real->file_evidence = $fileName;
         }
         $real->save(); 
         return redirect()->back();
     }
-    public function view($file_name)
-    {
-        $file = $file_name;
-        $path = public_path('File/'. $file_name);
-        $headers = array(
-            'Content-Type: application/pdf',
-        );
-        return Response::file($path);
-        
-    }
+    
     public function real_pmsUpdate(Request $request, $id)
     {
         $real = realisasiPms::where('id_real',$id)->update($request->except(['_token']));
@@ -223,5 +214,30 @@ class RKAP extends Controller
         $delete->comment = 'Belum ada Komentar';
         $delete->save();
         return redirect()->back();
+    }
+
+    //View File
+    public function view($file_name)
+    {
+        $file = $file_name;
+        $path = public_path('File/RKAP/'. $file_name);
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return Response::file($path);
+        
+    }
+
+    //Download File
+    public function download($file_name)
+    {
+        $file = $file_name;
+        $path = public_path('File/RKAP/'. $file_name);
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return Response::download($path, $file, $headers);
+        
     }
 }

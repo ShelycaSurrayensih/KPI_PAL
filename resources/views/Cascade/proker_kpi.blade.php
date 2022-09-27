@@ -29,7 +29,9 @@
                                         <th scope="col">Deskripsi</th>
                                         <th scope="col">Progres Realisasi</th>
                                         <th scope="col">Deskripsi Realisasi</th>
+                                        <th scope="col">Kendala Realisasi</th>
                                         <th scope="col">Komentar</th>
+                                        <!-- <th scope="col">Kendala</th> -->
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
                                         @endif
@@ -158,15 +160,21 @@
                                                         <div class="flex-grow-1">{{ $realisasi->progress }}</div>
                                                     </div>
                                                 </td>
-                                                @endif
-                                                @endforeach
-
-                                                @if($users->status == 'administrator')
+                                                
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-grow-1">{{ $realisasi->kendala }}</div>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <div class="d-flex align-items-center">
                                                         <div class="flex-grow-1">{{ $prok->comment }}</div>
                                                     </div>
                                                 </td>
+                                                @endif
+                                                @endforeach
+
+                                                @if($users->status == 'administrator')
                                                 @foreach($divisi as $div)
                                                 @if($div->id_divisi == $prok->created_by)
                                                 <td>
@@ -192,6 +200,18 @@
                                                             </a>
                                                             @endif
                                                             @endif
+                                                            @foreach($casReal as $reals)
+                                                            @if($reals->id_CProk == $prok->id)
+                                                            @if($reals->file_evidence != null)
+                                                                <a href="{{ route('viewFile.cascade', $reals->file_evidence) }}">
+                                                                    <button type="submit" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light shadow-none">
+                                                                        <i class="ri-mail-send-line"></i>
+                                                                    </button>
+                                                                </a>
+                                                            @endif
+                                                            @endif
+                                                            @endforeach
+
                                                         </div>
                                                     </div>
                                                 </td>
@@ -244,10 +264,6 @@
                                                         <div class="modal-body">
                                                             <form method="post" action="{{route('cascadeProker.update', $prok->id)}}" enctype="multipart/form-data" id="myForm">
                                                                 @csrf
-                                                                <input name="id_CDiv" type="text" class="form-control" id="id_CDiv" value="{{$casKpiDiv->id}}" readonly hidden>
-                                                                <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok->tw}}" readonly hidden>
-                                                                <input name="progress" type="text" class="form-control" id="progress" value="{{$prok->progress}}" readonly hidden>
-                                                                <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$prok->deskripsi}}" readonly hidden>
                                                                 <div class="mb-3">
                                                                     <label for="comment" class="form-label">Comment</label>
                                                                     <input name="comment" type="text" class="form-control" id="comment" value="{{$prok->comment}} ">
@@ -284,16 +300,22 @@
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="progress" class="form-label">Progres</label>
-                                                                    <input name="progress" type="text" class="form-control" id="progress" value="{{ $real->progress }}">
+                                                                    <input name="progress" type="text" class="form-control" id="progress" value="{{ $prok->progress }}">
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="deskripsi" class="form-label">Deskripsi Progres</label>
                                                                     <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{ $real->deskripsi }}">
                                                                 </div>
-                                                                
+
                                                                 <div class="mb-3">
                                                                     <label for="keterangan" class="form-label">Keterangan</label>
                                                                     <textarea name="keterangan" type="text" class="form-control" id="keterangan" value="{{ $real->keterangan }}">{{ $real->keterangan }}</textarea>
+                                                                </div>
+                                                                <div>
+                                                                    <label for="file_evidence">File Evidence</label>
+                                                                    <div class="fallback">
+                                                                        <input type="file" name="file" multiple="multiple">
+                                                                    </div>
                                                                 </div>
                                                         </div>
                                                         <div class="modal-footer">

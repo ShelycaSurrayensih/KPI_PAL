@@ -20,7 +20,8 @@ class CreateCascadeRealisasisTable extends Migration
             $table->string('progress')->default('Belum Terisi');
             $table->string('deskripsi')->default('Belum Terisi');
             $table->string('keterangan')->default('Dapat diisi dengan kendala ketidaktercapaian');
-            $table->string('evidence')->default('NO');
+            $table->String('kendala')->nullable();
+            $table->String('file_evidence')->nullable();
             $table->String('created_by')->default('0');
         });
     }

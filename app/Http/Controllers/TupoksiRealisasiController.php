@@ -96,6 +96,11 @@ class TupoksiRealisasiController extends Controller
         $tupoksiRealisasi->id_tw = $request->get('id_tw');
         $tupoksiRealisasi->progres = $request->get('progres');
         $tupoksiRealisasi->deskripsi = $request->get('deskripsi');
+        if($request->file != Null){
+            $fileName = $request->file->getClientOriginalName();
+            $request->file->move(public_path('File/Tupoksi'), $fileName);
+        $tupoksiRealisasi->file_evidence = $fileName;
+        }
         $tupoksiRealisasi->save();
         return redirect()->route('KPI_TupoksiRealisasi.edit', $id_realisasi)->with('success', 'Data berhasil ditambahkan');
     }

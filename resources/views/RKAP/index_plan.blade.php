@@ -113,17 +113,6 @@
                                                 <div class="edit">
                                                     <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $plan->id_plan }}">Edit</button>
                                                 </div>
-                                                <div class="view">
-                                                @foreach($real as $reals)
-                                                @if($reals->id_plan == $plan->id_plan)
-                                                <a href="{{ route('viewFile', $reals->file_evidence) }}">
-                                                    <button type="submit" class="btn btn-outline-success btn-icon waves-effect waves-light shadow-none">
-                                                    <i class="ri-mail-send-line"></i>
-                                                    </button>
-                                                </a>
-                                                @endif
-                                                @endforeach
-                                                </div>
                                                 <div class="details">
                                                     <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid{{ $plan->id_plan }}">
                                                         Realisasi
@@ -136,6 +125,18 @@
                                                         <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                     </form>
                                                 </div>
+                                                @foreach($real as $reals)
+                                                @if($reals->id_plan == $plan->id_plan)
+                                                <div class="view">
+                                                <a href="{{ route('viewFile', $reals->file_evidence) }}">
+                                                    <button type="submit" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light shadow-none">
+                                                    <i class="ri-mail-send-line"></i>
+                                                    </button>
+                                                </a>
+                                                </div>
+                                                @endif
+                                                @endforeach
+
                                                 @if($users->status == 'administrator')
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#comment{{$plan->id_plan}}">Comment</button>
                                                 @if($plan->comment != 'Belum ada Komentar')
@@ -557,7 +558,7 @@
                             <?php
                             $tg_awal = date('Y') - 0;
                             $tg_akhir = date('Y') + 2;
-                            for ($i = $tg_akhir; $i >= $tg_awal; $i--) {
+                            for ($i = $tg_awal; $i <= $tg_akhir; $i++) {
                                 echo "
                                 <option value='$i'";
                                 if (date('Y') == $i) {

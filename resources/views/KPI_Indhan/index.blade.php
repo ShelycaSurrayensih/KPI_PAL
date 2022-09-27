@@ -238,7 +238,7 @@
                     <input name="created_by" type="text" class="form-control"
                         id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
-                        <label for="id_tim">ID Tim</label>
+                        <label for="id_tim">Nama Tim</label>
                         <select name="id_tim" class="form-control" id="id_tim">
                             @foreach ($indhanTim as $tim)
                             <option value="{{$tim->id_tim}}">{{ "$tim->nama_tim" }}</option>
@@ -246,12 +246,12 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="id_divisi">ID Divisi</label>
+                        <label for="id_divisi">Nama Divisi</label>
                         @foreach($divisi as $div)
                         @if($users->id_divisi == $div->id_divisi)
                         <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi"
-                            readonly="">
-
+                            readonly hidden>
+                            <input name="" value="{{ $div->div_name }}" class="form-control" id="id_divisi" readonly >
                         @endif @endforeach
                     </div>
                     <div class="mb-3">

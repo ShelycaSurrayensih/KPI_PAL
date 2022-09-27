@@ -21,10 +21,11 @@ class IndivPlan extends Migration
             $table->String('progres');
             $table->String('realisasi');
             $table->String('prognosa');
-            $table->String('keterangan');
             $table->unsignedBigInteger('id_divisi')->nullable();
             $table->foreign('id_divisi')->references('id_divisi')->on('divisi')->onDelete('set null')->onUpdate('cascade');
             $table->string('comment')->default('Belum ada Komentar');
+            $table->String('kendala')->nullable();
+            $table->String('file_evidence')->nullable();
             $table->String('created_by')->default('0');
         });
     }

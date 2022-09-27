@@ -19,7 +19,7 @@ class CreateRealisasiPmsTable extends Migration
             $table->foreign('id_plan')->references('id_plan')->on('plan_pms')->onDelete('cascade');
             $table->text('progress_real');
             $table->text('desc_real');
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->text('file_evidence')->nullable();
             $table->String('created_by')->default('0');
         });

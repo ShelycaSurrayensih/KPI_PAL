@@ -125,6 +125,17 @@
                                             </a>
                                             @endif
                                             @endif
+                                            @if($indivReal->id_kpidir == $kpidir->id_kpidir)
+                                            @if($indivReal->file_evidence != null)
+                                            <div class="add">
+                                                <a href="{{ route('viewFile.tupoksi', $indivReal->file_evidence) }}">
+                                                    <button type="submit" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light shadow-none">
+                                                        <i class="ri-mail-send-line"></i>
+                                                    </button>
+                                                </a>
+                                            </div>
+                                            @endif
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>
@@ -290,6 +301,14 @@
                                                 <form method="post" action="{{ route('indivReal.update', $indivReal->id_realisasi) }}" enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
+                                                        <label for="id_divisi">ID Divisi</label>
+                                                        @foreach($divisi as $div)
+                                                        @if($users->id_divisi == $div->id_divisi)
+                                                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly="">
+
+                                                        @endif @endforeach
+                                                    </div>
+                                                    <div class="mb-3">
                                                         <label for="id_kpidir">KPI</label>
                                                         <input name="id_kpidir" class="form-control" id="id_kpidir" value="{{$kpidir->id_kpidir}}" readonly="">
 
@@ -321,13 +340,12 @@
 
                                                     </div>
 
-                                                    <div class="mb-3">
-                                                        <label for="id_divisi">ID Divisi</label>
-                                                        @foreach($divisi as $div)
-                                                        @if($users->id_divisi == $div->id_divisi)
-                                                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly="">
 
-                                                        @endif @endforeach
+                                                    <div>
+                                                        <label for="file_evidence">File Evidence</label>
+                                                        <div class="fallback">
+                                                            <input type="file" name="file" multiple="multiple">
+                                                        </div>
                                                     </div>
                                                     <div class=" modal-footer">
                                                         <div class="hstack gap-2 justify-content-end">
@@ -385,10 +403,17 @@
             <div class="modal-body">
                 <form method="post" action="{{ route('KPI_IndivRealisasi.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
-
+                    <div class=" mb-3">
+                        <label for="id_divisi">Divisi</label>
+                        @foreach($divisi as $div)
+                        @if($users->id_divisi == $div->id_divisi)
+                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly hidden>
+                        <input name="" value="{{ $div->div_name }}" class="form-control" id="id_divisi" readonly>
+                        @endif @endforeach
+                    </div>
                     <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
-                        <label for="id_kpidir">ID KPI</label>
+                        <label for="id_kpidir">KPI</label>
                         <select name="id_kpidir" class="form-control" id="id_kpidir">
                             <option value="{{$kpidir->id_kpidir}}">{{ "$kpidir->desc_kpidir" }}</option>
                         </select>
@@ -417,12 +442,11 @@
                         <label for="keterangan">Keterangan</label>
                         <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
                     </div>
-                    <div class=" mb-3">
-                        <label for="id_divisi">ID Divisi</label>
-                        @foreach($divisi as $div)
-                        @if($users->id_divisi == $div->id_divisi)
-                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly="">
-                        @endif @endforeach
+                    <div>
+                        <label for="file_evidence">File Evidence</label>
+                        <div class="fallback">
+                            <input type="file" name="file" multiple="multiple">
+                        </div>
                     </div>
 
                     <div class="modal-footer">

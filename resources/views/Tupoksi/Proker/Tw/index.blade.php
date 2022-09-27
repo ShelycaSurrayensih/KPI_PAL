@@ -21,7 +21,8 @@
                                             <th class="sort" data-sort="deskripsi">Deskripsi Proker</th>
                                             <th class="sort" data-sort="progres">Progres Proker</th>
                                             <th class="sort" data-sort="deskripsi">Deskripsi Realisasi</th>
-                                            <th class="sort" data-sort="progres">Progres Realisasi</th>
+                                            <th class="sort" data-sort="progres">Progress Realisasi</th>
+                                            <th class="sort" data-sort="progres">Kendala Realisasi</th>
                                             <th class="sort" data-sort="progres">Komentar</th>
                                             <th class="sort" data-sort="action">Action</th>
                                         </tr>
@@ -33,6 +34,21 @@
                                             <td>
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-grow-1">{{ $prok_count }}</div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1">Belum Terisi</div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1">Belum Terisi</div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="flex-grow-1">Belum Terisi</div>
                                                 </div>
                                             </td>
                                             <td>
@@ -106,12 +122,9 @@
                                             @endfor
                                             @else
 
-                                            @for($prok_count=1 ; $prok_count <= 4 ; $prok_count++) 
-                                            <?php
-                                            $count = 1;
-                                            ?> 
-                                            @foreach($tupoksiTw as $tw) 
-                                            @if($tw->id_proker == $tupoksiProker->id_proker)
+                                            @for($prok_count=1 ; $prok_count <= 4 ; $prok_count++) <?php
+                                                                                                    $count = 1;
+                                                                                                    ?> @foreach($tupoksiTw as $tw) @if($tw->id_proker == $tupoksiProker->id_proker)
                                                 @if($prok_count==$tw->tw)
                                                 <tr>
                                                     <td>
@@ -129,20 +142,31 @@
                                                             <div class="flex-grow-1">{{ $tw->progres }}</div>
                                                         </div>
                                                     </td>
+
                                                     @foreach($tupoksiRealisasi as $realisasi)
-                                        @if($tw->id_tw == $realisasi->id_tw)
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $realisasi->deskripsi }}</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $realisasi->progres }}</div>
-                                            </div>
-                                        </td>
-                                        @endif
-                                        @endforeach
+                                                    @if($tw->id_tw == $realisasi->id_tw)
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="flex-grow-1">{{ $realisasi->deskripsi }}</div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="flex-grow-1">{{ $realisasi->progres }}</div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="flex-grow-1">{{ $realisasi->kendala }}</div>
+                                                        </div>
+                                                    </td>
+                                                    @endif
+                                                    @endforeach
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="flex-grow-1">{{ $tw->comment }}</div>
+                                                        </div>
+                                                    </td>
                                                     <td>
                                                         <div class="d-flex gap-2">
                                                             <div class="add">
@@ -152,6 +176,20 @@
                                                             <div class="edit">
                                                                 <button type="button" class="btn btn-sm btn-success edit-item-btn data-bs-toggle=" data-bs-toggle="modal" id="create-btn" data-bs-target="#realisasi{{$tw->tw}}">Realisasi</button>
                                                             </div>
+
+                                                            @foreach($tupoksiRealisasi as $reals)
+                                                            @if($reals->id_CProk == $tw->id)
+                                                            @if($reals->file_evidence != null)
+                                                            <div class="add">
+                                                                <a href="{{ route('viewFile.tupoksi', $reals->file_evidence) }}">
+                                                                    <button type="submit" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light shadow-none">
+                                                                        <i class="ri-mail-send-line"></i>
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                            @endif
+                                                            @endif
+                                                            @endforeach
                                                         </div>
                                                     </td>
 
@@ -168,26 +206,21 @@
                                                             <div class="modal-body">
                                                                 <form method="post" action="{{route('tupoksiTw.update', $tw->id_tw)}}" enctype="multipart/form-data" id="myForm">
                                                                     @csrf
-                                                                    <input name="id_proker" type="text" class="form-control"
-                                                            id="id_proker" value="{{$tupoksiProker->id_proker }}"
-                                                            readonly hidden>
-                                                        <div class="mb-3">
-                                                            <label for="tw" class="form-label">TW</label>
-                                                            <input name="tw" type="text" class="form-control"
-                                                                id="cas_kpiName" value="{{$tw->tw}}" readonly>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="deskripsi" class="form-label">Deskripsi
-                                                                Proker</label>
-                                                            <input name="deskripsi" type="text" class="form-control"
-                                                                id="deskripsi" value="{{$tw->deskripsi}}">
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="progres" class="form-label">Progres
-                                                                proker</label>
-                                                            <input name="progres" type="text" class="form-control"
-                                                                id="progres" value="{{$tw->progres}}">
-                                                        </div>
+                                                                    <input name="id_proker" type="text" class="form-control" id="id_proker" value="{{$tupoksiProker->id_proker }}" readonly hidden>
+                                                                    <div class="mb-3">
+                                                                        <label for="tw" class="form-label">TW</label>
+                                                                        <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$tw->tw}}" readonly>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="deskripsi" class="form-label">Deskripsi
+                                                                            Proker</label>
+                                                                        <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$tw->deskripsi}}">
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="progres" class="form-label">Progres
+                                                                            proker</label>
+                                                                        <input name="progres" type="text" class="form-control" id="progres" value="{{$tw->progres}}">
+                                                                    </div>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <div class="hstack gap-2 justify-content-end">
@@ -223,6 +256,12 @@
                                                                         <label for="progres" class="form-label">Progres Proker</label>
                                                                         <input name="progres" type="text" class="form-control" id="progres" value="{{$real->progres}}">
                                                                     </div>
+                                                                    <div>
+                                                                        <label for="file_evidence">File Evidence</label>
+                                                                        <div class="fallback">
+                                                                            <input type="file" name="file" multiple="multiple">
+                                                                        </div>
+                                                                    </div>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <div class="hstack gap-2 justify-content-end">
@@ -251,6 +290,16 @@
                     <td>
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">{{ $prok_count }}</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">Belum Terisi</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">Belum Terisi</div>
                         </div>
                     </td>
                     <td>

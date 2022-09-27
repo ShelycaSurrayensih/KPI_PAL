@@ -168,4 +168,11 @@ Route::get('/Plan_PMS/commentDelete/{id}', [App\Http\Controllers\RKAP::class, 'd
 Route::get('/KPI_Indhan/Realisasi/commentDelete/{id}', [App\Http\Controllers\CascadeController::class, 'deleteComment'])->name('indhanReal.delComment');
 
 //view document
-Route::get('/view/{filename}', [App\Http\Controllers\RKAP::class, 'view'])->name('viewFile');
+Route::get('/view/RKAP/{filename}', [App\Http\Controllers\RKAP::class, 'view'])->name('viewFile');
+
+Route::get('/view/Cascade/{filename}', [App\Http\Controllers\CascadeController::class, 'view'])->name('viewFile.cascade');
+
+Route::get('/view/Tupoksi/{filename}', [App\Http\Controllers\TwController::class, 'view'])->name('viewFile.tupoksi');
+
+Route::get('/view/Indiv/{filename}', [App\Http\Controllers\IndivRealisasiController::class, 'view'])->name('viewFile.indiv');
+Route::get('/view/Indhan/{filename}', [App\Http\Controllers\IndhanRealisasiController::class, 'view'])->name('viewFile.indhan');

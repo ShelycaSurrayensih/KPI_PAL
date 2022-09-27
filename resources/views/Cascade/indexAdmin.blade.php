@@ -13,7 +13,7 @@
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
                             <div>
-                            @if($users->status == 'administrator')
+                                @if($users->status == 'administrator')
                                 <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
                                 @endif
@@ -65,12 +65,20 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpi->bobot_kpi }}</div>
                                             </div>
-                                        </td> 
+                                        </td>
                                         <td>
+                                            <?php
+                                            $show = 0;
+                                            ?>
                                             <div class="d-flex align-items-center">
                                                 @foreach($divisi as $div)
                                                 @if($div->id_divisi == $kpi->created_by)
                                                 <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                @elseif($kpi->created_by == 0 && $show == 0)
+                                                <div class="flex-grow-1">Admin</div>
+                                                <?php
+                                                $show = 1;
+                                                ?>
                                                 @endif
                                                 @endforeach
                                             </div>
@@ -92,7 +100,7 @@
                                                     <form action="" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
+                                                        <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -178,8 +186,7 @@
             <div class="modal-body">
                 <form method="post" action="{{route('cascadeKPI.store')}}" enctype="multipart/form-data" id="myForm">
                     @csrf
-                    <input name="created_by" type="text" class="form-control"
-                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
+                    <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="id_kat" class="form-label">Kategori</label>
                         <select name="id_kat" class="form-control" id="id_inisiatif">
@@ -192,7 +199,7 @@
                         <label for="cas_kpiName" class="form-label">KPI</label>
                         <input name="cas_kpiName" type="text" class="form-control" id="inisiatif_desc">
                     </div>
-                    
+
                     <div class="mb-3">
                         <label for="bobot_kpi" class="form-label">Bobot</label>
                         <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi">

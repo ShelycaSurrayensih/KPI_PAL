@@ -93,7 +93,7 @@
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $indhanReal->created_at }}</div>
                                         </div>
-                                       
+
                                     </td>
                                     @endif
                                     <td>
@@ -135,6 +135,17 @@
                                             <a href="{{route('indhanReal.delComment', $indhanReal->id_realisasi)}}">
                                                 <button class="btn btn-sm btn-danger edit-item-btn"> Delete Comment</button>
                                             </a>
+                                            @endif
+                                            @endif
+                                            @if($indhanReal->id_indhan == $indhan->id_indhan)
+                                            @if($indhanReal->file_evidence != null)
+                                            <div class="add">
+                                                <a href="{{ route('viewFile.indhan', $indhanReal->file_evidence) }}">
+                                                    <button type="submit" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light shadow-none">
+                                                        <i class="ri-mail-send-line"></i>
+                                                    </button>
+                                                </a>
+                                            </div>
                                             @endif
                                             @endif
                                         </div>
@@ -262,6 +273,7 @@
                                                     <input type="text" name="kendala" class="form-control" id="kendala" value="{{ $indhanReal->kendala }}" readonly>
                                                 </div>
                                             </div>
+
                                             <div class="col-lg-12">
                                                 <div class="hstack gap-2 justify-content-end">
                                                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
@@ -328,7 +340,12 @@
                                             <input type="text" name="kendala" class="form-control" id="kendala" value=" {{$indhanReal->kendala}}">
 
                                         </div>
-
+                                        <div>
+                                            <label for="file_evidence">File Evidence</label>
+                                            <div class="fallback">
+                                                <input type="file" name="file" multiple="multiple">
+                                            </div>
+                                        </div>
                                         <div class=" modal-footer">
                                             <div class="hstack gap-2 justify-content-end">
                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
@@ -438,7 +455,12 @@
 
                     </div>
 
-
+                    <div>
+                        <label for="file_evidence">File Evidence</label>
+                        <div class="fallback">
+                            <input type="file" name="file" multiple="multiple">
+                        </div>
+                    </div>
                     <div class=" modal-footer">
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>

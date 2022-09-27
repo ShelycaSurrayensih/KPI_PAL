@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Indhan;
 use App\Models\IndhanRealisasi;
+use Illuminate\Support\Facades\Response;
+use PDF;
 
 class IndhanRealisasiController extends Controller
 {
@@ -50,6 +52,12 @@ class IndhanRealisasiController extends Controller
         $indhanRealisasi->kendala = $request->kendala;
         $indhanRealisasi->created_by = $request->created_by;
         $indhanRealisasi->timestamp;
+        
+        if($request->file != Null){
+            $fileName = $request->file->getClientOriginalName();
+            $request->file->move(public_path('File/Indhan'), $fileName);
+        $indhanRealisasi->file_evidence = $fileName;
+        }
         $indhanRealisasi->save();
         return redirect()->back();
     }
@@ -98,6 +106,12 @@ class IndhanRealisasiController extends Controller
         $indhanRealisasi->kendala = $request->get('kendala');
         $indhanRealisasi->comment = $request->get('comment');
         $indhanRealisasi->timestamp;
+        
+        if($request->file != Null){
+            $fileName = $request->file->getClientOriginalName();
+            $request->file->move(public_path('File/Indhan'), $fileName);
+        $indhanRealisasi->file_evidence = $fileName;
+        }
         $indhanRealisasi->save();
         return redirect()->route('KPI_IndhanRealisasi.edit', $id_realisasi)->with('success', 'Data berhasil ditambahkan');
     }
@@ -121,5 +135,17 @@ class IndhanRealisasiController extends Controller
         $delete->comment = 'Belum ada Komentar';
         $delete->save();
         return redirect()->back();
+    }
+
+    //View File
+    public function view($file_name)
+    {
+        $file = $file_name;
+        $path = public_path('File/Indhan/'. $file_name);
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return Response::file($path);
+        
     }
 }

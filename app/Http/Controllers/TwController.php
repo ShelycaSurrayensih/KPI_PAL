@@ -9,6 +9,9 @@ use App\Models\TupoksiProker;
 use App\Models\TupoksiTw;
 use App\Models\TupoksiRealisasi;
 
+use Illuminate\Support\Facades\Response;
+use PDF;
+
 class TwController extends Controller
 {
     /**
@@ -65,8 +68,8 @@ class TwController extends Controller
 
         $tupoksiRealisasi = new TupoksiRealisasi;
         $tupoksiRealisasi->id_tw = $tupoksiTW->id_tw;
-        $tupoksiRealisasi->progres = 'Placeholder';
-        $tupoksiRealisasi->deskripsi = 'Placeholder';
+        $tupoksiRealisasi->progres = 'Belum Terisi';
+        $tupoksiRealisasi->deskripsi = 'Belum Terisi';
         $tupoksiRealisasi->save();
         return redirect()->back();
     }
@@ -132,5 +135,16 @@ class TwController extends Controller
         $tupoksiTw = TupoksiTw::where('id_tw', $id_tw);
         $tupoksiTw->delete();
         return redirect()->back();
+    }
+
+    public function view($file_name)
+    {
+        $file = $file_name;
+        $path = public_path('File/Tupoksi/'. $file_name);
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        return Response::file($path);
+        
     }
 }

@@ -35,7 +35,8 @@
                                 <thead class="text-muted table-light ">
                                     <tr>
                                         <th scope="col">KPI</th>
-                                        <th scope="col">Bobot</th>
+                                        <th scope="col">Bobot KPI</th>
+                                        <th scope="col">Bobot Cascading</th>
                                         <th scope="col">KPI Divisi</th>
                                         <th scope="col">Target</th>
                                         <th scope="col">D * E</th>
@@ -59,7 +60,12 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpiDiv->bobot_cascade }}</div>
+                                                <div class="flex-grow-1">{{ $kpi->bobot_kpi }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">{{ $kpiDiv->bobot_cascade }}%</div>
                                             </div>
                                         </td>
                                         <td>
