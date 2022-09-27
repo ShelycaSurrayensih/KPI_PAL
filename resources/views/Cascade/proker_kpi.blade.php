@@ -5,7 +5,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Cascade KPI</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Proker</h4>
             </div><!-- end card header -->
             <div class="card-body">
                 <div id="IndivKPI">
@@ -25,9 +25,9 @@
                                 <thead class="text-muted table-light ">
                                     <tr>
                                         <th scope="col">TW</th>
-                                        <th scope="col">Progress</th>
+                                        <th scope="col">Progres</th>
                                         <th scope="col">Deskripsi</th>
-                                        <th scope="col">Progress Realisasi</th>
+                                        <th scope="col">Progres Realisasi</th>
                                         <th scope="col">Deskripsi Realisasi</th>
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
@@ -77,7 +77,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header bg-light p-3">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Add Cascade Proker</h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Add </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                     </div>
 
@@ -91,7 +91,7 @@
                                                                 <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok_count}}" readonly>
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label for="progress" class="form-label">Progress</label>
+                                                                <label for="progress" class="form-label">Progres</label>
                                                                 <input name="progress" type="text" class="form-control" id="progress">
                                                             </div>
                                                             <div class="mb-3">
@@ -102,7 +102,7 @@
                                                     <div class="modal-footer">
                                                         <div class="hstack gap-2 justify-content-end">
                                                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success" id="add-btn">Add Cascade Proker</button>
+                                                            <button type="submit" class="btn btn-success" id="add-btn">Add </button>
                                                         </div>
                                                     </div>
                                                     </form>
@@ -188,7 +188,7 @@
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header bg-light p-3">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit </h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                         </div>
 
@@ -201,7 +201,7 @@
                                                                     <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok->tw}}" readonly>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="progress" class="form-label">Progress</label>
+                                                                    <label for="progress" class="form-label">Progres</label>
                                                                     <input name="progress" type="text" class="form-control" id="progress" value="{{$prok->progress}}">
                                                                 </div>
                                                                 <div class="mb-3">
@@ -212,7 +212,7 @@
                                                         <div class="modal-footer">
                                                             <div class="hstack gap-2 justify-content-end">
                                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
+                                                                <button type="submit" class="btn btn-success" id="add-btn">Edit </button>
                                                             </div>
                                                         </div>
                                                         </form>
@@ -224,7 +224,7 @@
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header bg-light p-3">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Edit </h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                         </div>
 
@@ -243,7 +243,7 @@
                                                         <div class="modal-footer">
                                                             <div class="hstack gap-2 justify-content-end">
                                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-success" id="add-btn">Edit Cascade Proker</button>
+                                                                <button type="submit" class="btn btn-success" id="add-btn">Edit </button>
                                                             </div>
                                                         </div>
                                                         </form>
@@ -270,11 +270,11 @@
                                                                     <input name="" type="text" class="form-control" id="" value="{{$prok->tw}}" readonly>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="progress" class="form-label">Progress</label>
+                                                                    <label for="progress" class="form-label">Progres</label>
                                                                     <input name="progress" type="text" class="form-control" id="progress" value="{{ $real->progress }}">
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="deskripsi" class="form-label">Deskripsi Progress</label>
+                                                                    <label for="deskripsi" class="form-label">Deskripsi Progres</label>
                                                                     <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{ $real->deskripsi }}">
                                                                 </div>
                                                         </div>
@@ -340,7 +340,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header bg-light p-3">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Cascade Proker</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Add</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                         </div>
 
@@ -354,7 +354,7 @@
                                     <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok_count}}" readonly>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="progress" class="form-label">Progress</label>
+                                    <label for="progress" class="form-label">Progres</label>
                                     <input name="progress" type="text" class="form-control" id="progress">
                                 </div>
                                 <div class="mb-3">
@@ -365,7 +365,7 @@
                         <div class="modal-footer">
                             <div class="hstack gap-2 justify-content-end">
                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-success" id="add-btn">Add Cascade Proker</button>
+                                <button type="submit" class="btn btn-success" id="add-btn">Add </button>
                             </div>
                         </div>
                         </form>

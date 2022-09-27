@@ -5,7 +5,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Cascade KPI</h4>
+                <h4 class="card-title mb-0 flex-grow-1">Cascading</h4>
             </div><!-- end card header -->
 
             <div class="card-body">
@@ -16,7 +16,6 @@
                             @if($users->status == 'administrator')
                                 <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
                                 @endif
                             </div>
                         </div>
@@ -37,9 +36,9 @@
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                 <thead class="text-muted table-light ">
                                     <tr>
-                                        <th scope="col">Nama KPI</th>
-                                        <th scope="col">Kategori KPI</th>
-                                        <th scope="col">Bobot KPI</th>
+                                        <th scope="col">KPI</th>
+                                        <th scope="col">Kategori</th>
+                                        <th scope="col">Bobot</th>
                                         <th scope="col">Created By</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -93,7 +92,7 @@
                                                     <form action="" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
+                                                        <button type="submit" class="btn btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -113,7 +112,7 @@
                                                     <form method="post" action="{{route('cascadeKPI.update', $kpi->id)}}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="cas_kpiName" class="form-label">Nama KPI</label>
+                                                            <label for="cas_kpiName" class="form-label">KPI</label>
                                                             <input name="cas_kpiName" type="text" class="form-control" id="cas_kpiName" value="{{$kpi->cas_kpiName}}">
                                                         </div>
                                                         <div class="mb-3">
@@ -125,13 +124,13 @@
                                                             </select>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="bobot_kpi" class="form-label">Bobot KPI</label>
+                                                            <label for="bobot_kpi" class="form-label">Bobot</label>
                                                             <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi" value="{{$kpi->bobot_kpi}}">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="hstack gap-2 justify-content-end">
                                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-success" id="edit-btn">Update KPI Cascade</button>
+                                                                <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -172,7 +171,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel">Add Cascade KPI</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
 
@@ -190,19 +189,19 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="cas_kpiName" class="form-label">Nama KPI</label>
+                        <label for="cas_kpiName" class="form-label">KPI</label>
                         <input name="cas_kpiName" type="text" class="form-control" id="inisiatif_desc">
                     </div>
                     
                     <div class="mb-3">
-                        <label for="bobot_kpi" class="form-label">Bobot KPI</label>
+                        <label for="bobot_kpi" class="form-label">Bobot</label>
                         <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi">
                     </div>
             </div>
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add Cascade</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add</button>
                 </div>
             </div>
             </form>

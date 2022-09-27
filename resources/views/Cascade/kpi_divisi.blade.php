@@ -5,7 +5,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-header align-items-center d-flex">
-                <h4 class="card-title mb-0 flex-grow-1">Cascade KPI</h4>
+                <h4 class="card-title mb-0 flex-grow-1">KPI Divisi</h4>
             </div><!-- end card header -->
 
             <div class="card-body">
@@ -35,11 +35,11 @@
                                 <thead class="text-muted table-light ">
                                     <tr>
                                         <th scope="col">Nama KPI</th>
-                                        <th scope="col">Bobot Cascade</th>
+                                        <th scope="col">Bobot</th>
                                         <th scope="col">KPI Divisi</th>
                                         <th scope="col">Target</th>
                                         <th scope="col">D * E</th>
-                                        <th scope="col">Status Div</th>
+                                        <th scope="col">Status Divisi</th>
                                         <th scope="col">Created By</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -111,7 +111,7 @@
                                                         <form action="" method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
+                                                            <button type="submit" class="btn btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -133,11 +133,11 @@
                                                         <input name="id_CasKpi" type="text" class="form-control" id="id_CasKpi" value="{{$casKpi->id}}" hidden>
                                                         <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi" value="{{$casKpi->bobot_kpi}}" hidden>
                                                         <div class="mb-3">
-                                                            <label for="kpi_divisi" class="form-label">Nama KPI Divisi</label>
+                                                            <label for="kpi_divisi" class="form-label">KPI Divisi</label>
                                                             <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi" value="{{$kpiDiv->kpi_divisi}}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="bobot_cascade" class="form-label">Bobot Cascade</label>
+                                                            <label for="bobot_cascade" class="form-label">Bobot</label>
                                                             <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade" value="{{$kpiDiv->bobot_cascade}}">
                                                         </div>
                                                         <div class="mb-3">
@@ -154,7 +154,7 @@
                                                         <div class="modal-footer">
                                                             <div class="hstack gap-2 justify-content-end">
                                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-success" id="edit-btn">Update KPI Cascade</button>
+                                                                <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -196,7 +196,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel">Add Cascade KPI</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add KPI Divisi</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
 
@@ -208,11 +208,11 @@
                     <input name="id_CasKpi" type="text" class="form-control" id="id_CasKpi" value="{{$casKpi->id}}" hidden>
                     <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi" value="{{$casKpi->bobot_kpi}}" hidden>
                     <div class="mb-3">
-                        <label for="kpi_divisi" class="form-label">Nama KPI Divisi</label>
+                        <label for="kpi_divisi" class="form-label">KPI Divisi</label>
                         <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi">
                     </div>
                     <div class="mb-3">
-                        <label for="bobot_cascade" class="form-label">Bobot Cascade</label>
+                        <label for="bobot_cascade" class="form-label">Bobot</label>
                         <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade">
                     </div>
                     <div class="mb-3">
@@ -230,7 +230,7 @@
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add Cascade</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add</button>
                 </div>
             </div>
             </form>

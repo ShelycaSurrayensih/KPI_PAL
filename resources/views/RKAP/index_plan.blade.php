@@ -117,8 +117,8 @@
                                                 @foreach($real as $reals)
                                                 @if($reals->id_plan == $plan->id_plan)
                                                 <a href="{{ route('viewFile', $reals->file_evidence) }}">
-                                                    <button type="submit" class="btn btn-sm btn-primary">
-                                                        View
+                                                    <button type="submit" class="btn btn-outline-success btn-icon waves-effect waves-light shadow-none">
+                                                    <i class="ri-mail-send-line"></i>
                                                     </button>
                                                 </a>
                                                 @endif
@@ -133,7 +133,7 @@
                                                     <form action="{{ route('planpms.destroy', $plan->id_plan) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Delete</button>
+                                                        <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                     </form>
                                                 </div>
                                                 @if($users->status == 'administrator')
@@ -151,7 +151,7 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-light p-3">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Cascade Proker</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Komentar</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                 </div>
 
@@ -249,7 +249,7 @@
                                                             </div>
                                                             <div class="hstack gap-2 justify-content-end">
                                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-success" id="edit-btn">Add Realisasi</button>
+                                                                <button type="submit" class="btn btn-success" id="edit-btn">Add </button>
                                                             </div>
                                                             <!--end row-->
                                                         </form>
@@ -321,7 +321,7 @@
                                                             </div>
                                                             <div class="hstack gap-2 justify-content-end">
                                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-success" id="edit-btn">Update Realisasi</button>
+                                                                <button type="submit" class="btn btn-success" id="edit-btn">Update </button>
                                                             </div>
                                                     </div>
                                                     <!--end row-->

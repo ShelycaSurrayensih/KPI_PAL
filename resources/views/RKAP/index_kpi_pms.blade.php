@@ -51,7 +51,7 @@
                                         <th scope="col">Bobot</th>
                                         <th scope="col">Target</th>
                                         <th scope="col">Lead Divisi</th>
-                                        <th scope="col">Tahun KPI PMS</th>
+                                        <th scope="col">Tahun</th>
                                         <th scope="col">Updated</th>
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
@@ -140,9 +140,9 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit"
-                                                            class="btn btn-sm btn-danger remove-item-btn"
+                                                            class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
                                                             data-bs-toggle="modal"
-                                                            data-bs-target="#deleteRecordModal">Delete</button>
+                                                            data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                     </form>
                                                 </div>
                                                 
@@ -188,7 +188,7 @@
                                                                 id="sub_kat" value="{{ $kpi->sub_kat }}">
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="kpi_desc" class="form-label">Deskripsi KPI PMS</label>
+                                                            <label for="kpi_desc" class="form-label">Deskripsi </label>
                                                             <input name="kpi_desc" type="text" class="form-control"
                                                                 id="kpi_desc" value="{{ $kpi->kpi_desc }}">
                                                         </div>
@@ -213,7 +213,7 @@
                                                                 id="div_lead" value="{{ $kpi->div_lead }}" readonly>
                                                         </div>
                                                         <div class="mb-3">
-                                                            <label for="tahun_kpipms" class="form-label">Tahun KPI PMS</label>
+                                                            <label for="tahun_kpipms" class="form-label">Tahun </label>
                                                             <input name="tahun_kpipms" type="text" class="form-control"
                                                                 id="tahun_kpipms" value="{{ $kpi->tahun_kpipms }}">
                                                         </div>
@@ -224,7 +224,7 @@
                                                         <button type="button" class="btn btn-light"
                                                             data-bs-dismiss="modal">Close</button>
                                                         <button type="submit" class="btn btn-success"
-                                                            id="edit-btn">Update KPI PMS</button>
+                                                            id="edit-btn">Update </button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -264,7 +264,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel">Add KPI PMS</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     id="close-modal"></button>
             </div>
@@ -312,7 +312,7 @@
                     id="bobot" value="">
                 </div>
                 <div class="mb-3">
-                    <label for="desc_kpidir" class="form-label">Deskripsi KPI PMS</label>
+                    <label for="desc_kpidir" class="form-label">Deskripsi</label>
                     <input name="desc_kpidir" type="text" class="form-control"
                     id="desc_kpidir" value="">
                 </div>
@@ -332,7 +332,7 @@
 
                 </div>     
                 <div class="mb-3">
-                    <label for="tahun_kpippms" class="form-label">Tahun KPIPMS</label>
+                    <label for="tahun_kpippms" class="form-label">Tahun </label>
                     <input name="tahun_kpippms" type="text" class="form-control"
                     id="tahun_kpippms" value="">
                 </div>                                             
@@ -341,7 +341,7 @@
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add KPI PMS</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add </button>
                 </div>
             </div>
             </form>
