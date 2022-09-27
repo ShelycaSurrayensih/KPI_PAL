@@ -12,7 +12,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets') }}/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('assets') }}/images/kecil.png">
 
     <!-- jsvectormap css -->
     <link href="{{ asset('assets') }}/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
@@ -47,19 +47,19 @@
                         <div class="navbar-brand-box horizontal-logo">
                             <a href="index-2.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="{{ asset('assets') }}/images/logo-sm.png" alt="" height="22">
+                                    <img src="{{ asset('assets') }}/images/kecil.png" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset('assets') }}/images/logo-dark.png" alt="" height="17">
+                                    <img src="{{ asset('assets') }}/images/kecil.png" alt="" height="17">
                                 </span>
                             </a>
 
                             <a href="index-2.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{ asset('assets') }}/images/logo-sm.png" alt="" height="22">
+                                    <img src="{{ asset('assets') }}/images/kecil.png" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset('assets') }}/images/logo-light.png" alt="" height="17">
+                                    <img src="{{ asset('assets') }}/images/bumn.png" alt="" height="17">
                                 </span>
                             </a>
                         </div>
@@ -78,11 +78,11 @@
 
 
                     <div class="d-flex align-items-center">
-                        <!-- <div>
+                        <div>
                             <span class="logo-sm">
                                 <img src="assets/images/logo defendid.png" alt="" height="22">
                             </span>
-                        </div> -->
+                        </div>
 
                         <div class="dropdown d-md-none topbar-head-dropdown header-item">
                             <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -143,7 +143,7 @@
             <!-- Dark Logo-->
             <a href="index-2.html" class="logo logo-dark">
                 <span class="logo-sm">
-                    <img src="{{ asset('assets') }}/images/logo-sm.png" alt="" height="22">
+                    <img src="{{ asset('assets') }}/images/kecil.png" alt="" height="22">
                 </span>
                 <span class="logo-lg">
                     <img src="{{ asset('assets') }}/images/logo-dark.png" alt="" height="17">
@@ -152,10 +152,10 @@
             <!-- Light Logo-->
             <a href="index-2.html" class="logo logo-light">
                 <span class="logo-sm">
-                    <img src="{{ asset('assets') }}/images/logo-sm.png" alt="" height="22">
+                    <img src="{{ asset('assets') }}/images/kecil.png" alt="" height="22">
                 </span>
                 <span class="logo-lg">
-                    <img src="{{ asset('assets') }}/images/logo-light.png" alt="" height="17">
+                    <img src="{{ asset('assets') }}/images/bumn.png" alt="" height="17">
                 </span>
             </a>
             <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -176,6 +176,29 @@
                         </a>
 
                     </li> <!-- end Dashboard Menu -->
+                    
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarCascading" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCascading">
+                            <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-authentication">Cascading</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarCascading">
+                            <ul class="nav nav-sm flex-column">
+                                @if(Auth::user()->status == 'administrator')
+                                <li class="nav-item">
+                                    <a href="{{route('cascadeKPI.index')}}" class="nav-link" data-key="t-signin">
+                                        Cascading
+                                    </a>
+                                </li>
+                                @endif
+                                <li class="nav-item">
+                                    <a href="{{ route('casDiv.all') }}" class="nav-link" data-key="t-signup">
+                                        KPI Divisi
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('KPI_Indiv.index') }}" role="button" aria-expanded="false" aria-controls="sidebarApps">
                             <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Indiv</span>
@@ -245,28 +268,6 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link menu-link" href="#sidebarCascading" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCascading">
-                            <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-authentication">Cascading</span>
-                        </a>
-                        <div class="collapse menu-dropdown" id="sidebarCascading">
-                            <ul class="nav nav-sm flex-column">
-                                @if(Auth::user()->status == 'administrator')
-                                <li class="nav-item">
-                                    <a href="{{route('cascadeKPI.index')}}" class="nav-link" data-key="t-signin">
-                                        Cascading
-                                    </a>
-                                </li>
-                                @endif
-                                <li class="nav-item">
-                                    <a href="{{ route('casDiv.all') }}" class="nav-link" data-key="t-signup">
-                                        KPI Divisi
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </li>
                 </ul>
             </div>
             <!-- Sidebar -->
@@ -290,7 +291,7 @@
                 <div class="row">
                     <div class="col-12">
                         <!-- <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <!-- <span class="logo-sm">
+                            <span class="logo-sm">
                                 <img src="assets/images/logo defendid.png" alt="" height="22">
                             </span> -->
 
