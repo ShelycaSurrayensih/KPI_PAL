@@ -169,10 +169,14 @@ Route::get('/KPI_Indhan/Realisasi/commentDelete/{id}', [App\Http\Controllers\Cas
 
 //view document
 Route::get('/view/RKAP/{filename}', [App\Http\Controllers\RKAP::class, 'view'])->name('viewFile');
-
 Route::get('/view/Cascade/{filename}', [App\Http\Controllers\CascadeController::class, 'view'])->name('viewFile.cascade');
-
 Route::get('/view/Tupoksi/{filename}', [App\Http\Controllers\TwController::class, 'view'])->name('viewFile.tupoksi');
-
 Route::get('/view/Indiv/{filename}', [App\Http\Controllers\IndivRealisasiController::class, 'view'])->name('viewFile.indiv');
 Route::get('/view/Indhan/{filename}', [App\Http\Controllers\IndhanRealisasiController::class, 'view'])->name('viewFile.indhan');
+
+//view document
+Route::get('/download/RKAP/{filename}', [App\Http\Controllers\RKAP::class, 'download'])->name('viewFile');
+Route::get('/download/Cascade/{filename}', [App\Http\Controllers\CascadeController::class, 'download'])->name('downloadFile.cascade');
+Route::get('/download/Tupoksi/{filename}', [App\Http\Controllers\TwController::class, 'download'])->name('downloadFile.tupoksi');
+Route::get('/download/Indiv/{filename}', [App\Http\Controllers\IndivRealisasiController::class, 'download'])->name('downloadFile.indiv');
+Route::get('/download/Indhan/{filename}', [App\Http\Controllers\IndhanRealisasiController::class, 'download'])->name('downloadFile.indhan');

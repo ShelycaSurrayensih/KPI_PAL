@@ -67,6 +67,16 @@
                                                 <div class="flex-grow-1">Belum Terisi</div>
                                             </div>
                                         </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">Belum Terisi</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">Belum Terisi</div>
+                                            </div>
+                                        </td>
                                         @if($users->status == 'administrator')
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -362,6 +372,14 @@
                     <div class="d-flex align-items-center">
                         <div class="flex-grow-1">Belum Terisi</div>
                     </div>
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">Belum Terisi</div>
+                </td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <div class="flex-grow-1">Belum Terisi</div>
                 </td>
                 <td>
                     <div class="d-flex align-items-center">

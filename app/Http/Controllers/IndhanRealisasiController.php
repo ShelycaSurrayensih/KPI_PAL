@@ -148,4 +148,17 @@ class IndhanRealisasiController extends Controller
         return Response::file($path);
         
     }
+
+    //Download File
+    public function download($file_name)
+    {
+        $file = $file_name;
+        $path = public_path('File/RKAP/'. $file_name);
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+
+        return Response::download($path, $file, $headers);
+        
+    }
 }
