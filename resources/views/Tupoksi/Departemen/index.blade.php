@@ -48,6 +48,7 @@
                             </thead>
                             <tbody class="list form-check-all">
                                 @foreach($tupoksiDepartemen as $departemen)
+                                @if($departemen->created_by == $users->id_divisi)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -114,7 +115,9 @@
                                                 </form>
                                             </div>
                                         </div>
-                                    </div> @endforeach
+                                    </div> 
+                                    @endif
+                                    @endforeach
                             </tbody>
                         </table>
                         <div class="noresult" style="display: none">
@@ -161,6 +164,7 @@
                 <form method="post" action="{{ route('KPI_TupoksiDepartemen.store') }}" enctype="multipart/form-data"
                     id="myForm">
                     @csrf
+                    <input type="text" name="created_by" class="form-control" id="created_by" value ="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="departemen">Departemen</label>
                         <input type="text" name="departemen" class="form-control" id="departemen">

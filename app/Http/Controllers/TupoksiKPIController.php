@@ -45,6 +45,7 @@ class TupoksiKPIController extends Controller
         $tupoksiKPI = new TupoksiKPI;
         $tupoksiKPI->id_departemen = $request->id_departemen;
         $tupoksiKPI->kpi = $request->kpi;
+        $tupoksiKPI->created_by = $request->created_by;
         $tupoksiKPI->save();
         return redirect()->back();
     }

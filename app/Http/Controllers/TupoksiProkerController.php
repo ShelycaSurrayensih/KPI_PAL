@@ -61,6 +61,7 @@ class TupoksiProkerController extends Controller
         $tupoksiProker->id_kpi = $request->id_kpi;
         $tupoksiProker->proker = $request->proker;
         $tupoksiProker->target = $request->target;
+        $tupoksiProker->created_by = $request->created_by;
         $tupoksiProker->save();
         return redirect()->back();
     }
