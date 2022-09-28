@@ -18,12 +18,10 @@
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
                             <div>
-                            @if($users->status != 'administrator')
-                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
-                                    id="create-btn" data-bs-target="#showModal"><i
-                                        class="ri-add-line align-bottom me-1"></i>
+                                @if($users->status != 'administrator')
+                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                    @endif
+                                @endif
                             </div>
                         </div>
                         <div class="col-sm">
@@ -57,12 +55,14 @@
                                     </tr>
 
                                 </thead>
+
                                 <tbody>
-                                    <?php $no = 0;?>
+
+                                    <?php $no = 0; ?>
                                     @foreach($kpidir as $kpidir)
-                                    @if($users->divisi_id == $kpidir->divisi)
+                                    @if($users->id_divisi == $kpidir->id_divisi || $users->id_divisi == 0)
                                     <tr>
-                                        <?php $no++ ;?>
+                                        <?php $no++; ?>
                                         <td>{{ $no }}</td>
 
                                         <td>
@@ -109,112 +109,92 @@
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <div class="edit">
-                                                    <button class="btn btn-sm btn-success edit-item-btn"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#showModal{{ $kpidir->id_kpidir }}">Edit</button>
+                                                    <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $kpidir->id_kpidir }}">Edit</button>
                                                 </div>
                                                 <div class="edit">
                                                     <a href="{{ route('realisasi.index', $kpidir->id_kpidir) }}">
-                                                        <button
-                                                            class="btn btn-sm btn-success edit-item-btn">Realisasi</button>
+                                                        <button class="btn btn-sm btn-success edit-item-btn">Realisasi</button>
                                                     </a>
                                                 </div>
                                                 <div class=" remove">
 
-                                                    <form action="{{ route('KPI_Indiv.destroy', $kpidir->id_kpidir) }}"
-                                                        method="POST">
+                                                    <form action="{{ route('KPI_Indiv.destroy', $kpidir->id_kpidir) }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit"
-                                                            class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
+                                                        <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </td>
-                                    </tr><!-- end tr -->
+                                    </tr>
+                                    <!-- end tr -->
 
                                     <!-- edit Modal -->
-                                    <div class="modal fade" id="showModal{{ $kpidir->id_kpidir }}" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="showModal{{ $kpidir->id_kpidir }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-light p-3">
                                                     <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close" id="close-modal"></button>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                 </div>
 
                                                 <div class="modal-body">
-                                                    <form method="post"
-                                                        action="{{ route('kpidir.update', $kpidir->id_kpidir) }}"
-                                                        enctype="multipart/form-data" id="myForm">
+                                                    <form method="post" action="{{ route('kpidir.update', $kpidir->id_kpidir) }}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
-                                                        <input name="created_by" type="text" class="form-control"
-                                                                id="created_by" value="{{$users->id_divisi}}" readonly hidden>
-                                                                <div class="mb-3">
-                        <label for="id_direktorat" class="form-label">Direktorat</label>
-                            @foreach ($divisi as $div)
-                            @if($div->id_divisi == $users->id_divisi)
-                            @foreach ($direktorat as $dir)
-                            @if($div->id_direktorat == $dir->id_direktorat)
-                            <input name="id_direktorat" value="{{$dir->id_direktorat}}" class="form-control" id="id_direktorat" readonly hidden>
-                            <input name="" value="{{$dir->nama}}" class="form-control" id="" readonly >
-                            @endif
-                            @endforeach
-                            @endif
-                            @endforeach
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_divisi" class="form-label">Divisi</label>
-                        <input name="id_divisi" value="{{$users->id_divisi}}" class="form-control" id="id_divisi"
-                            placeholder readonly hidden>
-                            @foreach($divisi as $div)
-                            @if($div->id_divisi == $users->id_divisi)
-                            <input name="" value="{{$div->div_name}}" class="form-control" id="" readonly>
-                            @endif
-                            @endforeach
-                    </div>
+                                                        <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
+                                                        <div class="mb-3">
+                                                            <label for="id_direktorat" class="form-label">Direktorat</label>
+                                                            @foreach ($divisi as $div)
+                                                            @if($div->id_divisi == $users->id_divisi)
+                                                            @foreach ($direktorat as $dir)
+                                                            @if($div->id_direktorat == $dir->id_direktorat)
+                                                            <input name="id_direktorat" value="{{$dir->id_direktorat}}" class="form-control" id="id_direktorat" readonly hidden>
+                                                            <input name="" value="{{$dir->nama}}" class="form-control" id="" readonly>
+                                                            @endif
+                                                            @endforeach
+                                                            @endif
+                                                            @endforeach
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="id_divisi" class="form-label">Divisi</label>
+                                                            <input name="id_divisi" value="{{$users->id_divisi}}" class="form-control" id="id_divisi" placeholder readonly hidden>
+                                                            @foreach($divisi as $div)
+                                                            @if($div->id_divisi == $users->id_divisi)
+                                                            <input name="" value="{{$div->div_name}}" class="form-control" id="" readonly>
+                                                            @endif
+                                                            @endforeach
+                                                        </div>
                                                         <div class="mb-3">
                                                             <label for="desc_kpidir" class="form-label">KPI</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control"
-                                                                id="desc_kpidir" value="{{$kpidir->desc_kpidir}}">
+                                                            <input name="desc_kpidir" type="text" class="form-control" id="desc_kpidir" value="{{$kpidir->desc_kpidir}}">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="satuan" class="form-label">Satuan</label>
-                                                            <input name="satuan" type="text" class="form-control"
-                                                                id="satuan" value="{{$kpidir->satuan}}">
+                                                            <input name="satuan" type="text" class="form-control" id="satuan" value="{{$kpidir->satuan}}">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="target" class="form-label">Target</label>
-                                                            <input name="target" type="text" class="form-control"
-                                                                id="target" value="{{$kpidir->target}}">
+                                                            <input name="target" type="text" class="form-control" id="target" value="{{$kpidir->target}}">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="bobot" class="form-label">Bobot</label>
-                                                            <input name="bobot" type="text" class="form-control"
-                                                                id="bobot" value="{{$kpidir->bobot}}">
+                                                            <input name="bobot" type="text" class="form-control" id="bobot" value="{{$kpidir->bobot}}">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="ket" class="form-label">Keterangan</label>
-                                                            <input name="ket" type="text" class="form-control" id="ket"
-                                                                value="{{$kpidir->ket}}">
+                                                            <input name="ket" type="text" class="form-control" id="ket" value="{{$kpidir->ket}}">
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="asal_kpi" class="form-label">Asal KPI</label>
-                                                            <input name="asal_kpi" type="text" class="form-control"
-                                                                id="asal_kpi" value="{{$kpidir->asal_kpi}}">
+                                                            <input name="asal_kpi" type="text" class="form-control" id="asal_kpi" value="{{$kpidir->asal_kpi}}">
                                                         </div>
 
 
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="hstack gap-2 justify-content-end">
-                                                        <button type="button" class="btn btn-light"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success"
-                                                            id="edit-btn">Update</button>
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
                                                     </div>
                                                 </div>
                                                 </form>
@@ -222,11 +202,11 @@
                                         </div>
                                     </div>
                                     @endif
-
                                     @endforeach
                                 </tbody><!-- end tbody -->
 
                             </table><!-- end table -->
+
                         </div>
                     </div>
                 </div> <!-- .card-->
@@ -257,37 +237,34 @@
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
                 <h5 class="modal-title" id="exampleModalLabel">Add</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    id="close-modal"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
 
             <div class="modal-body">
                 <form method="POST" action="{{ route('KPI_Indiv.store') }}" id="myForm" enctype="multipart/form-data">
                     @csrf
-                    <input name="created_by" type="text" class="form-control"
-                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
+                    <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="id_direktorat" class="form-label">Direktorat</label>
-                            @foreach ($divisi as $div)
-                            @if($div->id_divisi == $users->id_divisi)
-                            @foreach ($direktorat as $dir)
-                            @if($div->id_direktorat == $dir->id_direktorat)
-                            <input name="id_direktorat" value="{{$dir->id_direktorat}}" class="form-control" id="id_direktorat" readonly hidden>
-                            <input name="" value="{{$dir->nama}}" class="form-control" id="" readonly >
-                            @endif
-                            @endforeach
-                            @endif
-                            @endforeach
+                        @foreach ($divisi as $div)
+                        @if($div->id_divisi == $users->id_divisi)
+                        @foreach ($direktorat as $dir)
+                        @if($div->id_direktorat == $dir->id_direktorat)
+                        <input name="id_direktorat" value="{{$dir->id_direktorat}}" class="form-control" id="id_direktorat" readonly hidden>
+                        <input name="" value="{{$dir->nama}}" class="form-control" id="" readonly>
+                        @endif
+                        @endforeach
+                        @endif
+                        @endforeach
                     </div>
                     <div class="mb-3">
                         <label for="id_divisi" class="form-label">Divisi</label>
-                        <input name="id_divisi" value="{{$users->id_divisi}}" class="form-control" id="id_divisi"
-                            placeholder readonly hidden>
-                            @foreach($divisi as $div)
-                            @if($div->id_divisi == $users->id_divisi)
-                            <input name="" value="{{$div->div_name}}" class="form-control" id="" readonly>
-                            @endif
-                            @endforeach
+                        <input name="id_divisi" value="{{$users->id_divisi}}" class="form-control" id="id_divisi" placeholder readonly hidden>
+                        @foreach($divisi as $div)
+                        @if($div->id_divisi == $users->id_divisi)
+                        <input name="" value="{{$div->div_name}}" class="form-control" id="" readonly>
+                        @endif
+                        @endforeach
                     </div>
                     <div class="mb-3">
                         <label for="desc_kpidir" class="form-label">KPI</label>
@@ -326,6 +303,5 @@
         </div>
     </div>
 </div>
-
 
 @endsection

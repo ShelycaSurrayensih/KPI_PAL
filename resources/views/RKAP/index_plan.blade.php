@@ -132,25 +132,6 @@
                                                 <div class="flex-grow-1">{{$reals->keterangan}}</div>
                                             </div>
                                         </td>
-                                        @elseif($sReal == 0)
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">Belum Terisi</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">Belum Terisi</div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">Belum Terisi</div>
-                                            </div>
-                                        </td>
-                                        <?php
-                                        $sReal = 1;
-                                        ?>
                                         @endif
                                         @endforeach
                                         @endif
