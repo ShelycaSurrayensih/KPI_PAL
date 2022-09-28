@@ -251,6 +251,10 @@
                                                                         <label for="progres" class="form-label">Progres Proker</label>
                                                                         <input name="progres" type="text" class="form-control" id="progres" value="{{$real->progres}}">
                                                                     </div>
+                                                                    <div class="mb-3">
+                                                                        <label for="kendala">Kendala Realisasi</label>
+                                                                        <input type="text" name="kendala" class="form-control" id="kendala">
+                                                                    </div>
                                                                     <div>
                                                                         <label for="file_evidence">File Evidence</label>
                                                                         <div class="fallback">
@@ -353,7 +357,7 @@
                                         <label for="progres" class="form-label">Progres Proker</label>
                                         <input name="progres" type="text" class="form-control" id="progres">
                                     </div>
-                                    
+
                             </div>
                             <div class="modal-footer">
                                 <div class="hstack gap-2 justify-content-end">

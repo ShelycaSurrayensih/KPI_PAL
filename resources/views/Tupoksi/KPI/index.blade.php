@@ -86,9 +86,9 @@
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                @foreach($tupoksiDepartemen as $departemen)
                                 @foreach($tupoksiKPI as $kpi)
-                                @if($departemen->id_departemen == $kpi->id_departemen)
+                            
+                                @if($kpi->created_by == $users->id_divisi)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -96,9 +96,16 @@
                                                 value="option1">
                                         </div>
                                     </th>
+                                    
+                                @foreach($tupoksiDepartemen as $departemen)
+                                @if($departemen->id_departemen == $kpi->id_departemen)
                                     <td class="id" style="display:none;"><a href="javascript:void(0);"
                                             class="fw-medium link-primary">#VZ2101</a></td>
+                                            
                                     <td class="departemen">{{$departemen->departemen}}</td>
+                                    @endif
+                                    
+                            @endforeach
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $kpi->kpi }}</div>
@@ -177,7 +184,6 @@
                             </tbody>
                             @endif
                             @endforeach
-                            @endforeach
                         </table>
                         <div class="noresult" style="display: none">
                             <div class="text-center">
@@ -223,6 +229,7 @@
                 <form method="post" action="{{ route('KPI_TupoksiKpi.store') }}" enctype="multipart/form-data"
                     id="myForm">
                     @csrf
+                    <input type="text" name="created_by" class="form-control" id="created_by" value ="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="departemen">Departemen</label>
                         <select name="id_departemen" class="form-control" id="id_departemen">

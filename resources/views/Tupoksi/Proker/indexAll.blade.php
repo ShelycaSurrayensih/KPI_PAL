@@ -53,6 +53,7 @@
                             @foreach($tupoksiProker as $proker)
                                 @foreach($tupoksiKPI as $kpi)
                                 @if($proker->id_kpi == $kpi->id_kpi)
+                                @if($proker->created_by == $users->id_divisi)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
@@ -151,6 +152,7 @@
                                     </div>
                             </tbody>
                             @endif
+                            @endif
                             @endforeach
                             @endforeach
                         </table>
@@ -198,6 +200,7 @@
                 <form method="post" action="{{ route('KPI_TupoksiProker.store') }}" enctype="multipart/form-data"
                     id="myForm">
                     @csrf
+                    <input type="text" name="created_by" class="form-control" id="created_by" value ="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="id_kpi">KPI</label>
                         <select name="id_kpi" class="form-control" id="id_kpi">

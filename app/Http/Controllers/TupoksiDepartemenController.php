@@ -45,6 +45,7 @@ class TupoksiDepartemenController extends Controller
 
         $tupoksiDepartemen = new TupoksiDepartemen;
         $tupoksiDepartemen->departemen = $request->get('departemen');
+        $tupoksiDepartemen->created_by = $request->get('created_by');
         $tupoksiDepartemen->save();
         return redirect()->back();
     }

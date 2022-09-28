@@ -16,6 +16,7 @@ class TupoksiDepartemen extends Migration
         Schema::create('tupoksi_departemen', function (Blueprint $table) {
             $table->id('id_departemen');
             $table->String('departemen');
+            $table->String('created_by');
         });
     }
 
