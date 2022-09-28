@@ -67,11 +67,6 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1">Belum Terisi</div>
-                                                </div>
-                                            </td>
-                                            <td>
                                                 <div class="d-flex gap-2">
                                                     <div class="add">
                                                         <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#Modal{{$prok_count}}">Add
@@ -358,6 +353,7 @@
                                         <label for="progres" class="form-label">Progres Proker</label>
                                         <input name="progres" type="text" class="form-control" id="progres">
                                     </div>
+                                    
                             </div>
                             <div class="modal-footer">
                                 <div class="hstack gap-2 justify-content-end">
@@ -406,7 +402,10 @@
                                     <div class="mb-3">
                                         <label for="deskripsi">Deskripsi Realisasi</label>
                                         <input type="text" name="deskripsi" class="form-control" id="deskripsi">
-
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="kendala">Kendala Realisasi</label>
+                                        <input type="text" name="kendala" class="form-control" id="kendala">
                                     </div>
                                     <div class="modal-footer">
                                         <div class="hstack gap-2 justify-content-end">

@@ -81,7 +81,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $indivReal->keterangan }}</div>
+                                            <div class="flex-grow-1">{{ $indivReal->kendala }}</div>
                                         </div>
                                     </td>
                                     <td>
@@ -128,7 +128,7 @@
                                             @if($indivReal->id_kpidir == $kpidir->id_kpidir)
                                             @if($indivReal->file_evidence != null)
                                             <div class="add">
-                                                <a href="{{ route('viewFile.tupoksi', $indivReal->file_evidence) }}">
+                                                <a href="{{ route('viewFile.indiv', $indivReal->file_evidence) }}">
                                                     <button type="submit" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light shadow-none">
                                                         <i class="ri-mail-send-line"></i>
                                                     </button>

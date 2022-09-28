@@ -173,7 +173,7 @@
                                                 
                                                 <td>
                                                     <div class="d-flex align-items-center">
-                                                        <div class="flex-grow-1">{{ $realisasi->kendala }}</div>
+                                                        <div class="flex-grow-1">{{ $realisasi->keterangan }}</div>
                                                     </div>
                                                 </td>
                                                 <td>

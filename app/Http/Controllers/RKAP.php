@@ -141,6 +141,17 @@ class RKAP extends Controller
         $plan->desc_plan = $request->get('desc_plan');
         $plan->created_by = $request->get('created_by');
         $plan->save();
+
+        
+        // $id_kpipms = $request->id_kpipms;
+        // $tw = $request->tw;
+        // $casProkDiv = KpiPms::where('id_kpipms', $id_kpipms)->where('tw', $tw)->first();
+        // $real = new realisasiPms;
+        // $real->id_plan = $request->id_plan;
+        // $real->progress_real = "Belum Diisi";
+        // $real->desc_real = "Belum Diisi";
+        // $real->keterangan = "Belum Diisi";
+
         return redirect()->back();
     }
     public function plan_pmsUpdate(Request $request, $id)
