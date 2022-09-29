@@ -8,7 +8,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Dashboard KPI</title>
+    <title>Performance Management system</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -83,7 +83,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <span class="logo-sm">
-                                <img src="assets/images/logo defendid.png" alt="" height="22">
+                                <img src="assets/images/PT_PAL.png" alt="" height="100">
                             </span>
                         </div>
 
@@ -191,7 +191,57 @@
                         </a>
 
                     </li> <!-- end Dashboard Menu -->
-
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarIcons" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="sidebarIcons">
+                            <i class="mdi mdi-android-studio"></i> <span data-key="t-icons">RKAP PMS</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarIcons">
+                            <ul class="nav nav-sm flex-column">
+                                @if(Auth::user()->status == 'administrator')
+                                <li class="nav-item">
+                                    <a href="{{ route('inisiatifStrategis.index') }}" class="nav-link"
+                                        data-key="t-remix">inisiatifStrategis</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('KategoriPms.index') }}" class="nav-link"
+                                        data-key="t-boxicons">Kategori</a>
+                                </li>
+                                @endif
+                                <li class="nav-item">
+                                    <a href="{{ route('kpi_pms.index') }}" class="nav-link"
+                                        data-key="t-material-design">KPI PMS</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="sidebarLayouts">
+                            <i class="mdi mdi-view-carousel-outline"></i> <span data-key="t-layouts">Tim Integrasi</span>
+                        </a>
+                        <div class="collapse menu-dropdown" id="sidebarLayouts">
+                            <ul class="nav nav-sm flex-column">
+                                @if(Auth::user()->status == 'administrator')
+                                <li class="nav-item">
+                                    <a href="{{ route('KPI_IndhanTim.index') }}" class="nav-link"
+                                        data-key="t-horizontal">Tim</a>
+                                </li>
+                                @endif
+                                <li class="nav-item">
+                                    <a href="{{ route('KPI_Indhan.index') }}" class="nav-link" data-key="t-detached">Tim
+                                        Integrasi Indhan</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('KPI_Indiv.index') }}" role="button"
+                            aria-expanded="false" aria-controls="sidebarApps">
+                            <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Individual Direksi</span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarCascading" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarCascading">
@@ -243,59 +293,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link menu-link" href="#sidebarIcons" data-bs-toggle="collapse" role="button"
-                            aria-expanded="false" aria-controls="sidebarIcons">
-                            <i class="mdi mdi-android-studio"></i> <span data-key="t-icons">RKAP</span>
-                        </a>
-                        <div class="collapse menu-dropdown" id="sidebarIcons">
-                            <ul class="nav nav-sm flex-column">
-                                @if(Auth::user()->status == 'administrator')
-                                <li class="nav-item">
-                                    <a href="{{ route('inisiatifStrategis.index') }}" class="nav-link"
-                                        data-key="t-remix">inisiatifStrategis</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('KategoriPms.index') }}" class="nav-link"
-                                        data-key="t-boxicons">Kategori</a>
-                                </li>
-                                @endif
-                                <li class="nav-item">
-                                    <a href="{{ route('kpi_pms.index') }}" class="nav-link"
-                                        data-key="t-material-design">KPI PMS</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link menu-link" href="{{ route('KPI_Indiv.index') }}" role="button"
-                            aria-expanded="false" aria-controls="sidebarApps">
-                            <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Indiv</span>
-                        </a>
-
-
-                    </li>
                     <!-- end Dashboard Menu -->
-                    <li class="nav-item">
-                        <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
-                            aria-expanded="false" aria-controls="sidebarLayouts">
-                            <i class="mdi mdi-view-carousel-outline"></i> <span data-key="t-layouts">Indhan</span>
-                        </a>
-                        <div class="collapse menu-dropdown" id="sidebarLayouts">
-                            <ul class="nav nav-sm flex-column">
-                                @if(Auth::user()->status == 'administrator')
-                                <li class="nav-item">
-                                    <a href="{{ route('KPI_IndhanTim.index') }}" class="nav-link"
-                                        data-key="t-horizontal">Tim</a>
-                                </li>
-                                @endif
-                                <li class="nav-item">
-                                    <a href="{{ route('KPI_Indhan.index') }}" class="nav-link" data-key="t-detached">Tim
-                                        Integrasi Indhan</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
                 </ul>
             </div>
             <!-- Sidebar -->

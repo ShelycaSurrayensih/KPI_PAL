@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     
 });
 Auth::routes();
+Route::get('/Print-All-Dokumen', [App\Http\Controllers\HomeController::class, 'print'])->name('print');
 
 //Cascading Index
 Route::get('/Cascade/KPI', [App\Http\Controllers\CascadeController::class, 'cascadeKpiIndex'])->name('cascadeKPI.index');
