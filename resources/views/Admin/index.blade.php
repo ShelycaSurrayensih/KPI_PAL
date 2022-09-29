@@ -23,7 +23,7 @@
                             } ?>
                             <h4 class="fs-16 mb-1">
                                 <?php
-                                echo 'Good ' . $salam; ?> {{ Auth::user()->name }}!
+                                echo 'Good ' . $salam; ?> {{ Auth::user()->username }}!
                                 <p class="text-muted mb-0">Here's what's happening with your store today.</p>
                         </div>
                         <div class="mt-3 mt-lg-0">
@@ -54,5 +54,41 @@
         </div> <!-- end .h-100-->
 
     </div> <!-- end col -->
+
+    <div>
+
+    <div class="mb-3 gap-2">
+    <p>Sort by:</p>
+		<select > 
+            <option value="cascading">Cascading</option>
+            <option value="tupoksi">Tupoksi</option>
+        </select>
+    
+        <select>
+            <option value="pdf">Cetak PDF </option>
+            <option value="excel">Cetak Excel </option>
+        </select>
+    
+		<select > 
+            <option value="all_cas">print all </option>
+            <option value="div_cas">print divisi</option>
+        </select>
+		<select >
+        <option value="divisi">Divisi </option>
+        </select>
+        <select >
+        <option value="tahun">Tahun </option>
+        </select>
+        <button type="onClick" class="btn btn-sm btn-soft-success shadow-none">
+        <i class="ri-add-circle-line align-middle me-1"></i> Print</button></a>
+    </div>
+
+		
+			
+		
+		</div>
+    </div>
 </div>
+<!-- add Modal -->
+
 @endsection
