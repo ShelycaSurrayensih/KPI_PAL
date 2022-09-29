@@ -22,7 +22,7 @@
                                             <th class="sort" data-sort="progres">Progres Proker</th>
                                             <th class="sort" data-sort="deskripsi">Deskripsi Realisasi</th>
                                             <th class="sort" data-sort="progres">Progress Realisasi</th>
-                                            <th class="sort" data-sort="progres">Kendala Realisasi</th>
+                                            <th class="sort" data-sort="progres">Keterangan Realisasi</th>
                                             <th class="sort" data-sort="progres">Komentar</th>
                                             <th class="sort" data-sort="action">Action</th>
                                         </tr>
@@ -171,10 +171,12 @@
                                                             <div class="edit">
                                                                 <button type="button" class="btn btn-sm btn-success edit-item-btn data-bs-toggle=" data-bs-toggle="modal" id="create-btn" data-bs-target="#realisasi{{$tw->tw}}">Realisasi</button>
                                                             </div>
-
+                                                            <?php 
+                                                            $views = 0;
+                                                            ?>
                                                             @foreach($tupoksiRealisasi as $reals)
                                                             @if($reals->id_CProk == $tw->id)
-                                                            @if($reals->file_evidence != null)
+                                                            @if($reals->file_evidence != null && $views == 0)
                                                             <div class="add">
                                                                 <a href="{{ route('viewFile.tupoksi', $reals->file_evidence) }}">
                                                                     <button type="submit" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light shadow-none">
@@ -182,6 +184,9 @@
                                                                     </button>
                                                                 </a>
                                                             </div>
+                                                            <?php 
+                                                            $views = 1;
+                                                            ?>
                                                             @endif
                                                             @endif
                                                             @endforeach
@@ -408,7 +413,7 @@
                                         <input type="text" name="deskripsi" class="form-control" id="deskripsi">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="kendala">Kendala Realisasi</label>
+                                        <label for="kendala">Keterangan Realisasi</label>
                                         <input type="text" name="kendala" class="form-control" id="kendala">
                                     </div>
                                     <div class="modal-footer">
@@ -448,8 +453,6 @@
 </div>
 <!-- end col -->
 </div>
-
-<!-- add Modal -->
 
 
 @endsection

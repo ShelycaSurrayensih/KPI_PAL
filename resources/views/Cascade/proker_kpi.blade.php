@@ -29,9 +29,8 @@
                                         <th scope="col">Deskripsi</th>
                                         <th scope="col">Progres Realisasi</th>
                                         <th scope="col">Deskripsi Realisasi</th>
-                                        <th scope="col">Kendala Realisasi</th>
+                                        <th scope="col">Keterangan Realisasi</th>
                                         <th scope="col">Komentar</th>
-                                        <!-- <th scope="col">Kendala</th> -->
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
                                         @endif

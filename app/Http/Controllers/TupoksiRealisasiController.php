@@ -50,6 +50,7 @@ class TupoksiRealisasiController extends Controller
         $tupoksiRealisasi->id_tw = $request->id_tw;
         $tupoksiRealisasi->progres = $request->progres;
         $tupoksiRealisasi->deskripsi = $request->deskripsi;
+        $tupoksiRealisasi->kendala = $request->kendala;
         $tupoksiRealisasi->save();
         return redirect()->back();
     }
@@ -96,6 +97,7 @@ class TupoksiRealisasiController extends Controller
         $tupoksiRealisasi->id_tw = $request->get('id_tw');
         $tupoksiRealisasi->progres = $request->get('progres');
         $tupoksiRealisasi->deskripsi = $request->get('deskripsi');
+        $tupoksiRealisasi->kendala = $request->get('kendala');
         if($request->file != Null){
             $fileName = $request->file->getClientOriginalName();
             $request->file->move(public_path('File/Tupoksi'), $fileName);

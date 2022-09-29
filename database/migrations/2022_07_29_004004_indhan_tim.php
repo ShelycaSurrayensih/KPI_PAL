@@ -15,7 +15,8 @@ class IndhanTim extends Migration
     {
         Schema::create('indhan_tim', function (Blueprint $table) {
             $table->id('id_tim');
-            $table->String('nama_tim');
+            $table->String('id_divisi');
+            $table->String('Tim');
         });
     }
 
