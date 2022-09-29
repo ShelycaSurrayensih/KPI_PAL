@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\ExportExcel;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\CascadeKat;
 use App\Models\CascadeKpi;
 use App\Models\CascadeKpiDiv;
@@ -82,4 +84,29 @@ class HomeController extends Controller
         $pdf = PDF::loadview('Admin.pdf', compact('casKpiDiv','casKpiCount','casKat','casKpi','divisi','indhan','indhanTim','indhanRealisasi','tupoksiDepartemen','tupoksiKPI','tupoksiTw','tupoksiRealisasi','plan','real','kpi','kategori','inisiatif','indivRealisasi','direktorat','kpidir'))->setPaper('a3', 'landscape');
         return $pdf->stream();
     }
+
+    public function export_excel()
+	{
+        $casKpiDiv = CascadeKpiDiv::all();
+        $casKpiCount = CascadeKpi::all();
+        $casKat = CascadeKat::all();
+        $casKpi = CascadeKpi::all();
+        $divisi = Divisi::all();
+        $indhan = Indhan::all();
+        $indhanTim = IndhanTim::all();
+        $indhanRealisasi = IndhanRealisasi::all();
+        $tupoksiDepartemen = TupoksiDepartemen::all();
+        $tupoksiKPI = TupoksiKPI::all();
+        $tupoksiTw = TupoksiTw::all();
+        $tupoksiRealisasi = TupoksiRealisasi::all();
+        $plan = planPms::all();
+        $real = realisasiPms::all();
+        $kpi = KpiPms::all();
+        $kategori = KategoriPms::all();
+        $inisiatif = inisiatifStrategis::all();
+        $indivRealisasi = IndivRealisasi::all();
+        $direktorat = Direktorat::all();
+        $kpidir = IndivKpiDir::all();
+		return Excel::download(new ExportExcel, 'Cascade.xlsx');
+	}
 }

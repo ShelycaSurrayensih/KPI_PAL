@@ -26,6 +26,7 @@
                                 echo 'Good ' . $salam; ?> {{ Auth::user()->username }}!
                                 <p class="text-muted mb-0">Here's what's happening with your store today.</p>
                         </div>
+                        <a href="/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
                         <div class="mt-3 mt-lg-0">
                             <form action="javascript:void(0);">
                                 <div class="row g-3 mb-0 align-items-center">
@@ -84,6 +85,28 @@
     </div>
 
 		
+    <div class="mt-3 mt-lg-0">
+                            <form action="{{ route('print') }}">
+                                <div class="row g-3 mb-0 align-items-center">
+                                    <div class="col-sm-auto">
+                                    </div>
+                                    <!--end col-->
+                                    <div class="col-auto">
+                                        <a href="{{ route('print') }}">
+                                        <button type="onClick" class="btn btn-soft-success shadow-none">
+                                            <i class="ri-add-circle-line align-middle me-1"></i> Print all</button></a>
+                                    </div>
+                                    <!--end col-->
+                                    <div class="col-auto">
+                                        <button type="button"
+                                            class="btn btn-soft-info btn-icon waves-effect waves-light layout-rightside-btn shadow-none"><i
+                                                class="ri-pulse-line"></i></button>
+                                    </div>
+                                    <!--end col-->
+                                </div>
+                                <!--end row-->
+                            </form>
+                        </div>
 			
 		
 		</div>
