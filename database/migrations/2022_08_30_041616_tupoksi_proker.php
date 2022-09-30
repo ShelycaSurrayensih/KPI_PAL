@@ -20,6 +20,7 @@ class TupoksiProker extends Migration
             $table->String('proker');
             $table->String('target');
             $table->String('created_by')->default('0');
+            $table->String('progression')->default('0');
         });
     }
 

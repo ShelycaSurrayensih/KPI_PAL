@@ -27,6 +27,7 @@ class IndivKpidir extends Migration
             $table->String('asal_kpi');
             $table->timestamps();
             $table->String('created_by')->default('0');
+            $table->String('progression')->default('0');
         });
     }
 

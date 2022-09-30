@@ -23,6 +23,7 @@ class CreateCascadeKpiDivsTable extends Migration
             $table->float('bkXbc');
             $table->boolean('status_div');
             $table->String('created_by')->default('0');
+            $table->String('progression')->default('0');
         });
     }
 
