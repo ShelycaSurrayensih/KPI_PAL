@@ -24,6 +24,7 @@ class Indhan extends Migration
             $table->String('program_utama');
             $table->String('target');
             $table->String('created_by')->default('0');
+            $table->String('progression')->default('0');
         });
     }
 

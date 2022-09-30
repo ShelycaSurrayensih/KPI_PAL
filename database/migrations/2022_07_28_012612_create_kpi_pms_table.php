@@ -30,6 +30,7 @@ class CreateKpiPmsTable extends Migration
             $table->year('tahun_kpipms');
             $table->String('created_by')->default('0');
             $table->timestamps();
+            $table->String('progression')->default('0');
         });
     }
 
