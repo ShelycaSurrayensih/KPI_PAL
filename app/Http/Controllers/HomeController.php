@@ -50,9 +50,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        
+        $divisi = Divisi::all();
         if (Auth::User()->status == 'administrator') {
-            return view('Admin.index');
+            return view('Admin.index', compact ('divisi'));
         } else {
             return view('user.index');
         }

@@ -1,6 +1,11 @@
 @extends('layouts.userlayout')
 
 @section('content')
+<style type="text/css">
+		table, th, td {
+		   border: 2px solid grey;
+		}
+	</style>
 <div class="row">
     <div class="col">
 
@@ -80,38 +85,103 @@
         <select >
         <option value="tahun">Tahun </option>
         </select>
+        <a href="{{ route('print') }}">
         <button type="onClick" class="btn btn-sm btn-soft-success shadow-none">
         <i class="ri-add-circle-line align-middle me-1"></i> Print</button></a>
     </div>
 
-		
-    <div class="mt-3 mt-lg-0">
-                            <form action="{{ route('print') }}">
-                                <div class="row g-3 mb-0 align-items-center">
-                                    <div class="col-sm-auto">
-                                    </div>
-                                    <!--end col-->
-                                    <div class="col-auto">
-                                        <a href="{{ route('print') }}">
-                                        <button type="onClick" class="btn btn-soft-success shadow-none">
-                                            <i class="ri-add-circle-line align-middle me-1"></i> Print all</button></a>
-                                    </div>
-                                    <!--end col-->
-                                    <div class="col-auto">
-                                        <button type="button"
-                                            class="btn btn-soft-info btn-icon waves-effect waves-light layout-rightside-btn shadow-none"><i
-                                                class="ri-pulse-line"></i></button>
-                                    </div>
-                                    <!--end col-->
-                                </div>
-                                <!--end row-->
-                            </form>
-                        </div>
-			
-		
 		</div>
+    </div><br>
+    <div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1"><strong>Table</strong></h4>
+                <div class="flex-shrink-0">
+                </div>
+            </div><!-- end card header -->
+
+            <div class="card-body">
+               
+                <div class="row g-4 mb-3  justify-content-center">
+                        
+                    <div class="table-responsive table-card mt-3 mb-1">
+                        <table class="table align-middle table-nowrap" id="timTable">
+
+                            <thead class="table-light ">
+                                <tr style="vertical-align: middle;">
+
+                                    <td rowspan="2"><strong>NO</td>
+                                    <td rowspan="2"><center><strong>DIVISI</center></td>
+                                    <td colspan="4" ><center><strong>PERFORMANCE</center></td>
+                                </tr>
+                                <tr>
+                                <th>TW 1</th>
+                                <th>TW 2</th>
+                                <th>TW 3</th>
+                                <th>TW 4</th>
+                                </tr>
+                            </thead>
+                            <tbody class="list form-check-all">
+                                <?php $no = 0;?>
+                                @foreach($divisi as $divisi)
+                                <tr>
+                                    <?php $no++ ;?>
+                                    <td>{{ $no }}</td>
+                                    <td>
+                                    
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1">{{$divisi->div_name}}</div>
+                                        </div>
+                                        
+                                    </td>
+                                    <td>
+                                   
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <div class="pagination-wrap hstack gap-2">
+                            <a class="page-item pagination-prev disabled" href="#">
+                                Previous
+                            </a>
+                            <ul class="pagination listjs-pagination mb-0"></ul>
+                            <a class="page-item pagination-next" href="#">
+                                Next
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div><!-- end card -->
+        </div>
+        <!-- end col -->
     </div>
+    <!-- end col -->
 </div>
-<!-- add Modal -->
 
 @endsection
