@@ -43,12 +43,11 @@
                                 <tr>
 
                                     <th class="sort" data-sort="no">No</th>
-                                    <th class="sort" data-sort="id_indhan">ID KPI</th>
+                                    <th class="sort" data-sort="id_indhan">KPI</th>
                                     <th class="sort" data-sort="bulan">Bulan</th>
                                     <th class="sort" data-sort="tahun">Tahun</th>
                                     <th class="sort" data-sort="realisasi">Realisasi</th>
                                     <th class="sort" data-sort="kendala">Kendala</th>
-                                    <th class="sort" data-sort="timestamp">Tanggal Input</th>
                                     <th class="sort" data-sort="timestamp">Komentar Admin</th>
                                     @if($users->status == 'administrator')
                                     <th class="sort" data-sort="timestamp">Created By</th>
@@ -101,6 +100,7 @@
                                             <div class="flex-grow-1">{{ $indhanReal->comment }}</div>
                                         </div>
                                     </td>
+                                    @if($users->status == 'administrator')
                                     <td>
                                         <div class="d-flex align-items-center">
                                             @foreach($divisi as $div)
@@ -110,6 +110,7 @@
                                             @endforeach
                                         </div>
                                     </td>
+                                    @endif
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
@@ -257,13 +258,6 @@
                                                 <div>
                                                     <label for="realisasi">Realisasi</label>
                                                     <input type="text" name="realisasi" class="form-control" id="realisasi" value="{{ $indhanReal->realisasi }}" readonly>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-xxl-6">
-                                                <div>
-                                                    <label for="timestamp">Tanggal Input</label>
-                                                    <input type="text" name="timestamp" class="form-control" id="timestamp" value="{{ $indhanReal->created_at }}" readonly>
                                                 </div>
                                             </div>
                                             <!--end col-->

@@ -57,7 +57,7 @@ class IndivRealisasiController extends Controller
         $indivRealisasi->progres= $request->progres;
         $indivRealisasi->realisasi= $request->realisasi;
         $indivRealisasi->prognosa = $request->prognosa;
-        $indivRealisasi->kendala= $request->keterangan;
+        $indivRealisasi->kendala= $request->kendala;
         $indivRealisasi->id_divisi= $request->id_divisi;
 
         if($request->file != Null){
@@ -75,9 +75,14 @@ class IndivRealisasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_realisasi)
     {
-        //
+        $users = auth()->user();
+        $direktorat = Direktorat::all();
+        $kpidir = IndivKpiDir::all();
+        $indivRealisasi = IndivRealisasi::find('id_realisasi', $id_realisasi)->first();
+        $divisi = Divisi::all();
+        return view('KPI_Indiv.Indiv_Realisasi.index', compact ('users', 'kpidir', 'direktorat', 'indivRealisasi', 'divisi'));
     }
 
     /**
@@ -110,7 +115,7 @@ class IndivRealisasiController extends Controller
         $indivRealisasi->progres= $request->get('progres');
         $indivRealisasi->realisasi= $request->get('realisasi');
         $indivRealisasi->prognosa = $request->get('prognosa');
-        $indivRealisasi->keterangan= $request->get('keterangan');
+        $indivRealisasi->kendala= $request->get('kendala');
         $indivRealisasi->id_divisi= $request->get('id_divisi');
         $indivRealisasi->comment= $request->get('comment');
         $indivRealisasi->save();

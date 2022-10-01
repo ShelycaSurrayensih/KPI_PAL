@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\IndhanTim;
+use App\Models\Divisi;
 
 class IndhanTimController extends Controller
 {
@@ -16,7 +17,8 @@ class IndhanTimController extends Controller
     {
         $users = auth()->user();
         $indhanTim = IndhanTim::all();
-        return view('KPI_Indhan.Indhan_Tim.index', compact ('users', 'indhanTim'));
+        $divisi = Divisi::all();
+        return view('KPI_Indhan.Indhan_Tim.index', compact ('users', 'indhanTim', 'divisi'));
     }
 
     /**
@@ -28,7 +30,8 @@ class IndhanTimController extends Controller
     {
         $users = auth()->user();
         $indhanTim = IndhanTim::all();
-        return view('KPI_Indhan.Indhan_Tim.index', compact ('users', 'indhanTim'));
+        $divisi = Divisi::all();
+        return view('KPI_Indhan.Indhan_Tim.index', compact ('users', 'indhanTim', 'divisi'));
     }
 
     /**
@@ -40,11 +43,13 @@ class IndhanTimController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_tim' => 'required',
+            'Tim' => 'required',
+            'id_divisi' => 'required',
         ]);
 
         $indhanTim = new IndhanTim;
-        $indhanTim->nama_tim = $request->get('nama_tim');
+        $indhanTim->Tim = $request->get('Tim');
+        $indhanTim->id_divisi = $request->get('id_divisi');
         $indhanTim->save();
         return redirect()->route('KPI_IndhanTim.create')->with('success', 'Data berhasil ditambahkan');
     }
@@ -70,7 +75,8 @@ class IndhanTimController extends Controller
     {
         $users = auth()->user();
         $indhanTim = IndhanTim::all();
-        return view('KPI_Indhan.Indhan_Tim.index', compact ('users', 'indhanTim'));
+        $divisi = Divisi::all();
+        return view('KPI_Indhan.Indhan_Tim.index', compact ('users', 'indhanTim', 'divisi'));
     }
 
     /**
@@ -83,7 +89,8 @@ class IndhanTimController extends Controller
     public function update(Request $request, $id_tim)
     {
         $indhanTim=IndhanTim::where('id_tim', $id_tim)->first();
-        $indhanTim->nama_tim = $request->get('nama_tim');
+        $indhanTim->Tim = $request->get('Tim');
+        $indhanTim->id_divisi = $request->get('id_divisi');
         $indhanTim->save();
         return redirect()->route('KPI_IndhanTim.edit', $id_tim)->with('success', 'Data berhasil ditambahkan');
         

@@ -42,7 +42,8 @@
                                                 value="option">
                                         </div>
                                     </th>
-                                    <th class="sort" data-sort="nama_tim">Nama Tim</th>
+                                    <th class="sort" data-sort="tim">Tim</th>
+                                    <th class="sort" data-sort="divisi">Divisi</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -57,8 +58,8 @@
                                     </th>
                                     <td class="id" style="display:none;"><a href="javascript:void(0);"
                                             class="fw-medium link-primary">#VZ2101</a></td>
-                                    <td class="nama_tim">{{$tim->nama_tim}}</td>
-
+                                    <td class="Tim">{{$tim->Tim}}</td>
+                                    <td class="id_divisi">{{$tim->id_divisi}}</td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
@@ -98,11 +99,18 @@
                                                     enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
-                                                        <label for="nama_tim">Nama Tim</label>
-                                                        <input type="text" name="nama_tim" class="form-control"
-                                                            id="nama_tim" value="{{$tim->nama_tim}}">
+                                                        <label for="Tim">Nama Tim</label>
+                                                        <input type="text" name="Tim" class="form-control"
+                                                            id="Tim" value="{{$tim->Tim}}">
 
                                                     </div>
+                                                    <div class="mb-3">
+                                                        <label for="id_divisi" class="form-label">Divisi</label>
+                                                        <select name="id_divisi" class="form-control" id="id_divisi">
+                                                            @foreach ($divisi as $div)
+                                                            <option value="{{$div->id_divisi}}">{{ "$div->div_name" }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     <div class=" modal-footer">
                                                         <div class="hstack gap-2 justify-content-end">
                                                             <button type="button" class="btn btn-light"
@@ -162,9 +170,16 @@
                     id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="nama_tim">Nama Tim</label>
-                        <input type="text" name="nama_tim" class="form-control" id="nama_tim">
-
+                        <label for="Tim">Nama Tim</label>
+                        <input type="text" name="Tim" class="form-control" id="Tim">
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_divisi" class="form-label">Divisi</label>
+                        <select name="id_divisi" class="form-control" id="id_divisi">
+                        @foreach ($divisi as $div)
+                        <option value="{{$div->id_divisi}}">{{ "$div->div_name" }}</option>
+                        @endforeach
+                    </select>
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">

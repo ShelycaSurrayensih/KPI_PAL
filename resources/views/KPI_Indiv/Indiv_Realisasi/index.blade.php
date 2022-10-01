@@ -44,7 +44,7 @@
                                     <th class="sort" data-sort="progres">Progres</th>
                                     <th class="sort" data-sort="realisasi">Realisasi</th>
                                     <th class="sort" data-sort="prognosa">Prognosa</th>
-                                    <th class="sort" data-sort="keterangan">Keterangan</th>
+                                    <th class="sort" data-sort="keterangan">Kendala</th>
                                     <th class="sort" data-sort="keterangan">Komentar Admin</th>
                                     @if($users->status == 'administrator')
                                     <th class="sort" data-sort="keterangan">Created By</th>
@@ -106,6 +106,7 @@
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $indivReal->id_realisasi }}">Edit</button>
                                             </div>
                                             <div class="details">
+                                            <!-- <form action="{{ route('indivReal.show', $indivReal->id_realisasi) }}" method="get" > -->
                                                 <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
                                                     Details
                                                 </button>
@@ -228,7 +229,7 @@
                                                         <div class="col-xxl-6">
                                                             <div>
                                                                 <label for="alasan">Alasan</label>
-                                                                <input type="text" name="alasan" class="form-control" id="alasan" value="{{ $kpidir->alasan }}" readonly>
+                                                                <input type="text" name="alasan" class="form-control" id="alasan" value="{{ $kpidir->ket }}" readonly>
                                                             </div>
                                                         </div>
 
@@ -270,8 +271,8 @@
                                                         <!--end col-->
                                                         <div class="col-xxl-6">
                                                             <div>
-                                                                <label for="keterangan">Keterangan</label>
-                                                                <input type="text" name="keterangan" class="form-control" id="keterangan" value="{{$indivReal->keterangan}}" readonly>
+                                                                <label for="kendala">Kendala</label>
+                                                                <input type="text" name="kendala" class="form-control" id="kendala" value="{{$indivReal->kendala}}" readonly>
                                                             </div>
                                                         </div>
 
@@ -335,8 +336,8 @@
 
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="keterangan">Keterangan</label>
-                                                        <input type="text" name="keterangan" class="form-control" id="keterangan" value="{{$indivReal->keterangan}}">
+                                                        <label for="kendala">Kendala</label>
+                                                        <input type="text" name="kendala" class="form-control" id="kendala" value="{{$indivReal->kendala}}">
 
                                                     </div>
 
@@ -439,8 +440,8 @@
 
                     </div>
                     <div class="mb-3">
-                        <label for="keterangan">Keterangan</label>
-                        <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
+                        <label for="kendala">Kendala</label>
+                        <textarea type="textarea" name="kendala" class="form-control" id="kendala" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
                     </div>
                     <div>
                         <label for="file_evidence">File Evidence</label>

@@ -111,11 +111,13 @@ Route::post('/KPI_Indiv/update/{id}',[IndivController::class, 'update'])->name('
 Route::post('/KPI_Indiv/edit/{id}',[IndivController::class, 'edit'])->name('kpidir.edit');
 Route::delete('/KPI_Indiv/destroy/{id}',[IndivController::class, 'destroy'])->name('kpidir.destroy');
 
+
 Route::get('/KPI_Indiv/Realisasi/{id}', [IndivController::class, 'realisasiIndex'])->name('realisasi.index');
 Route::get('/KPI_IndivRealisasi/{id}', [IndivRealisasiController::class, 'index'])->name('indivReal.index');
 Route::post('/KPI_IndivRealisasi/update/{id}',[IndivRealisasiController::class, 'update'])->name('indivReal.update');
 Route::post('/KPI_IndivRealisasi/edit/{id}',[IndivRealisasiController::class, 'edit'])->name('indivReal.edit');
 Route::delete('/KPI_IndivRealisasi/destroy/{id}',[IndivRealisasiController::class, 'destroy'])->name('indivReal.destroy');
+Route::get('/KPI_IndivRealisasi/show/{id}',[IndivRealisasiController::class, 'show'])->name('indivReal.show');
 
 Route::get('/KPI_Indhan/Realisasi/{id}', [IndhanController::class, 'indhanRealisasiIndex'])->name('indhanRealisasi.index');
 Route::post('/KPI_Indhan/update/{id}',[IndhanController::class, 'update'])->name('indhan.update');
