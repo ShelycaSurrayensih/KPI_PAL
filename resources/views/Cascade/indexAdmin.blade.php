@@ -28,9 +28,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <div class="card-body">
                         <div class="table-responsive table-card">
                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
@@ -153,7 +150,6 @@
                     </div>
                 </div> <!-- .card-->
             </div> <!-- .col-->
-        </div> <!-- end row-->
         <div class="d-flex justify-content-end">
             <div class="pagination-wrap hstack gap-2">
                 <a class="page-item pagination-prev disabled" href="#">

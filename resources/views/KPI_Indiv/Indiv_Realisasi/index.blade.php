@@ -106,8 +106,7 @@
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $indivReal->id_realisasi }}">Edit</button>
                                             </div>
                                             <div class="details">
-                                            <!-- <form action="{{ route('indivReal.show', $indivReal->id_realisasi) }}" method="get" > -->
-                                                <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
+                                                <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid{{ $indivReal->id_realisasi }}">
                                                     Details
                                                 </button>
                                             </div>
@@ -174,7 +173,7 @@
                                     </div>
                                 </div>
                                 <!-- Details in modals -->
-                                <div class="modal fade" id="exampleModalgrid" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+                                <div class="modal fade" id="exampleModalgrid{{ $indivReal->id_realisasi }}" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">

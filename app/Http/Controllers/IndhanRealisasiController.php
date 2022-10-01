@@ -68,9 +68,13 @@ class IndhanRealisasiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_realisasi)
     {
-        //
+        $users = auth()->user();
+        $indhan = Indhan::all();
+        $indhanRealisasi = IndhanRealisasi::find($id_realisasi);
+        //dd($company->indhan);
+        return view('KPI_Indhan.Indhan_Realisasi.index', compact ('users', 'indhan', 'indhanRealisasi'));
     }
 
     /**

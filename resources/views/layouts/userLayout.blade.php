@@ -191,6 +191,7 @@
                         </a>
 
                     </li> <!-- end Dashboard Menu -->
+                    @if(Auth::user()->status == 'administrator')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarIcons" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarIcons">
@@ -198,7 +199,7 @@
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarIcons">
                             <ul class="nav nav-sm flex-column">
-                                @if(Auth::user()->status == 'administrator')
+                                
                                 <li class="nav-item">
                                     <a href="{{ route('inisiatifStrategis.index') }}" class="nav-link"
                                         data-key="t-remix">inisiatifStrategis</a>
@@ -207,7 +208,7 @@
                                     <a href="{{ route('KategoriPms.index') }}" class="nav-link"
                                         data-key="t-boxicons">Kategori</a>
                                 </li>
-                                @endif
+                                
                                 <li class="nav-item">
                                     <a href="{{ route('kpi_pms.index') }}" class="nav-link"
                                         data-key="t-material-design">KPI PMS</a>
@@ -215,7 +216,14 @@
                             </ul>
                         </div>
                     </li>
-                    
+                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('kpi_pms.index') }}" role="button"
+                            aria-expanded="false" aria-controls="sidebarApps">
+                            <i class="mdi mdi-android-studio"></i> <span data-key="t-apps">RKAP PMS</span>
+                        </a>
+                    </li>
+                    @if(Auth::user()->status == 'administrator')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarLayouts">
@@ -223,12 +231,12 @@
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarLayouts">
                             <ul class="nav nav-sm flex-column">
-                                @if(Auth::user()->status == 'administrator')
+                                
                                 <li class="nav-item">
                                     <a href="{{ route('KPI_IndhanTim.index') }}" class="nav-link"
                                         data-key="t-horizontal">Tim</a>
                                 </li>
-                                @endif
+                                
                                 <li class="nav-item">
                                     <a href="{{ route('KPI_Indhan.index') }}" class="nav-link" data-key="t-detached">Tim
                                         Integrasi Indhan</a>
@@ -236,12 +244,20 @@
                             </ul>
                         </div>
                     </li>
+                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('KPI_Indhan.index') }}" role="button"
+                            aria-expanded="false" aria-controls="sidebarApps">
+                            <i class="mdi mdi-view-carousel-outline"></i> <span data-key="t-apps">Tim Integrasi Indhan</span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('KPI_Indiv.index') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarApps">
                             <i class="mdi mdi-view-grid-plus-outline"></i> <span data-key="t-apps">Individual Direksi</span>
                         </a>
                     </li>
+                    @if(Auth::user()->status == 'administrator')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarCascading" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarCascading">
@@ -250,13 +266,13 @@
                         </a>
                         <div class="collapse menu-dropdown" id="sidebarCascading">
                             <ul class="nav nav-sm flex-column">
-                                @if(Auth::user()->status == 'administrator')
+                                
                                 <li class="nav-item">
                                     <a href="{{route('cascadeKPI.index')}}" class="nav-link" data-key="t-signin">
                                         Cascading
                                     </a>
                                 </li>
-                                @endif
+                                
                                 <li class="nav-item">
                                     <a href="{{ route('casDiv.all') }}" class="nav-link" data-key="t-signup">
                                         KPI Divisi
@@ -266,7 +282,13 @@
                             </ul>
                         </div>
                     </li>
-
+                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="{{ route('casDiv.all') }}" role="button"
+                            aria-expanded="false" aria-controls="sidebarApps">
+                            <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-apps">Cascading</span>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarAuth" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarAuth">

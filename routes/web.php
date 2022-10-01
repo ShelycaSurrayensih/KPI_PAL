@@ -117,7 +117,6 @@ Route::get('/KPI_IndivRealisasi/{id}', [IndivRealisasiController::class, 'index'
 Route::post('/KPI_IndivRealisasi/update/{id}',[IndivRealisasiController::class, 'update'])->name('indivReal.update');
 Route::post('/KPI_IndivRealisasi/edit/{id}',[IndivRealisasiController::class, 'edit'])->name('indivReal.edit');
 Route::delete('/KPI_IndivRealisasi/destroy/{id}',[IndivRealisasiController::class, 'destroy'])->name('indivReal.destroy');
-Route::get('/KPI_IndivRealisasi/show/{id}',[IndivRealisasiController::class, 'show'])->name('indivReal.show');
 
 Route::get('/KPI_Indhan/Realisasi/{id}', [IndhanController::class, 'indhanRealisasiIndex'])->name('indhanRealisasi.index');
 Route::post('/KPI_Indhan/update/{id}',[IndhanController::class, 'update'])->name('indhan.update');

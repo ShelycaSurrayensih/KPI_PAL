@@ -80,7 +80,7 @@ class IndivRealisasiController extends Controller
         $users = auth()->user();
         $direktorat = Direktorat::all();
         $kpidir = IndivKpiDir::all();
-        $indivRealisasi = IndivRealisasi::find('id_realisasi', $id_realisasi)->first();
+        $indivRealisasi = IndivRealisasi::find($id_realisasi);
         $divisi = Divisi::all();
         return view('KPI_Indiv.Indiv_Realisasi.index', compact ('users', 'kpidir', 'direktorat', 'indivRealisasi', 'divisi'));
     }

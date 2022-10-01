@@ -211,7 +211,6 @@
                     </div>
                 </div> <!-- .card-->
             </div> <!-- .col-->
-        </div> <!-- end row-->
         <div class="d-flex justify-content-end">
             <div class="pagination-wrap hstack gap-2">
                 <a class="page-item pagination-prev disabled" href="#">

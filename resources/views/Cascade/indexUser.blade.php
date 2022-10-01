@@ -16,7 +16,6 @@
                                 @if($users->status != 'administrator')
                                 <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i class="ri-delete-bin-2-line"></i></button>
                                 @endif
                             </div>
                         </div>
@@ -182,7 +181,6 @@
                     </div>
                 </div> <!-- .card-->
             </div> <!-- .col-->
-        </div> <!-- end row-->
         <div class="d-flex justify-content-end">
             <div class="pagination-wrap hstack gap-2">
                 <a class="page-item pagination-prev disabled" href="#">

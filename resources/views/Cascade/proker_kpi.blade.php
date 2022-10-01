@@ -161,12 +161,12 @@
                                                 @if($prok->id == $realisasi->id_CProk)
                                                 <td>
                                                     <div class="d-flex align-items-center">
-                                                        <div class="flex-grow-1">{{ $realisasi->deskripsi }}</div>
+                                                        <div class="flex-grow-1">{{ $realisasi->progress  }}</div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex align-items-center">
-                                                        <div class="flex-grow-1">{{ $realisasi->progress }}</div>
+                                                        <div class="flex-grow-1">{{ $realisasi->deskripsi }}</div>
                                                     </div>
                                                 </td>
                                                 
@@ -453,8 +453,7 @@
         </div>
     </div>
 </div> <!-- .card-->
-</div> <!-- .col-->
-</div> <!-- end row-->
+</div> 
 <div class="d-flex justify-content-end">
     <div class="pagination-wrap hstack gap-2">
         <a class="page-item pagination-prev disabled" href="#">
