@@ -217,12 +217,14 @@
                         </div>
                     </li>
                     @endif
+                    @if(Auth::user()->status !== 'administrator')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('kpi_pms.index') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarApps">
                             <i class="mdi mdi-android-studio"></i> <span data-key="t-apps">RKAP PMS</span>
                         </a>
                     </li>
+                    @endif
                     @if(Auth::user()->status == 'administrator')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button"
@@ -245,12 +247,14 @@
                         </div>
                     </li>
                     @endif
+                    @if(Auth::user()->status !== 'administrator')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('KPI_Indhan.index') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarApps">
                             <i class="mdi mdi-view-carousel-outline"></i> <span data-key="t-apps">Tim Integrasi Indhan</span>
                         </a>
                     </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('KPI_Indiv.index') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarApps">
@@ -283,12 +287,14 @@
                         </div>
                     </li>
                     @endif
+                    @if(Auth::user()->status !== 'administrator')
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="{{ route('casDiv.all') }}" role="button"
                             aria-expanded="false" aria-controls="sidebarApps">
                             <i class="mdi mdi-account-circle-outline"></i> <span data-key="t-apps">Cascading</span>
                         </a>
                     </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#sidebarAuth" data-bs-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="sidebarAuth">
