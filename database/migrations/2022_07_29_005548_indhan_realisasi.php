@@ -19,6 +19,7 @@ class IndhanRealisasi extends Migration
             $table->foreign('id_indhan')->references('id_indhan')->on('indhan')->onDelete('set null')->onUpdate('cascade');
             $table->String('realisasi');
             $table->String('bulan');
+            $table->String('progress');
             $table->year('tahun');
             $table->string('comment')->default('Belum ada Komentar');
             $table->String('kendala')->nullable();

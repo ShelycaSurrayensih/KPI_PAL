@@ -91,6 +91,38 @@
                                             </div>
                                         </td>
                                         <td>
+                                    <?php
+                                            $number = 1;
+                                            $show = 0;
+                                            ?>
+                                            @foreach($indivRealisasi as $reals)
+                                            @if($reals->id_kpidir  == $kpidir->id_kpidir)
+                                            <?php
+                                            $number = $reals->id_realisasi;
+                                            ?>
+                                            @endif
+                                            @endforeach
+
+                                            @foreach($indivRealisasi  as $reals)
+                                            @if($reals->id_realisasi == $number)
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progres}}%">
+                                                </div>
+                                            </div>{{$reals->progres}}%
+                                        <?php
+                                        $show = 1;
+                                        ?>
+                                        @endif
+                                        @endforeach
+                                        
+                                        @if($show == 0)
+                                        <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                                                </div>
+                                            </div>
+                                        @endif
+                                        </td>
+                                        <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpidir->created_at }}</div>
                                             </div>

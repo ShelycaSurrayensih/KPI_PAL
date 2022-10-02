@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\TupoksiDepartemen;
 use App\Models\TupoksiKPI;
 use App\Models\TupoksiProker;
+use App\Models\TupoksiRealisasi;
+use App\Models\TupoksiTw;
 
 class TupoksiProkerController extends Controller
 {
@@ -20,8 +22,10 @@ class TupoksiProkerController extends Controller
         $tupoksiDepartemen = TupoksiDepartemen::all();
         $tupoksiKPI = TupoksiKPI::all();
         $tupoksiProker = TupoksiProker::all();
+        $tupoksiRealisasi = TupoksiRealisasi::all();
+        $tupoksiTw = TupoksiTw::all();
         //$tupoksiProker = TupoksiProker::where('id_proker', $id)->first();
-        return view('Tupoksi.Proker.indexAll', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker'));
+        return view('Tupoksi.Proker.indexAll', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiRealisasi', 'tupoksiTw'));
     }
 
     public function indexProker($id)

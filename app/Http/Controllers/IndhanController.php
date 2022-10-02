@@ -22,7 +22,8 @@ class IndhanController extends Controller
         $indhan = Indhan::all();
         $indhanTim = IndhanTim::all();
         $divisi = Divisi::all();
-        return view('KPI_Indhan.index', compact ('users', 'indhan', 'indhanTim', 'divisi'));
+        $indhanRealisasi = IndhanRealisasi::all();
+        return view('KPI_Indhan.index', compact ('users', 'indhan', 'indhanTim', 'divisi', 'indhanRealisasi'));
     }
     
     //realisasi

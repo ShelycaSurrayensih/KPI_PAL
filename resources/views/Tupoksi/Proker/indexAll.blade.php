@@ -44,7 +44,8 @@
                                     <th class="sort" data-sort="departemen">Departemen</th>
                                     <th class="sort" data-sort="kpi">KPI</th>
                                     <th class="sort" data-sort="proker">Proker</th>
-                                    <th class="sort" data-sort="target">target</th>
+                                    <th class="sort" data-sort="target">Target</th>
+                                    <th class="sort" data-sort="target">Progress</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -83,6 +84,42 @@
                                             <div class="flex-grow-1">{{ $proker->target }}</div>
                                         </div>
                                     </td>
+                                    <td>
+                                    <?php
+                                            $number = 1;
+                                            $show = 0;
+                                            ?>
+                                            @foreach($tupoksiTw as $tw)
+                                            @if($tw->id_proker == $proker->id_proker)
+                                            @foreach($tupoksiRealisasi as $reals)
+                                            @if($reals->id_tw == $tw->id_tw)
+                                            <?php
+                                            $number = $reals->id_realisasi;
+                                            ?>
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                            @endforeach
+
+                                            @foreach($tupoksiRealisasi as $reals)
+                                            @if($reals->id_tw == $number)
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progres}}%">
+                                                </div>
+                                            </div>{{$reals->progres}}%
+                                        <?php
+                                        $show = 1;
+                                        ?>
+                                        @endif
+                                        @endforeach
+                                        
+                                        @if($show == 0)
+                                        <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                                                </div>
+                                            </div>
+                                        @endif
+                                        </td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">

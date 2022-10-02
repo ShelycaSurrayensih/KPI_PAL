@@ -15,12 +15,10 @@
                     <div class="row g-4 mb-3">
                         <div class="col-sm-auto">
                             <div>
-                            @if($users->status != 'administrator')
-                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
-                                    id="create-btn" data-bs-target="#showModal"><i
-                                        class="ri-add-line align-bottom me-1"></i>
+                                @if($users->status != 'administrator')
+                                <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
-                                    @endif
+                                @endif
                             </div>
                         </div>
                         <div class="col-sm">
@@ -44,6 +42,7 @@
                                     <th class="sort" data-sort="entitas">Entitas</th>
                                     <th class="sort" data-sort="entitas">Program Utama</th>
                                     <th class="sort" data-sort="target">Target/Milestone</th>
+                                    <th class="sort" data-sort="target">Progress</th>
                                     @if($users->status == 'administrator')
                                     <th class="sort" data-sort="target">Created By</th>
                                     @endif
@@ -51,13 +50,13 @@
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
-                                <?php $no = 0;?>
+                                <?php $no = 0; ?>
                                 @foreach($indhan as $indhan)
                                 @if($users->divisi_id == $indhan->divisi)
 
                                 <tr>
 
-                                    <?php $no++ ;?>
+                                    <?php $no++; ?>
                                     <td>{{ $no }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -79,39 +78,65 @@
                                             <div class="flex-grow-1">{{ $indhan->target }}</div>
                                         </div>
                                     </td>
+                                    <td>
+                                        <?php
+                                        $number = 1;
+                                        $show = 0;
+                                        ?>
+                                        @foreach($indhanRealisasi as $reals)
+                                        @if($reals->id_indhan == $indhan->id_indhan)
+                                        <?php
+                                        $number = $reals->id_realisasi;
+                                        ?>
+                                        @endif
+                                        @endforeach
+
+                                        @foreach($indhanRealisasi as $reals)
+                                        @if($reals->id_realisasi == $number)
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progress}}%">
+                                            </div>
+                                        </div>{{$reals->progress}}%
+                                        <?php
+                                        $show = 1;
+                                        ?>
+                                        @endif
+                                        @endforeach
+
+                                        @if($show == 0)
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                                            </div>
+                                        </div>
+                                        @endif
+                                    </td>
                                     @if($users->status == 'administrator')
                                     <td>
-                                            <div class="d-flex align-items-center">
-                                                @foreach($divisi as $div)
-                                                @if($div->id_divisi == $indhan->created_by)
-                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
-                                                @endif
-                                                @endforeach
-                                            </div>
-                                        </td>
-                                        @endif
+                                        <div class="d-flex align-items-center">
+                                            @foreach($divisi as $div)
+                                            @if($div->id_divisi == $indhan->created_by)
+                                            <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                            @endif
+                                            @endforeach
+                                        </div>
+                                    </td>
+                                    @endif
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
-                                                <button class="btn btn-sm btn-success edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showModal{{ $indhan->id_indhan }}">Edit</button>
+                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $indhan->id_indhan }}">Edit</button>
                                             </div>
                                             <div class="edit">
                                                 <a href="{{ route('indhanRealisasi.index', $indhan->id_indhan) }}">
-                                                    <button
-                                                        class="btn btn-sm btn-success edit-item-btn">Realisasi</button>
+                                                    <button class="btn btn-sm btn-success edit-item-btn">Realisasi</button>
                                                 </a>
                                             </div>
                                             <div class="remove">
-                                                <form action="{{ route('KPI_Indhan.destroy', $indhan->id_indhan) }}"
-                                                    method="POST">
+                                                <form action="{{ route('KPI_Indhan.destroy', $indhan->id_indhan) }}" method="POST">
 
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
+                                                    <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                 </form>
                                             </div>
                                         </div>
@@ -119,26 +144,27 @@
                                 </tr>
 
                                 <!-- edit Modal -->
-                                <div class="modal fade" id="showModal{{ $indhan->id_indhan }}" tabindex=" -1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="showModal{{ $indhan->id_indhan }}" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header bg-light p-3">
                                                 <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close" id="close-modal"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="post"
-                                                    action="{{ route('indhan.update', $indhan->id_indhan) }}"
-                                                    enctype="multipart/form-data" id="myForm">
+                                                <form method="post" action="{{ route('indhan.update', $indhan->id_indhan) }}" enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
-                                                        <label for="id_tim">ID Tim</label>
-                                                        <select name="id_tim" class="form-control" id="id_tim">
+                                                        <label for="Tim">Tim</label>
+                                                        <select name="Tim" class="form-control" id="Tim">
                                                             @foreach ($indhanTim as $tim)
-                                                            <option value="{{$tim->id_tim}}">{{ "$tim->nama_tim" }}
-                                                            </option>
+                                                            @foreach($divisi as $div)
+                                                            @if($users->id_divisi == $div->id_divisi)
+                                                            @if($tim->id_divisi == $div->id_divisi)
+                                                            <option value="{{$tim->id_tim}}">{{ "$tim->Tim" }}</option>
+                                                            @endif
+                                                            @endif
+                                                            @endforeach
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -146,42 +172,34 @@
                                                         <label for="id_divisi">ID Divisi</label>
                                                         @foreach($divisi as $div)
                                                         @if($users->id_divisi == $div->id_divisi)
-                                                        <input name="id_divisi" value="{{ $div->id_divisi }}"
-                                                            class="form-control" id="id_divisi" readonly="">
+                                                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly="">
 
                                                         @endif @endforeach
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="program_strategis">Program Strategis</label>
-                                                        <input type="text" name="program_strategis" class="form-control"
-                                                            id="program_strategis"
-                                                            value="{{ $indhan->program_strategis }}">
+                                                        <input type="text" name="program_strategis" class="form-control" id="program_strategis" value="{{ $indhan->program_strategis }}">
 
                                                     </div>
                                                     <div class=" mb-3">
                                                         <label for="entitas">Entitas</label>
-                                                        <input type="text" name="entitas" class="form-control"
-                                                            id="entitas" value="{{ $indhan->entitas }}">
+                                                        <input type="text" name="entitas" class="form-control" id="entitas" value="{{ $indhan->entitas }}">
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="program_utama">Program Utama</label>
-                                                        <input type="text" name="program_utama" class="form-control"
-                                                            id="program_utama" value="{{ $indhan->program_utama }}">
+                                                        <input type="text" name="program_utama" class="form-control" id="program_utama" value="{{ $indhan->program_utama }}">
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="target">Target/Milestone</label>
-                                                        <input type="text" name="target" class="form-control"
-                                                            id="target" value="{{ $indhan->target }}">
+                                                        <input type="text" name="target" class="form-control" id="target" value="{{ $indhan->target }}">
                                                     </div>
 
                                                     <div class=" modal-footer">
                                                         <div class="hstack gap-2 justify-content-end">
-                                                            <button type="button" class="btn btn-light"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success"
-                                                                id="edit-btn">Update</button>
+                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -194,8 +212,7 @@
                         </table>
                         <div class="noresult" style="display: none">
                             <div class="text-center">
-                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                    colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
+                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
                                 </lord-icon>
                                 <h5 class="mt-2">Sorry! No Result Found</h5>
                                 <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
@@ -229,14 +246,12 @@
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
                 <h5 class="modal-title" id="exampleModalLabel">Add</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    id="close-modal"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
             <div class="modal-body">
                 <form method="post" action="{{ route('KPI_Indhan.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
-                    <input name="created_by" type="text" class="form-control"
-                        id="created_by" value="{{$users->id_divisi}}" readonly hidden>
+                    <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="Tim">Nama Tim</label>
                         <select name="Tim" class="form-control" id="Tim">
@@ -255,9 +270,8 @@
                         <label for="id_divisi">Nama Divisi</label>
                         @foreach($divisi as $div)
                         @if($users->id_divisi == $div->id_divisi)
-                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi"
-                            readonly hidden>
-                            <input name="" value="{{ $div->div_name }}" class="form-control" id="id_divisi" readonly >
+                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly hidden>
+                        <input name="" value="{{ $div->div_name }}" class="form-control" id="id_divisi" readonly>
                         @endif @endforeach
                     </div>
                     <div class="mb-3">
