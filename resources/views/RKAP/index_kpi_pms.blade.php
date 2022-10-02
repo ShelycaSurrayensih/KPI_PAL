@@ -50,6 +50,7 @@
                                         <th scope="col">Target</th>
                                         <th scope="col">Lead Divisi</th>
                                         <th scope="col">Tahun</th>
+                                        <th scope="col">Progress</th>
                                         <th scope="col">Updated</th>
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
@@ -62,7 +63,8 @@
                                     @foreach($kpi as $kpi)
                                     @if($kpi->created_by == $users->id_divisi)
                                     <tr>
-                                        <td> @foreach($kategori as $kat)
+                                        <td>
+                                            @foreach($kategori as $kat)
                                             @if($kat->id_kat == $kpi->id_kat)
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kat->ket }}.{{ $kat->kat_desc }}</div>
@@ -108,6 +110,36 @@
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpi->tahun_kpipms }}</div>
                                             </div>
+                                        </td>
+                                        <td>
+                                            <?php
+                                            $number = 1;
+                                            ?>
+                                            @foreach($plan as $plans)
+
+                                            @if($plans->id_kpipms == $kpi->id_kpipms)
+
+                                            @foreach($real as $reals)
+
+                                            @if($reals->id_plan == $plans->id_plan)
+                                            <?php
+                                            $number++;
+                                            ?>
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                            @endforeach
+
+                                            @foreach($real as $reals)
+                                            @if($reals->id_real == $number)
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progress}}%">
+                                                </div>
+                                            </div>
+                                        <td>{{$reals->progress}}
+                                        </td>
+                                        @endif
+                                        @endforeach
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -232,19 +264,19 @@
                     </div>
                 </div> <!-- .card-->
             </div> <!-- .col-->
-        <div class="d-flex justify-content-end">
-            <div class="pagination-wrap hstack gap-2">
-                <a class="page-item pagination-prev disabled" href="#">
-                    Previous
-                </a>
-                <ul class="pagination listjs-pagination mb-0"></ul>
-                <a class="page-item pagination-next" href="#">
-                    Next
-                </a>
+            <div class="d-flex justify-content-end">
+                <div class="pagination-wrap hstack gap-2">
+                    <a class="page-item pagination-prev disabled" href="#">
+                        Previous
+                    </a>
+                    <ul class="pagination listjs-pagination mb-0"></ul>
+                    <a class="page-item pagination-next" href="#">
+                        Next
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</div><!-- end card -->
+    </div><!-- end card -->
 </div>
 <!-- end col -->
 </div>

@@ -65,8 +65,10 @@ class CascadeController extends Controller
         $casKat = CascadeKat::all();
         $casKpi = CascadeKpi::all();
         $divisi = Divisi::all();
+        $casProk = CascadeProker::all();
+        $casReal = CascadeRealisasi::all();
 
-        return view('Cascade.indexUser', compact('users', 'casKpiDiv', 'casKpi','divisi', 'casKpiCount','casKat'));
+        return view('Cascade.indexUser', compact('users', 'casKpiDiv', 'casKpi','divisi', 'casKpiCount','casKat', 'casProk', 'casReal'));
     }
    
     public function cascadeKpiDivStore(Request $request)

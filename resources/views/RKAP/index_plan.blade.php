@@ -100,6 +100,7 @@
                                         </td>
                                         <?php
                                         $sReal = 0;
+                                        $show = 0;
                                         ?>
                                         @if($realCount == 0)
                                         <td>
@@ -135,8 +136,28 @@
                                                 <div class="flex-grow-1">{{$reals->keterangan}}</div>
                                             </div>
                                         </td>
+                                        <?php
+                                        $show = 1;
+                                        ?>
                                         @endif
                                         @endforeach
+                                        @if($show == 0)
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">Belum Terisi</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">Belum Terisi</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="flex-grow-1">Belum Terisi</div>
+                                            </div>
+                                        </td>
+                                        @endif
                                         @endif
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -173,6 +194,7 @@
                                                 </div>
                                                 @foreach($real as $reals)
                                                 @if($reals->id_plan == $plan->id_plan)
+                                                @if($reals->file_evidence != null)
                                                 <div class="view">
                                                     <a href="{{ route('viewFile', $reals->file_evidence) }}">
                                                         <button type="submit" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light shadow-none">
@@ -180,6 +202,7 @@
                                                         </button>
                                                     </a>
                                                 </div>
+                                                @endif
                                                 @endif
                                                 @endforeach
 
@@ -370,7 +393,7 @@
                                                             </div>
                                                             <div class="col-xxl-6">
                                                                 <div>
-                                                                    <label for="file_evidence">File Evidence</label>
+                                                                    <label for="file">File Evidence</label>
                                                                     <div class="fallback">
                                                                         <input type="file" name="file" multiple="multiple">
                                                                     </div>

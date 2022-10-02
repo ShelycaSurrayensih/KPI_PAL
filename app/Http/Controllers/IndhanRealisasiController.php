@@ -108,7 +108,10 @@ class IndhanRealisasiController extends Controller
         $indhanRealisasi->bulan = $request->get('bulan');
         $indhanRealisasi->tahun = $request->get('tahun');
         $indhanRealisasi->kendala = $request->get('kendala');
-        $indhanRealisasi->comment = $request->get('comment');
+        if($request->comment != Null){
+            $indhanRealisasi->comment = $request->get('comment');
+        }
+
         $indhanRealisasi->timestamp;
         
         if($request->file != Null){

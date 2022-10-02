@@ -119,7 +119,8 @@ class RKAP extends Controller
         $inisiatif = inisiatifStrategis::all();
         $divisi = Divisi::all();
         $plan = planPms::all();
-        return view('RKAP.index_kpi_pms', compact ('users', 'kpi', 'kategori', 'inisiatif', 'divisi', 'plan'));
+        $real = realisasiPms::all();
+        return view('RKAP.index_kpi_pms', compact ('users', 'kpi', 'kategori', 'inisiatif', 'divisi', 'plan', 'real'));
     }
     public function kpi_pmsDelete($id)
     {
@@ -200,7 +201,18 @@ class RKAP extends Controller
     
     public function real_pmsUpdate(Request $request, $id)
     {
-        $real = realisasiPms::where('id_real',$id)->update($request->except(['_token']));
+        $real = realisasiPms::where('id_real', $id)->first();
+        $real->id_plan = $request->id_plan;
+        $real->progress_real = $request->progress_real;
+        $real->desc_real = $request->desc_real;
+        $real->keterangan = $request->keterangan;
+
+        if($request->file != Null){
+            $fileName = $request->file->getClientOriginalName();
+            $request->file->move(public_path('File/RKAP'), $fileName);
+        $real->file_evidence = $fileName;
+        }
+        $real->save(); 
         return redirect()->back();
     }
     public function real_pmsIndex($id)

@@ -9,6 +9,8 @@ class realisasiPms extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    
+    protected $primaryKey = 'id_real';
     protected $fillable = [
         'id_plan',
         'progres_real',

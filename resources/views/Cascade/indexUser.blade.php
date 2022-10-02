@@ -34,11 +34,12 @@
                                 <thead class="text-muted table-light ">
                                     <tr>
                                         <th scope="col">KPI</th>
-                                        <th scope="col">Bobot KPI</th>
-                                        <th scope="col">Bobot Cascading</th>
+                                        <th scope="col">Bobot KPI (A)</th>
+                                        <th scope="col">Bobot Cascading (B)</th>
                                         <th scope="col">KPI Divisi</th>
                                         <th scope="col">Target</th>
-                                        <th scope="col">D * E</th>
+                                        <th scope="col">A * B</th>
+                                        <th scope="col">Progress</th>
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
                                         @endif
@@ -80,6 +81,37 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1">{{ $kpiDiv->bkXbc }}</div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                        <?php
+                                            $value = 0;
+                                            $tw = 0;
+                                            ?>
+                                            @foreach($casProk as $prok)
+                                            @if($prok->id_CDiv == $kpiDiv->id)
+                                            @foreach($casReal as $real)
+                                            @if($real->id_CProk == $prok->id)
+                                            @if($real->progress != "Belum Terisi")
+                                            <?php
+                                            $value += $real->progress / $prok->progress  * 25;
+                                            $tw += 1;
+                                            ?>
+                                            @endif
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                            @endforeach
+                                            <?php
+                                            $value = round($value);
+                                            ?>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:{{$value}}%">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="align-items-left">{{$value}}%</div>
+                                                <div class="align-items-right">TW {{$tw}}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -181,116 +213,116 @@
                     </div>
                 </div> <!-- .card-->
             </div> <!-- .col-->
-        <div class="d-flex justify-content-end">
-            <div class="pagination-wrap hstack gap-2">
-                <a class="page-item pagination-prev disabled" href="#">
-                    Previous
-                </a>
-                <ul class="pagination listjs-pagination mb-0"></ul>
-                <a class="page-item pagination-next" href="#">
-                    Next
-                </a>
+            <div class="d-flex justify-content-end">
+                <div class="pagination-wrap hstack gap-2">
+                    <a class="page-item pagination-prev disabled" href="#">
+                        Previous
+                    </a>
+                    <ul class="pagination listjs-pagination mb-0"></ul>
+                    <a class="page-item pagination-next" href="#">
+                        Next
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- add Modal -->
-<div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-light p-3">
-                <h5 class="modal-title" id="exampleModalLabel">Add</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
-            </div>
+    <!-- add Modal -->
+    <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-light p-3">
+                    <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
+                </div>
 
-            <div class="modal-body">
-                <form method="post" action="{{route('casDiv.store')}}" enctype="multipart/form-data" id="myForm"> @csrf
-                    <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
-                    <div class="mb-3">
-                        <label for="kategori" class="col-md-4 col-form-label text-md-right">{{ __('Kategori') }}</label>
-                        <div class="col-md-6">
-                            <select class="form-control" name="" id="kategori">
-                                <option>Choose Category</option>
-                                @foreach ($casKat as $kat)
-                                <option value="{{ $kat->id_kat }}">{{ $kat->desc_kat }}</option>
-                                @endforeach
-                            </select>
+                <div class="modal-body">
+                    <form method="post" action="{{route('casDiv.store')}}" enctype="multipart/form-data" id="myForm"> @csrf
+                        <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
+                        <div class="mb-3">
+                            <label for="kategori" class="col-md-4 col-form-label text-md-right">{{ __('Kategori') }}</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="" id="kategori">
+                                    <option>Choose Category</option>
+                                    @foreach ($casKat as $kat)
+                                    <option value="{{ $kat->id_kat }}">{{ $kat->desc_kat }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="kategori" class="col-md-4 col-form-label text-md-right">{{ __('KPI') }}</label>
-                        <div class="form-group mt-2 mb-2 pd-2">
-                            <select name="id_CasKpi" id="kpi" class="form-control">
-                                <option value="">Select Kategori</option>
-                            </select>
+                        <div class="mb-3">
+                            <label for="kategori" class="col-md-4 col-form-label text-md-right">{{ __('KPI') }}</label>
+                            <div class="form-group mt-2 mb-2 pd-2">
+                                <select name="id_CasKpi" id="kpi" class="form-control">
+                                    <option value="">Select Kategori</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <!-- <div class="form-group mt-2 mb-2 pd-2">
+                        <!-- <div class="form-group mt-2 mb-2 pd-2">
                         <select name="kpi_id" id="kpi" class="form-control">
                             <option value="">Select Kategori</option>    </select>
                     </div> -->
-                    <div class="mb-3">
-                        <label for="kpi_divisi" class="form-label">KPI Divisi</label>
-                        <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi">
                         <div class="mb-3">
-                            <label for="bobot_cascade" class="form-label">Bobot (Dalam Persen)</label>
-                            <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade">
+                            <label for="kpi_divisi" class="form-label">KPI Divisi</label>
+                            <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi">
+                            <div class="mb-3">
+                                <label for="bobot_cascade" class="form-label">Bobot (Dalam Persen)</label>
+                                <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade">
+                            </div>
+                            <div class="mb-3">
+                                <label for="target" class="form-label">Target</label>
+                                <input name="target" type="text" class="form-control" id="target">
+                            </div>
+                            <div class="mb-3">
+                                <label for="status_div" class="form-label">Status Divisi</label>
+                                <select name="status_div" class="form-control" id="status_div">
+                                    <option value="1">Lead</option>
+                                    <option value="0">Contribute</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="target" class="form-label">Target</label>
-                            <input name="target" type="text" class="form-control" id="target">
+                        <div class="modal-footer">
+                            <div class="hstack gap-2 justify-content-end">
+                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success" id="add-btn">Add</button>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="status_div" class="form-label">Status Divisi</label>
-                            <select name="status_div" class="form-control" id="status_div">
-                                <option value="1">Lead</option>
-                                <option value="0">Contribute</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="hstack gap-2 justify-content-end">
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success" id="add-btn">Add</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- JQuery -->
+    <!-- JQuery -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#kategori').change(function() {
-            let id = $(this).val();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            //call country on region selected
-            $.ajax({
-                dataType: 'json',
-                url: "/Cascade/KPIDiv/KPI/" + id,
-                type: "GET",
-                success: function(data) {
-                    console.log(data);
-                    $('select[name="id_CasKpi"]').empty();
-                    $.each(data, function(key, data) {
-                        $('select[name="id_CasKpi"]').append('<option value="' + data.id + '">' + data.cas_kpiName + '</option>');
-                    });
-                },
-                error: function(error) {
-                    console.log(error);
-                }
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#kategori').change(function() {
+                let id = $(this).val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                //call country on region selected
+                $.ajax({
+                    dataType: 'json',
+                    url: "/Cascade/KPIDiv/KPI/" + id,
+                    type: "GET",
+                    success: function(data) {
+                        console.log(data);
+                        $('select[name="id_CasKpi"]').empty();
+                        $.each(data, function(key, data) {
+                            $('select[name="id_CasKpi"]').append('<option value="' + data.id + '">' + data.cas_kpiName + '</option>');
+                        });
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
             });
         });
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-@endsection
+    @endsection
