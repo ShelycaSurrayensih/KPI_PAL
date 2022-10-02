@@ -114,16 +114,14 @@
                                         <td>
                                             <?php
                                             $number = 1;
+                                            $show = 0;
                                             ?>
                                             @foreach($plan as $plans)
-
                                             @if($plans->id_kpipms == $kpi->id_kpipms)
-
                                             @foreach($real as $reals)
-
                                             @if($reals->id_plan == $plans->id_plan)
                                             <?php
-                                            $number++;
+                                            $number = $reals->id_real;
                                             ?>
                                             @endif
                                             @endforeach
@@ -133,13 +131,23 @@
                                             @foreach($real as $reals)
                                             @if($reals->id_real == $number)
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progress}}%">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progress_real}}%">
                                                 </div>
-                                            </div>
-                                        <td>{{$reals->progress}}
+                                            </div>{{$reals->progress_real}}%
                                         </td>
+                                        <?php
+                                        $show = 1;
+                                        ?>
                                         @endif
                                         @endforeach
+                                        
+                                        @if($show == 0)
+                                        <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                                                </div>
+                                            </div>
+                                        </td>
+                                        @endif
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">

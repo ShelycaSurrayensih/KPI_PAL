@@ -154,14 +154,14 @@
                                                         <div class="d-flex align-items-center">
                                                             <div class="flex-grow-1">{{ $realisasi->kendala }}</div>
                                                         </div>
+                                                    </td><td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="flex-grow-1">{{ $realisasi->comment }}</div>
+                                                        </div>
                                                     </td>
                                                     @endif
                                                     @endforeach
-                                                    <td>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="flex-grow-1">{{ $tw->comment }}</div>
-                                                        </div>
-                                                    </td>
+                                                    
                                                     <td>
                                                         <div class="d-flex gap-2">
                                                             <div class="add">

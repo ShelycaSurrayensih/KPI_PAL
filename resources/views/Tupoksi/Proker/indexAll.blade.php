@@ -131,7 +131,7 @@
                                                     <div class="mb-3">
                                                         <label for="kpi">Proker</label>
                                                         <input type="text" name="proker" class="form-control"
-                                                            id="proker" value="{{$proker->id_proker}}">
+                                                            id="proker" value="{{$proker->proker}}">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="target">target</label>

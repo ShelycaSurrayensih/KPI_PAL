@@ -70,6 +70,7 @@ class TwController extends Controller
         $tupoksiRealisasi->id_tw = $tupoksiTW->id_tw;
         $tupoksiRealisasi->progres = 'Belum Terisi';
         $tupoksiRealisasi->deskripsi = 'Belum Terisi';
+        $tupoksiRealisasi->kendala = 'Belum Terisi';
         $tupoksiRealisasi->save();
         return redirect()->back();
     }

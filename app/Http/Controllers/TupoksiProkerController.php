@@ -102,8 +102,6 @@ class TupoksiProkerController extends Controller
     public function update(Request $request, $id_proker)
     {
         $tupoksiProker = TupoksiProker::where('id_proker', $id_proker)->first();
-        $tupoksiProker->id_proker = $request->get('id_proker');
-        $tupoksiProker->id_kpi = $request->get('id_kpi');
         $tupoksiProker->proker = $request->get('proker');
         $tupoksiProker->target = $request->get('target');
         $tupoksiProker->save();
