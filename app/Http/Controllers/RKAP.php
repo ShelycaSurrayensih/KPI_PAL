@@ -121,7 +121,7 @@ class RKAP extends Controller
         $plan = planPms::all();
         $real = realisasiPms::all();
         $realCount = realisasiPms::count();
-        return view('RKAP.index_kpi_pms', compact ('users', 'kpi', 'kategori', 'inisiatif', 'divisi', 'plan', 'real', ''));
+        return view('RKAP.index_kpi_pms', compact ('users', 'kpi', 'kategori', 'inisiatif', 'divisi', 'plan', 'real', 'realCount'));
     }
     public function kpi_pmsDelete($id)
     {

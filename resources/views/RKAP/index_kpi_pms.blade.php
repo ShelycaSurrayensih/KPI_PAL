@@ -354,7 +354,7 @@
                         <label for="div_lead" class="form-label">Lead Divisi</label>
                         @foreach($divisi as $div)
                         @if($users->id_divisi == $div->id_divisi)
-                        <input name="div_lead" type="text" class="form-control" id="div_lead" value="{{ $kpi->div_lead }}" readonly hidden>
+                        <input name="div_lead" type="text" class="form-control" id="div_lead" value="{{ $div->id_divisi }}" readonly hidden>
                         <input name="" type="text" class="form-control" id="" value="{{ $div->div_name }}" readonly>
                         @endif
                         @endforeach
