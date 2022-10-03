@@ -46,7 +46,8 @@
                                     <th class="sort" data-sort="id_indhan">KPI</th>
                                     <th class="sort" data-sort="bulan">Bulan</th>
                                     <th class="sort" data-sort="tahun">Tahun</th>
-                                    <th class="sort" data-sort="realisasi">Realisasi</th>
+                                    <th class="sort" data-sort="tahun">Progress Realisasi</th>
+                                    <th class="sort" data-sort="realisasi">Deskripsi Realisasi</th>
                                     <th class="sort" data-sort="kendala">Kendala</th>
                                     <th class="sort" data-sort="timestamp">Komentar Admin</th>
                                     @if($users->status == 'administrator')
@@ -75,6 +76,11 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $indhanReal->tahun }}</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1">{{ $indhanReal->progress }}</div>
                                         </div>
                                     </td>
                                     <td>
@@ -253,10 +259,16 @@
                                                     <input type="text" name="tahun" class="form-control" id="tahun" value="{{$indhanReal->tahun}}" readonly>
                                                 </div>
                                             </div>
+                                            <div class="col-xxl-6">
+                                                <div>
+                                                    <label for="realisasi"> Progress Realisasi</label>
+                                                    <input type="text" name="progress" class="form-control" id="realisasi" value="{{ $indhanReal->progress }}" readonly>
+                                                </div>
+                                            </div>
                                             <!--end col-->
                                             <div class="col-xxl-6">
                                                 <div>
-                                                    <label for="realisasi">Realisasi</label>
+                                                    <label for="realisasi"> Deskripsi Realisasi</label>
                                                     <input type="text" name="realisasi" class="form-control" id="realisasi" value="{{ $indhanReal->realisasi }}" readonly>
                                                 </div>
                                             </div>
@@ -325,14 +337,16 @@
                                             <input type="text" name="tahun" class="form-control" id="tahun" value="{{$indhanReal->tahun}}">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="realisasi">Realisasi</label>
+                                            <label for="realisasi">Progress Realisasi</label>
+                                            <input type="text" name="progress" class="form-control" id="progress" value=" {{$indhanReal->progress}}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="realisasi">Deskripsi Realisasi</label>
                                             <input type="text" name="realisasi" class="form-control" id="realisasi" value=" {{$indhanReal->realisasi}}">
-
                                         </div>
                                         <div class="mb-3">
                                             <label for="kendala">Kendala</label>
                                             <input type="text" name="kendala" class="form-control" id="kendala" value=" {{$indhanReal->kendala}}">
-
                                         </div>
                                         <div>
                                             <label for="file_evidence">File Evidence</label>
@@ -439,9 +453,12 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="realisasi">Realisasi</label>
+                        <label for="realisasi">Progress Realisasi</label>
+                        <input type="text" name="progress" class="form-control" id="progress">
+                    </div>
+                    <div class="mb-3">
+                        <label for="realisasi">Deskripsi Realisasi</label>
                         <input type="text" name="realisasi" class="form-control" id="realisasi">
-
                     </div>
                     <div class="mb-3">
                         <label for="kendala">Kendala</label>

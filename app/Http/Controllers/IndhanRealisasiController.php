@@ -46,6 +46,7 @@ class IndhanRealisasiController extends Controller
     {
         $indhanRealisasi = new IndhanRealisasi;
         $indhanRealisasi->id_indhan = $request->id_indhan;
+        $indhanRealisasi->progress = $request->progress;
         $indhanRealisasi->realisasi = $request->realisasi;
         $indhanRealisasi->bulan = $request->bulan;
         $indhanRealisasi->tahun = $request->tahun;
@@ -108,6 +109,7 @@ class IndhanRealisasiController extends Controller
         $indhanRealisasi->bulan = $request->get('bulan');
         $indhanRealisasi->tahun = $request->get('tahun');
         $indhanRealisasi->kendala = $request->get('kendala');
+        $indhanRealisasi->progress = $request->get('progress');
         if($request->comment != Null){
             $indhanRealisasi->comment = $request->get('comment');
         }

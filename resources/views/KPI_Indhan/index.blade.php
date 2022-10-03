@@ -83,6 +83,7 @@
                                         $number = 1;
                                         $show = 0;
                                         ?>
+                                        @if($indhanCount != 0)
                                         @foreach($indhanRealisasi as $reals)
                                         @if($reals->id_indhan == $indhan->id_indhan)
                                         <?php
@@ -108,6 +109,7 @@
                                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                                             </div>
                                         </div>0%
+                                        @endif
                                         @endif
                                     </td>
                                     @if($users->status == 'administrator')
