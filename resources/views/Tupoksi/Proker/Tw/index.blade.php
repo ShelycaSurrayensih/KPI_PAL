@@ -98,8 +98,7 @@
                                                                     <input name="deskripsi" type="text" class="form-control" id="deskripsi">
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="progres" class="form-label">Progres
-                                                                        Proker</label>
+                                                                    <label for="progres" class="form-label">Progress Proker (Dalam %)</label>
                                                                     <input name="progres" type="text" class="form-control" id="progres">
                                                                 </div>
                                                         </div>
@@ -134,7 +133,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="d-flex align-items-center">
-                                                            <div class="flex-grow-1">{{ $tw->progres }}</div>
+                                                            <div class="flex-grow-1">{{ $tw->progres }}%</div>
                                                         </div>
                                                     </td>
 
@@ -147,7 +146,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="d-flex align-items-center">
-                                                            <div class="flex-grow-1">{{ $realisasi->progres }}</div>
+                                                            <div class="flex-grow-1">{{ $realisasi->progres }}%</div>
                                                         </div>
                                                     </td>
                                                     <td>
@@ -212,8 +211,7 @@
                                                                         <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$tw->tw}}" readonly>
                                                                     </div>
                                                                     <div class="mb-3">
-                                                                        <label for="progres" class="form-label">Progress
-                                                                            proker</label>
+                                                                        <label for="progres" class="form-label">Progress Proker (Dalam %)</label>
                                                                         <input name="progres" type="text" class="form-control" id="progres" value="{{$tw->progres}}">
                                                                     </div>
                                                                     <div class="mb-3">
@@ -249,7 +247,7 @@
                                                                     @csrf
                                                                     <input name="id_tw" type="text" class="form-control" id="id_tw" value="{{$tw->id_tw }}" readonly hidden>
                                                                     <div class="mb-3">
-                                                                        <label for="progres" class="form-label">Progres Proker</label>
+                                                                        <label for="progres" class="form-label">Progress Proker (Dalam %)</label>
                                                                         <input name="progres" type="text" class="form-control" id="progres" value="{{$real->progres}}">
                                                                     </div>
                                                                     <div class="mb-3">
@@ -355,7 +353,7 @@
                                         <input name="tw" type="text" class="form-control" id="tw" value="{{$prok_count}}" readonly>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="progres" class="form-label">Progress Proker</label>
+                                        <label for="progres" class="form-label">Progress Proker (Dalam %)</label>
                                         <input name="progres" type="text" class="form-control" id="progres">
                                     </div>
                                     <div class="mb-3">
@@ -404,7 +402,7 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="progres">Progres Realisasi</label>
+                                        <label for="progres">Progress Realisasi (Dalam %)</label>
                                         <input type="text" name="progres" class="form-control" id="progres">
 
                                     </div>

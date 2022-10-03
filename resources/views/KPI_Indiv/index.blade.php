@@ -47,6 +47,7 @@
                                         <th scope="col">Target</th>
                                         <th scope="col">Asal KPI</th>
                                         <th scope="col">Keterangan</th>
+                                        <th scope="col">Progress</th>
                                         <th scope="col">Updated</th>
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
@@ -108,7 +109,7 @@
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progres}}%">
                                                 </div>
-                                            </div>{{$reals->progres}}%
+                                            </div>TW {{$reals->tw}} {{$reals->progres}}%
                                         <?php
                                         $show = 1;
                                         ?>
@@ -119,7 +120,7 @@
                                         <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                                                 </div>
-                                            </div>
+                                            </div>0%
                                         @endif
                                         </td>
                                         <td>

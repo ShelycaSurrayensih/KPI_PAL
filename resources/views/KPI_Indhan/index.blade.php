@@ -96,7 +96,7 @@
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progress}}%">
                                             </div>
-                                        </div>{{$reals->progress}}%
+                                        </div>{{$reals->bulan}} {{$reals->progress}}%
                                         <?php
                                         $show = 1;
                                         ?>
@@ -107,7 +107,7 @@
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                                             </div>
-                                        </div>
+                                        </div>0%
                                         @endif
                                     </td>
                                     @if($users->status == 'administrator')

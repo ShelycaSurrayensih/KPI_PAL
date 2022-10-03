@@ -90,7 +90,7 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $plan->progress_plan }}</div>
+                                                <div class="flex-grow-1">{{ $plan->progress_plan }}%</div>
                                             </div>
                                         </td>
                                         <td>
@@ -123,7 +123,7 @@
                                         @if($reals->id_plan == $plan->id_plan)
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{$reals->progress_real}}</div>
+                                                <div class="flex-grow-1">{{$reals->progress_real}}%</div>
                                             </div>
                                         </td>
                                         <td>
@@ -279,7 +279,7 @@
 
                                                                 <div class="col-xxl-6">
                                                                     <div>
-                                                                        <label for="bobot">Progress Plan</label>
+                                                                        <label for="bobot">Progress Plan (Dalam %)</label>
                                                                         <input name="" class="form-control" id="" value="{{$plan->progress_plan}}" readonly="">
                                                                         <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
                                                                         </input>
@@ -293,8 +293,7 @@
                                                                 <!--end col-->
                                                                 <div class="col-xxl-6">
                                                                     <div>
-                                                                        <label for="progress_real">Progress
-                                                                            Realisasi</label>
+                                                                        <label for="progress_real">Progress Realisasi (Dalam %)</label>
                                                                         <input type="text" name="progress_real" class="form-control" id="progress_real" value="">
                                                                     </div>
                                                                 </div>
@@ -354,7 +353,7 @@
 
                                                                 <div class="col-xxl-6">
                                                                     <div>
-                                                                        <label for="bobot">Progress Plan</label>
+                                                                        <label for="bobot">Progress Plan (Dalam %)</label>
                                                                         <input name="" class="form-control" id="" value="{{$plan->progress_plan}}" readonly="">
                                                                         <input name="id_plan" type="text" class="form-control" id="id_plan" value="{{$plan->id_plan}}" readonly hidden>
                                                                         </input>
@@ -368,8 +367,7 @@
                                                                 <!--end col-->
                                                                 <div class="col-xxl-6">
                                                                     <div>
-                                                                        <label for="progress_real">Progress
-                                                                            Realisasi</label>
+                                                                        <label for="progress_real">Progress Realisasi (Dalam %)</label>
                                                                         <input type="text" name="progress_real" class="form-control" id="progress_real" value="{{$reals->progress_real}}">
                                                                     </div>
                                                                 </div>
@@ -451,8 +449,7 @@
                                                                     <!--end col-->
                                                                     <div class="col-xxl-6">
                                                                         <div>
-                                                                            <label for="progress_real">Progress
-                                                                                Realisasi</label>
+                                                                            <label for="progress_real">Progress Realisasi (Dalam %)</label>
                                                                             <input type="text" name="progress_real" class="form-control" id="progress_real" value="">
                                                                         </div>
                                                                     </div>
@@ -548,7 +545,7 @@
                                                 </select>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="progress_plan" class="form-label">Progress</label>
+                                                <label for="progress_plan" class="form-label">Progress (Dalam %)</label>
                                                 <input name="progress_plan" type="text" class="form-control" id="progress_plan" value="{{ $plan->progress_plan }}">
                                             </div>
                                             <div class="mb-3">
@@ -560,8 +557,7 @@
                                     <div class="modal-footer">
                                         <div class="hstack gap-2 justify-content-end">
                                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-success" id="edit-btn">Update
-                                                Plan</button>
+                                            <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
                                         </div>
                                     </div>
                                     </form>
@@ -651,7 +647,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="progress_plan" class="form-label">Progress Plan</label>
+                        <label for="progress_plan" class="form-label">Progress Plan (Dalam %)</label>
                         <input name="progress_plan" type="text" class="form-control" id="progress_plan" value="">
                     </div>
                     <div class="mb-3">

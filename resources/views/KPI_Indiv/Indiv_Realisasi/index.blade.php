@@ -41,7 +41,7 @@
                                 <tr>
 
                                     <th class="sort" data-sort="tw">TW</th>
-                                    <th class="sort" data-sort="progres">Progres</th>
+                                    <th class="sort" data-sort="progres">Progress</th>
                                     <th class="sort" data-sort="realisasi">Realisasi</th>
                                     <th class="sort" data-sort="prognosa">Prognosa</th>
                                     <th class="sort" data-sort="keterangan">Kendala</th>
@@ -65,7 +65,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $indivReal->progres }}</div>
+                                            <div class="flex-grow-1">{{ $indivReal->progres }}%</div>
                                         </div>
                                     </td>
 
@@ -249,7 +249,7 @@
 
                                                         <div class="col-xxl-6">
                                                             <div>
-                                                                <label for="progres">Progres</label>
+                                                                <label for="progres">Progress (Dalam %)</label>
                                                                 <input type="text" name="progres" class="form-control" id="progres" value="{{$indivReal->progres}}" readonly>
                                                             </div>
                                                         </div>
@@ -320,7 +320,7 @@
 
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="progres">Progres</label>
+                                                        <label for="progres">Progress (Dalam %)</label>
                                                         <input type="text" name="progres" class="form-control" id="progres" value="{{$indivReal->progres}}">
 
                                                     </div>
@@ -424,7 +424,7 @@
 
                     </div>
                     <div class="mb-3">
-                        <label for="progres">Progres</label>
+                        <label for="progres">Progress (Dalam %)</label>
                         <input type="text" name="progres" class="form-control" id="progres">
 
                     </div>

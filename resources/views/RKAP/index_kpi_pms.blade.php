@@ -118,6 +118,10 @@
                                             ?>
                                             @foreach($plan as $plans)
                                             @if($plans->id_kpipms == $kpi->id_kpipms)
+                                            <?php
+                                            
+                                            $bulan = $plans->bulan;
+                                            ?>
                                             @foreach($real as $reals)
                                             @if($reals->id_plan == $plans->id_plan)
                                             <?php
@@ -133,7 +137,7 @@
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progress_real}}%">
                                                 </div>
-                                            </div>{{$reals->progress_real}}%
+                                            </div>{{$bulan}} {{$reals->progress_real}}% 
                                         </td>
                                         <?php
                                         $show = 1;
@@ -145,7 +149,7 @@
                                         <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                                                 </div>
-                                            </div>
+                                            </div>0%
                                         </td>
                                         @endif
                                         </td>
@@ -348,7 +352,8 @@
                         <label for="div_lead" class="form-label">Lead Divisi</label>
                         @foreach($divisi as $div)
                         @if($users->id_divisi == $div->id_divisi)
-                        <input name="div_lead" type="text" class="form-control" id="div_lead" value="{{ $kpi->div_lead }}" readonly>
+                        <input name="div_lead" type="text" class="form-control" id="div_lead" value="{{ $kpi->div_lead }}" readonly hidden>
+                        <input name="" type="text" class="form-control" id="" value="{{ $div->div_name }}" readonly>
                         @endif
                         @endforeach
 
