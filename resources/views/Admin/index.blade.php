@@ -63,7 +63,7 @@
 
     <div>
 
-    <div class="mb-3 gap-2">
+    <!-- <div class="mb-3 gap-2">
     <p>Sort by:</p>
 		<select > 
             <option value="cascading">Cascading</option>
@@ -99,7 +99,7 @@
                 <h4 class="card-title mb-0 flex-grow-1"><strong>Table</strong></h4>
                 <div class="flex-shrink-0">
                 </div>
-            </div><!-- end card header -->
+            </div>
 
             <div class="card-body">
                
@@ -179,9 +179,7 @@
                 </div>
             </div><!-- end card -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end col -->
 </div>
 
 @endsection

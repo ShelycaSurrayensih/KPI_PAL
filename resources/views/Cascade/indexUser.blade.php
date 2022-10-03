@@ -52,6 +52,7 @@
                                     @foreach($casKpi as $kpi)
                                     @foreach($casKpiDiv as $kpiDiv)
                                     @if($kpiDiv->id_CasKpi == $kpi->id)
+                                    @if($users->id_divisi == $kpiDiv->created_by)
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
@@ -205,6 +206,7 @@
                                         </div>
                                     </div>
                                     @endif
+                                    @endif
                                     @endforeach
                                     @endforeach
                                 </tbody><!-- end tbody -->
@@ -265,8 +267,9 @@
                         <div class="mb-3">
                             <label for="kpi_divisi" class="form-label">KPI Divisi</label>
                             <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi">
+                        </div>
                             <div class="mb-3">
-                                <label for="bobot_cascade" class="form-label">Bobot (Dalam Persen)</label>
+                                <label for="bobot_cascade" class="form-label">Bobot (%)</label>
                                 <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade">
                             </div>
                             <div class="mb-3">

@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             DivisiSeeder::class,
             UserSeeder::class,
             CascadeKatSeeder::class,
-            PMSSeeder::class,
+            // PMSSeeder::class,
         ]);
     }
 }
