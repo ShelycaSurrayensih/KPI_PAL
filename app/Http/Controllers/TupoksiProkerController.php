@@ -24,8 +24,9 @@ class TupoksiProkerController extends Controller
         $tupoksiProker = TupoksiProker::all();
         $tupoksiRealisasi = TupoksiRealisasi::all();
         $tupoksiTw = TupoksiTw::all();
+        $tupoksiRealisasiCount = TupoksiRealisasi::count();
         //$tupoksiProker = TupoksiProker::where('id_proker', $id)->first();
-        return view('Tupoksi.Proker.indexAll', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiRealisasi', 'tupoksiTw'));
+        return view('Tupoksi.Proker.indexAll', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiRealisasi', 'tupoksiTw', 'tupoksiRealisasiCount'));
     }
 
     public function indexProker($id)

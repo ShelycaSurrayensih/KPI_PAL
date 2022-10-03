@@ -22,7 +22,8 @@ class IndivController extends Controller
         $direktorat = Direktorat::all();
         $divisi = Divisi::all();
         $indivRealisasi = IndivRealisasi::all();
-        return view('KPI_Indiv.index', compact ('users', 'kpidir', 'direktorat', 'divisi', 'indivRealisasi'));
+        $indivRealisasiCount = IndivRealisasi::count();
+        return view('KPI_Indiv.index', compact ('users', 'kpidir', 'direktorat', 'divisi', 'indivRealisasi', 'indivRealisasiCount'));
     }
     
     //Realisasi

@@ -116,6 +116,7 @@
                                             $number = 1;
                                             $show = 0;
                                             ?>
+                                            @if($realCount != 0)
                                             @foreach($plan as $plans)
                                             @if($plans->id_kpipms == $kpi->id_kpipms)
                                             <?php
@@ -131,7 +132,8 @@
                                             @endforeach
                                             @endif
                                             @endforeach
-
+                                            @endif
+                                            
                                             @foreach($real as $reals)
                                             @if($reals->id_real == $number)
                                             <div class="progress">

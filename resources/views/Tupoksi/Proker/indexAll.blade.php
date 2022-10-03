@@ -89,6 +89,7 @@
                                             $number = 1;
                                             $show = 0;
                                             ?>
+                                            @if($tupoksiRealisasiCount != 0)
                                             @foreach($tupoksiTw as $tw)
                                             @if($tw->id_proker == $proker->id_proker)
                                             @foreach($tupoksiRealisasi as $reals)
@@ -100,7 +101,8 @@
                                             @endforeach
                                             @endif
                                             @endforeach
-
+                                            @endif
+                                            
                                             @foreach($tupoksiRealisasi as $reals)
                                             @if($reals->id_tw == $number)
                                             <div class="progress">

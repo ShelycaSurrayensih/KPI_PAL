@@ -96,6 +96,7 @@
                                             $number = 1;
                                             $show = 0;
                                             ?>
+                                            @if($indivRealisasiCount !=0)
                                             @foreach($indivRealisasi as $reals)
                                             @if($reals->id_kpidir  == $kpidir->id_kpidir)
                                             <?php
@@ -115,7 +116,7 @@
                                         ?>
                                         @endif
                                         @endforeach
-                                        
+                                        @endif
                                         @if($show == 0)
                                         <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
