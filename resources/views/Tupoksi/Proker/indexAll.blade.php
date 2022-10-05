@@ -54,7 +54,7 @@
                             @foreach($tupoksiProker as $proker)
                                 @foreach($tupoksiKPI as $kpi)
                                 @if($proker->id_kpi == $kpi->id_kpi)
-                                @if($proker->created_by == $users->id_divisi)
+                                @if($proker->created_by == $users->id_divisi || $users->status == 'administrator')
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">

@@ -52,7 +52,7 @@
                             <tbody class="list form-check-all">
                                 <?php $no = 0; ?>
                                 @foreach($indhan as $indhan)
-                                @if($users->divisi_id == $indhan->divisi)
+                                @if($users->divisi_id == $indhan->divisi || $users->status == 'administrator')
 
                                 <tr>
 

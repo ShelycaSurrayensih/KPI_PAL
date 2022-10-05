@@ -60,7 +60,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($kpi as $kpi)
-                                    @if($kpi->created_by == $users->id_divisi)
+                                    @if($kpi->created_by == $users->id_divisi || $users->status == 'administrator')
                                     <tr>
                                         <td>
                                             @foreach($kategori as $kat)

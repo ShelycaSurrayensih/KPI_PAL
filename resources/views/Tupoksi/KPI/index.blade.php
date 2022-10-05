@@ -78,7 +78,7 @@
                             <tbody class="list form-check-all">
                                 @foreach($tupoksiKPI as $kpi)
 
-                                @if($kpi->created_by == $users->id_divisi)
+                                @if($kpi->created_by == $users->id_divisi || $users->status == 'administrator')
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">

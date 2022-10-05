@@ -392,7 +392,7 @@
                                     @foreach($casKpi as $kpi)
                                     @foreach($casKpiDiv as $kpiDiv)
                                     @if($kpiDiv->id_CasKpi == $kpi->id)
-                                    @if($users->id_divisi == $kpiDiv->created_by)
+                                    @if($users->id_divisi == $kpiDiv->created_by || $users->status == 'administrator')
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
