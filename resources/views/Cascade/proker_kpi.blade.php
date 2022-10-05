@@ -243,7 +243,7 @@
                                                                     <input name="tw" type="text" class="form-control" id="cas_kpiName" value="{{$prok->tw}}" readonly>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="progress" class="form-label">Progres</label>
+                                                                    <label for="progress" class="form-label">Progress (Dalam %)</label>
                                                                     <input name="progress" type="text" class="form-control" id="progress" value="{{$prok->progress}}">
                                                                 </div>
                                                                 <div class="mb-3">
@@ -308,7 +308,7 @@
                                                                     <input name="" type="text" class="form-control" id="" value="{{$prok->tw}}" readonly>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="progress" class="form-label">Progres</label>
+                                                                    <label for="progress" class="form-label">Progres (Dalam %)</label>
                                                                     <input name="progress" type="text" class="form-control" id="progress" value="{{ $prok->progress }}">
                                                                 </div>
                                                                 <div class="mb-3">
@@ -330,7 +330,7 @@
                                                         <div class="modal-footer">
                                                             <div class="hstack gap-2 justify-content-end">
                                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-success" id="edit-btn">Update Plan</button>
+                                                                <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
 
                                                             </div>
                                                         </div>
@@ -424,7 +424,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="progress" class="form-label">Progress</label>
-                                    <input name="progress" type="text" class="form-control" id="progress" value="{{$casKpiDiv->bkXbc / 4}}" readonly>
+                                    <input name="progress" type="text" class="form-control" id="progress" value="{{$casKpiDiv->bkXbc / 4}}%" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="deskripsi" class="form-label">Deskripsi</label>

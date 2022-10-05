@@ -35,8 +35,11 @@ class TupoksiProkerController extends Controller
         $tupoksiDepartemen = TupoksiDepartemen::all();
         $tupoksiKPI = TupoksiKPI::where('id_kpi', $id)->first();
         $tupoksiProker = TupoksiProker::all();
+        $tupoksiRealisasi = TupoksiRealisasi::all();
+        $tupoksiTw = TupoksiTw::all();
+        $tupoksiRealisasiCount = TupoksiRealisasi::count();
         //$tupoksiProker = TupoksiProker::where('id_proker', $id)->first();
-        return view('Tupoksi.Proker.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker'));
+        return view('Tupoksi.Proker.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiRealisasi', 'tupoksiTw', 'tupoksiRealisasiCount'));
     }
 
     /**

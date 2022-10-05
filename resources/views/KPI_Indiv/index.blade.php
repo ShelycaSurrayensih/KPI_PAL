@@ -48,7 +48,6 @@
                                         <th scope="col">Asal KPI</th>
                                         <th scope="col">Keterangan</th>
                                         <th scope="col">Progress</th>
-                                        <th scope="col">Updated</th>
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
                                         @endif
@@ -100,34 +99,23 @@
                                             @foreach($indivRealisasi as $reals)
                                             @if($reals->id_kpidir  == $kpidir->id_kpidir)
                                             <?php
-                                            $number = $reals->id_realisasi;
+                                            $number = $reals->progres;
                                             ?>
                                             @endif
                                             @endforeach
 
-                                            @foreach($indivRealisasi  as $reals)
-                                            @if($reals->id_realisasi == $number)
+                                            @if($number != 'Belum Terisi' && $number != 1)
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progres}}%">
                                                 </div>
-                                            </div>TW {{$reals->tw}} {{$reals->progres}}%
-                                        <?php
-                                        $show = 1;
-                                        ?>
-                                        @endif
-                                        @endforeach
-                                        @endif
-                                        @if($show == 0)
+                                            </div>TW {{$reals->tw}} {{$number}}%
+                                       
+                                        @else
                                         <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                                                 </div>
                                             </div>0%
                                         @endif
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpidir->created_at }}</div>
-                                            </div>
                                         </td>
                                         @if($users->status == 'administrator')
                                         <td>
@@ -216,7 +204,7 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="ket" class="form-label">Keterangan</label>
-                                                            <input name="ket" type="text" class="form-control" id="ket" value="{{$kpidir->ket}}">
+                                                            <textarea name="ket" type="text" class="form-control" id="ket"  >{{$kpidir->ket}}</textarea>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="asal_kpi" class="form-label">Asal KPI</label>
@@ -235,6 +223,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                     @endif
                                     @endforeach
                                 </tbody><!-- end tbody -->
@@ -317,7 +306,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="ket" class="form-label">Keterangan</label>
-                        <input name="ket" type="text" class="form-control" id="ket">
+                        <textarea name="ket" type="text" class="form-control" id="ket"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="asal_kpi" class="form-label">Asal KPI</label>

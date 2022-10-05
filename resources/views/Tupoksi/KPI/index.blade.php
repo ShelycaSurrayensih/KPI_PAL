@@ -17,33 +17,26 @@
                             <div>
 
                                 <div>
-                                    <div class="modal fade" id="exampleModalgrid" tabindex="-1"
-                                        aria-labelledby="exampleModalgridLabel">
+                                    <div class="modal fade" id="exampleModalgrid" tabindex="-1" aria-labelledby="exampleModalgridLabel">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalgridLabel">Tupoksi
                                                         Departemen</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form method="post"
-                                                        action="{{ route('KPI_TupoksiDepartemen.store') }}"
-                                                        enctype="multipart/form-data" id="myForm">
+                                                    <form method="post" action="{{ route('KPI_TupoksiDepartemen.store') }}" enctype="multipart/form-data" id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
                                                             <label for="departemen">Departemen</label>
-                                                            <input type="text" name="departemen" class="form-control"
-                                                                id="departemen">
+                                                            <input type="text" name="departemen" class="form-control" id="departemen">
 
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="hstack gap-2 justify-content-end">
-                                                                <button type="button" class="btn btn-light"
-                                                                    data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-success"
-                                                                    id="add-btn">Add Departemen</button>
+                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-success" id="add-btn">Add Departemen</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -51,9 +44,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal"
-                                        id="create-btn" data-bs-target="#showModal"><i
-                                            class="ri-add-line align-bottom me-1"></i>
+                                    <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                         Add KPI
                                     </button>
                                 </div>
@@ -76,8 +67,7 @@
                                 <tr>
                                     <th scope="col" style="width: 50px;">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="checkAll"
-                                                value="option">
+                                            <input class="form-check-input" type="checkbox" id="checkAll" value="option">
                                         </div>
                                     </th>
                                     <th class="sort" data-sort="departemen">Departemen</th>
@@ -87,25 +77,23 @@
                             </thead>
                             <tbody class="list form-check-all">
                                 @foreach($tupoksiKPI as $kpi)
-                            
+
                                 @if($kpi->created_by == $users->id_divisi)
                                 <tr>
                                     <th scope="row">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="chk_child"
-                                                value="option1">
+                                            <input class="form-check-input" type="checkbox" name="chk_child" value="option1">
                                         </div>
                                     </th>
-                                    
-                                @foreach($tupoksiDepartemen as $departemen)
-                                @if($departemen->id_departemen == $kpi->id_departemen)
-                                    <td class="id" style="display:none;"><a href="javascript:void(0);"
-                                            class="fw-medium link-primary">#VZ2101</a></td>
-                                            
+
+                                    @foreach($tupoksiDepartemen as $departemen)
+                                    @if($departemen->id_departemen == $kpi->id_departemen)
+                                    <td class="id" style="display:none;"><a href="javascript:void(0);" class="fw-medium link-primary">#VZ2101</a></td>
+
                                     <td class="departemen">{{$departemen->departemen}}</td>
                                     @endif
-                                    
-                            @endforeach
+
+                                    @endforeach
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $kpi->kpi }}</div>
@@ -115,26 +103,20 @@
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
-                                                <button class="btn btn-sm btn-success edit-item-btn"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#showModal{{ $kpi->id_kpi }}">Edit</button>
+                                                <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $kpi->id_kpi }}">Edit</button>
                                             </div>
                                             <div class="edit">
                                                 <a href="{{ route('tupoksiProker.index', $kpi->id_kpi) }}">
-                                                    <button
-                                                        class="btn btn-sm btn-success edit-item-btn">Details</button>
+                                                    <button class="btn btn-sm btn-success edit-item-btn">Details</button>
                                                 </a>
                                             </div>
                                             <div class="remove">
 
-                                                <form action="{{ route('tupoksiKpi.destroy', $kpi->id_kpi) }}"
-                                                    method="POST">
+                                                <form action="{{ route('tupoksiKpi.destroy', $kpi->id_kpi) }}" method="POST">
 
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
+                                                    <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                 </form>
                                             </div>
                                         </div>
@@ -142,39 +124,36 @@
                                 </tr>
 
                                 <!-- edit Modal -->
-                                <div class="modal fade" id="showModal{{ $kpi->id_kpi }}" tabindex=" -1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="showModal{{ $kpi->id_kpi }}" tabindex=" -1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header bg-light p-3">
                                                 <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close" id="close-modal"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="post"
-                                                    action="{{ route('tupoksiKpi.update', $kpi->id_kpi) }}"
-                                                    enctype="multipart/form-data" id="myForm">
+                                                <form method="post" action="{{ route('tupoksiKpi.update', $kpi->id_kpi) }}" enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="departemen">Departemen</label>
-                                                        <input type="text" name="id_departemen" class="form-control"
-                                                            id="id_departemen" value="{{$departemen->id_departemen}}"
-                                                            readonly="">
+                                                        <select name="id_departemen" class="form-control" id="id_departemen">
+                                                        @foreach ($tupoksiDepartemen as $departemen)
+                                                        @if($departemen->created_by == $users->id_divisi)
+                                                        <option value="{{$departemen->id_departemen}}">{{ "$departemen->departemen" }}</option>
+                                                        @endif
+                                                        @endforeach
+</select>
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="kpi">KPI</label>
-                                                        <input type="text" name="kpi" class="form-control" id="kpi"
-                                                            value="{{$kpi->kpi}}">
+                                                        <input type="text" name="kpi" class="form-control" id="kpi" value="{{$kpi->kpi}}">
 
                                                     </div>
                                                     <div class=" modal-footer">
                                                         <div class="hstack gap-2 justify-content-end">
-                                                            <button type="button" class="btn btn-light"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-success"
-                                                                id="edit-btn">Update</button>
+                                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-success" id="edit-btn">Update</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -187,8 +166,7 @@
                         </table>
                         <div class="noresult" style="display: none">
                             <div class="text-center">
-                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop"
-                                    colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
+                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="loop" colors="primary:#121331,secondary:#08a88a" style="width:75px;height:75px">
                                 </lord-icon>
                                 <h5 class="mt-2">Sorry! No Result Found</h5>
                                 <p class="text-muted mb-0">We've searched more than 150+ Orders We did not find any
@@ -222,19 +200,19 @@
         <div class="modal-content">
             <div class="modal-header bg-light p-3">
                 <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    id="close-modal"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('KPI_TupoksiKpi.store') }}" enctype="multipart/form-data"
-                    id="myForm">
+                <form method="post" action="{{ route('KPI_TupoksiKpi.store') }}" enctype="multipart/form-data" id="myForm">
                     @csrf
-                    <input type="text" name="created_by" class="form-control" id="created_by" value ="{{$users->id_divisi}}" readonly hidden>
+                    <input type="text" name="created_by" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="departemen">Departemen</label>
                         <select name="id_departemen" class="form-control" id="id_departemen">
                             @foreach ($tupoksiDepartemen as $departemen)
+                            @if($departemen->created_by == $users->id_divisi)
                             <option value="{{$departemen->id_departemen}}">{{ "$departemen->departemen" }}</option>
+                            @endif
                             @endforeach
                         </select>
 

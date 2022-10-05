@@ -86,7 +86,7 @@
                                     </td>
                                     <td>
                                     <?php
-                                            $number = 1;
+                                            $number = 0;
                                             $show = 0;
                                             ?>
                                             @if($tupoksiRealisasiCount != 0)
@@ -95,27 +95,21 @@
                                             @foreach($tupoksiRealisasi as $reals)
                                             @if($reals->id_tw == $tw->id_tw)
                                             <?php
-                                            $number = $reals->id_realisasi;
+                                            $number = $reals->progres;
                                             ?>
                                             @endif
                                             @endforeach
                                             @endif
                                             @endforeach
                                             @endif
-                                            
-                                            @foreach($tupoksiRealisasi as $reals)
-                                            @if($reals->id_tw == $number)
+
+                                            @if($number != 'Belum Terisi')
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progres}}%">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$number}}%">
                                                 </div>
-                                            </div>{{$reals->progres}}%
-                                        <?php
-                                        $show = 1;
-                                        ?>
-                                        @endif
-                                        @endforeach
+                                            </div>{{$number}}%
                                         
-                                        @if($show == 0)
+                                        @else
                                         <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                                                 </div>
@@ -164,8 +158,13 @@
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="kpi">KPI</label>
-                                                        <input type="text" name="kpi" class="form-control" id="kpi"
-                                                            value="{{$kpi->id_kpi}}">
+                                                        <select name="id_kpi" class="form-control" id="id_kpi">
+                                                            @foreach ($tupoksiKPI as $kpi)
+                                                            @if($kpi->created_by == $users->id_divisi)
+                                                                <option value="{{$kpi->id_kpi}}">{{ "$kpi->kpi" }}</option>
+                                                            @endif
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="kpi">Proker</label>
@@ -244,7 +243,13 @@
                         <label for="id_kpi">KPI</label>
                         <select name="id_kpi" class="form-control" id="id_kpi">
                             @foreach ($tupoksiKPI as $kpi)
-                            <option value="{{$kpi->id_kpi}}">{{ "$kpi->kpi" }}</option>
+                            @if($kpi->created_by == $users->id_divisi)
+                            @foreach($tupoksiDepartemen as $departemen)
+                            @if($departemen->id_departemen == $kpi->id_departemen)
+                            <option value="{{$kpi->id_kpi}}">Departemen {{$departemen->departemen}} - {{ "$kpi->kpi" }} </option>
+                            @endif
+                            @endforeach
+                            @endif
                             @endforeach
                         </select>
                     </div>

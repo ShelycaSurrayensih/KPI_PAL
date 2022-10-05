@@ -40,6 +40,7 @@
                                         <th scope="col">Target</th>
                                         <th scope="col">D * E</th>
                                         <th scope="col">Status Divisi</th>
+                                        
                                         <th scope="col">Created By</th>
                                         <th scope="col">Action</th>
                                     </tr>

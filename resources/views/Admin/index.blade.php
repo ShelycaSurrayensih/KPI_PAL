@@ -63,7 +63,7 @@
 
     <div>
 
-    <!-- <div class="mb-3 gap-2">
+    <div class="mb-3 gap-2">
     <p>Sort by:</p>
 		<select > 
             <option value="cascading">Cascading</option>
@@ -111,15 +111,15 @@
                             <thead class="table-light ">
                                 <tr style="vertical-align: middle;">
 
-                                    <td rowspan="2"><strong>NO</td>
+                                    <td rowspan="2"><strong><center>NO</td>
                                     <td rowspan="2"><center><strong>DIVISI</center></td>
                                     <td colspan="4" ><center><strong>PERFORMANCE</center></td>
                                 </tr>
                                 <tr>
-                                <th>TW 1</th>
-                                <th>TW 2</th>
-                                <th>TW 3</th>
-                                <th>TW 4</th>
+                                <th><center>TW 1</th>
+                                <th><center>TW 2</th>
+                                <th><center>TW 3</th>
+                                <th><center>TW 4</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
@@ -136,7 +136,7 @@
                                         
                                     </td>
                                     <td>
-                                   
+                                    @if($div->)
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1"></div>
                                         </div>

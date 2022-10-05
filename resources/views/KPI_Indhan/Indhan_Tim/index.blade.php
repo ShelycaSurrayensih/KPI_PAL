@@ -59,7 +59,11 @@
                                     <td class="id" style="display:none;"><a href="javascript:void(0);"
                                             class="fw-medium link-primary">#VZ2101</a></td>
                                     <td class="Tim">{{$tim->Tim}}</td>
-                                    <td class="id_divisi">{{$tim->id_divisi}}</td>
+                                    @foreach($divisi as $div)
+                                    @if($tim->id_divisi == $div->id_divisi)
+                                    <td class="id_divisi">{{$div->div_name}}</td>
+                                    @endif
+                                    @endforeach
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">

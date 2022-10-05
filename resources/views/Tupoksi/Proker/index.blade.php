@@ -39,7 +39,8 @@
                                     </th>
                                     <th class="sort" data-sort="kpi">Departemen</th>
                                     <th class="sort" data-sort="proker">Proker</th>
-                                    <th class="sort" data-sort="target">target</th>
+                                    <th class="sort" data-sort="target">Target</th>
+                                    <th class="sort" data-sort="target">Progress</th>
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -72,7 +73,38 @@
                                             <div class="flex-grow-1">{{ $proker->target }}</div>
                                         </div>
                                     </td>
+                                    <td>
+                                    <?php
+                                            $number = 0;
+                                            $show = 0;
+                                            ?>
+                                            @if($tupoksiRealisasiCount != 0)
+                                            @foreach($tupoksiTw as $tw)
+                                            @if($tw->id_proker == $proker->id_proker)
+                                            @foreach($tupoksiRealisasi as $reals)
+                                            @if($reals->id_tw == $tw->id_tw)
+                                            <?php
+                                            $number = $reals->progres;
+                                            ?>
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                            @endforeach
+                                            @endif
 
+                                            @if($number != 'Belum Terisi')
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$number}}%">
+                                                </div>
+                                            </div>{{$number}}%
+                                        
+                                        @else
+                                        <div class="progress">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                                                </div>
+                                            </div>
+                                        @endif
+                                        </td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
@@ -118,14 +150,14 @@
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="kpi">KPI</label>
-                                                        <input type="text" name="kpi" class="form-control" id="kpi"
-                                                            value="{{$tupoksiKPI->id_kpi}}">
+                                                        <input type="text" name="id_kpi" class="form-control" id="id_kpi" value="{{$tupoksiKPI->id_kpi}}" readonly hidden>
+                        <input type="text" name="" class="form-control" id="" value="{{$tupoksiKPI->kpi}}" readonly >
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="kpi">Proker</label>
                                                         <input type="text" name="proker" class="form-control"
-                                                            id="proker" value="{{$proker->id_proker}}">
+                                                            id="proker" value="{{$proker->proker}}">
 
                                                     </div>
                                                     <div class="mb-3">

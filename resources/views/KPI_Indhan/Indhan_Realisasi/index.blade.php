@@ -48,7 +48,7 @@
                                     <th class="sort" data-sort="tahun">Tahun</th>
                                     <th class="sort" data-sort="tahun">Progress Realisasi</th>
                                     <th class="sort" data-sort="realisasi">Deskripsi Realisasi</th>
-                                    <th class="sort" data-sort="kendala">Kendala</th>
+                                    <th class="sort" data-sort="kendala">Keterangan</th>
                                     <th class="sort" data-sort="timestamp">Komentar Admin</th>
                                     @if($users->status == 'administrator')
                                     <th class="sort" data-sort="timestamp">Created By</th>
@@ -185,7 +185,7 @@
                                 <div class="modal-footer">
                                     <div class="hstack gap-2 justify-content-end">
                                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success" id="add-btn">Edit Komentar</button>
+                                        <button type="submit" class="btn btn-success" id="add-btn">Update</button>
                                     </div>
                                 </div>
                                 </form>
@@ -240,7 +240,7 @@
 
                                             <div class="col-xxl-6">
                                                 <div>
-                                                    <label for="id_indhan">ID KPI</label>
+                                                    <label for="id_indhan">KPI</label>
                                                     <input name="id_indhan" class="form-control" id="id_indhan" value="{{ $indhan->program_strategis }}" readonly="">
                                                     </input>
                                                 </div>
@@ -275,8 +275,8 @@
                                             <!--end col-->
                                             <div class="col-xxl-6">
                                                 <div>
-                                                    <label for="kendala">Kendala</label>
-                                                    <input type="text" name="kendala" class="form-control" id="kendala" value="{{ $indhanReal->kendala }}" readonly>
+                                                    <label for="kendala">Keterangan</label>
+                                                    <textarea type="text" name="kendala" class="form-control" id="kendala"  readonly>{{ $indhanReal->kendala }}</textarea>
                                                 </div>
                                             </div>
 
@@ -306,7 +306,7 @@
                                     <form method="post" action="{{ route('indhanReal.update', $indhanReal->id_realisasi) }}" enctype="multipart/form-data" id="myForm">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="id_indhan">ID KPI</label>
+                                            <label for="id_indhan">KPI</label>
                                             <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}" readonly="">
 
                                             </input>
@@ -337,7 +337,7 @@
                                             <input type="text" name="tahun" class="form-control" id="tahun" value="{{$indhanReal->tahun}}">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="realisasi">Progress Realisasi</label>
+                                            <label for="realisasi">Progress Realisasi (Dalam %)</label>
                                             <input type="text" name="progress" class="form-control" id="progress" value=" {{$indhanReal->progress}}">
                                         </div>
                                         <div class="mb-3">
@@ -345,8 +345,8 @@
                                             <input type="text" name="realisasi" class="form-control" id="realisasi" value=" {{$indhanReal->realisasi}}">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="kendala">Kendala</label>
-                                            <input type="text" name="kendala" class="form-control" id="kendala" value=" {{$indhanReal->kendala}}">
+                                            <label for="kendala">Keterangan</label>
+                                            <textarea type="text" name="kendala" class="form-control" id="kendala">{{$indhanReal->kendala}}</textarea>
                                         </div>
                                         <div>
                                             <label for="file_evidence">File Evidence</label>
@@ -414,7 +414,7 @@
 
                     <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
-                        <label for="id_indhan">ID KPI</label>
+                        <label for="id_indhan">KPI</label>
                         <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}" readonly="">
                         </input>
                     </div>
@@ -453,7 +453,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="realisasi">Progress Realisasi</label>
+                        <label for="realisasi">Progress Realisasi (Dalam %)</label>
                         <input type="text" name="progress" class="form-control" id="progress">
                     </div>
                     <div class="mb-3">
@@ -461,7 +461,7 @@
                         <input type="text" name="realisasi" class="form-control" id="realisasi">
                     </div>
                     <div class="mb-3">
-                        <label for="kendala">Kendala</label>
+                        <label for="kendala">Keterangan</label>
                         <textarea type="text" name="kendala" class="form-control" id="kendala" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
 
                     </div>

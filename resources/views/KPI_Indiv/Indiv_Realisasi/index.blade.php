@@ -44,7 +44,7 @@
                                     <th class="sort" data-sort="progres">Progress</th>
                                     <th class="sort" data-sort="realisasi">Realisasi</th>
                                     <th class="sort" data-sort="prognosa">Prognosa</th>
-                                    <th class="sort" data-sort="keterangan">Kendala</th>
+                                    <th class="sort" data-sort="keterangan">Keterangan</th>
                                     <th class="sort" data-sort="keterangan">Komentar Admin</th>
                                     @if($users->status == 'administrator')
                                     <th class="sort" data-sort="keterangan">Created By</th>
@@ -165,7 +165,7 @@
                                             <div class="modal-footer">
                                                 <div class="hstack gap-2 justify-content-end">
                                                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-success" id="add-btn">Edit Komentar</button>
+                                                    <button type="submit" class="btn btn-success" id="add-btn">Update</button>
                                                 </div>
                                             </div>
                                             </form>
@@ -224,15 +224,6 @@
                                                                 </input>
                                                             </div>
                                                         </div>
-
-                                                        <div class="col-xxl-6">
-                                                            <div>
-                                                                <label for="alasan">Alasan</label>
-                                                                <input type="text" name="alasan" class="form-control" id="alasan" value="{{ $kpidir->ket }}" readonly>
-                                                            </div>
-                                                        </div>
-
-
                                                         <div>
                                                             <h5 class="modal-title" id="exampleModalgridLabel">
                                                                 Realisasi
@@ -270,8 +261,8 @@
                                                         <!--end col-->
                                                         <div class="col-xxl-6">
                                                             <div>
-                                                                <label for="kendala">Kendala</label>
-                                                                <input type="text" name="kendala" class="form-control" id="kendala" value="{{$indivReal->kendala}}" readonly>
+                                                                <label for="kendala">Keterangan</label>
+                                                                <textarea type="text" name="kendala" class="form-control" id="kendala"  readonly>{{$indivReal->kendala}}</textarea>
                                                             </div>
                                                         </div>
 
@@ -335,8 +326,8 @@
 
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="kendala">Kendala</label>
-                                                        <input type="text" name="kendala" class="form-control" id="kendala" value="{{$indivReal->kendala}}">
+                                                        <label for="kendala">Keterangan</label>
+                                                        <textarea type="text" name="kendala" class="form-control" id="kendala" >{{$indivReal->kendala}}</textarea>
 
                                                     </div>
 
@@ -439,7 +430,7 @@
 
                     </div>
                     <div class="mb-3">
-                        <label for="kendala">Kendala</label>
+                        <label for="kendala">Keterangan</label>
                         <textarea type="textarea" name="kendala" class="form-control" id="kendala" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
                     </div>
                     <div>

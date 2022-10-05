@@ -255,7 +255,7 @@
                                                                         <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$real->deskripsi}}">
                                                                     </div>
                                                                     <div class="mb-3">
-                                                                        <label for="kendala">Kendala Realisasi</label>
+                                                                        <label for="kendala">Kendala Realisasi </label>
                                                                         <input type="text" name="kendala" class="form-control" id="kendala" value="{{$real->deskripsi}}">
                                                                     </div>
                                                                     <div>

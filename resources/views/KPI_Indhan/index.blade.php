@@ -87,25 +87,23 @@
                                         @foreach($indhanRealisasi as $reals)
                                         @if($reals->id_indhan == $indhan->id_indhan)
                                         <?php
-                                        $number = $reals->id_realisasi;
+                                        $bulan = $reals->bulan;
+                                        $number = $reals->progress;
                                         ?>
                                         @endif
                                         @endforeach
+                                        @endif
 
-                                        @foreach($indhanRealisasi as $reals)
-                                        @if($reals->id_realisasi == $number)
+                                        @if($number != 'Belum Terisi' && $number != 1)
                                         <div class="progress">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progress}}%">
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$number}}%">
                                             </div>
-                                        </div>{{$reals->bulan}} {{$reals->progress}}%
+                                        </div>{{$bulan}} {{$number}}%
                                         <?php
                                         $show = 1;
                                         ?>
-                                        @endif
-                                        @endforeach
-                                        @endif
 
-                                        @if($show == 0)
+                                        @else
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                                             </div>

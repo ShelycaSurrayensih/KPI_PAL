@@ -22,8 +22,8 @@
                                 <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
 
-                            </div>
-                            @endif
+                                    @endif
+                                </div>
                         </div>
                         <div class="col-sm">
                             <div class="d-flex justify-content-sm-end">
@@ -51,7 +51,6 @@
                                         <th scope="col">Lead Divisi</th>
                                         <th scope="col">Tahun</th>
                                         <th scope="col">Progress</th>
-                                        <th scope="col">Updated</th>
                                         @if($users->status == 'administrator')
                                         <th scope="col">Created By</th>
                                         @endif
@@ -120,45 +119,32 @@
                                             @foreach($plan as $plans)
                                             @if($plans->id_kpipms == $kpi->id_kpipms)
                                             <?php
-                                            
                                             $bulan = $plans->bulan;
                                             ?>
                                             @foreach($real as $reals)
                                             @if($reals->id_plan == $plans->id_plan)
                                             <?php
-                                            $number = $reals->id_real;
+                                            $number = $reals->progress_real;
                                             ?>
                                             @endif
                                             @endforeach
                                             @endif
                                             @endforeach
                                             @endif
-                                            
-                                            @foreach($real as $reals)
-                                            @if($reals->id_real == $number)
+
+                                            @if($number != 'Belum Terisi' && $number!= 1)
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$reals->progress_real}}%">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$number}}%">
                                                 </div>
-                                            </div>{{$bulan}} {{$reals->progress_real}}% 
+                                            </div> {{$bulan}}  {{$number}}% 
                                         </td>
-                                        <?php
-                                        $show = 1;
-                                        ?>
-                                        @endif
-                                        @endforeach
-                                        
-                                        @if($show == 0)
+                                        @else
                                         <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                                                 </div>
                                             </div>0%
                                         </td>
                                         @endif
-                                        </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpi->created_at }}</div>
-                                            </div>
                                         </td>
                                         <?php
                                         $show = 0;
@@ -341,10 +327,6 @@
                     <div class="mb-3">
                         <label for="bobot" class="form-label">Bobot</label>
                         <input name="bobot" type="text" class="form-control" id="bobot" value="">
-                    </div>
-                    <div class="mb-3">
-                        <label for="desc_kpidir" class="form-label">Deskripsi</label>
-                        <input name="desc_kpidir" type="text" class="form-control" id="desc_kpidir" value="">
                     </div>
                     <div class="mb-3">
                         <label for="target" class="form-label">Target</label>

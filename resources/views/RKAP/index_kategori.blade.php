@@ -99,8 +99,8 @@
                                                         id="myForm">
                                                         @csrf
                                                         <div class="mb-3">
-                                                            <label for="desc_kpidir" class="form-label">Deskripsi
-                                                                kategori</label>
+                                                            <label for="desc_kpidir" class="form-label">Nama Kategori
+                                                                </label>
                                                             <input name="kat_desc" type="text" class="form-control"
                                                                 id="kat_desc" value="{{ $kateg->kat_desc }}">
                                                         </div>
@@ -115,7 +115,7 @@
                                                     <div class="hstack gap-2 justify-content-end">
                                                         <button type="button" class="btn btn-light"
                                                             data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success" id="add-btn">Add
+                                                        <button type="submit" class="btn btn-success" id="add-btn">Update
                                                             </button>
                                                     </div>
                                                 </div>
@@ -165,7 +165,7 @@
                     id="myForm">
                     @csrf
                     <div class="mb-3">
-                        <label for="kat_desc" class="form-label">Deskripsi</label>
+                        <label for="kat_desc" class="form-label">Nama Kategori</label>
                         <input name="kat_desc" type="text" class="form-control" id="kat_desc">
                     </div>
                     <div class="mb-3">
