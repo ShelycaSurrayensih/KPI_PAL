@@ -63,7 +63,7 @@
 
     <div>
 
-    <div class="mb-3 gap-2">
+   <!-- <div class="mb-3 gap-2">
     <p>Sort by:</p>
 		<select > 
             <option value="cascading">Cascading</option>
@@ -136,7 +136,7 @@
                                         
                                     </td>
                                     <td>
-                                    @if($div->)
+                                    
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1"></div>
                                         </div>
