@@ -158,8 +158,6 @@
                                                             <div class="flex-grow-1">{{ $realisasi->comment }}</div>
                                                         </div>
                                                     </td>
-                                                    @endif
-                                                    @endforeach
                                                     
                                                     <td>
                                                         <div class="d-flex gap-2">
@@ -170,22 +168,14 @@
                                                             <div class="edit">
                                                                 <button type="button" class="btn btn-sm btn-success edit-item-btn data-bs-toggle=" data-bs-toggle="modal" id="create-btn" data-bs-target="#realisasi{{$tw->tw}}">Realisasi</button>
                                                             </div>
-                                                            <?php 
-                                                            $views = 0;
-                                                            ?>
-                                                            @foreach($tupoksiRealisasi as $reals)
-                                                            @if($reals->id_CProk == $tw->id)
-                                                            @if($reals->file_evidence != null && $views == 0)
+                                                            @if($realisasi->file_evidence != null)
                                                             <div class="add">
-                                                                <a href="{{ route('viewFile.tupoksi', $reals->file_evidence) }}">
+                                                                <a href="{{ route('viewFile.tupoksi', $realisasi->file_evidence) }}">
                                                                     <button type="submit" class="btn btn-sm btn-outline-success btn-icon waves-effect waves-light shadow-none">
                                                                         <i class="ri-mail-send-line"></i>
                                                                     </button>
                                                                 </a>
                                                             </div>
-                                                            <?php 
-                                                            $views = 1;
-                                                            ?>
                                                             @endif
                                                             @endif
                                                             @endforeach
