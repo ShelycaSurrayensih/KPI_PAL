@@ -16,8 +16,8 @@
                                     <div class="bg-overlay"></div>
                                     <div class="position-relative h-100 d-flex flex-column">
                                         <div class="mb-4">
-                                            <a href="index-2.html" class="d-block">
-                                                <img src="assets/images/logo3.png" alt="" height="30%" width="40%">
+                                            <a href="" class="d-block">
+                                                <img src="{{ asset('assets') }}/images/logo3.png" alt="" height="30%" width="40%">
                                             </a>
                                         </div>
                                         <div class="mt-auto">
@@ -65,20 +65,14 @@
                                                 </div>
 
                                                 <div class="mb-3">
-                                                    <div class="float-end">
-                                                        <a href="auth-pass-reset-cover.html" class="text-muted">Forgot
-                                                            password?</a>
-                                                    </div>
+                                                    
                                                     <label class="form-label" for="password-input">Password</label>
                                                     <div class="position-relative auth-pass-inputgroup mb-3">
                                                         <input type="password" id="password"
                                                             class="form-control @error('password') is-invalid @enderror"
                                                             name="password" required autocomplete="current-password"
                                                             placeholder="Password">
-                                                        <button
-                                                            class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted shadow-none"
-                                                            type="button" id="password-addon"><i
-                                                                class="ri-eye-fill align-middle"></i></button>
+                                                        
                                                         @error('password')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>

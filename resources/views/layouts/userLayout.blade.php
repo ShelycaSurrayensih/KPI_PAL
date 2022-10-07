@@ -83,7 +83,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <span class="logo-sm">
-                                <img src="assets/images/PT_PAL.png" alt="" height="100">
+                                <img src="{{ asset('assets') }}/images/PT_PAL.png" alt="" height="100">
                             </span>
                         </div>
 
