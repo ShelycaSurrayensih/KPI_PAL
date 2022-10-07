@@ -155,8 +155,8 @@
                                                 <form method="post" action="{{ route('indhan.update', $indhan->id_indhan) }}" enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
-                                                        <label for="Tim">Tim</label>
-                                                        <select name="Tim" class="form-control" id="Tim">
+                                                        <label for="id_tim">Tim</label>
+                                                        <select name="id_tim" class="form-control" id="id_tim">
                                                             @foreach ($indhanTim as $tim)
                                                             @foreach($divisi as $div)
                                                             @if($users->id_divisi == $div->id_divisi)
@@ -253,8 +253,8 @@
                     @csrf
                     <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
-                        <label for="Tim">Nama Tim</label>
-                        <select name="Tim" class="form-control" id="Tim">
+                        <label for="id_tim">Nama Tim</label>
+                        <select name="id_tim" class="form-control" id="id_tim">
                             @foreach ($indhanTim as $tim)
                             @foreach($divisi as $div)
                             @if($users->id_divisi == $div->id_divisi)

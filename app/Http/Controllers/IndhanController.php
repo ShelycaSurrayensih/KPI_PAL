@@ -48,9 +48,10 @@ class IndhanController extends Controller
         $users = auth()->user();
         $indhan = Indhan::all();
         $indhanTim = IndhanTim::all();
+        $indhanRealisasi = IndhanRealisasi::all();
         $divisi = Divisi::all();
         $indhanCount = IndhanRealisasi::count();
-        return \view('KPI_Indhan.index', compact ('users', 'indhan', 'indhanTim', 'divisi', 'indhanCount'));
+        return \view('KPI_Indhan.index', compact ('users', 'indhan', 'indhanTim','indhanRealisasi', 'divisi', 'indhanCount'));
     }
 
     /**
@@ -95,8 +96,10 @@ class IndhanController extends Controller
         $users = auth()->user();
         $indhan = Indhan::all();
         $indhanTim = IndhanTim::all();
+        $indhanRealisasi = IndhanRealisasi::all();
         $divisi = Divisi::all();
-        return view('KPI_Indhan.index', compact ('users', 'indhan', 'indhanTim', 'divisi'));
+        $indhanCount = IndhanRealisasi::count();
+        return view('KPI_Indhan.index', compact ('users', 'indhan', 'indhanTim',  'indhanRealisasi', 'indhanCount','divisi'));
     }
 
     /**
