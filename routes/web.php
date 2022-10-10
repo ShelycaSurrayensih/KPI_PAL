@@ -53,12 +53,14 @@ Route::get('/export_excel', [App\Http\Controllers\HomeController::class, 'export
 Route::get('/Cascade/KPI', [App\Http\Controllers\CascadeController::class, 'cascadeKpiIndex'])->name('cascadeKPI.index');
 Route::post('/Cascade/KPI/store', [App\Http\Controllers\CascadeController::class, 'cascadeKpiStore'])->name('cascadeKPI.store');
 Route::post('/Cascade/KPI/update/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeKpiUpdate'])->name('cascadeKPI.update');
+Route::get('/Cascade/KPI/delete/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDelete'])->name('cascadeKPI.delete');
 
 //Cascading KPI Divisi
 Route::get('/Cascade/KPIDiv/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDivIndex'])->name('casDiv.index');
 Route::get('/Cascade/KPIDiv', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDivAll'])->name('casDiv.all');
 Route::post('/Cascade/KPIDiv/store', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDivStore'])->name('casDiv.store');
 Route::post('/Cascade/KPIDiv/update/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDivUpdate'])->name('casDiv.update');
+Route::get('/Cascade/KPIDiv/delete/{id}', [App\Http\Controllers\CascadeController::class, 'cascadeKpiDivDelete'])->name('casDiv.delete');
 
 //Query KPI Divisi
 Route::get('/Cascade/KPIDiv/KPI/{id}', [App\Http\Controllers\CascadeController::class, 'kpiDivList'])->name('kpiDiv.list');

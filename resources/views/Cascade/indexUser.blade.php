@@ -428,23 +428,19 @@
                                         <?php
                                             $value = 0;
                                             $tw = 0;
-                                            ?>
-                                            @foreach($casProk as $prok)
-                                            @if($prok->id_CDiv == $kpiDiv->id)
-                                            @foreach($casReal as $real)
-                                            @if($real->id_CProk == $prok->id)
-                                            @if($real->progress != "Belum Terisi")
-                                            <?php
-                                            $value += $real->progress / $prok->progress  * 25;
-                                            $tw += 1;
-                                            ?>
-                                            @endif
-                                            @endif
-                                            @endforeach
-                                            @endif
-                                            @endforeach
-                                            <?php
-                                            $value = round($value);
+
+                                            foreach($casProk as $prok){
+                                                if($prok->id_CDiv == $kpiDiv->id){
+                                                    foreach($casReal as $real){
+                                                        if($real->id_CProk == $prok->id){
+                                                            if($real->progress != "Belum Terisi"){
+                                                                $value += round($real->progress / $prok->progress, 3) * 25;
+                                                                $tw += 1;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                             ?>
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:{{$value}}%">
@@ -493,11 +489,11 @@
                                                 </div>
                                                 <div class="d-flex gap-2">
                                                     <div class="remove">
-                                                        <form action="" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
-                                                        </form>
+                                                    <form action="{{route('casDiv.delete', $kpiDiv->id)}}" method="POST">
+                                                        @csrf
+                                                        @method('GET')
+                                                        <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
+                                                    </form>
                                                     </div>
                                                 </div>
                                         </td>

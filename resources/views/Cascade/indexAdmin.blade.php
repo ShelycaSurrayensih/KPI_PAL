@@ -94,9 +94,9 @@
                                                 </div>
                                                 <div class="remove">
 
-                                                    <form action="" method="POST">
+                                                    <form action="{{route('cascadeKPI.delete', $kpi->id)}}" method="POST">
                                                         @csrf
-                                                        @method('DELETE')
+                                                        @method('GET')
                                                         <button type="submit" class="btn btn-sm btn-danger btn-icon waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#deleteRecordModal"><i class="ri-delete-bin-5-line"></i></button>
                                                     </form>
                                                 </div>

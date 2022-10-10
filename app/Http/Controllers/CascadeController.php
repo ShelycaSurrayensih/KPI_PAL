@@ -43,6 +43,13 @@ class CascadeController extends Controller
         return redirect()->back();
     }
 
+    public function cascadeKpiDelete($id)
+    {
+        $cascade = CascadeKpi::where('id', $id);
+        $cascade->delete();
+        return redirect()->back();
+    }
+
     //KPI Divisi
     public function cascadeKpiDivIndex(Request $request, $id)
     {
@@ -101,10 +108,17 @@ class CascadeController extends Controller
         $casKpiDiv->kpi_divisi = $request->kpi_divisi;
         $casKpiDiv->bobot_cascade = $bobot_cascade;
         $casKpiDiv->target = $request->target;
-        $casKpiDiv->bkXbc = $bobot_kpi * ($bobot_cascade/100); 
+        $casKpiDiv->bkXbc = round($bobot_kpi * ($bobot_cascade/100), 3); 
         $casKpiDiv->status_div = $request->status_div;
         $casKpiDiv->update();
         //$cascade = CascadeKpiDiv::where('id',$id)->update($request->except(['_token']));
+        return redirect()->back();
+    }
+
+    public function cascadeKpiDivDelete($id)
+    {
+        $casKpiDiv = CascadeKpiDiv::where('id', $id);
+        $casKpiDiv->delete();
         return redirect()->back();
     }
 
