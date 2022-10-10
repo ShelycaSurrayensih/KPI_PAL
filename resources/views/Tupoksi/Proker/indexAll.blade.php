@@ -169,12 +169,12 @@
                                                     <div class="mb-3">
                                                         <label for="kpi">Proker</label>
                                                         <input type="text" name="proker" class="form-control"
-                                                            id="proker" value="{{$proker->proker}}">
+                                                            id="proker" value="{{$proker->proker}}"required>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="target">Target</label>
                                                         <input type="text" name="target" class="form-control"
-                                                            id="target" value="{{$proker->target}}">
+                                                            id="target" value="{{$proker->target}}"required>
                                                     </div>
                                                     <div class=" modal-footer">
                                                         <div class="hstack gap-2 justify-content-end">
@@ -255,11 +255,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="proker">Proker</label>
-                        <input type="text" name="proker" class="form-control" id="proker">
+                        <input type="text" name="proker" class="form-control" id="proker"required>
                     </div>
                     <div class="mb-3">
                         <label for="target">Target</label>
-                        <input type="text" name="target" class="form-control" id="target">
+                        <input type="text" name="target" class="form-control" id="target"required>
                     </div>
                     <div class="modal-footer">
                         <div class="hstack gap-2 justify-content-end">

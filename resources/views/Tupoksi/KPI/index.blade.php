@@ -147,7 +147,7 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="kpi">KPI</label>
-                                                        <input type="text" name="kpi" class="form-control" id="kpi" value="{{$kpi->kpi}}">
+                                                        <input type="text" name="kpi" class="form-control" id="kpi" value="{{$kpi->kpi}}" required>
 
                                                     </div>
                                                     <div class=" modal-footer">
@@ -219,7 +219,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="kpi">KPI</label>
-                        <input type="text" name="kpi" class="form-control" id="kpi">
+                        <input type="text" name="kpi" class="form-control" id="kpi" required>
 
                     </div>
                     <div class="modal-footer">

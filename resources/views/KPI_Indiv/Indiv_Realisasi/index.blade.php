@@ -309,27 +309,27 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="tw">TW</label>
-                                                        <input type="text" name="tw" class="form-control" id="tw" value="{{$indivReal->tw}}">
+                                                        <input type="text" name="tw" class="form-control" id="tw" value="{{$indivReal->tw}}"required>
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="progres">Progress (Dalam %)</label>
-                                                        <input type="text" name="progres" class="form-control" id="progres" value="{{$indivReal->progres}}">
+                                                        <input type="text" name="progres" class="form-control" id="progres" value="{{$indivReal->progres}}"required>
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="realisasi">Realisasi</label>
-                                                        <input type="text" name="realisasi" class="form-control" id="realisasi" value="{{$indivReal->realisasi}}">
+                                                        <input type="text" name="realisasi" class="form-control" id="realisasi" value="{{$indivReal->realisasi}}"required>
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="prognosa">Prognosa</label>
-                                                        <input type="text" name="prognosa" class="form-control" id="prognosa" value="{{$indivReal->prognosa}}">
+                                                        <input type="text" name="prognosa" class="form-control" id="prognosa" value="{{$indivReal->prognosa}}"required>
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="kendala">Keterangan</label>
-                                                        <textarea type="text" name="kendala" class="form-control" id="kendala" >{{$indivReal->kendala}}</textarea>
+                                                        <textarea type="text" name="kendala" class="form-control" id="kendala"required >{{$indivReal->kendala}}</textarea>
 
                                                     </div>
 

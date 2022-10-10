@@ -516,11 +516,11 @@
                                                         
                                                         <div class="mb-3">
                                                             <label for="bobot_cascade" class="form-label">Bobot Cascading (Dalam %)</label>
-                                                            <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade" value="{{$kpiDiv->bobot_cascade}}">
+                                                            <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade" value="{{$kpiDiv->bobot_cascade}}"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="target" class="form-label">Target</label>
-                                                            <input name="target" type="text" class="form-control" id="target" value="{{$kpiDiv->target}}">
+                                                            <input name="target" type="text" class="form-control" id="target" value="{{$kpiDiv->target}}"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="status_div" class="form-label">Status Divisi</label>
@@ -586,7 +586,7 @@
                                 <select class="form-control" name="" id="kategori">
                                     <option>Choose Category</option>
                                     @foreach ($casKat as $kat)
-                                    <option value="{{ $kat->id_kat }}">{{ $kat->desc_kat }}</option>
+                                    <option value="{{ $kat->id_kat }}" >{{ $kat->desc_kat }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -605,15 +605,15 @@
                     </div> -->
                         <div class="mb-3">
                             <label for="kpi_divisi" class="form-label">KPI Divisi</label>
-                            <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi">
+                            <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi"required>
                         </div>
                             <div class="mb-3">
                                 <label for="bobot_cascade" class="form-label">Bobot Cascading (Dalam %)</label>
-                                <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade">
+                                <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade"required>
                             </div>
                             <div class="mb-3">
                                 <label for="target" class="form-label">Target</label>
-                                <input name="target" type="text" class="form-control" id="target">
+                                <input name="target" type="text" class="form-control" id="target"required>
                             </div>
                             <div class="mb-3">
                                 <label for="status_div" class="form-label">Status Divisi</label>

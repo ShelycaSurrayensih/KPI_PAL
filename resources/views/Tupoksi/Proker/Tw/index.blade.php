@@ -94,12 +94,12 @@
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="progres" class="form-label">Progress Proker (Dalam %)</label>
-                                                                    <input name="progres" type="text" class="form-control" id="progres">
+                                                                    <input name="progres" type="text" class="form-control" id="progres"required>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="deskripsi" class="form-label">Deskripsi
                                                                         Proker</label>
-                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi">
+                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi"required>
                                                                 </div>
                                                                
                                                         </div>
@@ -203,12 +203,12 @@
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label for="progres" class="form-label">Progress Proker (Dalam %)</label>
-                                                                        <input name="progres" type="text" class="form-control" id="progres" value="{{$tw->progres}}">
+                                                                        <input name="progres" type="text" class="form-control" id="progres" value="{{$tw->progres}}"required>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label for="deskripsi" class="form-label">Deskripsi
                                                                             Proker</label>
-                                                                        <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$tw->deskripsi}}">
+                                                                        <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$tw->deskripsi}}"required>
                                                                     </div>
                                                             </div>
                                                             <div class="modal-footer">
@@ -239,15 +239,15 @@
                                                                     <input name="id_tw" type="text" class="form-control" id="id_tw" value="{{$tw->id_tw }}" readonly hidden>
                                                                     <div class="mb-3">
                                                                         <label for="progres" class="form-label">Progress Proker (Dalam %)</label>
-                                                                        <input name="progres" type="text" class="form-control" id="progres" value="{{$real->progres}}">
+                                                                        <input name="progres" type="text" class="form-control" id="progres" value="{{$real->progres}}"required>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label for="deskripsi" class="form-label">Deskripsi Realisasi</label>
-                                                                        <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$real->deskripsi}}">
+                                                                        <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$real->deskripsi}}"required>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label for="kendala">Keterangan Realisasi </label>
-                                                                        <input type="text" name="kendala" class="form-control" id="kendala" value="{{$real->kendala}}">
+                                                                        <input type="text" name="kendala" class="form-control" id="kendala" value="{{$real->kendala}}"required>
                                                                     </div>
                                                                     <div>
                                                                         <label for="file_evidence">File Evidence</label>
@@ -345,11 +345,11 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="progres" class="form-label">Progress Proker (Dalam %)</label>
-                                        <input name="progres" type="text" class="form-control" id="progres">
+                                        <input name="progres" type="text" class="form-control" id="progres"required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="deskripsi" class="form-label">Deskripsi Proker</label>
-                                        <input name="deskripsi" type="text" class="form-control" id="deskripsi">
+                                        <input name="deskripsi" type="text" class="form-control" id="deskripsi"required>
                                     </div>
 
                             </div>
@@ -394,16 +394,16 @@
 
                                     <div class="mb-3">
                                         <label for="progres">Progress Realisasi (Dalam %)</label>
-                                        <input type="text" name="progres" class="form-control" id="progres">
+                                        <input type="text" name="progres" class="form-control" id="progres"required>
 
                                     </div>
                                     <div class="mb-3">
                                         <label for="deskripsi">Deskripsi Realisasi</label>
-                                        <input type="text" name="deskripsi" class="form-control" id="deskripsi">
+                                        <input type="text" name="deskripsi" class="form-control" id="deskripsi"required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="kendala">Keterangan Realisasi</label>
-                                        <input type="text" name="kendala" class="form-control" id="kendala">
+                                        <input type="text" name="kendala" class="form-control" id="kendala"required>
                                     </div>
                                     <div class="modal-footer">
                                         <div class="hstack gap-2 justify-content-end">

@@ -296,7 +296,7 @@
                                                                 <div class="col-xxl-6">
                                                                     <div>
                                                                         <label for="progress_real">Progress Realisasi (Dalam %)</label>
-                                                                        <input type="text" name="progress_real" class="form-control" id="progress_real" value="">
+                                                                        <input type="text" name="progress_real" class="form-control" id="progress_real" value=""required>
                                                                     </div>
                                                                 </div>
 
@@ -304,14 +304,14 @@
                                                                     <div>
                                                                         <label for="desc_real">Deskripsi
                                                                             Realisasi</label>
-                                                                        <input type="text" name="desc_real" class="form-control" id="desc_real" value="">
+                                                                        <input type="text" name="desc_real" class="form-control" id="desc_real" value=""required>
                                                                     </div>
                                                                 </div>
                                                                 <!--end col-->
                                                                 <div class="mb-3">
                                                                     <div>
                                                                         <label for="keterangan">Keterangan</label>
-                                                                        <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
+                                                                        <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"required></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <!--end col-->
@@ -372,7 +372,7 @@
                                                                 <div class="col-xxl-6">
                                                                     <div>
                                                                         <label for="progress_real">Progress Realisasi (Dalam %)</label>
-                                                                        <input type="text" name="progress_real" class="form-control" id="progress_real" value="{{$reals->progress_real}}">
+                                                                        <input type="text" name="progress_real" class="form-control" id="progress_real" value="{{$reals->progress_real}}"required>
                                                                     </div>
                                                                 </div>
 
@@ -380,14 +380,14 @@
                                                                     <div>
                                                                         <label for="desc_real">Deskripsi
                                                                             Realisasi</label>
-                                                                        <input type="text" name="desc_real" class="form-control" id="desc_real" value="{{$reals->desc_real}}">
+                                                                        <input type="text" name="desc_real" class="form-control" id="desc_real" value="{{$reals->desc_real}}"required>
                                                                     </div>
                                                                 </div>
                                                                 <!--end col-->
                                                                 <div class="mb-3">
                                                                     <div>
                                                                         <label for="keterangan">Keterangan</label>
-                                                                        <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" valuej="{{$reals->keterangan}}"></textarea>
+                                                                        <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" valuej="{{$reals->keterangan}}"required></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <!--end col-->
@@ -454,7 +454,7 @@
                                                                     <div class="col-xxl-6">
                                                                         <div>
                                                                             <label for="progress_real">Progress Realisasi (Dalam %)</label>
-                                                                            <input type="text" name="progress_real" class="form-control" id="progress_real" value="">
+                                                                            <input type="text" name="progress_real" class="form-control" id="progress_real" value=""required>
                                                                         </div>
                                                                     </div>
 
@@ -462,14 +462,14 @@
                                                                         <div>
                                                                             <label for="desc_real">Deskripsi
                                                                                 Realisasi</label>
-                                                                            <input type="text" name="desc_real" class="form-control" id="desc_real" value="">
+                                                                            <input type="text" name="desc_real" class="form-control" id="desc_real" value=""required>
                                                                         </div>
                                                                     </div>
                                                                     <!--end col-->
                                                                     <div class="mb-3">
                                                                         <div>
                                                                             <label for="keterangan">Keterangan</label>
-                                                                            <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
+                                                                            <textarea type="textarea" name="keterangan" class="form-control" id="keterangan" placeholder="Dapat diisi dengan kendala ketidaktercapaian"required></textarea>
                                                                         </div>
                                                                     </div>
                                                                     <!--end col-->
@@ -550,12 +550,12 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="progress_plan" class="form-label">Progress (Dalam %)</label>
-                                                <input name="progress_plan" type="text" class="form-control" id="progress_plan" value="{{ $plan->progress_plan }}">
+                                                <input name="progress_plan" type="text" class="form-control" id="progress_plan" value="{{ $plan->progress_plan }}"required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="desc_plan" class="form-label">Deskripsi
                                                     Progress</label>
-                                                <input name="desc_plan" type="text" class="form-control" id="desc_plan" value="{{ $plan->desc_plan }}">
+                                                <input name="desc_plan" type="text" class="form-control" id="desc_plan" value="{{ $plan->desc_plan }}"required>
                                             </div>
                                     </div>
                                     <div class="modal-footer">
@@ -652,11 +652,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="progress_plan" class="form-label">Progress Plan (Dalam %)</label>
-                        <input name="progress_plan" type="text" class="form-control" id="progress_plan" value="">
+                        <input name="progress_plan" type="text" class="form-control" id="progress_plan" value=""required>
                     </div>
                     <div class="mb-3">
                         <label for="desc_plan" class="form-label">Deskripsi Plan</label>
-                        <input name="desc_plan" type="text" class="form-control" id="desc_plan" value="">
+                        <input name="desc_plan" type="text" class="form-control" id="desc_plan" value=""required>
                     </div>
             </div>
             <div class="modal-footer">

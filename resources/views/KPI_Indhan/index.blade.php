@@ -178,22 +178,22 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="program_strategis">Program Strategis</label>
-                                                        <input type="text" name="program_strategis" class="form-control" id="program_strategis" value="{{ $indhan->program_strategis }}">
+                                                        <input type="text" name="program_strategis" class="form-control" id="program_strategis" value="{{ $indhan->program_strategis }}"required>
 
                                                     </div>
                                                     <div class=" mb-3">
                                                         <label for="entitas">Entitas</label>
-                                                        <input type="text" name="entitas" class="form-control" id="entitas" value="{{ $indhan->entitas }}">
+                                                        <input type="text" name="entitas" class="form-control" id="entitas" value="{{ $indhan->entitas }}"required>
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="program_utama">Program Utama</label>
-                                                        <input type="text" name="program_utama" class="form-control" id="program_utama" value="{{ $indhan->program_utama }}">
+                                                        <input type="text" name="program_utama" class="form-control" id="program_utama" value="{{ $indhan->program_utama }}"required>
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="target">Target/Milestone</label>
-                                                        <input type="text" name="target" class="form-control" id="target" value="{{ $indhan->target }}">
+                                                        <input type="text" name="target" class="form-control" id="target" value="{{ $indhan->target }}"required>
                                                     </div>
 
                                                     <div class=" modal-footer">
@@ -276,22 +276,22 @@
                     </div>
                     <div class="mb-3">
                         <label for="program_strategis">Program Strategis</label>
-                        <input type="text" name="program_strategis" class="form-control" id="program_strategis">
+                        <input type="text" name="program_strategis" class="form-control" id="program_strategis"required>
 
                     </div>
                     <div class="mb-3">
                         <label for="entitas">Entitas</label>
-                        <input type="text" name="entitas" class="form-control" id="entitas">
+                        <input type="text" name="entitas" class="form-control" id="entitas"required>
 
                     </div>
                     <div class="mb-3">
                         <label for="program_utama">Program Utama</label>
-                        <input type="text" name="program_utama" class="form-control" id="program_utama">
+                        <input type="text" name="program_utama" class="form-control" id="program_utama"required>
 
                     </div>
                     <div class="mb-3">
                         <label for="target">Target</label>
-                        <input type="text" name="target" class="form-control" id="target">
+                        <input type="text" name="target" class="form-control" id="target"required>
                     </div>
 
                     <div class="modal-footer">

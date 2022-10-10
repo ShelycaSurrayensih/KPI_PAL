@@ -105,7 +105,7 @@
                                                     <div class="mb-3">
                                                         <label for="Tim">Nama Tim</label>
                                                         <input type="text" name="Tim" class="form-control"
-                                                            id="Tim" value="{{$tim->Tim}}">
+                                                            id="Tim" value="{{$tim->Tim}}"required>
 
                                                     </div>
                                                     <div class="mb-3">
@@ -175,7 +175,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="Tim">Nama Tim</label>
-                        <input type="text" name="Tim" class="form-control" id="Tim">
+                        <input type="text" name="Tim" class="form-control" id="Tim"required>
                     </div>
                     <div class="mb-3">
                         <label for="id_divisi" class="form-label">Divisi</label>

@@ -111,7 +111,7 @@
                                                     <div class="mb-3">
                                                         <label for="departemen">Departemen</label>
                                                         <input type="text" name="departemen" class="form-control"
-                                                            id="departemen" value="{{$departemen->departemen}}">
+                                                            id="departemen" value="{{$departemen->departemen}}"required>
 
                                                     </div>
                                                     <div class=" modal-footer">
@@ -177,7 +177,7 @@
                     <input type="text" name="created_by" class="form-control" id="created_by" value ="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="departemen">Departemen</label>
-                        <input type="text" name="departemen" class="form-control" id="departemen">
+                        <input type="text" name="departemen" class="form-control" id="departemen"required>
 
                     </div>
                     <div class="modal-footer">

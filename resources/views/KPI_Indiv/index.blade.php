@@ -188,27 +188,27 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="desc_kpidir" class="form-label">KPI</label>
-                                                            <input name="desc_kpidir" type="text" class="form-control" id="desc_kpidir" value="{{$kpidir->desc_kpidir}}">
+                                                            <input name="desc_kpidir" type="text" class="form-control" id="desc_kpidir" value="{{$kpidir->desc_kpidir}}"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="satuan" class="form-label">Satuan</label>
-                                                            <input name="satuan" type="text" class="form-control" id="satuan" value="{{$kpidir->satuan}}">
+                                                            <input name="satuan" type="text" class="form-control" id="satuan" value="{{$kpidir->satuan}}"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="target" class="form-label">Target</label>
-                                                            <input name="target" type="text" class="form-control" id="target" value="{{$kpidir->target}}">
+                                                            <input name="target" type="text" class="form-control" id="target" value="{{$kpidir->target}}"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="bobot" class="form-label">Bobot</label>
-                                                            <input name="bobot" type="text" class="form-control" id="bobot" value="{{$kpidir->bobot}}">
+                                                            <input name="bobot" type="text" class="form-control" id="bobot" value="{{$kpidir->bobot}}"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="ket" class="form-label">Keterangan</label>
-                                                            <textarea name="ket" type="text" class="form-control" id="ket"  >{{$kpidir->ket}}</textarea>
+                                                            <textarea name="ket" type="text" class="form-control" id="ket" required >{{$kpidir->ket}}</textarea>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="asal_kpi" class="form-label">Asal KPI</label>
-                                                            <input name="asal_kpi" type="text" class="form-control" id="asal_kpi" value="{{$kpidir->asal_kpi}}">
+                                                            <input name="asal_kpi" type="text" class="form-control" id="asal_kpi" value="{{$kpidir->asal_kpi}}"required>
                                                         </div>
 
 
@@ -290,27 +290,27 @@
                     </div>
                     <div class="mb-3">
                         <label for="desc_kpidir" class="form-label">KPI</label>
-                        <input name="desc_kpidir" type="text" class="form-control" id="desc_kpidir">
+                        <input name="desc_kpidir" type="text" class="form-control" id="desc_kpidir"required>
                     </div>
                     <div class="mb-3">
                         <label for="satuan" class="form-label">Satuan</label>
-                        <input name="satuan" type="text" class="form-control" id="satuan">
+                        <input name="satuan" type="text" class="form-control" id="satuan"required>
                     </div>
                     <div class="mb-3">
                         <label for="target" class="form-label">Target</label>
-                        <input name="target" type="text" class="form-control" id="target">
+                        <input name="target" type="text" class="form-control" id="target"required>
                     </div>
                     <div class="mb-3">
                         <label for="bobot" class="form-label">Bobot</label>
-                        <input name="bobot" type="text" class="form-control" id="bobot">
+                        <input name="bobot" type="text" class="form-control" id="bobot"required>
                     </div>
                     <div class="mb-3">
                         <label for="ket" class="form-label">Keterangan</label>
-                        <textarea name="ket" type="text" class="form-control" id="ket"></textarea>
+                        <textarea name="ket" type="text" class="form-control" id="ket"required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="asal_kpi" class="form-label">Asal KPI</label>
-                        <input name="asal_kpi" type="text" class="form-control" id="asal_kpi">
+                        <input name="asal_kpi" type="text" class="form-control" id="asal_kpi"required>
                     </div>
 
 

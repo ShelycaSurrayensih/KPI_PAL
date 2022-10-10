@@ -102,12 +102,12 @@
                                                             <label for="desc_kpidir" class="form-label">Nama Kategori
                                                                 </label>
                                                             <input name="kat_desc" type="text" class="form-control"
-                                                                id="kat_desc" value="{{ $kateg->kat_desc }}">
+                                                                id="kat_desc" value="{{ $kateg->kat_desc }}"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="ket" class="form-label">Keterangan</label>
                                                             <input name="ket" type="text" class="form-control"
-                                                                id="ket" value="{{ $kateg->ket }}">
+                                                                id="ket" value="{{ $kateg->ket }}"required>
                                                         </div>
 
                                                 </div>
@@ -166,11 +166,11 @@
                     @csrf
                     <div class="mb-3">
                         <label for="kat_desc" class="form-label">Nama Kategori</label>
-                        <input name="kat_desc" type="text" class="form-control" id="kat_desc">
+                        <input name="kat_desc" type="text" class="form-control" id="kat_desc"required>
                     </div>
                     <div class="mb-3">
                         <label for="ket" class="form-label">Keterangan</label>
-                        <input name="ket" type="text" class="form-control" id="ket">
+                        <input name="ket" type="text" class="form-control" id="ket"required>
                     </div>
             </div>
             <div class="modal-footer">

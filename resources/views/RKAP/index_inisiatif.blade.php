@@ -96,11 +96,11 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="inisiatif_desc" class="form-label">Deskripsi</label>
-                                                            <input name="inisiatif_desc" value="{{$init->inisiatif_desc}}" class="form-control" id="inisiatif_desc">
+                                                            <input name="inisiatif_desc" value="{{$init->inisiatif_desc}}" class="form-control" id="inisiatif_desc"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="tahun_inisiatif" class="form-label">KPI</label>
-                                                            <input name="tahun_inisiatif" type="text" class="form-control" id="tahun_inisiatif" value="{{$init->tahun_inisiatif}}">
+                                                            <input name="tahun_inisiatif" type="text" class="form-control" id="tahun_inisiatif" value="{{$init->tahun_inisiatif}}"required>
                                                         </div>
 
                                                 </div>
@@ -155,11 +155,11 @@
                     @csrf
                     <div class="mb-3">
                         <label for="inisiatif_desc" class="form-label">Deskripsi </label>
-                        <input name="inisiatif_desc" type="text" class="form-control" id="inisiatif_desc">
+                        <input name="inisiatif_desc" type="text" class="form-control" id="inisiatif_desc"required>
                     </div>
                     <div class="mb-3">
                         <label for="tahun_inisiatif" class="form-label">Tahun </label>
-                        <input name="tahun_inisiatif" type="text" class="form-control" id="tahun_inisiatif">
+                        <input name="tahun_inisiatif" type="text" class="form-control" id="tahun_inisiatif"required>
                     </div>
             </div>
             <div class="modal-footer">

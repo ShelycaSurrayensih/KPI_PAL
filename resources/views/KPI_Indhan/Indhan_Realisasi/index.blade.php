@@ -335,19 +335,19 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="tahun">Tahun</label>
-                                            <input type="text" name="tahun" class="form-control" id="tahun" value="{{$indhanReal->tahun}}">
+                                            <input type="text" name="tahun" class="form-control" id="tahun" value="{{$indhanReal->tahun}}"required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="realisasi">Progress Realisasi (Dalam %)</label>
-                                            <input type="text" name="progress" class="form-control" id="progress" value=" {{$indhanReal->progress}}">
+                                            <input type="text" name="progress" class="form-control" id="progress" value=" {{$indhanReal->progress}}"required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="realisasi">Deskripsi Realisasi</label>
-                                            <input type="text" name="realisasi" class="form-control" id="realisasi" value=" {{$indhanReal->realisasi}}">
+                                            <input type="text" name="realisasi" class="form-control" id="realisasi" value=" {{$indhanReal->realisasi}}"required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="kendala">Keterangan</label>
-                                            <textarea type="text" name="kendala" class="form-control" id="kendala">{{$indhanReal->kendala}}</textarea>
+                                            <textarea type="text" name="kendala" class="form-control" id="kendala"required>{{$indhanReal->kendala}}</textarea>
                                         </div>
                                         <div>
                                             <label for="file_evidence">File Evidence</label>
@@ -456,15 +456,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="realisasi">Progress Realisasi (Dalam %)</label>
-                        <input type="text" name="progress" class="form-control" id="progress">
+                        <input type="text" name="progress" class="form-control" id="progress"required>
                     </div>
                     <div class="mb-3">
                         <label for="realisasi">Deskripsi Realisasi</label>
-                        <input type="text" name="realisasi" class="form-control" id="realisasi">
+                        <input type="text" name="realisasi" class="form-control" id="realisasi"required>
                     </div>
                     <div class="mb-3">
                         <label for="kendala">Keterangan</label>
-                        <textarea type="text" name="kendala" class="form-control" id="kendala" placeholder="Dapat diisi dengan kendala ketidaktercapaian"></textarea>
+                        <textarea type="text" name="kendala" class="form-control" id="kendala" placeholder="Dapat diisi dengan kendala ketidaktercapaian" required></textarea>
 
                     </div>
 

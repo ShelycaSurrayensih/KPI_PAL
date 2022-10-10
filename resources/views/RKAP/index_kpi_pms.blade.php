@@ -216,23 +216,23 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="sub_kat" class="form-label">Sub Kategori</label>
-                                                            <input name="sub_kat" type="text" class="form-control" id="sub_kat" value="{{ $kpi->sub_kat }}">
+                                                            <input name="sub_kat" type="text" class="form-control" id="sub_kat" value="{{ $kpi->sub_kat }}"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="kpi_desc" class="form-label">Deskripsi </label>
-                                                            <input name="kpi_desc" type="text" class="form-control" id="kpi_desc" value="{{ $kpi->kpi_desc }}">
+                                                            <input name="kpi_desc" type="text" class="form-control" id="kpi_desc" value="{{ $kpi->kpi_desc }}"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="polaritas" class="form-label">Polaritas</label>
-                                                            <input name="polaritas" type="text" class="form-control" id="polaritas" value="{{ $kpi->polaritas }}">
+                                                            <input name="polaritas" type="text" class="form-control" id="polaritas" value="{{ $kpi->polaritas }}"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="bobot" class="form-label">Bobot</label>
-                                                            <input name="bobot" type="text" class="form-control" id="bobot" value="{{ $kpi->bobot }}">
+                                                            <input name="bobot" type="text" class="form-control" id="bobot" value="{{ $kpi->bobot }}"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="target" class="form-label">Target</label>
-                                                            <input name="target" type="text" class="form-control" id="target" value="{{ $kpi->target }}">
+                                                            <input name="target" type="text" class="form-control" id="target" value="{{ $kpi->target }}"required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="div_lead" class="form-label">Lead Divisi</label>
@@ -240,7 +240,7 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="tahun_kpipms" class="form-label">Tahun </label>
-                                                            <input name="tahun_kpipms" type="text" class="form-control" id="tahun_kpipms" value="{{ $kpi->tahun_kpipms }}">
+                                                            <input name="tahun_kpipms" type="text" class="form-control" id="tahun_kpipms" value="{{ $kpi->tahun_kpipms }}"required>
                                                         </div>
 
                                                 </div>
@@ -313,23 +313,23 @@
                     </div>
                     <div class="mb-3">
                         <label for="sub_kat" class="form-label">Sub Kategori</label>
-                        <input name="sub_kat" type="text" class="form-control" id="sub_kat" value="">
+                        <input name="sub_kat" type="text" class="form-control" id="sub_kat" value=""required>
                     </div>
                     <div class="mb-3">
                         <label for="kpi_desc" class="form-label">Deskripsi KPI</label>
-                        <input name="kpi_desc" type="text" class="form-control" id="kpi_desc" value="">
+                        <input name="kpi_desc" type="text" class="form-control" id="kpi_desc" value=""required>
                     </div>
                     <div class="mb-3">
                         <label for="polaritas" class="form-label">Polaritas</label>
-                        <input name="polaritas" type="text" class="form-control" id="polaritas" value="">
+                        <input name="polaritas" type="text" class="form-control" id="polaritas" value=""required>
                     </div>
                     <div class="mb-3">
                         <label for="bobot" class="form-label">Bobot</label>
-                        <input name="bobot" type="text" class="form-control" id="bobot" value="">
+                        <input name="bobot" type="text" class="form-control" id="bobot" value=""required>
                     </div>
                     <div class="mb-3">
                         <label for="target" class="form-label">Target</label>
-                        <input name="target" type="text" class="form-control" id="target" value="">
+                        <input name="target" type="text" class="form-control" id="target" value=""required>
                     </div>
                     <div class="mb-3">
                         <label for="div_lead" class="form-label">Lead Divisi</label>
@@ -343,7 +343,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="tahun_kpippms" class="form-label">Tahun </label>
-                        <input name="tahun_kpippms" type="text" class="form-control" id="tahun_kpippms" value="">
+                        <input name="tahun_kpippms" type="text" class="form-control" id="tahun_kpippms" value=""required>
                     </div>
             </div>
 

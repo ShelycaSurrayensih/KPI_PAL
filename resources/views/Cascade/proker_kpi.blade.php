@@ -115,7 +115,7 @@
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="deskripsi" class="form-label">Deskripsi</label>
-                                                                <input name="deskripsi" type="text" class="form-control" id="deskripsi">
+                                                                <input name="deskripsi" type="text" class="form-control" id="deskripsi"required>
                                                             </div>
                                                     </div>
                                                     <div class="modal-footer">
@@ -239,11 +239,11 @@
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="progress" class="form-label">Progress (Dalam %)</label>
-                                                                    <input name="progress" type="text" class="form-control" id="progress" value="{{$prok->progress}}">
+                                                                    <input name="progress" type="text" class="form-control" id="progress" value="{{$prok->progress}}"required>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="deskripsi" class="form-label">Deskripsi</label>
-                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$prok->deskripsi}}">
+                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{$prok->deskripsi}}"required>
                                                                 </div>
                                                         </div>
                                                         <div class="modal-footer">
@@ -304,16 +304,16 @@
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="progress" class="form-label">Progres (Dalam %)</label>
-                                                                    <input name="progress" type="text" class="form-control" id="progress" value="{{ $prok->progress }}">
+                                                                    <input name="progress" type="text" class="form-control" id="progress" value="{{ $prok->progress }}"required>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="deskripsi" class="form-label">Deskripsi Progres</label>
-                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{ $real->deskripsi }}">
+                                                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi" value="{{ $real->deskripsi }}"required>
                                                                 </div>
 
                                                                 <div class="mb-3">
                                                                     <label for="keterangan" class="form-label">Keterangan</label>
-                                                                    <textarea name="keterangan" type="text" class="form-control" id="keterangan" value="{{ $real->keterangan }}">{{ $real->keterangan }}</textarea>
+                                                                    <textarea name="keterangan" type="text" class="form-control" id="keterangan" value="{{ $real->keterangan }}"required>{{ $real->keterangan }}</textarea>
                                                                 </div>
                                                                 <div>
                                                                     <label for="file_evidence">File Evidence</label>
@@ -418,7 +418,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="deskripsi" class="form-label">Deskripsi</label>
-                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi">
+                                    <input name="deskripsi" type="text" class="form-control" id="deskripsi"required>
                                 </div>
                         </div>
                         <div class="modal-footer">
