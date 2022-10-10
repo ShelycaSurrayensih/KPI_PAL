@@ -22,8 +22,8 @@
                                 <button type="button" class="btn btn-success edit-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i>
                                     Add</button>
 
-                                    @endif
-                                </div>
+                                @endif
+                            </div>
                         </div>
                         <div class="col-sm">
                             <div class="d-flex justify-content-sm-end">
@@ -114,35 +114,32 @@
                                             <?php
                                             $number = 1;
                                             $show = 0;
+
+                                            if ($realCount != 0) {
+                                                foreach ($plan as $plans) {
+                                                    if ($plans->id_kpipms == $kpi->id_kpipms) {
+                                                        $bulan = $plans->bulan;
+                                                        foreach ($real as $reals) {
+                                                            if ($reals->id_plan == $plans->id_plan) {
+                                                                $number = $reals->progress_real;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                             ?>
-                                            @if($realCount != 0)
-                                            @foreach($plan as $plans)
-                                            @if($plans->id_kpipms == $kpi->id_kpipms)
-                                            <?php
-                                            $bulan = $plans->bulan;
-                                            ?>
-                                            @foreach($real as $reals)
-                                            @if($reals->id_plan == $plans->id_plan)
-                                            <?php
-                                            $number = $reals->progress_real;
-                                            ?>
-                                            @endif
-                                            @endforeach
-                                            @endif
-                                            @endforeach
-                                            @endif
 
                                             @if($number != 'Belum Terisi' && $number!= 1)
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$number}}%">
                                                 </div>
-                                            </div> {{$bulan}}  {{$number}}% 
+                                            </div> {{$bulan}} {{$number}}%
                                         </td>
                                         @else
                                         <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-                                                </div>
-                                            </div>0%
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                                            </div>
+                                        </div>0%
                                         </td>
                                         @endif
                                         </td>
@@ -167,9 +164,11 @@
                                         @endif
                                         <td>
                                             <div class="d-flex gap-2">
+                                                @if($users->status != 'administrator')
                                                 <div class="edit">
                                                     <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $kpi->id_kpipms }}">Edit</button>
                                                 </div>
+                                                @endif
                                                 <div class="edit">
                                                     <a href="{{ route('planpms.index', $kpi->id_kpipms) }}">
                                                         <button class="btn btn-sm btn-success edit-item-btn">Details</button>

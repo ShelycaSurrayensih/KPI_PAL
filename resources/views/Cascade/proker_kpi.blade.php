@@ -82,11 +82,6 @@
                                                 <div class="flex-grow-1">Belum Terisi</div>
                                             </div>
                                         </td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">Belum Terisi</div>
-                                            </div>
-                                        </td>
                                         @endif
                                         <td>
                                             <div class="d-flex gap-2">
@@ -385,11 +380,6 @@
                         <div class="flex-grow-1">Belum Terisi</div>
                 </td>
                 @if($users->status == 'administrator')
-                <td>
-                    <div class="d-flex align-items-center">
-                        <div class="flex-grow-1">Belum Terisi</div>
-                    </div>
-                </td>
                 <td>
                     <div class="d-flex align-items-center">
                         <div class="flex-grow-1">Belum Terisi</div>

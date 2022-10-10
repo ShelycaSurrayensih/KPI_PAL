@@ -42,8 +42,9 @@
                                                 value="option">
                                         </div>
                                     </th>
-                                    <th class="sort" data-sort="nama_tim">Departemen</th>
-                                    <th class="sort" data-sort="action">Action</th>
+                                    <th>Departemen</th>
+                                    <th>Created By</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
@@ -59,6 +60,15 @@
                                     <td class="id" style="display:none;"><a href="javascript:void(0);"
                                             class="fw-medium link-primary">#VZ2101</a></td>
                                     <td class="departemen">{{$departemen->departemen}}</td>
+                                    <td>
+                                            <div class="d-flex align-items-center">
+                                                @foreach($divisi as $div)
+                                                @if($div->id_divisi == $departemen->created_by)
+                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                @endif
+                                                @endforeach
+                                            </div>
+                                        </td>
 
                                     <td>
                                         <div class="d-flex gap-2">

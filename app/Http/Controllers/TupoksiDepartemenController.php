@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TupoksiDepartemen;
+use App\Models\Divisi;
 
 class TupoksiDepartemenController extends Controller
 {
@@ -16,7 +17,8 @@ class TupoksiDepartemenController extends Controller
     {
         $users = auth()->user();
         $tupoksiDepartemen = TupoksiDepartemen::all();
-        return view('Tupoksi.Departemen.index', compact ('users', 'tupoksiDepartemen'));
+        $divisi = divisi::all();
+        return view('Tupoksi.Departemen.index', compact ('users', 'tupoksiDepartemen', 'divisi'));
     }
 
     /**
