@@ -11,6 +11,8 @@ use App\Models\CascadeRealisasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use PDF;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\File; 
 
 class CascadeController extends Controller
 {
@@ -105,7 +107,7 @@ class CascadeController extends Controller
         $bobot_kpi =  $request->bobot_kpi;
         $bobot_cascade = $request->bobot_cascade;
         $casKpiDiv->id_CasKpi = $request->id_CasKpi;
-       
+        $casKpiDiv->kpi_divisi = $request->kpi_divisi;
         $casKpiDiv->bobot_cascade = $bobot_cascade;
         $casKpiDiv->target = $request->target;
         $casKpiDiv->bkXbc = round($bobot_kpi * ($bobot_cascade/100), 3); 
@@ -183,7 +185,7 @@ class CascadeController extends Controller
         $casReal->keterangan = $request->keterangan;
 
         if($request->file != Null){
-            $fileName = $request->file->getClientOriginalName();
+            $fileName = Carbon::today()->toDateString().$request->file->getClientOriginalName();
             $request->file->move(public_path('File/Cascade'), $fileName);
         $casReal->file_evidence = $fileName;
         }

@@ -10,6 +10,7 @@ use App\Models\Direktorat;
 
 use Illuminate\Support\Facades\Response;
 use PDF;
+use Carbon\Carbon;
 
 class IndivRealisasiController extends Controller
 {
@@ -61,7 +62,7 @@ class IndivRealisasiController extends Controller
         $indivRealisasi->id_divisi= $request->id_divisi;
 
         if($request->file != Null){
-            $fileName = $request->file->getClientOriginalName();
+            $fileName = Carbon::today()->toDateString().$request->file->getClientOriginalName();
             $request->file->move(public_path('File/Indiv'), $fileName);
         $indivRealisasi->file_evidence = $fileName;
         }

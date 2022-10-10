@@ -13,6 +13,7 @@ use App\Models\realisasiPms;
 use App\Models\Divisi;
 use Illuminate\Support\Facades\Response;
 use PDF;
+use Caebon\Carbon;
 
 class RKAP extends Controller
 {
@@ -192,7 +193,7 @@ class RKAP extends Controller
         $real->keterangan = $request->keterangan;
 
         if($request->file != Null){
-            $fileName = $request->file->getClientOriginalName();
+            $fileName = Carbon::today()->toDateString().$request->file->getClientOriginalName();
             $request->file->move(public_path('File/RKAP'), $fileName);
         $real->file_evidence = $fileName;
         }

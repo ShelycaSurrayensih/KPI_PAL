@@ -7,7 +7,7 @@ use App\Models\TupoksiDepartemen;
 use App\Models\TupoksiKPI;
 use App\Models\TupoksiTw;
 use App\Models\TupoksiRealisasi;
-
+use Carbon\Carbon;
 
 class TupoksiRealisasiController extends Controller
 {
@@ -99,7 +99,7 @@ class TupoksiRealisasiController extends Controller
         $tupoksiRealisasi->deskripsi = $request->get('deskripsi');
         $tupoksiRealisasi->kendala = $request->get('kendala');
         if($request->file != Null){
-            $fileName = $request->file->getClientOriginalName();
+            $fileName = Carbon::today()->toDateString().$request->file->getClientOriginalName();
             $request->file->move(public_path('File/Tupoksi'), $fileName);
         $tupoksiRealisasi->file_evidence = $fileName;
         }

@@ -7,6 +7,7 @@ use App\Models\Indhan;
 use App\Models\IndhanRealisasi;
 use Illuminate\Support\Facades\Response;
 use PDF;
+use Carbon\Carbon;
 
 class IndhanRealisasiController extends Controller
 {
@@ -117,7 +118,7 @@ class IndhanRealisasiController extends Controller
         $indhanRealisasi->timestamp;
         
         if($request->file != Null){
-            $fileName = $request->file->getClientOriginalName();
+            $fileName = Carbon::today()->toDateString().$request->file->getClientOriginalName();
             $request->file->move(public_path('File/Indhan'), $fileName);
         $indhanRealisasi->file_evidence = $fileName;
         }
