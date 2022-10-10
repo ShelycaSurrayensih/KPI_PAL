@@ -37,11 +37,11 @@
                                                 value="option">
                                         </div>
                                     </th>
-                                    <th class="sort" data-sort="kpi">Departemen</th>
-                                    <th class="sort" data-sort="proker">Proker</th>
-                                    <th class="sort" data-sort="target">Target</th>
-                                    <th class="sort" data-sort="target">Progress</th>
-                                    <th class="sort" data-sort="action">Action</th>
+                                    <th>Departemen</th>
+                                    <th>Proker</th>
+                                    <th>Target</th>
+                                    <th>Progress</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
@@ -102,7 +102,7 @@
                                         <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                                                 </div>
-                                            </div>
+                                            </div>0%
                                         @endif
                                         </td>
                                     <td>
@@ -161,7 +161,7 @@
 
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="target">target</label>
+                                                        <label for="target">Target</label>
                                                         <input type="text" name="target" class="form-control"
                                                             id="target" value="{{$proker->target}}">
 

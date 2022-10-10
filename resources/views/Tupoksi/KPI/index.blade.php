@@ -70,9 +70,9 @@
                                             <input class="form-check-input" type="checkbox" id="checkAll" value="option">
                                         </div>
                                     </th>
-                                    <th class="sort" data-sort="departemen">Departemen</th>
-                                    <th class="sort" data-sort="kpi">KPI</th>
-                                    <th class="sort" data-sort="action">Action</th>
+                                    <th>Departemen</th>
+                                    <th>KPI</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">

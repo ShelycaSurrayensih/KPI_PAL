@@ -42,18 +42,18 @@
                             <thead class="table-light">
                                 <tr>
 
-                                    <th class="sort" data-sort="no">No</th>
-                                    <th class="sort" data-sort="id_indhan">KPI</th>
-                                    <th class="sort" data-sort="bulan">Bulan</th>
-                                    <th class="sort" data-sort="tahun">Tahun</th>
-                                    <th class="sort" data-sort="tahun">Progress Realisasi</th>
-                                    <th class="sort" data-sort="realisasi">Deskripsi Realisasi</th>
-                                    <th class="sort" data-sort="kendala">Keterangan</th>
-                                    <th class="sort" data-sort="timestamp">Komentar Admin</th>
+                                    <th >No</th>
+                                    <th>KPI</th>
+                                    <th>Bulan</th>
+                                    <th>Tahun</th>
+                                    <th>Progress Realisasi</th>
+                                    <th>Deskripsi Realisasi</th>
+                                    <th>Keterangan</th>
+                                    <th>Komentar Admin</th>
                                     @if($users->status == 'administrator')
-                                    <th class="sort" data-sort="timestamp">Created By</th>
+                                    <th>Created By</th>
                                     @endif
-                                    <th class="sort" data-sort="action">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
@@ -307,8 +307,9 @@
                                         @csrf
                                         <div class="mb-3">
                                             <label for="id_indhan">KPI</label>
-                                            <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}" readonly="">
-
+                                            
+                                            <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}" readonly="" hidden>
+                                            <input name="" class="form-control" id="" value="{{$indhan->program_strategis}}" readonly="">
                                             </input>
                                         </div>
                                         <div class="mb-3">
@@ -415,8 +416,9 @@
                     <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                     <div class="mb-3">
                         <label for="id_indhan">KPI</label>
-                        <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}" readonly="">
-                        </input>
+                        <input name="id_indhan" class="form-control" id="id_indhan" value="{{$indhan->id_indhan}}" readonly="" hidden>
+                        <input name="" class="form-control" id="" value="{{$indhan->program_strategis}}" readonly="">    
+                    </input>
                     </div>
                     <div class="mb-3">
                         <label for="bulan">Bulan</label>

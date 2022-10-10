@@ -177,9 +177,11 @@
                                         @endif
                                         <td>
                                             <div class="d-flex gap-2">
+                                            @if(Auth::user()->status !== 'administrator')
                                                 <div class="edit">
                                                     <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#showModal{{ $plan->id_plan }}">Edit</button>
                                                 </div>
+                                                @endif
                                                 <div class="details">
                                                     <button type="button" class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#exampleModalgrid{{ $plan->id_plan }}">
                                                         Realisasi
@@ -335,6 +337,8 @@
                                                         @if($reals->id_plan == $plan->id_plan)
                                                         <form method="post" action="{{ route('realpms.update', $reals->id_real) }}" enctype="multipart/form-data" id="myForm">
                                                             @csrf
+                                                            <div class="modal-body">
+                                                            <form action="javascript:void(0);">
                                                             <div class="row g-3">
                                                                 <div class="col-xxl-6">
                                                                     <div>
@@ -658,7 +662,7 @@
             <div class="modal-footer">
                 <div class="hstack gap-2 justify-content-end">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" id="add-btn">Add Plan</button>
+                    <button type="submit" class="btn btn-success" id="add-btn">Add </button>
                 </div>
             </div>
             </form>

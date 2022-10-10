@@ -105,7 +105,7 @@ class CascadeController extends Controller
         $bobot_kpi =  $request->bobot_kpi;
         $bobot_cascade = $request->bobot_cascade;
         $casKpiDiv->id_CasKpi = $request->id_CasKpi;
-        $casKpiDiv->kpi_divisi = $request->kpi_divisi;
+       
         $casKpiDiv->bobot_cascade = $bobot_cascade;
         $casKpiDiv->target = $request->target;
         $casKpiDiv->bkXbc = round($bobot_kpi * ($bobot_cascade/100), 3); 

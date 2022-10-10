@@ -40,16 +40,16 @@
                             <thead class="table-light">
                                 <tr>
 
-                                    <th class="sort" data-sort="tw">TW</th>
-                                    <th class="sort" data-sort="progres">Progress</th>
-                                    <th class="sort" data-sort="realisasi">Realisasi</th>
-                                    <th class="sort" data-sort="prognosa">Prognosa</th>
-                                    <th class="sort" data-sort="keterangan">Keterangan</th>
-                                    <th class="sort" data-sort="keterangan">Komentar Admin</th>
+                                    <th>TW</th>
+                                    <th>Progress</th>
+                                    <th>Realisasi</th>
+                                    <th>Prognosa</th>
+                                    <th>Keterangan</th>
+                                    <th >Komentar Admin</th>
                                     @if($users->status == 'administrator')
-                                    <th class="sort" data-sort="keterangan">Created By</th>
+                                    <th >Created By</th>
                                     @endif
-                                    <th class="sort" data-sort="action">Action</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
@@ -292,17 +292,19 @@
                                                 <form method="post" action="{{ route('indivReal.update', $indivReal->id_realisasi) }}" enctype="multipart/form-data" id="myForm">
                                                     @csrf
                                                     <div class="mb-3">
-                                                        <label for="id_divisi">ID Divisi</label>
+                                                        <label for="id_divisi">Divisi</label>
                                                         @foreach($divisi as $div)
                                                         @if($users->id_divisi == $div->id_divisi)
-                                                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly="">
+                                                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly hidden>
+                                                        <input name="" value="{{ $div->div_name }}" class="form-control" id="id_divisi" readonly>
 
                                                         @endif @endforeach
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="id_kpidir">KPI</label>
-                                                        <input name="id_kpidir" class="form-control" id="id_kpidir" value="{{$kpidir->id_kpidir}}" readonly="">
-
+                                                        <select name="id_kpidir" class="form-control" id="id_kpidir">
+                                                            <option value="{{$kpidir->id_kpidir}}">{{ "$kpidir->desc_kpidir" }}</option>
+                                                        </select>
                                                         </input>
                                                     </div>
                                                     <div class="mb-3">

@@ -406,7 +406,7 @@
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1">{{ $kpiDiv->bobot_cascade }}%</div>
+                                                <div class="flex-grow-1">{{ $kpiDiv->bobot_cascade }}</div>
                                             </div>
                                         </td>
                                         <td>
@@ -513,10 +513,7 @@
                                                         @csrf
                                                         <input name="id_CasKpi" type="text" class="form-control" id="id_CasKpi" value="{{$kpi->id}}" hidden>
                                                         <input name="bobot_kpi" type="text" class="form-control" id="bobot_kpi" value="{{$kpi->bobot_kpi}}" hidden>
-                                                        <div class="mb-3">
-                                                            <label for="kpi_divisi" class="form-label">KPI Divisi</label>
-                                                            <input name="kpi_divisi" type="text" class="form-control" id="kpi_divisi" value="{{$kpiDiv->kpi_divisi}}">
-                                                        </div>
+                                                        
                                                         <div class="mb-3">
                                                             <label for="bobot_cascade" class="form-label">Bobot Cascading (Dalam %)</label>
                                                             <input name="bobot_cascade" type="text" class="form-control" id="bobot_cascade" value="{{$kpiDiv->bobot_cascade}}">
@@ -566,7 +563,11 @@
             </div>
         </div>
     </div>
-
+    </div>
+<!-- end col -->
+</div>
+<!-- end col -->
+</div>
     <!-- add Modal -->
     <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

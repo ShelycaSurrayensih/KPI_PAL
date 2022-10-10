@@ -37,16 +37,16 @@
                             <thead class="table-light">
                                 <tr>
 
-                                    <th class="sort" data-sort="no">No</th>
-                                    <th class="sort" data-sort="program_strategis">Program Strategis</th>
-                                    <th class="sort" data-sort="entitas">Entitas</th>
-                                    <th class="sort" data-sort="entitas">Program Utama</th>
-                                    <th class="sort" data-sort="target">Target/Milestone</th>
-                                    <th class="sort" data-sort="target">Progress</th>
+                                    <th>No</th>
+                                    <th>Program Strategis</th>
+                                    <th >Entitas</th>
+                                    <th>Program Utama</th>
+                                    <th>Target/Milestone</th>
+                                    <th >Progress</th>
                                     @if($users->status == 'administrator')
-                                    <th class="sort" data-sort="target">Created By</th>
+                                    <th >Created By</th>
                                     @endif
-                                    <th class="sort" data-sort="action">Action</th>
+                                    <th >Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
@@ -169,11 +169,11 @@
                                                         </select>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="id_divisi">ID Divisi</label>
+                                                        <label for="id_divisi">Divisi</label>
                                                         @foreach($divisi as $div)
                                                         @if($users->id_divisi == $div->id_divisi)
-                                                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly="">
-
+                                                        <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly hidden>
+                                                        <input name="" value="{{ $div->div_name }}" class="form-control" id="id_divisi" readonly>
                                                         @endif @endforeach
                                                     </div>
                                                     <div class="mb-3">
@@ -267,7 +267,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="id_divisi">Nama Divisi</label>
+                        <label for="id_divisi">Divisi</label>
                         @foreach($divisi as $div)
                         @if($users->id_divisi == $div->id_divisi)
                         <input name="id_divisi" value="{{ $div->id_divisi }}" class="form-control" id="id_divisi" readonly hidden>

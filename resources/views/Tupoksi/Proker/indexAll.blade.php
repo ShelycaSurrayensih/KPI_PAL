@@ -113,7 +113,7 @@
                                         <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                                                 </div>
-                                            </div>
+                                            </div>0%
                                         @endif
                                         </td>
                                     <td>
@@ -172,7 +172,7 @@
                                                             id="proker" value="{{$proker->proker}}">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label for="target">target</label>
+                                                        <label for="target">Target</label>
                                                         <input type="text" name="target" class="form-control"
                                                             id="target" value="{{$proker->target}}">
                                                     </div>
