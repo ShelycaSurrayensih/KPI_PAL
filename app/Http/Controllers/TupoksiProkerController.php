@@ -8,6 +8,7 @@ use App\Models\TupoksiKPI;
 use App\Models\TupoksiProker;
 use App\Models\TupoksiRealisasi;
 use App\Models\TupoksiTw;
+use App\Models\Divisi;
 
 class TupoksiProkerController extends Controller
 {
@@ -19,6 +20,7 @@ class TupoksiProkerController extends Controller
     public function index()
     {
         $users = auth()->user();
+        $divisi = Divisi::all();
         $tupoksiDepartemen = TupoksiDepartemen::all();
         $tupoksiKPI = TupoksiKPI::all();
         $tupoksiProker = TupoksiProker::all();
@@ -26,12 +28,13 @@ class TupoksiProkerController extends Controller
         $tupoksiTw = TupoksiTw::all();
         $tupoksiRealisasiCount = TupoksiRealisasi::count();
         //$tupoksiProker = TupoksiProker::where('id_proker', $id)->first();
-        return view('Tupoksi.Proker.indexAll', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiRealisasi', 'tupoksiTw', 'tupoksiRealisasiCount'));
+        return view('Tupoksi.Proker.indexAll', compact ('users', 'tupoksiDepartemen', 'divisi','tupoksiKPI', 'tupoksiProker', 'tupoksiRealisasi', 'tupoksiTw', 'tupoksiRealisasiCount'));
     }
 
     public function indexProker($id)
     {
         $users = auth()->user();
+        $divisi = Divisi::all();
         $tupoksiDepartemen = TupoksiDepartemen::all();
         $tupoksiKPI = TupoksiKPI::where('id_kpi', $id)->first();
         $tupoksiProker = TupoksiProker::all();
@@ -39,7 +42,7 @@ class TupoksiProkerController extends Controller
         $tupoksiTw = TupoksiTw::all();
         $tupoksiRealisasiCount = TupoksiRealisasi::count();
         //$tupoksiProker = TupoksiProker::where('id_proker', $id)->first();
-        return view('Tupoksi.Proker.index', compact ('users', 'tupoksiDepartemen', 'tupoksiKPI', 'tupoksiProker', 'tupoksiRealisasi', 'tupoksiTw', 'tupoksiRealisasiCount'));
+        return view('Tupoksi.Proker.index', compact ('users', 'tupoksiDepartemen', 'divisi', 'tupoksiKPI', 'tupoksiProker', 'tupoksiRealisasi', 'tupoksiTw', 'tupoksiRealisasiCount'));
     }
 
     /**

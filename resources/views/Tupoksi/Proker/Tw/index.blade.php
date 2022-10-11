@@ -199,7 +199,7 @@
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header bg-light p-3">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Realisasi</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                             </div>
 
@@ -224,7 +224,7 @@
                                                             <div class="modal-footer">
                                                                 <div class="hstack gap-2 justify-content-end">
                                                                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                                                    <button type="submit" class="btn btn-success" id="add-btn">Edit TW</button>
+                                                                    <button type="submit" class="btn btn-success" id="add-btn">Update</button>
                                                                 </div>
                                                             </div>
                                                             </form>
@@ -239,7 +239,7 @@
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header bg-light p-3">
-                                                                <h5 class="modal-title" id="exampleModalLabel">Edit TW</h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Realisasi</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                                                             </div>
 
