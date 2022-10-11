@@ -98,6 +98,7 @@ class TupoksiRealisasiController extends Controller
         $tupoksiRealisasi->progres = $request->get('progres');
         $tupoksiRealisasi->deskripsi = $request->get('deskripsi');
         $tupoksiRealisasi->kendala = $request->get('kendala');
+        $tupoksiRealisasi->comment = $request->get('comment');
         if($request->file != Null){
             $fileName = Carbon::today()->toDateString().$request->file->getClientOriginalName();
             $request->file->move(public_path('File/Tupoksi'), $fileName);
@@ -117,6 +118,14 @@ class TupoksiRealisasiController extends Controller
     {
         $tupoksiRealisasi = TupoksiRealisasi::where('id_realisasi', $id_realisasi);
         $tupoksiRealisasi->delete();
+        return redirect()->back();
+    }
+
+    public function deleteComment($id)
+    {
+        $plan = TupoksiRealisasi::where('id_realisasi', $id)->first();
+        $plan->comment = 'Belum ada Komentar';
+        $plan->save();
         return redirect()->back();
     }
 }

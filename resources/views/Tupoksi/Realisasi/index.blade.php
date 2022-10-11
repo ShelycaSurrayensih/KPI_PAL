@@ -111,12 +111,12 @@
                                                        
                                                         <div class="mb-3">
                                                             <label for="progres">Progres</label>
-                                                            <input type="text" name="progres" class="form-control" id="progres" value="{{$realisasi->progres}}">
+                                                            <input type="text" name="progres" class="form-control" id="progres" value="{{$realisasi->progres}}" required>
 
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="deskripsi">Deskripsi</label>
-                                                            <input type="text" name="deskripsi" class="form-control" id="deskripsi" value="{{$realisasi->deskripsi}}">
+                                                            <input type="text" name="deskripsi" class="form-control" id="deskripsi" value="{{$realisasi->deskripsi}}" required>
 
                                                         </div>
                                                         <div class=" modal-footer">

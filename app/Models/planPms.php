@@ -9,6 +9,8 @@ class planPms extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    
+    protected $primaryKey = 'id_plan';
     protected $fillable = [
         'id_kpipms',
         'tw',

@@ -93,14 +93,6 @@
                                             <div class="flex-grow-1">{{ $indhanReal->kendala }}</div>
                                         </div>
                                     </td>
-                                    @if($users->status == 'administrator')
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1">{{ $indhanReal->created_at }}</div>
-                                        </div>
-
-                                    </td>
-                                    @endif
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1">{{ $indhanReal->comment }}</div>
@@ -177,6 +169,7 @@
                                         <input name="tahun" type="text" class="form-control" id="tahun" value="{{$indhanReal->tahun}}" readonly hidden>
                                         <input name="realisasi" type="text" class="form-control" id="realisasi" value="{{$indhanReal->realisasi}}" readonly hidden>
                                         <input name="kendala" type="text" class="form-control" id="kendala" value="{{$indhanReal->kendala}}" readonly hidden>
+                                        <input name="progress" type="text" class="form-control" id="progress" value="{{$indhanReal->progress}}" readonly hidden>
                                         <div class="mb-3">
                                             <label for="comment" class="form-label">Komentar</label>
                                             <input name="comment" type="text" class="form-control" id="comment" value="{{$indhanReal->comment}} ">

@@ -207,7 +207,6 @@
                                                 @endif
                                                 @endif
                                                 @endforeach
-
                                                 @if($users->status == 'administrator')
                                                 <button class="btn btn-sm btn-success edit-item-btn" data-bs-toggle="modal" data-bs-target="#comment{{$plan->id_plan}}">Comment</button>
                                                 @if($plan->comment != 'Belum ada Komentar')

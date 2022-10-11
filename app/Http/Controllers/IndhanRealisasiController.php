@@ -56,7 +56,7 @@ class IndhanRealisasiController extends Controller
         $indhanRealisasi->timestamp;
         
         if($request->file != Null){
-            $fileName = $request->file->getClientOriginalName();
+            $fileName = Carbon::today()->toDateString().$request->file->getClientOriginalName();
             $request->file->move(public_path('File/Indhan'), $fileName);
         $indhanRealisasi->file_evidence = $fileName;
         }
@@ -105,12 +105,12 @@ class IndhanRealisasiController extends Controller
     public function update(Request $request, $id_realisasi)
     {
         $indhanRealisasi = IndhanRealisasi::where('id_realisasi', $id_realisasi)->first();
-        $indhanRealisasi->id_indhan = $request->get('id_indhan');
-        $indhanRealisasi->realisasi = $request->get('realisasi');
-        $indhanRealisasi->bulan = $request->get('bulan');
-        $indhanRealisasi->tahun = $request->get('tahun');
-        $indhanRealisasi->kendala = $request->get('kendala');
-        $indhanRealisasi->progress = $request->get('progress');
+        $indhanRealisasi->id_indhan = $request->id_indhan;
+        $indhanRealisasi->progress = $request->progress;
+        $indhanRealisasi->realisasi = $request->realisasi;
+        $indhanRealisasi->bulan = $request->bulan;
+        $indhanRealisasi->tahun = $request->tahun;
+        $indhanRealisasi->kendala = $request->kendala;
         if($request->comment != Null){
             $indhanRealisasi->comment = $request->get('comment');
         }
@@ -141,7 +141,7 @@ class IndhanRealisasiController extends Controller
 
     public function deleteComment($id)
     {
-        $delete = IndhanRealisasi::find($id);
+        $delete = IndhanRealisasi::where('id_realisasi', $id)->first();
         $delete->comment = 'Belum ada Komentar';
         $delete->save();
         return redirect()->back();

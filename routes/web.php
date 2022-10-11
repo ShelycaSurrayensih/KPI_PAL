@@ -159,9 +159,7 @@ Route::get('/Tupoksi_Tw/index/{id}',[TwController::class, 'index'])->name('tupok
 
  //Change Password dan User Profile
 Route::get('/user/password',[ChangePasswordController::class,'CPassword'])->name('change.password');
-
 Route::post('/password/update',[ChangePasswordController::class,'UpdatePassword'])->name('password.update');
-
 Route::get('/Profile/index',[ProfileController::class, 'index'])->name('profile.index');
 
 
@@ -170,8 +168,7 @@ Route::get('/Cascade/KPI/commentDelete/{id}', [App\Http\Controllers\CascadeContr
 Route::get('/KPI_Indhan/Realisasi/commentDelete/{id}', [App\Http\Controllers\IndhanRealisasiController::class, 'deleteComment'])->name('indhanReal.delComment');
 Route::get('/KPI_Indiv/Realisasi/commentDelete/{id}', [App\Http\Controllers\IndivRealisasiController::class, 'deleteComment'])->name('indivReal.delComment');
 Route::get('/Plan_PMS/commentDelete/{id}', [App\Http\Controllers\RKAP::class, 'deleteComment'])->name('planpms.delComment');
-
-Route::get('/KPI_Indhan/Realisasi/commentDelete/{id}', [App\Http\Controllers\CascadeController::class, 'deleteComment'])->name('indhanReal.delComment');
+Route::get('/Tupoksi/commentDelete/{id}', [App\Http\Controllers\TupoksiRealisasiController::class, 'deleteComment'])->name('tupoksi.delComment');
 
 //view document
 Route::get('/view/RKAP/{filename}', [App\Http\Controllers\RKAP::class, 'view'])->name('viewFile');

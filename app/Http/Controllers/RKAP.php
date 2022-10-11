@@ -13,7 +13,7 @@ use App\Models\realisasiPms;
 use App\Models\Divisi;
 use Illuminate\Support\Facades\Response;
 use PDF;
-use Caebon\Carbon;
+use Carbon\Carbon;
 
 class RKAP extends Controller
 {
@@ -210,7 +210,7 @@ class RKAP extends Controller
         $real->keterangan = $request->keterangan;
 
         if($request->file != Null){
-            $fileName = $request->file->getClientOriginalName();
+            $fileName = Carbon::today()->toDateString().$request->file->getClientOriginalName();
             $request->file->move(public_path('File/RKAP'), $fileName);
         $real->file_evidence = $fileName;
         }
@@ -235,9 +235,9 @@ class RKAP extends Controller
 
     public function deleteComment($id)
     {
-        $delete = planPms::find($id);
-        $delete->comment = 'Belum ada Komentar';
-        $delete->save();
+        $plan = planPms::where('id_plan', $id)->first();
+        $plan->comment = 'Belum ada Komentar';
+        $plan->save();
         return redirect()->back();
     }
 
