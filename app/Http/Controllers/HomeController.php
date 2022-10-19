@@ -53,11 +53,9 @@ class HomeController extends Controller
     public function index()
     {
         $divisi = Divisi::all();
-        $casProk = CascadeProker::all();
-        $casProk = CascadeProker::all()->sortBy('tw');
         // dd($casProk);
         if (Auth::User()->status == 'administrator') {
-            return view('Admin.index', compact ('divisi', 'casProk'));
+            return view('Admin.index', compact ('divisi'));
         } else {
             return view('user.index');
         }
