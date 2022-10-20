@@ -53,13 +53,19 @@ class HomeController extends Controller
     public function index()
     {
         $divisi = Divisi::all();
-        // dd($casProk);
+        $casReal = CascadeRealisasi::all();
+        $casProk = CascadeProker::all();
+        $tupoksiProker = TupoksiProker::all();
+        $tupoksiRealisasi = TupoksiRealisasi::all();
+        $tupoksiTw = TupoksiTw::all();
+        
         if (Auth::User()->status == 'administrator') {
-            return view('Admin.index', compact ('divisi'));
+            return view('Admin.index', compact ('divisi', 'casReal', 'casProk', 'tupoksiProker', 'tupoksiRealisasi', 'tupoksiTw'));
         } else {
             return view('user.index');
         }
     }
+
     
     public function print()
     {
