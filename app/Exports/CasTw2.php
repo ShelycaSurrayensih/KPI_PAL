@@ -2,14 +2,14 @@
 
 namespace App\Exports;
 use App\Models\CascadeKpi;
-use App\Models\IndhanTim;
 use App\Models\CascadeKpiDiv;
+use App\Models\CascadeProker;
 use App\Models\CascadeRealisasi;
 use Maatwebsite\Excel\Concerns\FromView;
 use Illuminate\Contracts\View\View;
 
 
-class BladeExport implements FromView
+class CasTw2 implements FromView
 {
 
     private $data;
@@ -22,7 +22,7 @@ class BladeExport implements FromView
         $casReal = CascadeRealisasi::all();
         $casProk = CascadeProker::all();
         $casKpi = CascadeKpi::all();
-        return view('admin.excelCascade', compact('casKpiDiv','casReal','casProk','casKpi'));
+        return view('admin.cascade.tw2', compact('casKpiDiv','casReal','casProk','casKpi'));
     }
 }
 

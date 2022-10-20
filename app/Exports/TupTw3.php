@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Concerns\FromView;
 use Illuminate\Contracts\View\View;
 
 
-class BladeExportTupoksi implements FromView
+class TupTw3 implements FromView
 {
 
     private $data;
@@ -24,7 +24,7 @@ class BladeExportTupoksi implements FromView
         $tupoksiTw = TupoksiTw::all();
         $tupoksiRealisasi = TupoksiRealisasi::all();
         $tupoksiProker = TupoksiProker::all();
-        return view('admin.excelTupoksi', compact('tupoksiDepartemen','tupoksiKPI','tupoksiTw','tupoksiRealisasi', 'tupoksiProker'));
+        return view('admin.tupoksi.tw3', compact('tupoksiDepartemen','tupoksiKPI','tupoksiTw','tupoksiRealisasi', 'tupoksiProker'));
     }
 }
 

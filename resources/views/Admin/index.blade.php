@@ -31,7 +31,24 @@
                                 echo 'Good ' . $salam; ?> {{ Auth::user()->username }}!
                                 <p class="text-muted mb-0">Here's what's happening with your store today.</p>
                         </div>
-                        <a href="/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+<div class="btn-group shadow">
+    <button type="button" class="btn-sm btn-info shadow-none dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Export Cascade</button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="{{ route('cas.CasTw1') }}">Export Tw 1</a>
+        <a class="dropdown-item" href="{{ route('cas.CasTw2') }}">Export Tw 2</a>
+        <a class="dropdown-item" href="{{ route('cas.CasTw3') }}">Export Tw 3</a>
+        <a class="dropdown-item" href="{{ route('cas.CasTw4') }}">Export Tw 4</a>
+    </div>
+</div><!-- /btn-group -->
+<div class="btn-group">
+    <button type="button" class="btn-sm btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Export Tupoksi</button>
+    <div class="dropdown-menu dropdownmenu-secondary">
+        <a class="dropdown-item" href="{{ route('tup.TupTw1') }}">Export Tw 1</a>
+        <a class="dropdown-item" href="{{ route('tup.TupTw2') }}">Export Tw 2</a>
+        <a class="dropdown-item" href="{{ route('tup.TupTw3') }}">Export Tw 3</a>
+        <a class="dropdown-item" href="{{ route('tup.TupTw4') }}">Export Tw 4</a>
+    </div>
+</div><!-- btn-group -->
                         <div class="mt-3 mt-lg-0">
                             <form action="javascript:void(0);">
                                 <div class="row g-3 mb-0 align-items-center">
@@ -63,35 +80,6 @@
 
     <div>
 
-   <div class="mb-3 gap-2">
-    <p>Sort by:</p>
-		<select > 
-            <option value="cascading">Cascading</option>
-            <option value="tupoksi">Tupoksi</option>
-        </select>
-    
-        <select>
-            <option value="pdf">Cetak PDF </option>
-            <option value="excel">Cetak Excel </option>
-        </select>
-    
-		<select > 
-            <option value="all_cas">print all </option>
-            <option value="div_cas">print divisi</option>
-        </select>
-		<select >
-        <option value="divisi">Divisi </option>
-        </select>
-        <select >
-        <option value="tahun">Tahun </option>
-        </select>
-        <a href="{{ route('print') }}">
-        <button type="onClick" class="btn btn-sm btn-soft-success shadow-none">
-        <i class="ri-add-circle-line align-middle me-1"></i> Print</button></a>
-    </div>
-
-		</div>
-    </div><br>
     <div class="row">
     <div class="col-lg-12">
         <div class="card">

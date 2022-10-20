@@ -46,11 +46,20 @@ Route::middleware(['auth'])->group(function () {
     
 });
 Auth::routes();
+
+//excel cascade
 Route::get('/Print-All-Dokumen', [App\Http\Controllers\HomeController::class, 'print'])->name('print');
-Route::get('/export_excel', [App\Http\Controllers\HomeController::class, 'export_excel'])->name('export_excel');
+Route::get('/CasTw1', [App\Http\Controllers\HomeController::class, 'CasTw1'])->name('cas.CasTw1');
+Route::get('/CasTw2', [App\Http\Controllers\HomeController::class, 'CasTw2'])->name('cas.CasTw2');
+Route::get('/CasTw3', [App\Http\Controllers\HomeController::class, 'CasTw3'])->name('cas.CasTw3');
+Route::get('/CasTw4', [App\Http\Controllers\HomeController::class, 'CasTw4'])->name('cas.CasTw4');
+
 
 //excel tupoksi
-Route::get('/export_excelTupoksi', [App\Http\Controllers\HomeController::class, 'export_excelTupoksi'])->name('export_excelTupoksi');
+Route::get('/TupTw1', [App\Http\Controllers\HomeController::class, 'TupTw1'])->name('tup.TupTw1');
+Route::get('/TupTw2', [App\Http\Controllers\HomeController::class, 'TupTw2'])->name('tup.TupTw2');
+Route::get('/TupTw3', [App\Http\Controllers\HomeController::class, 'TupTw3'])->name('tup.TupTw3');
+Route::get('/TupTw4', [App\Http\Controllers\HomeController::class, 'TupTw4'])->name('tup.TupTw4');
 
 
 //Cascading Index
