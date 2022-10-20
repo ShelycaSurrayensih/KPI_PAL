@@ -41,11 +41,14 @@
                                                 value="option">
                                         </div>
                                     </th>
-                                    <th class="sort" data-sort="departemen">Departemen</th>
-                                    <th class="sort" data-sort="kpi">KPI</th>
-                                    <th class="sort" data-sort="proker">Proker</th>
-                                    <th class="sort" data-sort="target">Target</th>
-                                    <th class="sort" data-sort="target">Progress</th>
+                                    <th >Departemen</th>
+                                    <th >KPI</th>
+                                    <th >Proker</th>
+                                    <th>Target</th>
+                                    <th>Progress</th>
+                                    @if($users->status == 'administrator')
+                                    <th>Created By</th>
+                                    @endif
                                     <th class="sort" data-sort="action">Action</th>
                                 </tr>
                             </thead>
@@ -115,6 +118,17 @@
                                             </div>0%
                                         @endif
                                         </td>
+                                        @if($users->status == 'administrator')
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                @foreach($divisi as $div)
+                                                @if($div->id_divisi == $proker->created_by)
+                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                @endif
+                                                @endforeach
+                                            </div>
+                                        </td>
+                                        @endif
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
@@ -146,7 +160,7 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header bg-light p-3">
-                                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close" id="close-modal"></button>
                                             </div>

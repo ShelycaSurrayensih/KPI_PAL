@@ -41,13 +41,16 @@
                                     <th>Proker</th>
                                     <th>Target</th>
                                     <th>Progress</th>
+                                    @if($users->status == 'administrator')
+                                    <th>Created By</th>
+                                    @endif
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody class="list form-check-all">
                                 @foreach($tupoksiProker as $proker)
                                 @if($proker->id_kpi == $tupoksiKPI->id_kpi)
-                                @if($proker->created_by == $users->id_divisi)
+                                @if($proker->created_by == $users->id_divisi || $users->status == 'administrator')
                                
                                 <tr>
                                     <th scope="row">
@@ -103,6 +106,17 @@
                                             </div>0%
                                         @endif
                                         </td>
+                                        @if($users->status == 'administrator')
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                @foreach($divisi as $div)
+                                                @if($div->id_divisi == $proker->created_by)
+                                                <div class="flex-grow-1">{{ $div->div_name }}</div>
+                                                @endif
+                                                @endforeach
+                                            </div>
+                                        </td>
+                                        @endif
                                     <td>
                                         <div class="d-flex gap-2">
                                             <div class="edit">
@@ -137,7 +151,7 @@
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header bg-light p-3">
-                                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close" id="close-modal"></button>
                                             </div>

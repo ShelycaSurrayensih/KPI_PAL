@@ -49,6 +49,10 @@ Auth::routes();
 Route::get('/Print-All-Dokumen', [App\Http\Controllers\HomeController::class, 'print'])->name('print');
 Route::get('/export_excel', [App\Http\Controllers\HomeController::class, 'export_excel'])->name('export_excel');
 
+//excel tupoksi
+Route::get('/export_excelTupoksi', [App\Http\Controllers\HomeController::class, 'export_excelTupoksi'])->name('export_excelTupoksi');
+
+
 //Cascading Index
 Route::get('/Cascade/KPI', [App\Http\Controllers\CascadeController::class, 'cascadeKpiIndex'])->name('cascadeKPI.index');
 Route::post('/Cascade/KPI/store', [App\Http\Controllers\CascadeController::class, 'cascadeKpiStore'])->name('cascadeKPI.store');
