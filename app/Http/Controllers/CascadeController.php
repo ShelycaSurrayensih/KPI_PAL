@@ -180,13 +180,15 @@ class CascadeController extends Controller
         $casReal->id_CProk = $request->id_CProk;
         $casReal->progress = $request->progress;
         $casReal->deskripsi = $request->deskripsi;
-        
         $casReal->keterangan = $request->keterangan;
 
         if($request->file != Null){
             $fileName = Carbon::today()->toDateString().$request->file->getClientOriginalName();
             $request->file->move(public_path('File/Cascade'), $fileName);
         $casReal->file_evidence = $fileName;
+        }
+        if($request->created_by != Null){
+            $casReal->created_by = $request->created_by;
         }
 
         //dd($casReal);

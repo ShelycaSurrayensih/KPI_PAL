@@ -103,6 +103,7 @@
                                             ?>
                                             @endif
                                             @endforeach
+                                            @endif
 
                                             @if($number != 'Belum Terisi' && $number != 1)
                                             <div class="progress">
@@ -223,7 +224,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endif
                                     @endif
                                     @endforeach
                                 </tbody><!-- end tbody -->

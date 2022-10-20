@@ -88,22 +88,21 @@
                                     <?php
                                             $number = 0;
                                             $show = 0;
+                                            
+                                            if($tupoksiRealisasiCount != 0){
+                                                foreach($tupoksiTw as $tw){
+                                                    if($tw->id_proker == $proker->id_proker){
+                                                        foreach($tupoksiRealisasi as $reals){
+                                                            if($reals->id_tw == $tw->id_tw && $reals->progres != 'Belum Terisi'){
+                                                                $number = $reals->progres;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
                                             ?>
-                                            @if($tupoksiRealisasiCount != 0)
-                                            @foreach($tupoksiTw as $tw)
-                                            @if($tw->id_proker == $proker->id_proker)
-                                            @foreach($tupoksiRealisasi as $reals)
-                                            @if($reals->id_tw == $tw->id_tw)
-                                            <?php
-                                            $number = $reals->progres;
-                                            ?>
-                                            @endif
-                                            @endforeach
-                                            @endif
-                                            @endforeach
-                                            @endif
 
-                                            @if($number != 'Belum Terisi')
+                                            @if($number != 0)
                                             <div class="progress">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$number}}%">
                                                 </div>

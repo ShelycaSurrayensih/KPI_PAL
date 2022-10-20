@@ -298,6 +298,7 @@
                                                             <form method="post" action="{{ route('cascadeRealis.update', $prok->id)}}" enctype="multipart/form-data" id="myForm">
                                                                 @csrf
                                                                 <input name="id_CProk" type="text" class="form-control" id="id_CProk" value="{{$prok->id}}" readonly hidden>
+                                                                <input name="created_by" type="text" class="form-control" id="created_by" value="{{$users->id_divisi}}" readonly hidden>
                                                                 <div class="mb-3">
                                                                     <label for="" class="form-label">TW</label>
                                                                     <input name="" type="text" class="form-control" id="" value="{{$prok->tw}}" readonly>
