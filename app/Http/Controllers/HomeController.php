@@ -133,5 +133,17 @@ class HomeController extends Controller
 	{
 		return Excel::download(new TupTw4(), 'Tupoksi Tw 4.xlsx');
 	}
+
+    public function barchart(Request $request)
+    {
+        $divisi = Divisi::all();
+        $casReal = CascadeRealisasi::all();
+        $casProk = CascadeProker::all();
+        $tupoksiProker = TupoksiProker::all();
+        $tupoksiRealisasi = TupoksiRealisasi::all();
+        $tupoksiTw = TupoksiTw::all();
+    	
+    	return view('Admin.index', compact ('divisi', 'casReal', 'casProk', 'tupoksiProker', 'tupoksiRealisasi', 'tupoksiTw'));
+    }
     
 }
