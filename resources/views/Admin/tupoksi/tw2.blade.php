@@ -40,7 +40,7 @@
                         @foreach($tupoksiTw as $tw)
                         @if($tw->id_proker == $proker->id_proker)
                         @foreach($tupoksiRealisasi as $real)
-                        @if($real->id_tw == $tw->id_tw && $tw->tw == '1') 
+                        @if($real->id_tw == $tw->id_tw && $tw->tw == '2') 
                         <tr>
                         <td>{{$dep->departemen}}</td>
 
