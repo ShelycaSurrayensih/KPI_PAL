@@ -15,7 +15,7 @@ use App\Http\Controllers\RKAP;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Exports\ExportExcel;
-
+use App\Http\Controllers\ChartJsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -196,3 +196,6 @@ Route::get('/download/Cascade/{filename}', [App\Http\Controllers\CascadeControll
 Route::get('/download/Tupoksi/{filename}', [App\Http\Controllers\TwController::class, 'download'])->name('downloadFile.tupoksi');
 Route::get('/download/Indiv/{filename}', [App\Http\Controllers\IndivRealisasiController::class, 'download'])->name('downloadFile.indiv');
 Route::get('/download/Indhan/{filename}', [App\Http\Controllers\IndhanRealisasiController::class, 'download'])->name('downloadFile.indhan');
+
+
+Route::get('chartjs', [ChartJsController::class, 'index'])->name('chartjs.index');
