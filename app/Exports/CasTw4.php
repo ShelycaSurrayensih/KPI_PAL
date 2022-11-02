@@ -5,6 +5,7 @@ use App\Models\CascadeKpi;
 use App\Models\CascadeKpiDiv;
 use App\Models\CascadeProker;
 use App\Models\CascadeRealisasi;
+use App\Models\Divisi;
 use Maatwebsite\Excel\Concerns\FromView;
 use Illuminate\Contracts\View\View;
 
@@ -22,7 +23,8 @@ class CasTw4 implements FromView
         $casReal = CascadeRealisasi::all();
         $casProk = CascadeProker::all();
         $casKpi = CascadeKpi::all();
-        return view('admin.cascade.tw4', compact('casKpiDiv','casReal','casProk','casKpi'));
+        $divisi = Divisi::all();
+        return view('admin.cascade.tw4', compact('casKpiDiv','casReal','casProk','casKpi', 'divisi'));
     }
 }
 

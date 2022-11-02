@@ -14,7 +14,9 @@
         <img src="assets/images/logo-bumn1.png" class="topleft">
         <img src="assets/images/logo-4.png" class="topright">
     </header> -->
-    <h2 style="text-decoration: underline;">LAPORAN</h2>
+    <h2 style="text-decoration: underline;">Laporan Proggres Realisasi Program Kerja dan KPI 2022</h2><br>
+    @foreach($divisi as $div)
+    <h4>Divisi : {{$div->div_name}} - PT PAL Indonesia</h4>
     <table>
 
     <tr>
@@ -33,6 +35,7 @@
                     <tbody>
                     
                     @foreach($tupoksiDepartemen as $dep)
+                    @if($dep->created_by == $div->id_divisi)
                         @foreach($tupoksiKPI as $kpi)
                         @if($kpi->id_departemen == $dep->id_departemen)
                         @foreach($tupoksiProker as $proker)
@@ -67,11 +70,13 @@
                         @endif
                         @endforeach
                         </tr>
+                        @endif
                         @endforeach
                     
                 </tbody>
                         </table> 
-   
+                        @endforeach
+                    
 
 </body>
 

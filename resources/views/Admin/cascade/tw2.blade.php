@@ -10,7 +10,9 @@
 
 <body>
 
-    <h2 style="text-decoration: underline;">LAPORAN</h2>
+    <h2 style="text-decoration: underline;">Laporan Proggres Realisasi Program Kerja dan KPI 2022</h2><br>
+    @foreach($divisi as $div)
+    <h4>Divisi : {{$div->div_name}} - PT PAL Indonesia</h4>
     <table>
     <td rowspan="2">NO</td>
     <tr>
@@ -25,8 +27,8 @@
                                 <td rowspan="2">KENDALA</td>
 </tr>
 <tr>
-                        <th>TW 2</th>
-                        <th>TW 2</th>
+                        <th>TW 1</th>
+                        <th>TW 1</th>
                         <th>SKOR KPI</th>
                         <th>SKOR PROKER</th>
                     </tr>
@@ -34,7 +36,7 @@
                     <?php $no = 0;?>
                     @foreach($casKpi as $kpi)
                     @foreach($casKpiDiv as $kpiDiv)
-                    @if($kpiDiv->id_CasKpi == $kpi->id)
+                    @if($kpiDiv->id_CasKpi == $kpi->id && $kpiDiv->created_by == $div->id_divisi)
                     @foreach($casProk as $prok) 
                     @if($prok->id_CDiv == $kpiDiv->id)
                     @foreach($casReal as $real) 
@@ -69,15 +71,17 @@
                     @endforeach
                         @endif
                     @endforeach
-                    </tr>
+                    </tr><br>
                     
                     @endif
                     @endforeach
+                    
                     @endforeach
                 </tbody>
                         </table> 
-   
 
+   
+  @endforeach
 </body>
 
 </html>

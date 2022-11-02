@@ -6,6 +6,7 @@ use App\Models\TupoksiKPI;
 use App\Models\TupoksiProker;
 use App\Models\TupoksiRealisasi;
 use App\Models\TupoksiTw;
+use App\Models\Divisi;
 use Maatwebsite\Excel\Concerns\FromView;
 use Illuminate\Contracts\View\View;
 
@@ -24,7 +25,8 @@ class TupTw4 implements FromView
         $tupoksiTw = TupoksiTw::all();
         $tupoksiRealisasi = TupoksiRealisasi::all();
         $tupoksiProker = TupoksiProker::all();
-        return view('admin.tupoksi.tw4', compact('tupoksiDepartemen','tupoksiKPI','tupoksiTw','tupoksiRealisasi', 'tupoksiProker'));
+        $divisi = Divisi::all();
+        return view('admin.tupoksi.tw4', compact('tupoksiDepartemen','tupoksiKPI','tupoksiTw','tupoksiRealisasi', 'tupoksiProker', 'divisi'));
     }
 }
 
