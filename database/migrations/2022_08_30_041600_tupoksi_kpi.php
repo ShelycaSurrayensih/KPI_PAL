@@ -20,6 +20,7 @@ class TupoksiKpi extends Migration
             $table->String('kpi');
             $table->String('created_by')->default('0');
             $table->String('progression')->default('0');
+            $table->timestamps();
         });
     }
 

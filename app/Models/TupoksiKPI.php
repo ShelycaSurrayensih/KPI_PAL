@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TupoksiKPI extends Model
 {
     use HasFactory;
-    public $timestamps = false;
+    
     public $table = 'tupoksi_kpi';
     protected $primaryKey = 'id_kpi';
     protected $fillable = [
