@@ -39,6 +39,8 @@ use Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Response;
 use PDF;
+
+use DB;
 class HomeController extends Controller
 {
     /**
@@ -64,42 +66,35 @@ class HomeController extends Controller
         $tupoksiProker = TupoksiProker::all();
         $tupoksiRealisasi = TupoksiRealisasi::all();
         $tupoksiTw = TupoksiTw::all();
+        $casDiv = CascadeKpiDiv::all();
+        $divisi_name = Divisi::all()->pluck('id_divisi', 'div_name');
+        $casRealProg =DB::table('cascade_realisasis')
+                        ->select('created_by', DB::raw("SUM(progress) as total"),)
+                        ->groupBy('created_by');
+        // $casRealDesk = $casRealProg->pluck('created_by', 'deskripsi');
+        // $count = 0;
+        $progress = $casRealProg->pluck('total');
+        $check_id = $casRealProg->pluck('created_by');
+        $divCount = Divisi::all()->count();
         
+        $labels = $divisi_name->keys();
+        $val = $divisi_name->values();
+        
+        $bkXbc=DB::table('cascade_kpi_divs')
+                ->select('created_by', DB::raw("SUM(bkXbc) as total"),)
+                ->groupBy('created_by');
+        $bobot = $bkXbc->pluck('created_by', 'total');
+        // $bobTot = $bkXbc->pluck('total');
+
+         //dd($bobot);
         if (Auth::User()->status == 'administrator') {
-            return view('Admin.index', compact ('divisi', 'casReal', 'casProk', 'tupoksiProker', 'tupoksiRealisasi', 'tupoksiTw'));
+            return view('Admin.index', compact ('divisi','casDiv', 'casReal', 'casProk', 'tupoksiProker', 'tupoksiRealisasi', 'tupoksiTw', 'labels', 'val', 'progress', 'check_id', 'divisi_name', 'bobot'));
         } else {
             return view('user.index');
         }
     }
 
-    
-    // public function print()
-    // {
-        
-    //     $casKpiDiv = CascadeKpiDiv::all();
-    //     $casKpiCount = CascadeKpi::all();
-    //     $casKat = CascadeKat::all();
-    //     $casKpi = CascadeKpi::all();
-    //     $divisi = Divisi::all();
-    //     $indhan = Indhan::all();
-    //     $indhanTim = IndhanTim::all();
-    //     $indhanRealisasi = IndhanRealisasi::all();
-    //     $tupoksiDepartemen = TupoksiDepartemen::all();
-    //     $tupoksiKPI = TupoksiKPI::all();
-    //     $tupoksiTw = TupoksiTw::all();
-    //     $tupoksiRealisasi = TupoksiRealisasi::all();
-    //     $plan = planPms::all();
-    //     $real = realisasiPms::all();
-    //     $kpi = KpiPms::all();
-    //     $kategori = KategoriPms::all();
-    //     $inisiatif = inisiatifStrategis::all();
-    //     $indivRealisasi = IndivRealisasi::all();
-    //     $direktorat = Direktorat::all();
-    //     $kpidir = IndivKpiDir::all();
-    //     $casProk = CascadeProker::all();
-    //     $pdf = PDF::loadview('Admin.pdf', compact('casKpiDiv','casProk','casKpiCount','casKat','casKpi','divisi','indhan','indhanTim','indhanRealisasi','tupoksiDepartemen','tupoksiKPI','tupoksiTw','tupoksiRealisasi','plan','real','kpi','kategori','inisiatif','indivRealisasi','direktorat','kpidir'))->setPaper('a3', 'landscape');
-    //     return $pdf->stream();
-    // }
+
 
     public function CasTw1()
 	{
